@@ -2,13 +2,17 @@
 
 # Teste Frontend
 
-O teste deve ser feito para Web com layout responsivo e é uma simulação de envio de dinheiro para uma outra pessoa via cartão de crédito.
+O teste deve ser feito para Web com layout responsivo e é uma simulação de envio de dinheiro para uma outra pessoa via cartão de crédito. 
+
+O layout está disponível em https://zpl.io/VOBNjrQ. Para acessar, use o login *picpay* e senha *picpayfte*.
 
 Você deve fazer um ***Fork*** deste repositório e soliciar um ***Pull Request***, **com seu nome na descrição**, para nossa avaliação.
 
 O seu usuário deverá escolher uma pessoa em uma lista, informar o valor a ser enviado e finalizar o pagamento com o cartão de crédito cadastrado. Se ele não possuir cartão de crédito cadastrado, deverá informar o dados do cartão (número do cartão, data de validade e CVV, além do id do usuário de destino) antes de finalizar o pagamento.
 
 Os cartões devem ser persistidos no armazenamento do navegador para serem usados em pagamentos futuros.
+
+
 
 -----
 ###### Lista de usuários
