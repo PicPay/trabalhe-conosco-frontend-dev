@@ -1,0 +1,150 @@
+/* Geral */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #fafafa;
+    color: #333;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+h2 { 
+    font-size: 18px;
+    font-weight: 500;
+    color: #168841;
+}
+
+header {
+    line-height: 50px;
+    text-align: center;
+    width: 100%;
+    background: #21c25e;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    margin-bottom: 50px;
+}
+
+header h1 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.wrapper {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+
+/* Passo 1: Tela de Listagem de Usuários */
+
+ul#usuariosDestino {
+    list-style: none;
+    padding:0;
+}
+
+ul#usuariosDestino li { 
+    padding: 10px 0;
+    cursor: pointer;
+    /*line-height: 40px;*/
+    font-size: 14px;
+    color: #636363;
+}
+
+ul#usuariosDestino li .username {
+    display: block;
+    clear: right;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+}
+
+ul#usuariosDestino li:hover, ul#usuariosDestino li:hover .username {
+    color: #21c25e;
+}
+
+ul#usuariosDestino li:hover img {
+    border-color: #21c25e;
+}
+
+ul#usuariosDestino img {
+    width: 40px;
+    height: auto;
+    float: left;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1px solid #636363;
+}
+
+
+/* Passo 2: Definição do valor */
+
+#selecionarValor {
+    display: none;
+}
+
+.alterarDestinatario {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: gray;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+label, input {
+    display: block;
+    clear: left;
+}
+
+#selecionarValor, #adicionarCartao {
+    display: none;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #757575;
+    background: transparent;
+    color: #636363;
+}
+
+form {
+    margin: 30px 0;
+}
+
+label {
+    font-size: 14px;
+    color: #616161;
+    margin-bottom: 10px;
+}
+
+input {
+    color: #333;
+}
+
+#enviarValor, #enviarCartao {
+    border: none;
+    background: #21c25e;
+    color: white;
+    padding: 10px;
+    margin: 25px 0;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,.26);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button,
+input[type="month"]::-webkit-outer-spin-button,
+input[type="month"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'], input[type='month'] {
+    -moz-appearance: textfield;
+}

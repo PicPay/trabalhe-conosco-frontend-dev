@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PicPay</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+    
+<body>
+    <main>
+        
+        <header>
+            <div class="wrapper">
+                <h1>PicPay</h1>
+            </div>
+        </header>
+
+        <section id="selecionarDestino" class="wrapper">
+            <h2>Escolha um usuário para fazer transferência</h2>
+            <ul id="usuariosDestino"></ul>
+        </section>
+
+        <section id="selecionarValor" class="wrapper">
+            <h2>Digite o valor da transferência para <span class="destinoSelecionado"></span></h2>
+
+            <form> 
+                <label for="valor">Valor:</label> <input id="valor" name="valor" type="number">
+                <button id="enviarValor">Pagar com cartão</button>
+            </form>
+            
+            <button class="alterarDestinatario">Escolher outro usuário</button>
+        </section>
+      
+       <section id="adicionarCartao" class="wrapper">
+        <h2>Você ainda não possui cartão de crédito cadastrado. Cadastre agora!</h2>
+        <form>
+            <label for="cartNumero">Número do cartão:</label> <input id="cartNumero" name="cartNumero" type="number" required> <br>
+            <label for="cartValidade">Data de validade:</label> <input id="cartValidade" name="cartValidade" type="month" pattern="[0-9]{4}-[0-9]{2}" required> <br>
+            <label for="cartCVV">CVV:</label> <input id="cartCVV" name="cartCVV" type="number" maxlength="3" min="000" max="999" required> <br>
+            <button id="enviarCartao">Cadastrar cartão</button>
+        </form>
+    </section>
+
+    </main>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

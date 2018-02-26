@@ -1,39 +1,7 @@
-![PicPay](https://user-images.githubusercontent.com/1765696/26998603-711fcf30-4d5c-11e7-9281-0d9eb20337ad.png)
+# Leia-me
 
-# Teste Frontend
+Pensando que cada empresa trabalha com frameworks preferidos, eu optei por escrever o código de maneira simples, sem a utilização de uma biblioteca como Bootstrap, ou pré-processadores como Less/Sass para CSS. Usei jQuery para escrever o JavaScript por acreditar que ele facilita a leitura.
 
-O teste deve ser feito para Web com layout responsivo e é uma simulação de envio de dinheiro para uma outra pessoa via cartão de crédito.
+Segui uma interface simples, que cumpre a meta de responsividade, embora não tenha muitas adaptações. Inspirado na identidade do PicPay, mas sem a preocupação de fidelidade.
 
-Você deve fazer um ***Fork*** deste repositório e soliciar um ***Pull Request***, **com seu nome na descrição**, para nossa avaliação.
-
-O seu usuário deverá escolher uma pessoa em uma lista, informar o valor a ser enviado e finalizar o pagamento com o cartão de crédito cadastrado. Se ele não possuir cartão de crédito cadastrado, deverá informar o dados do cartão (número do cartão, data de validade e CVV, além do id do usuário de destino) antes de finalizar o pagamento.
-
-Os cartões devem ser persistidos no armazenamento do navegador para serem usados em pagamentos futuros.
-
------
-###### Lista de usuários
-
-Para listar as pessoas que podem receber pagamentos, faça uma requisição para o json nessa url: http://careers.picpay.com/tests/mobdev/users
-
------
-
-###### Pagamento
-
-Realizar um `POST` para http://careers.picpay.com/tests/mobdev/transaction com os seguintes atributos:
-+ ID do usuário que irá receber o pagamento
-+ Número do cartão
-+ Vencimento do cartão
-+ CVV
-+ Valor total
-
-``` json
-{  
-   "card_number":"1111111111111111",
-   "cvv":789,
-   "value":79.9,
-   "expiry_date":"01/18",
-   "destination_user_id":1002
-}
-```
-
-## Para fins de teste, o número de cartão 1111111111111111 aprova a transação, qualquer outro recusa. 
+As instruções do teste foram para criação de um fluxo bem direto e, por pouca experiência em dinâmicas parecidas, eu não soube se deveria incrementar outras/muitas ações na interface. Optei por apenas colocar botões simples com ação para o usuário voltar no fluxo, caso o mesmo queira alterar o destinatário da transação, uma vez que salvo esses dados na sessão, para que ele não os perca durante o cadastro do cartão ou mesmo em uma hipotética interrupção de conexão. Pensando em não exagerar, acabei optando por não salvar esses dados localmente, como feito com o cartão de crédito, e não coloquei uma opção para o usuário editar/apagar o cartão cadastrado.
