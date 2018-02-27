@@ -1,0 +1,250 @@
+@import "variables";
+
+@import "flexbox";
+
+@import "modal";
+
+
+/* Geral */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #fafafa;
+    color: #333;
+}
+
+header {
+    background: $verde;
+    color: $azul;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,.5);
+
+    .wrapper {
+        padding: 10px 0;
+    }
+
+    h1 {
+        font-size: 20px;
+        font-weight: 600;
+        display: inline-block;
+        border-left: 2px solid $azul;
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+
+    svg {
+        * {
+            fill: white;
+        }
+    }
+}
+
+.wrapper {
+    width: 80%;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+/* Passo 1: Tela de Listagem de Usuários */
+
+ul#usuariosLista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        background-image: linear-gradient(186deg, #3c3e64, #1d1e2a);
+        box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+        padding: 15px 25px;
+        cursor: pointer;
+        /*line-height: 40px;*/
+        font-size: 14px;
+        color: #636363;
+        font-family: 'Roboto', sans-serif;
+
+        &:first-child {
+            box-shadow: none;
+        }
+
+        .acoes {
+
+            span {
+                display: inline-block;
+                float: left;
+                color: white;
+            }
+
+            .pagar-icone {
+                position: relative;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                background-image: linear-gradient(to left, #b4f4e5, #7de6c6);
+                color: $azul;
+                font-weight: 600;
+
+                &:before {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    content: "$";
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+            }
+
+            .pagar-texto {
+                font-weight: 500;
+                font-size: 20px;
+                margin-left: 10px;
+                margin-right: 20px;
+            }
+
+            .fa-chevron-right {
+                font-size: 28px;
+            }
+
+        }
+
+
+    }
+}
+
+
+.dadosUsuario {
+    color: white;
+
+    img, > div {
+        display: inline-block;
+        float: left;
+    }
+
+    img {
+        border-radius: 50%;
+        border: 2px solid white;
+        width: 80px;
+    }    
+
+    > div {
+        margin-left: 20px;
+
+        .nomeUsuario {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .metaUsuario {
+            font-size: 14px;
+            margin-top: 7px;
+
+            .arrobaUsuario {
+                margin-left: 10px;
+            }
+        }
+
+        .nomeUsuario, .metaUsuario {
+            float: left;
+            clear: left;
+        }
+    }
+}   
+
+
+
+
+
+
+
+
+
+
+ul#usuariosDestino li .username {
+    display: block;
+    clear: right;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+}
+
+ul#usuariosDestino li:hover, ul#usuariosDestino li:hover .username {
+    color: #21c25e;
+}
+
+ul#usuariosDestino li:hover img {
+    border-color: #21c25e;
+}
+
+ul#usuariosDestino img {
+    width: 40px;
+    height: auto;
+    float: left;
+    margin-right: 10px;
+
+
+}
+
+
+/* Passo 2: Definição do valor */
+
+#selecionarValor {
+    display: none;
+}
+
+.alterarDestinatario {
+    border: none;
+    background: transparent;
+    padding: 0;
+    color: gray;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+label, input {
+    display: block;
+    clear: left;
+}
+
+#selecionarValor, #adicionarCartao {
+    display: none;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #757575;
+    background: transparent;
+    color: #636363;
+}
+
+label {
+    font-size: 14px;
+    color: #616161;
+    margin-bottom: 10px;
+}
+
+input {
+    color: #333;
+}
+
+#enviarValor, #enviarCartao {
+    border: none;
+    background: #21c25e;
+    color: white;
+    padding: 10px;
+    margin: 25px 0;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,.26);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button,
+input[type="month"]::-webkit-outer-spin-button,
+input[type="month"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'], input[type='month'] {
+    -moz-appearance: textfield;
+}

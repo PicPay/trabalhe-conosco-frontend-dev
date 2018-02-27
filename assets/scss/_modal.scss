@@ -1,0 +1,178 @@
+.modal-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.modal-footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+
+.modal {
+    font-family: 'Roboto', sans-serif;
+
+    .modal-content {
+        padding: 0; // codepen
+        border-radius: .3rem;
+        width: 80%;
+        max-width: 640px;
+        background-color: #fff;
+        margin: 15% auto; /* 15% from the top and centered */
+
+        .modal-header {
+            background: $azul;
+            font-size: 16px;
+            border-top-left-radius: .3rem;
+            border-top-right-radius: .3rem;
+
+            .modal-title {
+                font-size: 16px;
+                color: white;
+                margin: 15px 20px;
+
+                .nomeUsuario {
+                    color: $verde;
+                }
+            }
+
+            .close {
+                color: white;
+                float: right;
+                font-size: 28px;
+                margin: 5px 15px;
+
+                &:hover,
+                    &:focus {
+                    color: darken(white, 10%);
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        .modal-body {
+            overflow: auto;
+        }
+
+        .modal-body,  
+        .modal-footer {
+            border-bottom-left-radius: .3rem;
+            border-bottom-right-radius: .3rem;
+        }
+    }
+}
+
+.modalUsuario {
+
+    .dadosUsuario {
+        margin: 0 auto;
+        padding: 25px 0;
+        color: $azul;
+    }
+
+    form {
+        margin: 10px auto;
+
+        input[type="number"] {
+            border-bottom: 2px solid #474970;
+            font-size: 48px;
+            text-align: center;
+            max-width: 50%;
+            margin: 0 auto;
+            font-family: 'Nunito Sans', sans-serif;
+
+            &::placeholder {
+                color: $cinza;
+                font-family: 'Nunito Sans', sans-serif;
+            }
+        }
+    }
+
+    .modal-footer {
+
+        .flex {
+            margin: 0 auto;
+            border-top: 1px solid $cinza;
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+
+        .aviso {
+            float: left;
+            margin: 0 auto;
+            color: $vermelho;
+            font-size: 14px;
+
+            .aviso-icone {
+                position: relative;
+                float: left;
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                border-radius: 50%;
+                background: $vermelho;
+                color: white;
+                font-weight: 600;
+
+                &:before {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    content: "!";
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+            }
+
+            .aviso-chamada {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+        }
+
+        button {
+            margin: 20px auto;
+            width: 90%;
+            border-radius: 24px;
+            background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+            border: none;
+            line-height: 40px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+        }
+    }
+}

@@ -1,52 +1,106 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PicPay</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-    
-<body>
-    <main>
-        
-        <header>
-            <div class="wrapper">
-                <h1>PicPay</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PicPay</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <main>
+            <header>
+                <div class="wrapper">
+                    <svg version="1.1" id="picpay-icone" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="30px" height="26px" viewBox="0 0 197.987 172.104" enable-background="new 0 0 197.987 172.104"
+                         xml:space="preserve">
+                    <path d="M60.648,31.123H30.855V57.19h27.666c17.558,0,27.664,8.508,27.664,24.471s-10.106,25.006-27.664,25.006H30.855V57.722H0
+                          v114.383h30.855v-39.367h29.258c35.65,0,56.406-19.157,56.406-52.137C116.52,49.742,96.293,31.123,60.648,31.123z"/>
+                    <g>
+                    <path d="M135.74,0v62.25h62.247V0H135.74z M187.609,51.875h-41.491V10.378h41.491V51.875z"/>
+                    <rect x="156.49" y="20.752" width="20.742" height="20.749"/>
+                    </g>
+                    </svg>
+                    <h1>Front-End Test</h1>
+                </div>
+            </header>
+
+            <div class="modal modalUsuario">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <span class="modal-title">
+                            Pagamento para <span class="nomeUsuario">Nome de usuário</span>
+                        </span>
+                        <span class="close">&times;</span>
+                    </div>
+
+                    <div class="modal-body flex flex-coluna">
+                        <div class="dadosUsuario">
+                            <img class="fotoUsuario">
+                            <div>
+                                <span class="nomeUsuario"></span>
+                                <span class="metaUsuario">
+                                    id: <span class="idUsuario"></span> 
+                                    <span class="arrobaUsuario"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <form>
+                                <input type="number" placeholder="R$ 0,00">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="flex flex-coluna">
+                            <div class="aviso">
+                                <span class="aviso-icone"></span>
+                                <span>Nenhum cartão de crédito cadastrado. <span class="aviso-chamada">Cadastrar agora</span>.</span>
+                            </div>
+                            <button>PAGAR</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </header>
 
-        <section id="selecionarDestino" class="wrapper">
-            <h2>Escolha um usuário para fazer transferência</h2>
-            <ul id="usuariosDestino"></ul>
-        </section>
+            <section id="selecionarDestino" class="wrapper">
+                <ul id="usuariosLista"></ul>
+            </section>
 
-        <section id="selecionarValor" class="wrapper">
-            <h2>Digite o valor da transferência para <span class="destinoSelecionado"></span></h2>
+            <section id="selecionarValor" class="wrapper">
+                <h2>Digite o valor da transferência para <span class="destinoSelecionado"></span></h2>
 
-            <form> 
-                <label for="valor">Valor:</label> <input id="valor" name="valor" type="number">
-                <button id="enviarValor">Pagar com cartão</button>
-            </form>
-            
-            <button class="alterarDestinatario">Escolher outro usuário</button>
-        </section>
-      
-       <section id="adicionarCartao" class="wrapper">
-        <h2>Você ainda não possui cartão de crédito cadastrado. Cadastre agora!</h2>
-        <form>
-            <label for="cartNumero">Número do cartão:</label> <input id="cartNumero" name="cartNumero" type="number" required> <br>
-            <label for="cartValidade">Data de validade:</label> <input id="cartValidade" name="cartValidade" type="month" pattern="[0-9]{4}-[0-9]{2}" required> <br>
-            <label for="cartCVV">CVV:</label> <input id="cartCVV" name="cartCVV" type="number" maxlength="3" min="000" max="999" required> <br>
-            <button id="enviarCartao">Cadastrar cartão</button>
-        </form>
-    </section>
+                <form> 
+                    <label for="valor">Valor:</label> <input id="valor" name="valor" type="number">
+                    <button id="enviarValor">Pagar com cartão</button>
+                </form>
 
-    </main>
+                <button class="alterarDestinatario">Escolher outro usuário</button>
+            </section>
 
+            <section id="adicionarCartao" class="wrapper">
+                <h2>Você ainda não possui cartão de crédito cadastrado. Cadastre agora!</h2>
+                <form>
+                    <label for="cartNumero">Número do cartão:</label> <input id="cartNumero" name="cartNumero" type="number" required> <br>
+                    <label for="cartValidade">Data de validade:</label> <input id="cartValidade" name="cartValidade" type="month" pattern="[0-9]{4}-[0-9]{2}" required> <br>
+                    <label for="cartCVV">CVV:</label> <input id="cartCVV" name="cartCVV" type="number" maxlength="3" min="000" max="999" required> <br>
+                    <button id="enviarCartao">Cadastrar cartão</button>
+                </form>
+            </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="app.js"></script>
-</body>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <script src="app.js"></script>
+        <script src="assets/js/modal.js"></script>
+
+    </body>
 </html>

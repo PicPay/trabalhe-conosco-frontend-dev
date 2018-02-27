@@ -8,9 +8,8 @@
   ) {
     
     var qntUsuarios = json.length;
-
     for (id = 0; id < qntUsuarios; id++) {  
-      $('#usuariosDestino').append('<li>' + json[id].name + '</li>');
+      $('#usuariosLista').append('<li>' + json[id].name + '</li>');
     }
     
  })
@@ -41,7 +40,8 @@ $(function() {
 
     // Para cada registro, imprime um item de lista
     $.each(usuarios, function(index, usuario) {
-        $('#usuariosDestino').append('<li> <img src="' + usuario.img + '"> <span class="username" data-id="' + usuario.id + '">' + usuario.username + '</span>' + usuario.name + '</li>');
+      
+        $('#usuariosLista').append('<li class="flex flex-justificar"> <div class="dadosUsuario"> <img class="fotoUsuario" src="' + usuario.img + '"> <div> <span class="nomeUsuario">' + usuario.name + '</span> <span class="metaUsuario">id: <span class="idUsuario">' + usuario.id + '</span>  <span class="arrobaUsuario">' + usuario.username + '</span></span> </div> </div> <div class="acoes flex flex-centralizar"> <span class="pagar-icone"></span> <span class="pagar-texto">PAGAR</span> <span><i class="fas fa-chevron-right"></i></span> </div> </li>');
     });
     
 });
@@ -63,19 +63,31 @@ $(function() {
         // Caso contrário, abre tela de seleção
     } else {
         // Quando um destinatário é escolhido 
-        $('#usuariosDestino').on('click', 'li', function() {
+        $('#usuariosLista').on('click', 'li', function() {
+
+            // Personaliza modal e abre
+            $('.modalUsuario').attr("id", $('.idUsuario').text());
+            $('.modalUsuario').show();
+            
+            // Identifica o destinatário selecionado
+            $('.modal .nomeUsuario').text($(this).find('.nomeUsuario').text());
+            $('.modal .fotoUsuario').attr("src", $(this).find('.fotoUsuario').attr('src'));
+            $('.modal .idUsuario').text($(this).find('.idUsuario').text());
+            $('.modal .arrobaUsuario').text($(this).find('.arrobaUsuario').text());
+                        
+            
 
             // Salva na sessão o username e o ID selecionado
             sessionStorage.setItem('destinoSelecionadoUN', $(this).find('.username').text());
             sessionStorage.setItem('destinoSelecionadoID', $(this).attr('data-id'));
-            // Identifica o destinatário selecionado
-            $('.destinoSelecionado').text($(this).find('.username').text());
+            
+            
 
             // Oculta seção atual (Listagem de Destinatários)
-            $(this).closest('section').slideUp();
+            //$(this).closest('section').slideUp();
 
             // Avança para Definição do Valor
-            $('#selecionarValor').closest('section').slideDown();
+            //$('#selecionarValor').closest('section').slideDown();
         });
     }
 });

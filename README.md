@@ -1,5 +1,14 @@
 # Leia-me
 
+-----
+###### Update
+
+Aplicação de novo requisito do teste (interface gráfica disponibilizada no Zeplin) em desenvolvimento.
+
+
+-----
+###### Primeira versão
+
 Pensando que cada empresa trabalha com frameworks preferidos, eu optei por escrever o código de maneira simples, sem a utilização de uma biblioteca como Bootstrap, ou pré-processadores como Less/Sass para CSS. Usei jQuery para escrever o JavaScript por acreditar que ele facilita a leitura.
 
 Segui uma interface simples, que cumpre a meta de responsividade, embora não tenha muitas adaptações. Inspirado na identidade do PicPay, mas sem a preocupação de fidelidade.
