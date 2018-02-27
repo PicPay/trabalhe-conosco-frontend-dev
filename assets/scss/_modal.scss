@@ -1,3 +1,5 @@
+/* Geral */
+
 .modal-header {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -22,32 +24,32 @@
     justify-content: flex-end;
 }
 
-/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
 }
 
 
+/* Personalizado */
 
 .modal {
     font-family: 'Roboto', sans-serif;
 
     .modal-content {
-        padding: 0; // codepen
+        padding: 0;
         border-radius: .3rem;
         width: 80%;
         max-width: 640px;
         background-color: #fff;
-        margin: 15% auto; /* 15% from the top and centered */
+        margin: 15vh auto;
 
         .modal-header {
             background: $azul;
@@ -104,6 +106,10 @@
     form {
         margin: 10px auto;
 
+        input {
+            display: block;
+        }
+
         input[type="number"] {
             border-bottom: 2px solid #474970;
             font-size: 48px;
@@ -121,11 +127,15 @@
 
     .modal-footer {
 
+        > .flex {
+            border-top: 1px solid $cinza;
+        }
+
         .flex {
             margin: 0 auto;
-            border-top: 1px solid $cinza;
             margin-top: 40px;
             padding-top: 20px;
+            width: 90%;
         }
 
         .aviso {
@@ -160,19 +170,118 @@
                 font-weight: bold;
                 text-decoration: underline;
             }
+
+            .cadastrarCartao {
+                cursor: pointer;
+
+                &:hover {
+                    color: darken($vermelho, 10%);
+                    text-decoration: none;
+                }
+            }
         }
 
-        button {
-            margin: 20px auto;
-            width: 90%;
-            border-radius: 24px;
-            background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
-            border: none;
-            line-height: 40px;
+        .infoCartao {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center !important;
+            -ms-flex-align: center !important;
+            align-items: center !important;
+            width: auto;
+            margin: 0 auto;
             font-size: 14px;
-            font-weight: bold;
-            font-family: 'Roboto', sans-serif;
+            cursor: pointer;
         }
+
+        #enviarValor {
+            cursor: pointer;
+
+            &.inativo {
+                background: #f2f2f2;
+                box-shadow: none;
+                color: #bfbfbf;
+            }
+        }
+    }
+}
+
+
+.modalCadastroCartao {
+
+    #cartValidade {
+        border-color: $cinza;
+    }
+
+    #enviarCartao {
+        display: block;
+        cursor: pointer;
+    }
+
+}
+
+
+.modalExibirCartoes {
+
+    h5 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        overflow: auto;
+
+        li {
+
+            &.ativo {
+                background-color: rgba(125, 230, 198, 0.24);
+            }
+
+            .item {
+                margin: 0 auto;
+                padding: 20px 0;
+                text-align: center;
+                color: $azul;
+
+                .flex {
+                    margin: 0 auto;
+                }
+
+                .fa-credit-card {
+                    margin-right: 15px;
+                    font-size: 22px;
+                }
+
+                .fa-check {
+                    margin-left: 15px;
+                    color: $verde;
+                }
+            }
+        }
+    }
+
+    #selecionarCartao {
+        display: block;
+        margin-top: 150px;
+        cursor: pointer;
+    }
+}
+
+
+.modal {
+
+    button {
+        margin: 20px auto;
+        width: 90%;
+        border-radius: 24px;
+        background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+        border: none;
+        line-height: 40px;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Roboto', sans-serif;
     }
 }

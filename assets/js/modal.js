@@ -5,9 +5,14 @@ $('.close').on('click', function () {
 });
 
 // Fechar modal clicando fora
-var modal = document.getElementsByClassName('modalUsuario')[0];
+var modal = document.getElementsByClassName('modal')[0];
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
+
+$('.modalCadastroCartao select').on('click', function() {
+   $(this).css("background", "white");
+   $(this).css("z-index",  "1"); 
+});

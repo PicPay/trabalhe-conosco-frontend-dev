@@ -3,6 +3,7 @@
 @import "flexbox";
 
 @import "modal";
+@import "form";
 
 
 /* Geral */
@@ -46,7 +47,8 @@ header {
     margin: 0 auto;
 }
 
-/* Passo 1: Tela de Listagem de Usuários */
+
+/* Listagem de Usuários */
 
 ul#usuariosLista {
     list-style: none;
@@ -54,11 +56,10 @@ ul#usuariosLista {
     margin: 0;
 
     li {
-        background-image: linear-gradient(186deg, #3c3e64, #1d1e2a);
+        background-image: linear-gradient(to left, #3c3e64, #1d1e2a);
         box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
         padding: 15px 25px;
         cursor: pointer;
-        /*line-height: 40px;*/
         font-size: 14px;
         color: #636363;
         font-family: 'Roboto', sans-serif;
@@ -113,6 +114,8 @@ ul#usuariosLista {
 }
 
 
+/* Informações dos usuários */
+
 .dadosUsuario {
     color: white;
 
@@ -152,89 +155,13 @@ ul#usuariosLista {
 }   
 
 
-
-
-
-
-
-
-
-
-ul#usuariosDestino li .username {
-    display: block;
-    clear: right;
-    font-weight: 500;
-    font-size: 16px;
-    color: black;
-}
-
-ul#usuariosDestino li:hover, ul#usuariosDestino li:hover .username {
-    color: #21c25e;
-}
-
-ul#usuariosDestino li:hover img {
-    border-color: #21c25e;
-}
-
-ul#usuariosDestino img {
-    width: 40px;
-    height: auto;
-    float: left;
-    margin-right: 10px;
-
-
-}
-
-
-/* Passo 2: Definição do valor */
-
-#selecionarValor {
-    display: none;
-}
-
-.alterarDestinatario {
-    border: none;
-    background: transparent;
-    padding: 0;
-    color: gray;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-label, input {
-    display: block;
-    clear: left;
-}
-
-#selecionarValor, #adicionarCartao {
-    display: none;
-}
+/* Definição do valor */
 
 input {
     border: none;
     border-bottom: 1px solid #757575;
     background: transparent;
     color: #636363;
-}
-
-label {
-    font-size: 14px;
-    color: #616161;
-    margin-bottom: 10px;
-}
-
-input {
-    color: #333;
-}
-
-#enviarValor, #enviarCartao {
-    border: none;
-    background: #21c25e;
-    color: white;
-    padding: 10px;
-    margin: 25px 0;
-    cursor: pointer;
-    box-shadow: 0 1px 2px rgba(0,0,0,.26);
 }
 
 input[type="number"]::-webkit-outer-spin-button,

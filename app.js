@@ -40,7 +40,6 @@ $(function() {
 
     // Para cada registro, imprime um item de lista
     $.each(usuarios, function(index, usuario) {
-      
         $('#usuariosLista').append('<li class="flex flex-justificar"> <div class="dadosUsuario"> <img class="fotoUsuario" src="' + usuario.img + '"> <div> <span class="nomeUsuario">' + usuario.name + '</span> <span class="metaUsuario">id: <span class="idUsuario">' + usuario.id + '</span>  <span class="arrobaUsuario">' + usuario.username + '</span></span> </div> </div> <div class="acoes flex flex-centralizar"> <span class="pagar-icone"></span> <span class="pagar-texto">PAGAR</span> <span><i class="fas fa-chevron-right"></i></span> </div> </li>');
     });
     
@@ -54,66 +53,61 @@ var destinoSelecionadoID = sessionStorage.getItem('destinoSelecionadoID') || 0;
 
 $(function() {
 
-    // Caso haja, avança para Definição de Valor
-    if (destinoSelecionadoUN != 0) {
-        $('#selecionarDestino').hide(); // Oculta Listagem de Destinatários
-        $('#selecionarValor').show(); // Exibe Definição do Valor
-        $('.destinoSelecionado').text(destinoSelecionadoUN); // Identifica o destinatário selecionado
+    // Quando um destinatário é escolhido 
+    $('#usuariosLista').on('click', 'li', function() {
 
-        // Caso contrário, abre tela de seleção
-    } else {
-        // Quando um destinatário é escolhido 
-        $('#usuariosLista').on('click', 'li', function() {
-
-            // Personaliza modal e abre
-            $('.modalUsuario').attr("id", $('.idUsuario').text());
-            $('.modalUsuario').show();
+        // Personaliza modal e abre
+        $('.modalUsuario').attr("id", $('.idUsuario').text());
+        $('.modalUsuario').show();
             
-            // Identifica o destinatário selecionado
-            $('.modal .nomeUsuario').text($(this).find('.nomeUsuario').text());
-            $('.modal .fotoUsuario').attr("src", $(this).find('.fotoUsuario').attr('src'));
-            $('.modal .idUsuario').text($(this).find('.idUsuario').text());
-            $('.modal .arrobaUsuario').text($(this).find('.arrobaUsuario').text());
-                        
-            
+        // Identifica o destinatário selecionado
+        $('.modal .nomeUsuario').text($(this).find('.nomeUsuario').text());
+        $('.modal .fotoUsuario').attr("src", $(this).find('.fotoUsuario').attr('src'));
+        $('.modal .idUsuario').text($(this).find('.idUsuario').text());
+        $('.modal .arrobaUsuario').text($(this).find('.arrobaUsuario').text());
 
-            // Salva na sessão o username e o ID selecionado
-            sessionStorage.setItem('destinoSelecionadoUN', $(this).find('.username').text());
-            sessionStorage.setItem('destinoSelecionadoID', $(this).attr('data-id'));
-            
-            
-
-            // Oculta seção atual (Listagem de Destinatários)
-            //$(this).closest('section').slideUp();
-
-            // Avança para Definição do Valor
-            //$('#selecionarValor').closest('section').slideDown();
-        });
-    }
+        // Salva na sessão o username e o ID selecionado
+        sessionStorage.setItem('destinoSelecionadoUN', $(this).find('.arrobaUsuario').text());
+        sessionStorage.setItem('destinoSelecionadoID', $(this).find('.idUsuario').text());
+    });
 });
 
 
 // 2. Definição do Valor
 
 var valorSelecionado = sessionStorage.getItem('valorSelecionado') || 0; // Se não houver valor selecionado, o declara
-$('#valor').val(valorSelecionado); // Se houver valor selecionado, o recupera (Caso do usuário sair do fluxo / cadastrar novo cartão)
-
-// Dados do cartão cadastrado (se não houver, declara as variáveis)
-var cartao = localStorage.getItem('cartao') || 0;
+var cartao = localStorage.getItem('cartao') || 0; // Dados do cartão cadastrado (se não houver, declara as variáveis)
+var cartaoDig = localStorage.getItem('cartaoDig') || 0;
 
 $(function() {
 
     // Para confirmar o POST, preciso de um cartão cadastrado
+    
+    if (cartao != 0) {
+        // Se houver cartão, o identifica e habilita botão de enviar valor
+        $('#enviarValor').attr("title", "");
+        $('#enviarValor').prop("disabled", false);
+        $('#enviarValor').removeClass("inativo");
+        $('.aviso').hide();
+        $('.infoCartao').show();
+    } else {
+        // Se não houver, mostra aviso e desabilita botão
+        $('#enviarValor').attr("title", "Não há cartão cadastrado");
+        $('#enviarValor').prop("disabled", true);
+        $('#enviarValor').addClass("inativo");
+        $('.aviso').show();
+        $('.infoCartao').hide();
+    }
 
     // Quando o valor é submetido
-    $('#selecionarValor').on('click', '#enviarValor', function(evento) {
+    $('.modalUsuario').on('click', '#enviarValor', function(evento) {
 
         evento.preventDefault();
 
         // Salva na sessão
         sessionStorage.setItem('valorSelecionado', $('#valor').val());
 
-        // Se houver cartão cadastrado, avança para Transferência
+        // Se houver cartão cadastrado, executa
         if (cartao != 0) {
             
             var transacao = {
@@ -126,7 +120,7 @@ $(function() {
 
             $.post("http://careers.picpay.com/tests/mobdev/transaction", function( transacao ) {
                console.log('Transação enviada');
-                console.log(transacao);
+               console.log(transacao);
             })
                 .done (function () {
                 alert("Transação efetuada com sucesso!");
@@ -139,56 +133,59 @@ $(function() {
                 .fail (function () {
                 alert("Houve um problema com a transação. Tente novamente mais tarde.")
             });
-            
-
-            // Se não houver cartão cadastrado, solicita a inclusão
-        } else {
-
-            console.log('Não há cartão cadastrado');
-
-            // Oculta seção atual (Transferência)
-            $('#selecionarValor').slideUp();
-
-            // Mostra informações para Adicionar Cartão
-            $('#adicionarCartao').slideDown();
-
-            // Quando o cartão é submetido
-            $('#adicionarCartao').on('click', '#enviarCartao', function() {
-                
-                // Tratando a validade (mês/ano)
-                validadeBruta = $('#cartValidade').val();
-                [ano, mes] = validadeBruta.split('-');
-                validadeFinal = mes + '/' + ano.substring(2, 4);
-
-                // Passa preenchimento do formulário para Cadastro do Cartão                
-                var cartao = {
-                    numero : $('#cartNumero').val(),
-                    validade : validadeFinal,
-                    cvv : $('#cartCVV').val()
-                };
-                
-                // Grava cartão cadastrado
-                localStorage.setItem('cartao', cartao);
-
-            })
-            .done( function() {
-                alert("oi");
-            });
         }
     });
-
 });
 
 
-// 2.3.1 Botão para o usuário do sistema mudar destinatário
-$('.alterarDestinatario').on('click', function() {
+// Adicionar cartão
+$(function() {
+    
+    $('.cadastrarCartao').on('click', function() {
+       $('.modal').hide(); // Fecha outros modais
+       $('.modalCadastroCartao').show();  // Abre modal de Cadastro de Cartão
+    });
 
-    // Redefine valor inicial
-    sessionStorage.setItem('destinoSelecionadoUN', 0);
-    sessionStorage.setItem('destinoSelecionadoID', 0);
+    // Quando o cartão é submetido
+    $('.modalCadastroCartao').on('click', '#enviarCartao', function() {
 
-    // Retorna para seção Listagem de Destinatários
-    $('#selecionarValor').slideUp();
-    $('#selecionarDestino').slideDown();
+        // Tratando a validade (mês/ano)
+        validadeBruta = $('#cartValidade').val();
+        [ano, mes] = validadeBruta.split('-');
+        validadeFinal = mes + '/' + ano.substring(2, 4);
 
+        // Passa preenchimento do formulário para Cadastro do Cartão                
+        cartao = {
+            numero : $('#cartNumero').val(),
+            validade : validadeFinal,
+            cvv : $('#cartCVV').val()
+        };
+        cartaoDig = $('#cartNumero').val();
+
+        // Grava cartão cadastrado
+        localStorage.setItem('cartao', cartao);
+        localStorage.setItem('cartaoDig', cartaoDig);
+        
+    })
+    .done( function() {
+        alert("");
+    });
+    
 });
+
+ $('.cartaoUltDig').text(cartaoDig.substring(cartaoDig.length - 4));
+ 
+ 
+ // Exibir lista de cartões cadastrados
+ $(function() {
+    
+     $('.infoCartao').on('click', function() {
+        $('.modal').hide(); // Fecha outros modais
+        $('.modalExibirCartoes').show();  // Abre modal de Cadastro de Cartão
+     });
+     
+     $('#selecionarCartao').on('click', function() {
+        $('.modalExibirCartoes').hide(); 
+     });
+     
+ });

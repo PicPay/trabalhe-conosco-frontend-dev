@@ -21,6 +21,7 @@
   -ms-flex-direction: column !important;
   flex-direction: column !important; }
 
+/* Geral */
 .modal-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,27 +44,19 @@
   -ms-flex-pack: end;
   justify-content: flex-end; }
 
-/* The Modal (background) */
 .modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Sit on top */
   left: 0;
   top: 0;
   width: 100%;
-  /* Full width */
   height: 100%;
-  /* Full height */
   overflow: auto;
-  /* Enable scroll if needed */
   background-color: black;
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */ }
+  background-color: rgba(0, 0, 0, 0.4); }
 
+/* Personalizado */
 .modal {
   font-family: 'Roboto', sans-serif; }
   .modal .modal-content {
@@ -72,8 +65,7 @@
     width: 80%;
     max-width: 640px;
     background-color: #fff;
-    margin: 15% auto;
-    /* 15% from the top and centered */ }
+    margin: 15vh auto; }
     .modal .modal-content .modal-header {
       background: #474971;
       font-size: 16px;
@@ -107,6 +99,8 @@
   color: #474971; }
 .modalUsuario form {
   margin: 10px auto; }
+  .modalUsuario form input {
+    display: block; }
   .modalUsuario form input[type="number"] {
     border-bottom: 2px solid #474970;
     font-size: 48px;
@@ -117,11 +111,13 @@
     .modalUsuario form input[type="number"]::placeholder {
       color: #d8d8d8;
       font-family: 'Nunito Sans', sans-serif; }
+.modalUsuario .modal-footer > .flex {
+  border-top: 1px solid #d8d8d8; }
 .modalUsuario .modal-footer .flex {
   margin: 0 auto;
-  border-top: 1px solid #d8d8d8;
   margin-top: 40px;
-  padding-top: 20px; }
+  padding-top: 20px;
+  width: 90%; }
 .modalUsuario .modal-footer .aviso {
   float: left;
   margin: 0 auto;
@@ -148,7 +144,63 @@
   .modalUsuario .modal-footer .aviso .aviso-chamada {
     font-weight: bold;
     text-decoration: underline; }
-.modalUsuario .modal-footer button {
+  .modalUsuario .modal-footer .aviso .cadastrarCartao {
+    cursor: pointer; }
+    .modalUsuario .modal-footer .aviso .cadastrarCartao:hover {
+      color: #eb2853;
+      text-decoration: none; }
+.modalUsuario .modal-footer .infoCartao {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  width: auto;
+  margin: 0 auto;
+  font-size: 14px;
+  cursor: pointer; }
+.modalUsuario .modal-footer #enviarValor {
+  cursor: pointer; }
+  .modalUsuario .modal-footer #enviarValor.inativo {
+    background: #f2f2f2;
+    box-shadow: none;
+    color: #bfbfbf; }
+
+.modalCadastroCartao #cartValidade {
+  border-color: #d8d8d8; }
+.modalCadastroCartao #enviarCartao {
+  display: block;
+  cursor: pointer; }
+
+.modalExibirCartoes h5 {
+  font-size: 18px;
+  text-align: center; }
+.modalExibirCartoes ul {
+  list-style: none;
+  padding: 0;
+  overflow: auto; }
+  .modalExibirCartoes ul li.ativo {
+    background-color: rgba(125, 230, 198, 0.24); }
+  .modalExibirCartoes ul li .item {
+    margin: 0 auto;
+    padding: 20px 0;
+    text-align: center;
+    color: #474971; }
+    .modalExibirCartoes ul li .item .flex {
+      margin: 0 auto; }
+    .modalExibirCartoes ul li .item .fa-credit-card {
+      margin-right: 15px;
+      font-size: 22px; }
+    .modalExibirCartoes ul li .item .fa-check {
+      margin-left: 15px;
+      color: #7de6c6; }
+.modalExibirCartoes #selecionarCartao {
+  display: block;
+  margin-top: 150px;
+  cursor: pointer; }
+
+.modal button {
   margin: 20px auto;
   width: 90%;
   border-radius: 24px;
@@ -159,6 +211,223 @@
   font-size: 14px;
   font-weight: bold;
   font-family: 'Roboto', sans-serif; }
+
+.material-form .container {
+  background: white;
+  padding: 40px 30px 10px 30px; }
+  .material-form .container .material-input {
+    position: relative;
+    margin-bottom: 30px; }
+    .material-form .container .material-input input {
+      background-color: transparent; }
+    .material-form .container .material-input label {
+      color: #999;
+      font-size: 16px;
+      position: absolute;
+      pointer-events: none;
+      top: 10px;
+      transition: 0.2s ease all;
+      width: 100%; }
+    .material-form .container .material-input input:not([type]),
+    .material-form .container .material-input input[type=text],
+    .material-form .container .material-input input[type=password],
+    .material-form .container .material-input input[type=email],
+    .material-form .container .material-input input[type=url],
+    .material-form .container .material-input input[type=time],
+    .material-form .container .material-input input[type=date],
+    .material-form .container .material-input input[type=datetime-local],
+    .material-form .container .material-input input[type=tel],
+    .material-form .container .material-input input[type=number],
+    .material-form .container .material-input input[type=search] {
+      color: #333;
+      font-size: 16px;
+      padding: 10px 10px 10px 0;
+      position: relative;
+      display: block;
+      border: none;
+      width: 100%;
+      border-bottom: 1px solid #d5d5d5; }
+      .material-form .container .material-input input:not([type]):focus,
+      .material-form .container .material-input input[type=text]:focus,
+      .material-form .container .material-input input[type=password]:focus,
+      .material-form .container .material-input input[type=email]:focus,
+      .material-form .container .material-input input[type=url]:focus,
+      .material-form .container .material-input input[type=time]:focus,
+      .material-form .container .material-input input[type=date]:focus,
+      .material-form .container .material-input input[type=datetime-local]:focus,
+      .material-form .container .material-input input[type=tel]:focus,
+      .material-form .container .material-input input[type=number]:focus,
+      .material-form .container .material-input input[type=search]:focus {
+        outline: none; }
+      .material-form .container .material-input input:not([type]):focus + label, .material-form .container .material-input input:not([type]):valid + label,
+      .material-form .container .material-input input[type=text]:focus + label,
+      .material-form .container .material-input input[type=text]:valid + label,
+      .material-form .container .material-input input[type=password]:focus + label,
+      .material-form .container .material-input input[type=password]:valid + label,
+      .material-form .container .material-input input[type=email]:focus + label,
+      .material-form .container .material-input input[type=email]:valid + label,
+      .material-form .container .material-input input[type=url]:focus + label,
+      .material-form .container .material-input input[type=url]:valid + label,
+      .material-form .container .material-input input[type=time]:focus + label,
+      .material-form .container .material-input input[type=time]:valid + label,
+      .material-form .container .material-input input[type=date]:focus + label,
+      .material-form .container .material-input input[type=date]:valid + label,
+      .material-form .container .material-input input[type=datetime-local]:focus + label,
+      .material-form .container .material-input input[type=datetime-local]:valid + label,
+      .material-form .container .material-input input[type=tel]:focus + label,
+      .material-form .container .material-input input[type=tel]:valid + label,
+      .material-form .container .material-input input[type=number]:focus + label,
+      .material-form .container .material-input input[type=number]:valid + label,
+      .material-form .container .material-input input[type=search]:focus + label,
+      .material-form .container .material-input input[type=search]:valid + label {
+        top: -10px;
+        font-size: 12px;
+        color: #474971;
+        font-weight: bold; }
+      .material-form .container .material-input input:not([type]):focus ~ .bar:before, .material-form .container .material-input input:not([type]):focus ~ .bar:after, .material-form .container .material-input input:not([type]):valid ~ .bar:before, .material-form .container .material-input input:not([type]):valid ~ .bar:after,
+      .material-form .container .material-input input[type=text]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=text]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=text]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=text]:valid ~ .bar:after,
+      .material-form .container .material-input input[type=password]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=password]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=password]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=password]:valid ~ .bar:after,
+      .material-form .container .material-input input[type=email]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=email]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=email]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=email]:valid ~ .bar:after,
+      .material-form .container .material-input input[type=url]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=url]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=url]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=url]:valid ~ .bar:after,
+      .material-form .container .material-input input[type=time]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=time]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=time]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=time]:valid ~ .bar:after,
+      .material-form .container .material-input input[type=date]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=date]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=date]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=date]:valid ~ .bar:after,
+      .material-form .container .material-input input[type=datetime-local]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=datetime-local]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=datetime-local]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=datetime-local]:valid ~ .bar:after,
+      .material-form .container .material-input input[type=tel]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=tel]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=tel]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=tel]:valid ~ .bar:after,
+      .material-form .container .material-input input[type=number]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=number]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=number]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=number]:valid ~ .bar:after,
+      .material-form .container .material-input input[type=search]:focus ~ .bar:before,
+      .material-form .container .material-input input[type=search]:focus ~ .bar:after,
+      .material-form .container .material-input input[type=search]:valid ~ .bar:before,
+      .material-form .container .material-input input[type=search]:valid ~ .bar:after {
+        width: 51%;
+        background: #474971;
+        border-bottom: 0px; }
+    .material-form .container .material-input .bar {
+      position: relative;
+      display: block;
+      width: 100%; }
+      .material-form .container .material-input .bar:before, .material-form .container .material-input .bar:after {
+        content: '';
+        height: 2px;
+        width: 0px;
+        position: absolute;
+        bottom: 0.5px;
+        background: #474971;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all; }
+      .material-form .container .material-input .bar:before {
+        left: 51%; }
+      .material-form .container .material-input .bar:after {
+        right: 49%; }
+      .material-form .container .material-input .bar + label:after {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 65px;
+        opacity: 0;
+        transition: 0.2s opacity ease-out, 0.2s color ease-out;
+        -moz-transition: 0.2s opacity ease-out, 0.2s color ease-out;
+        -webkit-transition: 0.2s opacity ease-out, 0.2s color ease-out; }
+    .material-form .container .material-input select {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      -ms-appearance: none;
+      background-color: transparent;
+      background: url("./svg/common/arrow-down-new.svg") right transparent;
+      color: #333;
+      font-size: 16px;
+      padding: 10px 10px 10px 0;
+      position: relative;
+      display: block;
+      width: 300px;
+      border: none;
+      border-bottom: 1px solid #d5d5d5;
+      border-radius: 0; }
+      .material-form .container .material-input select:focus {
+        outline: none; }
+    .material-form .container .material-input select + .icon-arrow-down {
+      position: absolute;
+      float: right; }
+    .material-form .container .material-input select option:checked + label {
+      display: none; }
+    .material-form .container .material-input input[type="radio"] + label {
+      pointer-events: all; }
+    .material-form .container .material-input input[type="radio"]:not(:checked),
+    .material-form .container .material-input input[type="radio"]:checked {
+      position: absolute;
+      left: -9999px; }
+    .material-form .container .material-input input[type="radio"]:not(:checked) + label,
+    .material-form .container .material-input input[type="radio"]:checked + label {
+      position: relative;
+      padding-left: 35px;
+      padding-top: 4px;
+      cursor: pointer;
+      width: 100%;
+      display: inline; }
+    .material-form .container .material-input input[type="radio"]:not(:checked) + label:before,
+    .material-form .container .material-input input[type="radio"]:checked + label:before,
+    .material-form .container .material-input input[type="radio"]:not(:checked) + label:after,
+    .material-form .container .material-input input[type="radio"]:checked + label:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 24px;
+      height: 24px;
+      transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -webkit-transition: 0.2s ease all; }
+    .material-form .container .material-input input[type="radio"]:not(:checked) + label:before,
+    .material-form .container .material-input input[type="radio"]:checked + label:before {
+      border: 1.5px solid #b9b9ba; }
+    .material-form .container .material-input input[type="radio"]:checked + label:before {
+      border: 1px solid #49ba8e; }
+    .material-form .container .material-input input[type="radio"]:not(:checked) + label:before,
+    .material-form .container .material-input input[type="radio"]:checked + label:before {
+      border-radius: 50%; }
+    .material-form .container .material-input input[type="radio"]:not(:checked) + label:after,
+    .material-form .container .material-input input[type="radio"]:checked + label:after {
+      font-size: 9px;
+      color: #fff;
+      background: #49ba8e; }
+    .material-form .container .material-input input[type="radio"]:not(:checked) + label:after {
+      transform: scale(0, 0); }
+    .material-form .container .material-input input[type="radio"]:checked + label:after {
+      transform: scale(1, 1); }
+    .material-form .container .material-input input[type="radio"]:checked + label:after {
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      left: 5px;
+      top: 7px; }
 
 /* Geral */
 html, body {
@@ -189,17 +458,16 @@ header {
   max-width: 1050px;
   margin: 0 auto; }
 
-/* Passo 1: Tela de Listagem de Usuários */
+/* Listagem de Usuários */
 ul#usuariosLista {
   list-style: none;
   padding: 0;
   margin: 0; }
   ul#usuariosLista li {
-    background-image: linear-gradient(186deg, #3c3e64, #1d1e2a);
+    background-image: linear-gradient(to left, #3c3e64, #1d1e2a);
     box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
     padding: 15px 25px;
     cursor: pointer;
-    /*line-height: 40px;*/
     font-size: 14px;
     color: #636363;
     font-family: 'Roboto', sans-serif; }
@@ -233,6 +501,7 @@ ul#usuariosLista {
     ul#usuariosLista li .acoes .fa-chevron-right {
       font-size: 28px; }
 
+/* Informações dos usuários */
 .dadosUsuario {
   color: white; }
   .dadosUsuario img, .dadosUsuario > div {
@@ -256,66 +525,12 @@ ul#usuariosLista {
       float: left;
       clear: left; }
 
-ul#usuariosDestino li .username {
-  display: block;
-  clear: right;
-  font-weight: 500;
-  font-size: 16px;
-  color: black; }
-
-ul#usuariosDestino li:hover, ul#usuariosDestino li:hover .username {
-  color: #21c25e; }
-
-ul#usuariosDestino li:hover img {
-  border-color: #21c25e; }
-
-ul#usuariosDestino img {
-  width: 40px;
-  height: auto;
-  float: left;
-  margin-right: 10px; }
-
-/* Passo 2: Definição do valor */
-#selecionarValor {
-  display: none; }
-
-.alterarDestinatario {
-  border: none;
-  background: transparent;
-  padding: 0;
-  color: gray;
-  margin-top: 20px;
-  cursor: pointer; }
-
-label, input {
-  display: block;
-  clear: left; }
-
-#selecionarValor, #adicionarCartao {
-  display: none; }
-
+/* Definição do valor */
 input {
   border: none;
   border-bottom: 1px solid #757575;
   background: transparent;
   color: #636363; }
-
-label {
-  font-size: 14px;
-  color: #616161;
-  margin-bottom: 10px; }
-
-input {
-  color: #333; }
-
-#enviarValor, #enviarCartao {
-  border: none;
-  background: #21c25e;
-  color: white;
-  padding: 10px;
-  margin: 25px 0;
-  cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.26); }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button,
