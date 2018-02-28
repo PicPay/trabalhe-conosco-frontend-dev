@@ -119,6 +119,9 @@ ul#usuariosLista {
 .dadosUsuario {
     color: white;
 
+    @extend .flex;
+    @extend .flex-centralizar;
+
     img, > div {
         display: inline-block;
         float: left;

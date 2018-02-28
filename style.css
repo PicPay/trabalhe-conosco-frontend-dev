@@ -1,16 +1,16 @@
 @charset "UTF-8";
 /* Paleta de cores */
-.flex {
+.flex, .modalRecibo .infosRecibo > div, .dadosUsuario {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important; }
 
-.flex-justificar {
+.flex-justificar, .modalRecibo .infosRecibo > div {
   -webkit-box-pack: justify !important;
   -ms-flex-pack: justify !important;
   justify-content: space-between !important; }
 
-.flex-centralizar {
+.flex-centralizar, .dadosUsuario {
   -webkit-box-align: center !important;
   -ms-flex-align: center !important;
   align-items: center !important; }
@@ -65,7 +65,9 @@
     width: 80%;
     max-width: 640px;
     background-color: #fff;
-    margin: 15vh auto; }
+    margin: 15vh auto;
+    /* Estrutura */
+    /* Elementos */ }
     .modal .modal-content .modal-header {
       background: #474971;
       font-size: 16px;
@@ -92,11 +94,30 @@
     .modal .modal-content .modal-footer {
       border-bottom-left-radius: .3rem;
       border-bottom-right-radius: .3rem; }
+    .modal .modal-content h5 {
+      font-size: 18px;
+      text-align: center; }
+    .modal .modal-content button {
+      margin: 20px auto;
+      width: 90%;
+      border-radius: 24px;
+      line-height: 40px;
+      font-size: 14px;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      cursor: pointer; }
+      .modal .modal-content button.acao {
+        background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+        border: none; }
+      .modal .modal-content button.voltar {
+        border: 1px solid #474971;
+        background: white; }
+    .modal .modal-content .dadosUsuario {
+      margin: 0 auto;
+      padding: 25px 0;
+      color: #474971; }
 
-.modalUsuario .dadosUsuario {
-  margin: 0 auto;
-  padding: 25px 0;
-  color: #474971; }
 .modalUsuario form {
   margin: 10px auto; }
   .modalUsuario form input {
@@ -111,9 +132,9 @@
     .modalUsuario form input[type="number"]::placeholder {
       color: #d8d8d8;
       font-family: 'Nunito Sans', sans-serif; }
-.modalUsuario .modal-footer > .flex {
+.modalUsuario .modal-footer > .flex, .modalUsuario .modalRecibo .infosRecibo.modal-footer > div, .modalRecibo .modalUsuario .infosRecibo.modal-footer > div, .modalUsuario .modal-footer > .dadosUsuario {
   border-top: 1px solid #d8d8d8; }
-.modalUsuario .modal-footer .flex {
+.modalUsuario .modal-footer .flex, .modalUsuario .modal-footer .modalRecibo .infosRecibo > div, .modalRecibo .modalUsuario .modal-footer .infosRecibo > div, .modalUsuario .modal-footer .dadosUsuario {
   margin: 0 auto;
   margin-top: 40px;
   padding-top: 20px;
@@ -160,22 +181,16 @@
   margin: 0 auto;
   font-size: 14px;
   cursor: pointer; }
-.modalUsuario .modal-footer #enviarValor {
-  cursor: pointer; }
-  .modalUsuario .modal-footer #enviarValor.inativo {
-    background: #f2f2f2;
-    box-shadow: none;
-    color: #bfbfbf; }
+.modalUsuario .modal-footer #enviarValor.inativo {
+  background: #f2f2f2;
+  box-shadow: none;
+  color: #bfbfbf; }
 
 .modalCadastroCartao #cartValidade {
   border-color: #d8d8d8; }
 .modalCadastroCartao #enviarCartao {
-  display: block;
-  cursor: pointer; }
+  display: block; }
 
-.modalExibirCartoes h5 {
-  font-size: 18px;
-  text-align: center; }
 .modalExibirCartoes ul {
   list-style: none;
   padding: 0;
@@ -187,7 +202,7 @@
     padding: 20px 0;
     text-align: center;
     color: #474971; }
-    .modalExibirCartoes ul li .item .flex {
+    .modalExibirCartoes ul li .item .flex, .modalExibirCartoes ul li .item .modalRecibo .infosRecibo > div, .modalRecibo .modalExibirCartoes ul li .item .infosRecibo > div, .modalExibirCartoes ul li .item .dadosUsuario {
       margin: 0 auto; }
     .modalExibirCartoes ul li .item .fa-credit-card {
       margin-right: 15px;
@@ -197,20 +212,37 @@
       color: #7de6c6; }
 .modalExibirCartoes #selecionarCartao {
   display: block;
-  margin-top: 150px;
-  cursor: pointer; }
+  margin-top: 150px; }
 
-.modal button {
-  margin: 20px auto;
-  width: 90%;
-  border-radius: 24px;
-  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
-  border: none;
-  line-height: 40px;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif; }
+.modalRecibo {
+  color: #474971; }
+  .modalRecibo .infosRecibo {
+    margin-bottom: 100px; }
+    .modalRecibo .infosRecibo > div {
+      width: 50%;
+      min-width: 250px;
+      margin: 20px auto 0 auto;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #d8d8d8;
+      font-size: 14px; }
+      .modalRecibo .infosRecibo > div span:last-child {
+        font-weight: bold; }
+  .modalRecibo h5 {
+    font-size: 20px;
+    margin-bottom: 10px; }
+  .modalRecibo .modal-footer {
+    /*width: 50%;*/
+    /*min-width: 250px;*/
+    padding-bottom: 30px; }
+    .modalRecibo .modal-footer button {
+      margin: 0 auto;
+      width: auto;
+      padding: 5px 25px; }
+      .modalRecibo .modal-footer button:first-child {
+        margin-right: 10px;
+        min-width: 180px; }
+      .modalRecibo .modal-footer button:last-child {
+        margin-left: 10px; }
 
 .material-form .container {
   background: white;

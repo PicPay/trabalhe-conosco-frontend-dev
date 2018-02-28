@@ -53,7 +53,7 @@
                         </div>
                         <div>
                             <form>
-                                <input type="number" placeholder="R$ 0,00">
+                                <input id="valor" type="number" placeholder="R$ 0,00">
                             </form>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                                 <span style="margin-right: 15px;font-size: 22px;"><i class="fas fa-credit-card"></i></span>
                                 <span>Forma de pagamento: <br> <b>Cartão de Crédito com final <span class="cartaoUltDig"></span></b></span>
                             </div>
-                            <button id="enviarValor">PAGAR</button>
+                            <button id="enviarValor" class="acao">PAGAR</button>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                                     <label>CEP do endereço da fatura</label>
                                     <span class="bar"></span>
                                 </div>
-                                <button id="enviarCartao">CADASTRAR</button>
+                                <button id="enviarCartao" class="acao">CADASTRAR</button>
                             </div>
                         </form>
                     </div>
@@ -149,12 +149,58 @@
                             <li>
                                 <div class="item flex flex-justificar">
                                     <div class="flex flex-centralizar">
-                                       <i class="fas fa-credit-card"></i> <b>5602 0727 5853 3742</b> <i class="fas fa-check" style="z-index:-1;"></i>
+                                        <i class="fas fa-credit-card"></i> <b>5602 0727 5853 3742</b> <i class="fas fa-check" style="z-index:-1;"></i>
                                     </div>
                                 </div>
                             </li>
                         </ul>
-                        <button id="selecionarCartao">SELECIONAR</button>
+                        <button id="selecionarCartao" class="acao">SELECIONAR</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal modalRecibo">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title"> Recibo </span>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body flex flex-coluna">
+                        <div class="dadosUsuario">
+                            <img class="fotoUsuario">
+                            <div>
+                                <span class="nomeUsuario"></span>
+                                <span class="metaUsuario">
+                                    id: <span class="idUsuario"></span> 
+                                    <span class="arrobaUsuario"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Pagamento confirmado!</h5>
+                        </div>
+                        <div class="infosRecibo">
+                            <div>
+                                <span>Transação</span>
+                                <span>49858</span>
+                            </div>
+                            <div>
+                                <span>Data</span>
+                                <span>28/02/18 - 09:45</span>
+                            </div>
+                            <div>
+                                <span>Cartão</span>
+                                <span>**** **** **** <span class="cartaoUltDig"></span></span>
+                            </div>
+                            <div>
+                                <span>Valor</span>
+                                <span>R$ <span class="valorSelecionado"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="voltar">VOLTAR</button>
+                        <button class="acao">PAGAR NOVAMENTE</button>
                     </div>
                 </div>
             </div>
