@@ -1,0 +1,225 @@
+
+@media screen and (max-width: 768px) {
+
+    /* Geral */
+
+    .wrapper {
+        width: 100%;
+    }
+
+    header {
+        position: fixed;
+        z-index: 2;
+        width: 100%;
+
+        svg {
+            width: 20px;
+        }
+
+        h1 {
+            font-size: 14px;
+        }
+    }
+
+
+    /* Listagem de Usuários */
+
+    #usuariosLista {
+        padding-top: 55px;
+
+        .acoes {
+
+            .pagar-icone {
+                margin-right: 10px;
+                width: 28px;
+                height: 28px;
+            }
+
+            .pagar-texto {
+                display: none;
+            }
+        }
+    }
+
+
+    /* Informações dos usuários */
+
+    .dadosUsuario {
+
+        .fotoUsuario {
+            width: 52px;
+        }
+
+        .nomeUsuario {
+            font-size: 16px;
+        }
+
+        .metaUsuario {
+            font-size: 12px;
+
+            .idUsuario {
+                display: none;
+            }
+        }
+    }
+
+
+    /* Modal */
+
+    .modal {
+
+        .modal-content {
+            position: fixed;
+            margin: 0;
+            padding-top: 60px;
+            width: 100vw;
+            min-width: 360px;
+            height: 100%;
+            background-image: linear-gradient(to bottom, #3c3e64, #1d1e2a);
+
+            .modal-header {
+                background: transparent;
+
+                .voltarModal {
+                    display: inline-block;
+                    margin: 15px 0 0 15px;
+                    color: white;
+                    cursor: pointer;
+
+                    svg {
+                        width: 8px;
+                        margin-right: 5px;
+
+                        * {
+                            fill: $verde;
+                        }
+                    }
+                }
+
+                .modal-title {
+                    display: none;
+                }
+
+                .fechar.xis {
+                    display: none;
+                }
+            }
+
+            .modal-body {
+                input#valor {color:white;}
+            }
+
+            .dadosUsuario {
+                color: white;
+            }
+
+            .modal-footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                color: white;
+
+                .aviso {
+                    padding: 15px;
+
+                    .aviso-icone:before {
+                        color: $azul;
+                    }
+                }
+
+                .infoCartao {
+                    svg * {color: $verde;}
+                }
+            }
+        }
+
+        &.modalCadastroCartao select {
+            background: transparent !important;
+        }
+
+        &.modalExibirCartoes {
+
+            .modal-body {
+                color: white;
+
+                .item {
+
+                    svg * {
+                        fill: $verde;
+                    }
+
+                    b {
+                        color: white;
+                    }
+                }
+            }
+
+            button#selecionarCartao {
+                position: fixed;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        &.modalRecibo {
+            
+            .modal-body {
+                color: white;
+                
+                .infosRecibo > div > span:last-child {
+                    color: $verde;
+                }
+            }
+        }
+    }
+
+    .material-form {
+
+        .container {
+            background: none !important;
+        }
+
+        .material-input {
+
+            .input-item, input {
+                color: white !important;
+            }
+
+            select.input-item {
+                color: $azul !important;
+            }
+
+            input:not([type]),
+                input[type=text],
+                input[type=password],
+                input[type=email],
+                input[type=url],
+                input[type=time],
+                input[type=date],
+                input[type=datetime-local],
+                input[type=tel],
+                input[type=number],
+                input[type=search] {
+                &:focus + label, &:valid + label {
+                    color: $verde !important;
+                }
+
+                &:focus ~ .bar:before,
+                    &:focus ~ .bar:after,
+                    &:valid ~ .bar:before,
+                    &:valid ~ .bar:after {
+                    background: $verde !important;
+                }
+            }
+
+            .bar {
+                &:before,
+                    &:after {
+                    background: $verde !important;
+                }
+            }
+        }
+    }
+
+}

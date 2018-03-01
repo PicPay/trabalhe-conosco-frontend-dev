@@ -72,6 +72,7 @@ $(function () {
 
     // Para confirmar o POST, preciso de um cartão cadastrado (além de valor preenchido)
 
+    // Inicialmente desativa o botão de pagamento
     $('#enviarValor').attr("title", "Preencha um valor");
     $('#enviarValor').prop("disabled", true);
     $('#enviarValor').addClass("inativo");
@@ -106,33 +107,49 @@ $(function () {
         // Se houver valor digitado, executa
         if (valorNumero > 0) {
 
-            $('.modal').hide(); // Fecha outros modais
-            $('.modalRecibo').show();  // Abre modal de Recibo
-
             // Transação
-            /*var transacao = {
-             "card_number" : cartao.numero,
-             "cvv" : cartao.cvv,
-             "value" : valorSelecionado,
-             "expiry_date" : cartao.validade,
-             "destination_user_id" : destinoSelecionadoID
-             };
-             
-             $.post("http://careers.picpay.com/tests/mobdev/transaction", function( transacao ) {
-             console.log('Transação enviada');
-             console.log(transacao);
-             })
-             .done (function () {
-             alert("Transação efetuada com sucesso!");
-             
-             // Remove os valores de destinatário e valor
-             sessionStorage.removeItem(destinoSelecionadoUN);
-             sessionStorage.removeItem(destinoSelecionadoID);
-             sessionStorage.removeItem(valorSelecionado);
-             })
-             .fail (function () {
-             alert("Houve um problema com a transação. Tente novamente mais tarde.")
-             });*/
+            var transacao = {
+                "card_number": 1111111111111111,
+                "cvv": cartao.cvv,
+                "value": valorString,
+                "expiry_date": cartao.validade,
+                "destination_user_id": destinoSelecionadoID
+            };
+
+            // POST da transação
+            fetch('http://careers.picpay.com/tests/mobdev/transaction', {
+                method: 'POST',
+                body: JSON.stringify(transacao),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(res => res.json().then(data => ({
+                        data: data,
+                        status: res.status
+                    })).then(response => {
+
+                    // Imprime ID da transação no recibo
+                    $('.idTransacao').text(response.data.transaction.id);
+
+                    // Tratando hora
+                    var dataTransacao = new Date(response.data.transaction.timestamp * 1000);
+                    var diaTransacao = dataTransacao.getDate();
+                    var hrTransacao = dataTransacao.getHours();
+                    var minTransacao = dataTransacao.getMinutes();
+                    var mesTransacao = dataTransacao.getMonth();
+                    var anoTransacao = dataTransacao.getFullYear();
+
+                    // Imprime hora no recibo
+                    $('.hrTransacao').text(diaTransacao + '/' + mesTransacao + '/' + anoTransacao + ' - ' + hrTransacao + ':' + minTransacao);
+
+                    $('.modal').hide(); // Fecha outros modais
+                    $('.modalRecibo').show();  // Abre modal de Recibo
+
+                    // Remove os valores de destinatário
+                    sessionStorage.removeItem(destinoSelecionadoUN);
+                    sessionStorage.removeItem(destinoSelecionadoID);
+
+                }));
         } else {
             alert("Preencha um valor");
         }
@@ -169,9 +186,6 @@ $(function () {
         localStorage.setItem('cartaoDig', cartaoDig);
 
     })
-            .done(function () {
-                alert("Cartão cadastrado!");
-            });
 
     $('.cartaoUltDig').text(cartaoDig.substring(cartaoDig.length - 4));
 });

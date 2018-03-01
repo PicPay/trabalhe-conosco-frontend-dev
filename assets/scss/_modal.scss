@@ -68,7 +68,7 @@
                 }
             }
 
-            .close {
+            .fechar.xis {
                 color: white;
                 float: right;
                 font-size: 28px;
@@ -81,7 +81,10 @@
                     cursor: pointer;
                 }
             }
-
+            
+            .voltarModal {
+                display: none;
+            }
         }
 
         .modal-body {

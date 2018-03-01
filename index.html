@@ -13,7 +13,7 @@
     <body>
         <main>
             <header>
-                <div class="wrapper">
+                <div class="wrapper flex flex-centralizar">
                     <svg version="1.1" id="picpay-icone" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="30px" height="26px" viewBox="0 0 197.987 172.104" enable-background="new 0 0 197.987 172.104"
                          xml:space="preserve">
@@ -38,7 +38,8 @@
                         <span class="modal-title">
                             Pagamento para <span class="nomeUsuario">Nome de usuário</span>
                         </span>
-                        <span class="close">&times;</span>
+                        <span class="fechar xis">&times;</span>
+                        <span class="fechar voltarModal"><i class="fas fa-chevron-left"></i> Voltar</span>
                     </div>
                     <div class="modal-body flex flex-coluna">
                         <div class="dadosUsuario">
@@ -77,7 +78,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <span class="modal-title"> Cadastro Cartão de Crédito </span>
-                        <span class="close">&times;</span>
+                        <span class="fechar xis">&times;</span>
+                        <span class="fechar voltarModal"><i class="fas fa-chevron-left"></i> Voltar</span>
                     </div>
                     <div class="modal-body">
                         <form class="material-form flex flex-coluna">
@@ -103,7 +105,7 @@
                                     <span class="bar"></span>
                                 </div>
                                 <div style="margin-bottom: 25px;">
-                                    <label for="cartValidade" style="color: #a59999; margin-right: 10px;">Validade:</label> <input id="cartValidade" name="cartValidade" type="month" pattern="[0-9]{4}-[0-9]{2}" required>
+                                    <label for="cartValidade" style="color: #a59999; margin-right: 10px;">Validade:</label> <input id="cartValidade" name="cartValidade" type="month" pattern="[0-9]{4}-[0-9]{2}">
                                     <span class="bar"></span>
                                 </div>
                                 <div class="material-input">
@@ -127,7 +129,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <span class="modal-title"> Cartões Cadastrados </span>
-                        <span class="close">&times;</span>
+                        <span class="fechar xis">&times;</span>
+                        <span class="fechar voltarModal"><i class="fas fa-chevron-left"></i> Voltar</span>
                     </div>
                     <div class="modal-body">
                         <h5>Cartões Cadastrados</h5>
@@ -163,7 +166,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <span class="modal-title"> Recibo </span>
-                        <span class="close">&times;</span>
+                        <span class="fechar xis">&times;</span>
+                        <span class="fechar voltarModal"><i class="fas fa-chevron-left"></i> Voltar</span>
                     </div>
                     <div class="modal-body flex flex-coluna">
                         <div class="dadosUsuario">
@@ -182,11 +186,11 @@
                         <div class="infosRecibo">
                             <div>
                                 <span>Transação</span>
-                                <span>49858</span>
+                                <span class="idTransacao"></span>
                             </div>
                             <div>
                                 <span>Data</span>
-                                <span>28/02/18 - 09:45</span>
+                                <span class="hrTransacao"></span>
                             </div>
                             <div>
                                 <span>Cartão</span>

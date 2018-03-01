@@ -79,15 +79,17 @@
         margin: 15px 20px; }
         .modal .modal-content .modal-header .modal-title .nomeUsuario {
           color: #7de6c6; }
-      .modal .modal-content .modal-header .close {
+      .modal .modal-content .modal-header .fechar.xis {
         color: white;
         float: right;
         font-size: 28px;
         margin: 5px 15px; }
-        .modal .modal-content .modal-header .close:hover, .modal .modal-content .modal-header .close:focus {
+        .modal .modal-content .modal-header .fechar.xis:hover, .modal .modal-content .modal-header .fechar.xis:focus {
           color: #e6e6e6;
           text-decoration: none;
           cursor: pointer; }
+      .modal .modal-content .modal-header .voltarModal {
+        display: none; }
     .modal .modal-content .modal-body {
       overflow: auto; }
     .modal .modal-content .modal-body,
@@ -393,7 +395,6 @@
       -webkit-appearance: none;
       -ms-appearance: none;
       background-color: transparent;
-      background: url("./svg/common/arrow-down-new.svg") right transparent;
       color: #333;
       font-size: 16px;
       padding: 10px 10px 10px 0;
@@ -468,7 +469,11 @@ html, body {
   background: #fafafa;
   color: #333; }
 
+body {
+  min-width: 360px; }
+
 header {
+  padding: 0 15px;
   background: #7de6c6;
   color: #474971;
   font-family: 'Montserrat', sans-serif;
@@ -491,11 +496,11 @@ header {
   margin: 0 auto; }
 
 /* Listagem de Usuários */
-ul#usuariosLista {
+#usuariosLista {
   list-style: none;
   padding: 0;
   margin: 0; }
-  ul#usuariosLista li {
+  #usuariosLista li {
     background-image: linear-gradient(to left, #3c3e64, #1d1e2a);
     box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
     padding: 15px 25px;
@@ -503,13 +508,13 @@ ul#usuariosLista {
     font-size: 14px;
     color: #636363;
     font-family: 'Roboto', sans-serif; }
-    ul#usuariosLista li:first-child {
+    #usuariosLista li:first-child {
       box-shadow: none; }
-    ul#usuariosLista li .acoes span {
+    #usuariosLista li .acoes span {
       display: inline-block;
       float: left;
       color: white; }
-    ul#usuariosLista li .acoes .pagar-icone {
+    #usuariosLista li .acoes .pagar-icone {
       position: relative;
       width: 32px;
       height: 32px;
@@ -517,7 +522,7 @@ ul#usuariosLista {
       background-image: linear-gradient(to left, #b4f4e5, #7de6c6);
       color: #474971;
       font-weight: 600; }
-      ul#usuariosLista li .acoes .pagar-icone:before {
+      #usuariosLista li .acoes .pagar-icone:before {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -525,12 +530,12 @@ ul#usuariosLista {
         content: "$";
         font-size: 18px;
         font-weight: 700; }
-    ul#usuariosLista li .acoes .pagar-texto {
+    #usuariosLista li .acoes .pagar-texto {
       font-weight: 500;
       font-size: 20px;
       margin-left: 10px;
       margin-right: 20px; }
-    ul#usuariosLista li .acoes .fa-chevron-right {
+    #usuariosLista li .acoes .fa-chevron-right {
       font-size: 28px; }
 
 /* Informações dos usuários */
@@ -539,7 +544,7 @@ ul#usuariosLista {
   .dadosUsuario img, .dadosUsuario > div {
     display: inline-block;
     float: left; }
-  .dadosUsuario img {
+  .dadosUsuario .fotoUsuario {
     border-radius: 50%;
     border: 2px solid white;
     width: 80px; }
@@ -551,8 +556,8 @@ ul#usuariosLista {
     .dadosUsuario > div .metaUsuario {
       font-size: 14px;
       margin-top: 7px; }
-      .dadosUsuario > div .metaUsuario .arrobaUsuario {
-        margin-left: 10px; }
+      .dadosUsuario > div .metaUsuario .idUsuario {
+        margin-right: 10px; }
     .dadosUsuario > div .nomeUsuario, .dadosUsuario > div .metaUsuario {
       float: left;
       clear: left; }
@@ -573,5 +578,170 @@ input[type="month"]::-webkit-inner-spin-button {
 
 input[type='number'], input[type='month'] {
   -moz-appearance: textfield; }
+
+@media screen and (max-width: 768px) {
+  /* Geral */
+  .wrapper {
+    width: 100%; }
+
+  header {
+    position: fixed;
+    z-index: 2;
+    width: 100%; }
+    header svg {
+      width: 20px; }
+    header h1 {
+      font-size: 14px; }
+
+  /* Listagem de Usuários */
+  #usuariosLista {
+    padding-top: 55px; }
+    #usuariosLista .acoes .pagar-icone {
+      margin-right: 10px;
+      width: 28px;
+      height: 28px; }
+    #usuariosLista .acoes .pagar-texto {
+      display: none; }
+
+  /* Informações dos usuários */
+  .dadosUsuario .fotoUsuario {
+    width: 52px; }
+  .dadosUsuario .nomeUsuario {
+    font-size: 16px; }
+  .dadosUsuario .metaUsuario {
+    font-size: 12px; }
+    .dadosUsuario .metaUsuario .idUsuario {
+      display: none; }
+
+  /* Modal */
+  .modal .modal-content {
+    position: fixed;
+    margin: 0;
+    padding-top: 60px;
+    width: 100vw;
+    min-width: 360px;
+    height: 100%;
+    background-image: linear-gradient(to bottom, #3c3e64, #1d1e2a); }
+    .modal .modal-content .modal-header {
+      background: transparent; }
+      .modal .modal-content .modal-header .voltarModal {
+        display: inline-block;
+        margin: 15px 0 0 15px;
+        color: white;
+        cursor: pointer; }
+        .modal .modal-content .modal-header .voltarModal svg {
+          width: 8px;
+          margin-right: 5px; }
+          .modal .modal-content .modal-header .voltarModal svg * {
+            fill: #7de6c6; }
+      .modal .modal-content .modal-header .modal-title {
+        display: none; }
+      .modal .modal-content .modal-header .fechar.xis {
+        display: none; }
+    .modal .modal-content .modal-body input#valor {
+      color: white; }
+    .modal .modal-content .dadosUsuario {
+      color: white; }
+    .modal .modal-content .modal-footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      color: white; }
+      .modal .modal-content .modal-footer .aviso {
+        padding: 15px; }
+        .modal .modal-content .modal-footer .aviso .aviso-icone:before {
+          color: #474971; }
+      .modal .modal-content .modal-footer .infoCartao svg * {
+        color: #7de6c6; }
+  .modal.modalCadastroCartao select {
+    background: transparent !important; }
+  .modal.modalExibirCartoes .modal-body {
+    color: white; }
+    .modal.modalExibirCartoes .modal-body .item svg * {
+      fill: #7de6c6; }
+    .modal.modalExibirCartoes .modal-body .item b {
+      color: white; }
+  .modal.modalExibirCartoes button#selecionarCartao {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); }
+  .modal.modalRecibo .modal-body {
+    color: white; }
+    .modal.modalRecibo .modal-body .infosRecibo > div > span:last-child {
+      color: #7de6c6; }
+
+  .material-form .container {
+    background: none !important; }
+  .material-form .material-input .input-item, .material-form .material-input input {
+    color: white !important; }
+  .material-form .material-input select.input-item {
+    color: #474971 !important; }
+  .material-form .material-input input:not([type]):focus + label, .material-form .material-input input:not([type]):valid + label,
+  .material-form .material-input input[type=text]:focus + label,
+  .material-form .material-input input[type=text]:valid + label,
+  .material-form .material-input input[type=password]:focus + label,
+  .material-form .material-input input[type=password]:valid + label,
+  .material-form .material-input input[type=email]:focus + label,
+  .material-form .material-input input[type=email]:valid + label,
+  .material-form .material-input input[type=url]:focus + label,
+  .material-form .material-input input[type=url]:valid + label,
+  .material-form .material-input input[type=time]:focus + label,
+  .material-form .material-input input[type=time]:valid + label,
+  .material-form .material-input input[type=date]:focus + label,
+  .material-form .material-input input[type=date]:valid + label,
+  .material-form .material-input input[type=datetime-local]:focus + label,
+  .material-form .material-input input[type=datetime-local]:valid + label,
+  .material-form .material-input input[type=tel]:focus + label,
+  .material-form .material-input input[type=tel]:valid + label,
+  .material-form .material-input input[type=number]:focus + label,
+  .material-form .material-input input[type=number]:valid + label,
+  .material-form .material-input input[type=search]:focus + label,
+  .material-form .material-input input[type=search]:valid + label {
+    color: #7de6c6 !important; }
+  .material-form .material-input input:not([type]):focus ~ .bar:before, .material-form .material-input input:not([type]):focus ~ .bar:after, .material-form .material-input input:not([type]):valid ~ .bar:before, .material-form .material-input input:not([type]):valid ~ .bar:after,
+  .material-form .material-input input[type=text]:focus ~ .bar:before,
+  .material-form .material-input input[type=text]:focus ~ .bar:after,
+  .material-form .material-input input[type=text]:valid ~ .bar:before,
+  .material-form .material-input input[type=text]:valid ~ .bar:after,
+  .material-form .material-input input[type=password]:focus ~ .bar:before,
+  .material-form .material-input input[type=password]:focus ~ .bar:after,
+  .material-form .material-input input[type=password]:valid ~ .bar:before,
+  .material-form .material-input input[type=password]:valid ~ .bar:after,
+  .material-form .material-input input[type=email]:focus ~ .bar:before,
+  .material-form .material-input input[type=email]:focus ~ .bar:after,
+  .material-form .material-input input[type=email]:valid ~ .bar:before,
+  .material-form .material-input input[type=email]:valid ~ .bar:after,
+  .material-form .material-input input[type=url]:focus ~ .bar:before,
+  .material-form .material-input input[type=url]:focus ~ .bar:after,
+  .material-form .material-input input[type=url]:valid ~ .bar:before,
+  .material-form .material-input input[type=url]:valid ~ .bar:after,
+  .material-form .material-input input[type=time]:focus ~ .bar:before,
+  .material-form .material-input input[type=time]:focus ~ .bar:after,
+  .material-form .material-input input[type=time]:valid ~ .bar:before,
+  .material-form .material-input input[type=time]:valid ~ .bar:after,
+  .material-form .material-input input[type=date]:focus ~ .bar:before,
+  .material-form .material-input input[type=date]:focus ~ .bar:after,
+  .material-form .material-input input[type=date]:valid ~ .bar:before,
+  .material-form .material-input input[type=date]:valid ~ .bar:after,
+  .material-form .material-input input[type=datetime-local]:focus ~ .bar:before,
+  .material-form .material-input input[type=datetime-local]:focus ~ .bar:after,
+  .material-form .material-input input[type=datetime-local]:valid ~ .bar:before,
+  .material-form .material-input input[type=datetime-local]:valid ~ .bar:after,
+  .material-form .material-input input[type=tel]:focus ~ .bar:before,
+  .material-form .material-input input[type=tel]:focus ~ .bar:after,
+  .material-form .material-input input[type=tel]:valid ~ .bar:before,
+  .material-form .material-input input[type=tel]:valid ~ .bar:after,
+  .material-form .material-input input[type=number]:focus ~ .bar:before,
+  .material-form .material-input input[type=number]:focus ~ .bar:after,
+  .material-form .material-input input[type=number]:valid ~ .bar:before,
+  .material-form .material-input input[type=number]:valid ~ .bar:after,
+  .material-form .material-input input[type=search]:focus ~ .bar:before,
+  .material-form .material-input input[type=search]:focus ~ .bar:after,
+  .material-form .material-input input[type=search]:valid ~ .bar:before,
+  .material-form .material-input input[type=search]:valid ~ .bar:after {
+    background: #7de6c6 !important; }
+  .material-form .material-input .bar:before, .material-form .material-input .bar:after {
+    background: #7de6c6 !important; } }
 
 /*# sourceMappingURL=style.css.map */

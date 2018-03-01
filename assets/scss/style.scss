@@ -1,7 +1,5 @@
 @import "variables";
-
 @import "flexbox";
-
 @import "modal";
 @import "form";
 
@@ -15,7 +13,12 @@ html, body {
     color: #333;
 }
 
+body {
+    min-width: 360px;
+}
+
 header {
+    padding: 0 15px;
     background: $verde;
     color: $azul;
     font-family: 'Montserrat', sans-serif;
@@ -50,7 +53,7 @@ header {
 
 /* Listagem de Usuários */
 
-ul#usuariosLista {
+#usuariosLista {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -127,7 +130,7 @@ ul#usuariosLista {
         float: left;
     }
 
-    img {
+    .fotoUsuario {
         border-radius: 50%;
         border: 2px solid white;
         width: 80px;
@@ -145,8 +148,8 @@ ul#usuariosLista {
             font-size: 14px;
             margin-top: 7px;
 
-            .arrobaUsuario {
-                margin-left: 10px;
+            .idUsuario {
+                margin-right: 10px;
             }
         }
 
@@ -178,3 +181,6 @@ input[type="month"]::-webkit-inner-spin-button {
 input[type='number'], input[type='month'] {
     -moz-appearance: textfield;
 }
+
+
+@import "responsivo";

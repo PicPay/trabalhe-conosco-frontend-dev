@@ -1,6 +1,6 @@
 
 // Fechar modal pelo botão
-$('.close').on('click', function () {
+$('.fechar').on('click', function () {
     $('.modal').hide();
 });
 
