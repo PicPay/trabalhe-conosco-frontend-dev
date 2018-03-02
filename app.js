@@ -35,38 +35,34 @@ $.getJSON("http://careers.picpay.com/tests/mobdev/users", function (usuarios) {
 
 
 // 1.2 Selecionar destinatário
-
-// Verifica se há destinatário selecionado na sessão
-var destinoSelecionadoUN = sessionStorage.getItem('destinoSelecionadoUN') || 0;
-var destinoSelecionadoID = sessionStorage.getItem('destinoSelecionadoID') || 0;
-
 $(function () {
+    
+        // Quando um destinatário é escolhido 
+        $('#usuariosLista').on('click', 'li', function () {
 
-    // Quando um destinatário é escolhido 
-    $('#usuariosLista').on('click', 'li', function () {
+            $('.modalUsuario').show();
+            
+            usuario = {
+                nome : $(this).find('.nomeUsuario').text(),
+                foto : $(this).find('.fotoUsuario').attr('src'),
+                id : $(this).find('.idUsuario').text(),
+                arroba : $(this).find('.arrobaUsuario').text()
+            };
+            
+            $('.modalUsuario').attr("id", usuario.id);
+            $('.modal .nomeUsuario').text(usuario.nome);
+            $('.modal .fotoUsuario').attr("src", usuario.foto);
+            $('.modal .idUsuario').text(usuario.id);
+            $('.modal .arrobaUsuario').text(usuario.arroba);
 
-        // Personaliza modal e abre
-        $('.modalUsuario').attr("id", $('.idUsuario').text());
-        $('.modalUsuario').show();
-
-        // Identifica o destinatário selecionado
-        $('.modal .nomeUsuario').text($(this).find('.nomeUsuario').text());
-        $('.modal .fotoUsuario').attr("src", $(this).find('.fotoUsuario').attr('src'));
-        $('.modal .idUsuario').text($(this).find('.idUsuario').text());
-        $('.modal .arrobaUsuario').text($(this).find('.arrobaUsuario').text());
-        $('.cartaoUltDig').text(cartaoDig.substring(cartaoDig.length - 4));
-
-        // Salva na sessão o username e o ID selecionado
-        sessionStorage.setItem('destinoSelecionadoUN', $(this).find('.arrobaUsuario').text());
-        sessionStorage.setItem('destinoSelecionadoID', $(this).find('.idUsuario').text());
-    });
+        });
 });
 
 
 // 2. Definição do Valor
 
 var cartao = localStorage.getItem('cartao') || 0; // Dados do cartão cadastrado (se não houver, declara as variáveis)
-var cartaoDig = localStorage.getItem('cartaoDig') || 0;
+var cartaoUltDig = localStorage.getItem('cartaoUltDig') || 0;
 
 $(function () {
 
@@ -80,6 +76,7 @@ $(function () {
     // Verifica se há cartão cadastrado
     if (cartao != 0) {
         // Se houver cartão, o identifica e habilita botão de enviar valor
+        $('.cartaoUltDig').text(cartaoUltDig);
         $('#enviarValor').attr("title", "");
         $('#enviarValor').prop("disabled", false);
         $('#enviarValor').removeClass("inativo");
@@ -93,7 +90,7 @@ $(function () {
         $('.aviso').show();
         $('.infoCartao').hide();
     }
-
+    
     // Quando o valor é submetido
     $('.modalUsuario').on('click', '#enviarValor', function (evento) {
 
@@ -103,17 +100,20 @@ $(function () {
         var valorString = $('#valor').val();
         var valorNumero = Number(valorString);
         $('.valorSelecionado').text(valorString);
-
+        
+        // Identifica destino
+        var destino = $('.modalUsuario').find('.idUsuario').text();
+        
         // Se houver valor digitado, executa
         if (valorNumero > 0) {
 
             // Transação
             var transacao = {
-                "card_number": 1111111111111111,
-                "cvv": cartao.cvv,
-                "value": valorString,
-                "expiry_date": cartao.validade,
-                "destination_user_id": destinoSelecionadoID
+                "card_number" : 1111111111111111,
+                "cvv" : cartao.cvv,
+                "value" : valorString,
+                "expiry_date" : cartao.validade,
+                "destination_user_id": destino
             };
 
             // POST da transação
@@ -144,11 +144,7 @@ $(function () {
 
                     $('.modal').hide(); // Fecha outros modais
                     $('.modalRecibo').show();  // Abre modal de Recibo
-
-                    // Remove os valores de destinatário
-                    sessionStorage.removeItem(destinoSelecionadoUN);
-                    sessionStorage.removeItem(destinoSelecionadoID);
-
+    
                 }));
         } else {
             alert("Preencha um valor");
@@ -167,7 +163,7 @@ $(function () {
 
     // Quando o cartão é submetido
     $('.modalCadastroCartao').on('click', '#enviarCartao', function () {
-
+        
         // Tratando a validade (mês/ano)
         validadeBruta = $('#cartValidade').val();
         [ano, mes] = validadeBruta.split('-');
@@ -179,44 +175,14 @@ $(function () {
             validade: validadeFinal,
             cvv: $('#cartCVV').val()
         };
-        cartaoDig = $('#cartNumero').val();
+        
+        // Tratando dígitos do cartão
+        cartaoDigCompleto = $('#cartNumero').val(); // Número completo
+        cartaoUltDig = cartaoDigCompleto.substring(cartaoDigCompleto.length - 4); // Quatro últimos dígitos
 
         // Grava cartão cadastrado
         localStorage.setItem('cartao', cartao);
-        localStorage.setItem('cartaoDig', cartaoDig);
+        localStorage.setItem('cartaoUltDig', cartaoUltDig);
 
     })
-
-    $('.cartaoUltDig').text(cartaoDig.substring(cartaoDig.length - 4));
-});
-
-
-// Exibir lista de cartões cadastrados
-$(function () {
-
-    $('.infoCartao').on('click', function () {
-        $('.modal').hide(); // Fecha outros modais
-        $('.modalExibirCartoes').show();  // Abre modal de Cadastro de Cartão
-    });
-
-    $('#selecionarCartao').on('click', function () {
-        $('.modal').hide(); // Fecha outros modais
-        $('.modalUsuario').show();  // Abre modal de Cadastro de Cartão
-    });
-
-});
-
-
-// Recibo
-$(function () {
-
-    $('.modalRecibo').on('click', '.voltar', function () {
-        $('.modal').hide();
-        $('.modalUsuario').show();
-    });
-
-    $('.modalRecibo').on('click', '.acao', function () {
-        $('.modal').hide();
-    });
-
 });
