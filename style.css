@@ -462,6 +462,71 @@
       left: 5px;
       top: 7px; }
 
+/* Anima├º├Áes de carregamento */
+body {
+  animation: 3s rolagem; }
+
+#carregamento {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  min-width: 360px;
+  min-height: 100%;
+  z-index: -1;
+  opacity: 0;
+  background: rgba(33, 194, 94, 0.9);
+  animation: 3s mostrar; }
+  #carregamento #carregamento-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4; }
+    #carregamento #carregamento-logo .letra {
+      stroke: #fff;
+      stroke-width: 2px;
+      stroke-dasharray: 661.3;
+      fill: white;
+      animation: 2s desenhar forwards; }
+    #carregamento #carregamento-logo .quadro path, #carregamento #carregamento-logo .quadro rect {
+      fill: white;
+      animation: 2s final; }
+
+@keyframes mostrar {
+  0% {
+    opacity: 1;
+    z-index: 3; }
+  90% {
+    opacity: 1;
+    z-index: 3; }
+  100% {
+    opacity: 0;
+    z-index: 3; } }
+@keyframes desenhar {
+  0% {
+    fill-opacity: 0;
+    stroke-dashoffset: 661.3; }
+  90% {
+    fill-opacity: 0;
+    stroke: #fff; }
+  100% {
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
+    stroke: none; } }
+@keyframes final {
+  0% {
+    fill-opacity: 0; }
+  90% {
+    fill-opacity: 0; }
+  100% {
+    fill-opacity: 1; } }
+@keyframes rolagem {
+  0% {
+    overflow: hidden; }
+  90% {
+    overflow: hidden; }
+  100% {
+    overflow: visible; } }
 /* Geral */
 html, body {
   margin: 0;
@@ -495,7 +560,7 @@ header {
   max-width: 1050px;
   margin: 0 auto; }
 
-/* Listagem de Usuários */
+/* Listagem de Usu├írios */
 #usuariosLista {
   list-style: none;
   padding: 0;
@@ -538,7 +603,7 @@ header {
     #usuariosLista li .acoes .fa-chevron-right {
       font-size: 28px; }
 
-/* Informações dos usuários */
+/* Informa├º├Áes dos usu├írios */
 .dadosUsuario {
   color: white; }
   .dadosUsuario img, .dadosUsuario > div {
@@ -562,7 +627,7 @@ header {
       float: left;
       clear: left; }
 
-/* Definição do valor */
+/* Defini├º├úo do valor */
 input {
   border: none;
   border-bottom: 1px solid #757575;
@@ -593,7 +658,7 @@ input[type='number'], input[type='month'] {
     header h1 {
       font-size: 14px; }
 
-  /* Listagem de Usuários */
+  /* Listagem de Usu├írios */
   #usuariosLista {
     padding-top: 55px; }
     #usuariosLista .acoes .pagar-icone {
@@ -603,7 +668,7 @@ input[type='number'], input[type='month'] {
     #usuariosLista .acoes .pagar-texto {
       display: none; }
 
-  /* Informações dos usuários */
+  /* Informa├º├Áes dos usu├írios */
   .dadosUsuario .fotoUsuario {
     width: 52px; }
   .dadosUsuario .nomeUsuario {
@@ -615,12 +680,11 @@ input[type='number'], input[type='month'] {
 
   /* Modal */
   .modal .modal-content {
-    position: fixed;
     margin: 0;
     padding-top: 60px;
     width: 100vw;
     min-width: 360px;
-    height: 100%;
+    height: calc(100vh - 55px);
     background-image: linear-gradient(to bottom, #3c3e64, #1d1e2a); }
     .modal .modal-content .modal-header {
       background: transparent; }
@@ -643,8 +707,6 @@ input[type='number'], input[type='month'] {
     .modal .modal-content .dadosUsuario {
       color: white; }
     .modal .modal-content .modal-footer {
-      position: fixed;
-      bottom: 0;
       width: 100%;
       color: white; }
       .modal .modal-content .modal-footer .aviso {
@@ -662,14 +724,23 @@ input[type='number'], input[type='month'] {
     .modal.modalExibirCartoes .modal-body .item b {
       color: white; }
   .modal.modalExibirCartoes button#selecionarCartao {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%); }
+    margin-top: 50px; }
   .modal.modalRecibo .modal-body {
     color: white; }
+    .modal.modalRecibo .modal-body .infosRecibo {
+      margin-bottom: 50px; }
     .modal.modalRecibo .modal-body .infosRecibo > div > span:last-child {
       color: #7de6c6; }
+  .modal.modalRecibo .modal-footer {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important; }
+    .modal.modalRecibo .modal-footer button {
+      margin: 5px auto; }
 
   .material-form .container {
     background: none !important; }

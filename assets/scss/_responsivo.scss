@@ -69,12 +69,11 @@
     .modal {
 
         .modal-content {
-            position: fixed;
             margin: 0;
             padding-top: 60px;
             width: 100vw;
             min-width: 360px;
-            height: 100%;
+            height: calc(100vh - 55px);
             background-image: linear-gradient(to bottom, #3c3e64, #1d1e2a);
 
             .modal-header {
@@ -114,8 +113,6 @@
             }
 
             .modal-footer {
-                position: fixed;
-                bottom: 0;
                 width: 100%;
                 color: white;
 
@@ -155,20 +152,35 @@
             }
 
             button#selecionarCartao {
-                position: fixed;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
+                margin-top: 50px;
             }
         }
-        
+
         &.modalRecibo {
-            
+
             .modal-body {
                 color: white;
-                
+
+                .infosRecibo {
+                    margin-bottom: 50px;
+                }
+
                 .infosRecibo > div > span:last-child {
                     color: $verde;
+                }
+            }
+
+            .modal-footer {
+                display: -webkit-box !important;
+                display: -ms-flexbox !important;
+                display: flex !important;
+                -webkit-box-orient: vertical!important;
+                -webkit-box-direction: normal!important;
+                -ms-flex-direction: column!important;
+                flex-direction: column!important;
+
+                button {
+                    margin: 5px auto;
                 }
             }
         }

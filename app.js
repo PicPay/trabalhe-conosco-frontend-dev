@@ -41,6 +41,7 @@ $(function () {
         $('#usuariosLista').on('click', 'li', function () {
 
             $('.modalUsuario').show();
+            $('body').css("overflow", "hidden");
             
             usuario = {
                 nome : $(this).find('.nomeUsuario').text(),
@@ -144,6 +145,7 @@ $(function () {
 
                     $('.modal').hide(); // Fecha outros modais
                     $('.modalRecibo').show();  // Abre modal de Recibo
+                    $('body').css("overflow", "hidden");
     
                 }));
         } else {
@@ -159,6 +161,7 @@ $(function () {
     $('.cadastrarCartao').on('click', function () {
         $('.modal').hide(); // Fecha outros modais
         $('.modalCadastroCartao').show();  // Abre modal de Cadastro de Cartão
+        $('body').css("overflow", "hidden");
     });
 
     // Quando o cartão é submetido
