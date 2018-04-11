@@ -1,0 +1,22 @@
+@import '../../scss/_colors';
+
+/deep/ .mat-dialog-container {
+  padding: 0;
+
+  .mat-toolbar {
+    height: 52px;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    background-color: $color-purple-light;
+
+    strong {
+      color: $color-cyan;
+    }
+  }
+
+  .mat-dialog-content,
+  .mat-dialog-actions {
+    margin: 0;
+  }
+}
