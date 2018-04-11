@@ -1,0 +1,10 @@
+<div class="container">
+  <mat-list>
+    <mat-list-item *ngFor="let user of users">
+      <img matListAvatar [src]="user.img" alt="{{ user.name }}">
+      <h4 mat-line>{{ user.name }}</h4>
+      <p mat-line>id: {{ user.id }} {{ user.username }} </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>
