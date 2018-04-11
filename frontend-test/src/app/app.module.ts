@@ -9,11 +9,13 @@ import { AppComponent } from '@app/app.component';
 
 import { UserService } from '@app/user/user.service';
 import { UsersComponent } from '@app/users/users.component';
+import { PaymentComponent } from '@app/payment/payment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent
+    UsersComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,9 @@ import { UsersComponent } from '@app/users/users.component';
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule
+  ],
+  entryComponents: [
+    PaymentComponent
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

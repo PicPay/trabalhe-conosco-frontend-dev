@@ -1,0 +1,10 @@
+<!-- <header></header> -->
+<mat-toolbar>
+  <span>Pagamento para <strong>{{ data.user.name }}</strong></span>
+</mat-toolbar>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
