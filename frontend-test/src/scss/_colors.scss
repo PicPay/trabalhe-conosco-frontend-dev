@@ -3,6 +3,7 @@ $color-purple-dark: #1d1e2a;
 $color-purple-light: #474971;
 
 $color-cyan: #7de6c6;
+$color-cyan-light: #b4f4e5;
 
 @mixin linear-gradient($from, $to, $direction: horizontal vertical) {
   background-color: $from;

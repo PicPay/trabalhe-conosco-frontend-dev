@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry, MatDialog } from '@angular/material';
 
-import { User } from '@app/user/user';
-import { UserService } from '@app/user/user.service';
+import { User } from '@app/_models/user';
+import { UserService } from '@app/_services/user.service';
 
 import { PaymentComponent } from '@app/payment/payment.component';
 
