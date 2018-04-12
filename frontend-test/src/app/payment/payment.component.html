@@ -1,10 +1,30 @@
-<!-- <header></header> -->
-<mat-toolbar>
-  <span>Pagamento para <strong>{{ data.user.name }}</strong></span>
-</mat-toolbar>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-</div>
+<mat-horizontal-stepper>
+  <mat-step>
+    <mat-toolbar>
+      <span>Pagamento para <strong>{{ data.user.name }}</strong></span>
+    </mat-toolbar>
+    <div mat-dialog-content>
+      <mat-list>
+        <mat-list-item fxlayout="row" fxLayoutAlign="center" fxLayoutGap="gappx">
+          <img mat-list-avatar [src]="data.user.img" [alt]="data.user.name">
+          <h3 mat-line>{{ data.user.name }}</h3>
+          <p mat-line>id: {{ data.user.id }} &nbsp; {{ data.user.username }}</p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <mat-toolbar>
+      <span>Pagamento para <strong>{{ data.user.name }}</strong></span>
+    </mat-toolbar>
+    <div mat-dialog-content>
+      <p>step 2</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

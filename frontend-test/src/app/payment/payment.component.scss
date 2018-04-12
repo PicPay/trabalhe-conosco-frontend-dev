@@ -20,3 +20,25 @@
     margin: 0;
   }
 }
+
+/deep/ .mat-stepper-horizontal {
+  .mat-horizontal-stepper-header-container {
+    display: none;
+  }
+  .mat-horizontal-content-container {
+    padding: 0;
+  }
+}
+
+.mat-list-item {
+  color: $color-purple-light;
+  .mat-list-avatar {
+    width: auto;
+    height: 65px;
+  }
+  h3 {
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
