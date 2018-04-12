@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from '@app/app-routing.module';
 import { MaterialModule } from '@app/material.module';
@@ -20,6 +21,7 @@ import { PaymentComponent } from '@app/payment/payment.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FlexLayoutModule,
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule
