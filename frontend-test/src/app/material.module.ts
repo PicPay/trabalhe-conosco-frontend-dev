@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import {
   MatToolbarModule,
@@ -9,13 +8,12 @@ import {
   MatButtonModule,
   MatDialogModule,
   MatStepperModule,
-  MatInputModule
+  MatInputModule,
+  MatSelectModule
 } from '@angular/material';
 
 @NgModule({
   imports: [
-    CommonModule,
-
     MatToolbarModule,
     MatListModule,
     MatLineModule,
@@ -23,7 +21,8 @@ import {
     MatButtonModule,
     MatDialogModule,
     MatStepperModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   exports: [
     MatToolbarModule,
@@ -33,7 +32,8 @@ import {
     MatButtonModule,
     MatDialogModule,
     MatStepperModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   declarations: []
 })

@@ -1,8 +1,8 @@
-<mat-horizontal-stepper>
+<mat-toolbar>
+  <span>Pagamento para <strong>{{ data.user.name }}</strong></span>
+</mat-toolbar>
+<mat-horizontal-stepper #stepper>
   <mat-step>
-    <mat-toolbar>
-      <span>Pagamento para <strong>{{ data.user.name }}</strong></span>
-    </mat-toolbar>
     <div mat-dialog-content>
       <mat-list>
         <mat-list-item fxlayout="row" fxLayoutAlign="center">
@@ -12,31 +12,61 @@
         </mat-list-item>
       </mat-list>
 
-      <mat-form-field fxLayout="row" fxLayoutAlign="center" [floatPlaceholder]="'never'">
-        <input matInput [(ngModel)]="paymentValue" maxlength="12" placeholder="R$ 0,00" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'center' }">
+      <mat-form-field class="payment" fxLayout="row" fxLayoutAlign="center" [floatPlaceholder]="'never'">
+        <input matInput [(ngModel)]="paymentValue" maxlength="12" placeholder="R$ 0,00" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'center' }" cdkFocusInitial>
       </mat-form-field>
 
       <mat-divider></mat-divider>
 
-      <!-- <mat-nav-list>
-        <a mat-list-item>
-
+      <mat-nav-list fxLayout="row" fxLayoutAlign="center">
+        <a mat-list-item *ngIf="!cards" (click)="changeStep(1)">
+          <mat-icon mat-list-icon>error</mat-icon>
+          <p mat-line color="accent">Nenhum cartão de crédito cadastrado.</p>
+          <p mat-line><strong>Cadastrar agora.</strong></p>
         </a>
-      </mat-nav-list> -->
+      </mat-nav-list>
     </div>
     <div mat-dialog-actions fxLayoutAlign="center">
-      <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Pagar</button>
+      <button mat-button [mat-dialog-close]="data.animal">Pagar</button>
     </div>
   </mat-step>
+
   <mat-step>
-    <mat-toolbar>
-      <span>Pagamento para <strong>{{ data.user.name }}</strong></span>
-    </mat-toolbar>
     <div mat-dialog-content>
-      <p>step 2</p>
+      <form #addCardForm="ngForm" fxLayout="column">
+        <mat-form-field>
+          <mat-select placeholder="Selecione a bandeira">
+            <mat-option *ngFor="let flag of cardFlags" [value]="flag.value">
+              {{ flag.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Nome escrito no cartão">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Número do Cartão">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Validade (mm/aaaa)">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Código de segurança">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="CEP do endereço da fatura">
+        </mat-form-field>
+      </form>
+
+      <button mat-button (click)="changeStep(0)" color="primary">voltar</button>
     </div>
     <div mat-dialog-actions>
-      <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+      <button mat-button [mat-dialog-close]="data.animal">Cadastrar</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

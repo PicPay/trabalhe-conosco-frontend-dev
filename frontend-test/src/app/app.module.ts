@@ -17,6 +17,7 @@ import { PaymentComponent } from '@app/payment/payment.component';
 import { UserService } from '@app/_services/user.service';
 
 import { AutofocusDirective } from '@app/_directives/autofocus.directive';
+import { CardService } from './_services/card.service';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { AutofocusDirective } from '@app/_directives/autofocus.directive';
   entryComponents: [
     PaymentComponent
   ],
-  providers: [UserService],
+  providers: [UserService, CardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
