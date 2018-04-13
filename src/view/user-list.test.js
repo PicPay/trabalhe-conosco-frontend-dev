@@ -1,14 +1,30 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
-import { UserData, UserPanel } from './user-list'
+import { UserData, UserPanel, UserList } from './user-list'
 
-const user = {
-  id: 1001,
-  name: 'Eduardo Santos',
-  img: 'https://randomuser.me/api/portraits/men/9.jpg',
-  username: '@eduardo.santos',
-}
+const userList = [
+  {
+    id: 1001,
+    name: 'Eduardo Santos',
+    img: 'https://randomuser.me/api/portraits/men/9.jpg',
+    username: '@eduardo.santos',
+  },
+  {
+    id: 1002,
+    name: 'Israel Lima',
+    img: 'https://randomuser.me/api/portraits/men/6.jpg',
+    username: '@israel.lima',
+  },
+  {
+    id: 1003,
+    name: 'Joao Santos',
+    img: 'https://randomuser.me/api/portraits/men/5.jpg',
+    username: '@joao.santos',
+  },
+]
+
+const user = userList[0]
 
 describe('#UserData', function () {
   it('should render without throwing an error', function () {
@@ -33,5 +49,14 @@ describe('#UserPanel', function () {
     expect(content.find({ img: user.img })).toHaveLength(1)
     expect(content.find({ username: user.username })).toHaveLength(1)
     expect(content).toHaveLength(1)
+  })
+})
+
+describe('#UserList', function () {
+  it('should render without throwing an error', function () {
+    const wrapper = mount(<UserList userList={userList}/>)
+
+    const content = wrapper.find(UserPanel)
+    expect(content).toHaveLength(3)
   })
 })

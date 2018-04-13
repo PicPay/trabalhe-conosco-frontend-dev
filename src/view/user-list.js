@@ -21,3 +21,9 @@ export const UserPanel = (props) => {
     <UserData {...props.user}/>
   )
 }
+
+export const UserList = (props) => {
+  return (
+    props.userList.map((user, index) => <UserPanel key={index} user={user} />)
+  )
+}
