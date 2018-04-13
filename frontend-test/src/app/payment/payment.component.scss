@@ -1,6 +1,5 @@
 // @import '~@angular/material/theming';
-@import '../../scss/_colors';
-// @import '../../scss/theme';
+@import '../../scss/colors';
 
 /deep/ .mat-dialog-container {
   padding: 0;
@@ -10,10 +9,10 @@
     font-size: 14px;
     font-weight: 400;
     color: white;
-    background-color: $color-purple-light;
+    background-color: $primary-light;
 
     strong {
-      color: $color-cyan;
+      color: $accent;
     }
   }
 
@@ -24,8 +23,6 @@
 
   .mat-dialog-content {
     padding: 10px 50px 0;
-    // padding-left: 50px;
-    // padding-right: 50px;
   }
 
   .mat-dialog-actions {
@@ -35,7 +32,9 @@
     .mat-button {
       width:100%;
       border-radius: 20px;
-      @include linear-gradient($color-cyan-light, $color-cyan, vertical);
+      text-transform: uppercase;
+      color: $primary;
+      @include linear-gradient($accent-light, $accent, vertical);
     }
   }
 }
@@ -51,7 +50,7 @@
 }
 
 .mat-list-item {
-  color: $color-purple-light;
+  color: $primary-light;
   .mat-list-avatar {
     width: auto;
     height: 65px;
@@ -64,11 +63,11 @@
   }
 }
 
-.mat-input-container {
+.mat-input-container.payment {
   margin-top: 20px;
   font-size: 40px;
   text-align: center;
-  color: $color-purple-light;
+  color: $primary-light;
 
   /deep/ .mat-input-infix {
     border-top: 0;
@@ -80,6 +79,15 @@
   }
 
   /deep/ &.mat-focused label {
-    color: $color-purple-light;
+    color: $primary-light;
+  }
+}
+
+.mat-nav-list {
+  .mat-list-item {
+    color: $danger;
+  }
+  .mat-line {
+    font-size: 14px;
   }
 }

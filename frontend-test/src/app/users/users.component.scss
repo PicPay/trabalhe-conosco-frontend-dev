@@ -1,4 +1,4 @@
-@import '../../scss/_colors';
+@import '../../scss/colors';
 
 .container {
   max-width: 1054px;
@@ -9,7 +9,7 @@
   padding-top: 0;
   .mat-list-item {
     color: white;
-    @include linear-gradient($color-purple-dark, $color-purple, horizontal);
+    @include linear-gradient($primary-dark, $primary, horizontal);
 
     .mat-list-avatar {
       border: 2px solid white;
