@@ -15,3 +15,9 @@ export const UserData = ({
     </div>
   )
 }
+
+export const UserPanel = (props) => {
+  return (
+    <UserData {...props.user}/>
+  )
+}
