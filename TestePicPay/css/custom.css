@@ -1,0 +1,537 @@
+html{
+    position: relative;
+    min-height: 100%;
+}
+body {
+    min-height: 100%;
+    padding-right:0px !important;
+    margin-right:0px !important;
+}
+::placeholder {
+    color: #acb1bd;
+}
+
+.inline-block {
+    display: inline-block;
+}
+.no-side-padding {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.left-aligned {
+    text-align: left !important;
+}
+
+#header-base {
+    background-color: #7de6c6;
+    padding: 0;
+    height: 80px;
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    display: block;
+    position: absolute;
+    top: 0px;
+}
+.header-container {
+    width: 1054px;
+    height: 80px;
+    margin: 0 auto 0 auto;
+}
+#site-logo {
+    display: inline-block;
+    width: 30px;
+    height: 26px;
+    vertical-align: top;
+    margin: 24px 12px 0 16px;
+}
+.vertical-line {
+  width: 2px;
+  height: 32px;
+  background-color: #474971;
+  display: inline-block;
+  margin-top: 24px;
+}
+#page-title {
+  width: 148px;
+  height: 24px;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  vertical-align: top;
+  display: inline-block;
+  margin: 28px 0 0 12px;
+}
+
+.page-contents{
+    display: block;
+    margin-top: 80px;
+    height: 100%;
+}
+/* -------------------- USER DATA ----------------------- */
+.user-block {
+  width: 100%;
+  min-width: 640px;
+  height: 120px;
+  background-image: linear-gradient(264deg, #3c3e64, #1d1e2a);
+  box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+  margin: 0 auto 0 auto;
+  padding: 0;
+}
+
+.user-portrait, .modal-user-portrait {
+  width: 80px;
+  height: 80px;
+  border: solid 2px #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.user-portrait {
+    margin: 20px 16px 20px 40px;
+}
+
+.id-texts,.modal-id-texts{
+    display: inline-block;
+    height: 54px;
+    vertical-align: top;
+}
+.id-texts {
+    margin: 34px 0;
+}
+
+.person-name {
+  height: 28px;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  display: block;
+  vertical-align: top;
+  margin: 0;
+}
+
+.user-id, .user-name {
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  display: inline-block;
+  vertical-align: bottom;
+  margin: 0;
+}
+
+.user-name {
+    margin-left: 12px;
+}
+
+.pay-button-block {
+    display: inline-block;
+    float: right;
+    height: 120px;
+    width: 160px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.pay-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: top;
+    margin: 48px 12px 0 0;
+}
+
+.pay-text {
+    height: 24px;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    vertical-align: top;
+    display: inline-block;
+    margin: 52px 10px 0 0;
+}
+
+.arrow-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: top;
+    margin: 48px 0 0 0;
+}
+
+/* ------------ COLORED TEXT ------------ */
+.white-text {
+    color: #ffffff;
+}
+.dark-blue-text {
+    color: #474971;
+}
+.cyan-text {
+    color: #7de6c6;
+}
+.pink-text {
+    color: #ef5778;
+}
+.black-text {
+    color: #000000;
+}
+.light-grey-text {
+    color: #acb1bd;
+}
+
+/* ------------ MODAL ------------ */
+/* necessário para evitar bug do bootstrap de modais fechando alterarem o layout */
+.modal {
+    overflow-y: auto;
+}
+.modal-open {
+    overflow: auto;
+}
+
+.modal-open[style] {
+    padding-right: 0px !important;
+}
+
+.modal-dialog {
+    width: 640px;
+    margin-top: 100px;
+}
+.modal-header {
+    height: 51px;
+    background-color: #474971;
+    padding: 16px 24px;
+}
+.modal-title {
+    height: 19px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+}
+.modal-content {
+    overflow: hidden;
+    border-radius: 6px;
+}
+.modal-body {
+    text-align: center;
+    padding-bottom: 24px;
+}
+.modal-close-img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+.modal-divider {
+    width: 560px;
+    height: 1px;
+    background-color: #d8d8d8;
+    margin: 56px auto 0 auto;
+}
+.modal-user-data {
+    display: inline-block;
+    margin: 0 162px 0 163px;
+}
+.modal-user-portrait {
+    margin: 0 16px 20px 0;
+}
+.modal-id-texts {
+    margin: 14px 0;
+}
+.modal-payment-amount {
+    margin: 0 auto;
+}
+#payment-amount-text {
+    height: 66px;
+    border: 0px;
+    box-shadow: none;
+    font-family: 'Nunito Sans';
+    font-size: 48px;
+    text-align: center;
+    caret-color: #7de6c6;
+}
+.payment-amount-underscore {
+    width: 256px;
+    height: 2px;
+    background-color: #474971;
+    margin: 0 auto;
+}
+#no-card-block, #card-selected-block {
+    height: 32px;
+    width: 280px;
+    margin: 20px auto 28px auto;
+}
+#card-selected-block {
+    cursor: pointer;
+}
+.no-card-text-block, .card-selected-text-block {
+    margin-left: 10px;
+}
+.alert-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 6px;
+}
+.check-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 24px;
+}
+.plus-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: top;
+}
+.card-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: top;
+}
+.no-card-text, .no-card-register-card-text, .card-selected-text, .payment-type-text {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+  margin: -3px 0 0 0;
+}
+.no-card-register-card-text {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 107px;
+}
+.card-selected-text {
+  font-weight: bold;
+}
+.payment-button, .register-card-button, .select-card-button {
+    width: 532px;
+    height: 48px;
+    border-radius: 24px;
+    background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+    padding-top: 16px;
+    cursor: pointer;
+}
+.select-card-button {
+    margin-top: 62px;
+}
+.register-card-button {
+    margin-top: 52px;
+}
+.payment-button-text, .register-card-button-text {
+    height: 16px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#input-name-on-card, #input-expiry-date, #input-card-flag, #input-security-code, #input-cep-code{
+    display: block;
+    width: 575px;
+    height: 26px;
+    font-family: 'Nunito Sans';
+    font-size: 16px;
+    font-weight: 300;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0px;
+    border-bottom: solid 2px #dae1f0;
+    padding: 0 0 10px 0;
+    margin: 40px auto 20px auto;
+    caret-color: #474971;
+}
+#input-card-number {
+    margin-top: 29px;
+    display: block;
+    width: 575px;
+    height: 26px;
+    font-family: 'Nunito Sans';
+    font-size: 16px;
+    font-weight: 300;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0px;
+    border-bottom: solid 2px #dae1f0;
+    padding: 0 0 10px 0;
+    margin: 0px auto 20px auto;
+    caret-color: #474971;
+}
+#input-card-flag {
+    margin-top: 29px;
+}
+
+.input-label {
+  font-family: 'Nunito Sans';
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  margin: 0 0 4px 17px;
+}
+
+#input-card-flag {
+    height: 30px;
+}
+
+#card-info-error {
+    margin: 0 auto;
+    display: none;
+    text-align: center;
+}
+
+.card-select-item {
+    width: 100%;
+    height: 72px;
+    padding: 24px 0 0 200px;
+    cursor: pointer;
+}
+.card-select-item:hover {
+    background-color: #b4f4e5;
+}
+.selected-card {
+    background-color: #e0f9f2;
+}
+
+.select-card-title {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    margin: 25px auto 48px auto;
+    text-align: center;
+}
+.card-select-item-text {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    margin-left: 16px;
+}
+.card-select-divider {
+    height: 1px;
+    background-color: rgba(71, 73, 113, 0.24);
+}
+
+.receipt-title {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    margin: 25px auto 28px auto;
+    text-align: center;
+}
+.receipt-item {
+    width: 280px;
+    height: 24px;
+    border-bottom: solid 1px #d8d8d8;
+    position: relative;
+    margin: 0 auto 16px auto;
+}
+.receipt-left-text {
+    position: absolute;
+    left: 0;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    display: inline;
+}
+.receipt-right-text {
+    position: absolute;
+    right: 0;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline;
+}
+
+.receipt-return-button {
+    width: 181px;
+    height: 48px;
+    border-radius: 24px;
+    border: solid 1px #474971;
+    margin: 84px 24px 0 auto;
+    padding-top: 16px;
+    cursor: pointer;
+    display: inline-block;
+}
+.receipt-repay-button {
+    width: 181px;
+    height: 48px;
+    border-radius: 24px;
+    background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+    padding-top: 16px;
+    cursor: pointer;
+    display: inline-block;
+}
+     
+/* ------------ COL-SM specs (768px and up) ------------ */
+@media only screen and (min-width: 768px) {
+    #logoHeader{
+        padding-left:433px;
+        padding-right:433px;
+        background-size: 100% 100%;
+        height: 67px;
+    }
+}
+
+/* ------------ COL-SM specs (768px and up) ------------ */
+@media only screen and (min-width: 1054px) {
+    .user-block {
+        width: 1054px;
+        height: 120px;
+        background-image: linear-gradient(264deg, #3c3e64, #1d1e2a);
+        box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+        margin: 0 auto 0 auto;
+        padding: 0;
+    }
+}
