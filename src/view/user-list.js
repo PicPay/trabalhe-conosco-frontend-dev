@@ -8,10 +8,10 @@ export const UserData = ({
 }) => {
   return (
     <div className="user-data">
-      <img src={img} alt="" />
-      <span>{name}</span>
-      <span>{id}</span>
-      <span>{username}</span>
+      <img className="user-img" src={img} alt="" />
+      <span className="user-name">{name}</span>
+      <span className="user-info">id: {id}</span>
+      <span className="user-info">{username}</span>
     </div>
   )
 }
