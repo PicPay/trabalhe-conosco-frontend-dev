@@ -1,4 +1,5 @@
 import React from 'react'
+import './user-list.css'
 
 export const UserData = ({
   img,
@@ -9,9 +10,12 @@ export const UserData = ({
   return (
     <div className="user-data">
       <img className="user-img" src={img} alt="" />
-      <span className="user-name">{name}</span>
-      <span className="user-info">id: {id}</span>
-      <span className="user-info">{username}</span>
+      <div className="user">
+        <div className="user-name">{name}</div>
+        <div className="user-info">
+          <span>id: {id}</span>
+          <span>{username}</span>
+        </div></div>
     </div>
   )
 }
