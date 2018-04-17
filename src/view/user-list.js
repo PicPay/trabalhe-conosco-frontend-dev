@@ -22,7 +22,9 @@ export const UserData = ({
 
 export const UserPanel = (props) => {
   return (
-    <UserData {...props.user}/>
+    <div className="user-panel">
+      <UserData {...props.user}/>
+    </div>
   )
 }
 

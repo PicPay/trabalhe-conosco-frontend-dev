@@ -44,11 +44,11 @@ describe('#UserPanel', function () {
     const wrapper = shallow(<UserPanel user={user}/>)
     const content = wrapper.find(UserData)
 
+    expect(content).toHaveLength(1)
     expect(content.find({ id: user.id })).toHaveLength(1)
     expect(content.find({ name: user.name })).toHaveLength(1)
     expect(content.find({ img: user.img })).toHaveLength(1)
     expect(content.find({ username: user.username })).toHaveLength(1)
-    expect(content).toHaveLength(1)
   })
 })
 
