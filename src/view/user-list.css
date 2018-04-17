@@ -1,0 +1,17 @@
+.user-data{
+  display: flex;
+  align-items: center;
+}
+.user-img{
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+}
+.user{
+  display: flex;
+  flex-direction: column;
+  padding-left: 8px;
+}
+.user-info span{
+  padding-right: 12px;
+}
