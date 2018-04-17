@@ -26,15 +26,20 @@
   }
 
   .mat-dialog-actions {
+    padding-top: 0;
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 20px;
-    .mat-button {
+    text-align: center;
+    .mat-raised-button {
       width:100%;
       border-radius: 20px;
       text-transform: uppercase;
       color: $primary;
       @include linear-gradient($accent-light, $accent, vertical);
+      &:last-child {
+        margin: 10px 0 0;
+      }
     }
   }
 }

@@ -1,6 +1,7 @@
 <mat-toolbar>
   <span>Pagamento para <strong>{{ data.user.name }}</strong></span>
 </mat-toolbar>
+
 <mat-horizontal-stepper #stepper>
   <mat-step>
     <div mat-dialog-content>
@@ -26,16 +27,17 @@
         </a>
       </mat-nav-list>
     </div>
+
     <div mat-dialog-actions fxLayoutAlign="center">
-      <button mat-button [mat-dialog-close]="data.animal">Pagar</button>
+      <button mat-raised-button color="accent" type="submit">Pagar</button>
     </div>
   </mat-step>
 
   <mat-step>
-    <div mat-dialog-content>
-      <form #addCardForm="ngForm" fxLayout="column">
+    <form #addCardForm="ngForm" (ngSubmit)="addCard(addCardForm.value)" fxLayout="column">
+      <div mat-dialog-content>
         <mat-form-field>
-          <mat-select placeholder="Selecione a bandeira">
+          <mat-select placeholder="Selecione a bandeira" name="flag" [(ngModel)]="card.flag">
             <mat-option *ngFor="let flag of cardFlags" [value]="flag.value">
               {{ flag.viewValue }}
             </mat-option>
@@ -43,30 +45,30 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Nome escrito no cartão">
+          <input matInput placeholder="Nome escrito no cartão" name="name" [(ngModel)]="card.name">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Número do Cartão">
+          <input matInput placeholder="Número do Cartão" name="card_number" [(ngModel)]="card.number">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Validade (mm/aaaa)">
+          <input matInput placeholder="Validade (mm/aaaa)" name="expires_date" [(ngModel)]="card.expire_date">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Código de segurança">
+          <input matInput placeholder="Código de segurança" name="cvv" [(ngModel)]="card.cvv">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="CEP do endereço da fatura">
+          <input matInput placeholder="CEP do endereço da fatura" name="cep" [(ngModel)]="card.cep">
         </mat-form-field>
-      </form>
 
-      <button mat-button (click)="changeStep(0)" color="primary">voltar</button>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button [mat-dialog-close]="data.animal">Cadastrar</button>
-    </div>
+      </div>
+      <div mat-dialog-actions fxLayoutAlign="center">
+        <button mat-button (click)="changeStep(0)" color="primary">Voltar</button>
+        <button mat-raised-button color="accent" type="submit">Cadastrar</button>
+      </div>
+    </form>
   </mat-step>
 </mat-horizontal-stepper>

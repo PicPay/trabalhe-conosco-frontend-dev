@@ -12,8 +12,9 @@ export class CardService {
     return JSON.parse(localStorage.getItem('cards'));
   }
 
-  addCard(card: Card) {
-
+  addCard(card) {
+    console.log(card);
+    JSON.stringify(localStorage.setItem('cards', card));
   }
 
 }
