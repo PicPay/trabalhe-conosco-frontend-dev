@@ -1,6 +1,11 @@
 .user-panel{
+  display: flex;
+  align-items: center;
   background-image: linear-gradient(259deg, #3c3e64, #1d1e2a);
   box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+}
+.user-panel .payment-button{
+  margin-left: auto;
 }
 .user-data{
   display: flex;
@@ -9,6 +14,15 @@
   padding-bottom: 10px;
   padding-top: 10px;
   color: #ffffff;
+}
+.btn{
+  background: Transparent;
+  border: none;
+  cursor:pointer;
+}
+.payment-button{
+  display: flex;
+  align-items: center;
 }
 .user-img{
   width: 52px;
@@ -29,4 +43,8 @@
 .user-info span{
   padding-right: 12px;
   font-size: 12px;
+}
+picture{
+  display: flex;
+  align-items: center;
 }
