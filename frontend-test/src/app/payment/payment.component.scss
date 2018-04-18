@@ -91,7 +91,9 @@
 .mat-nav-list {
   .mat-list-item {
     text-align: left;
-    color: $danger;
+    &[color="danger"] {
+      color: $danger;
+    }
   }
   .mat-line {
     font-size: 14px;

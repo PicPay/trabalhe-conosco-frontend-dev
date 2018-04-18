@@ -13,7 +13,7 @@ import { CardService } from '@app/_services/card.service';
 export class PaymentComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
 
-  cards: any = [];
+  cards: any = false;
   card: any = {};
   cardFlags = [
     { value: 'master-0', viewValue: 'Master' },
@@ -22,15 +22,15 @@ export class PaymentComponent implements OnInit {
   ];
 
   constructor(
-    public dialogRef: MatDialogRef<PaymentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-
+    public dialogRef: MatDialogRef<PaymentComponent>,
     private cardService: CardService
-  ) { }
+  ) {
+    this.cards = this.cardService.getCards();
+    console.log(this.cardService.getCards());
+  }
 
   ngOnInit() {
-    // this.cards = this.cardService.getCards();
-    console.log(this.cardService.getCards());
   }
 
   getCards(): void {

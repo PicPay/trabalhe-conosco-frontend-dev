@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { AppRoutingModule } from '@app/app-routing.module';
 import { MaterialModule } from '@app/material.module';
@@ -15,9 +16,7 @@ import { UsersComponent } from '@app/users/users.component';
 import { PaymentComponent } from '@app/payment/payment.component';
 
 import { UserService } from '@app/_services/user.service';
-
-import { AutofocusDirective } from '@app/_directives/autofocus.directive';
-import { CardService } from './_services/card.service';
+import { CardService } from '@app/_services/card.service';
 
 
 @NgModule({
@@ -25,7 +24,6 @@ import { CardService } from './_services/card.service';
     AppComponent,
     UsersComponent,
     PaymentComponent,
-    AutofocusDirective
   ],
   imports: [
     BrowserModule,
@@ -34,6 +32,7 @@ import { CardService } from './_services/card.service';
     HttpClientModule,
     FormsModule,
     CurrencyMaskModule,
+    NgxMaskModule.forRoot(),
     MaterialModule,
     BrowserAnimationsModule
   ],
