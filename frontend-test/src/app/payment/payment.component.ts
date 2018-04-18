@@ -13,6 +13,7 @@ import { CardService } from '@app/_services/card.service';
 export class PaymentComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
 
+  cards: any = [];
   card: any = {};
   cardFlags = [
     { value: 'master-0', viewValue: 'Master' },
@@ -27,17 +28,17 @@ export class PaymentComponent implements OnInit {
     private cardService: CardService
   ) { }
 
-  ngOnInit(): void {
-    this.cards = this.cardService.getCards();
-    console.log(this.cards);
+  ngOnInit() {
+    // this.cards = this.cardService.getCards();
+    console.log(this.cardService.getCards());
   }
 
   getCards(): void {
-    // this.cards = localStorage.getItem('cards');
+    this.cards = this.cardService.getCards();
   }
 
   addCard(card: NgForm): void {
-    // console.log(card);
+    console.log(card);
     return this.cardService.addCard(card);
   }
 

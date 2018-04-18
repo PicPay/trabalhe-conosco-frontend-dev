@@ -19,23 +19,23 @@
 
       <mat-divider></mat-divider>
 
+    </div>
+
+    <div mat-dialog-actions fxLayoutAlign="center">
       <mat-nav-list fxLayout="row" fxLayoutAlign="center">
-        <a mat-list-item *ngIf="!cards" (click)="changeStep(1)">
+        <a mat-list-item (click)="changeStep(1)">
           <mat-icon mat-list-icon>error</mat-icon>
           <p mat-line color="accent">Nenhum cartão de crédito cadastrado.</p>
           <p mat-line><strong>Cadastrar agora.</strong></p>
         </a>
       </mat-nav-list>
-    </div>
-
-    <div mat-dialog-actions fxLayoutAlign="center">
       <button mat-raised-button color="accent" type="submit">Pagar</button>
     </div>
   </mat-step>
 
   <mat-step>
-    <form #addCardForm="ngForm" (ngSubmit)="addCard(addCardForm.value)" fxLayout="column">
-      <div mat-dialog-content>
+    <form #addCardForm="ngForm" (ngSubmit)="addCard(addCardForm.value)">
+      <div mat-dialog-content fxLayout="column">
         <mat-form-field>
           <mat-select placeholder="Selecione a bandeira" name="flag" [(ngModel)]="card.flag">
             <mat-option *ngFor="let flag of cardFlags" [value]="flag.value">

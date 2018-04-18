@@ -8,13 +8,24 @@ export class CardService {
 
   constructor() { }
 
-  getCards() {
-    return JSON.parse(localStorage.getItem('cards'));
+  private getLastFourNumber(number) {
+    return +(number.toString().slice(-4));
   }
 
+  getCards() {
+    const cards = [];
+    for (let i = 0, len = localStorage.length; i < len; ++i) {
+      const card = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      cards.push(card);
+    }
+    return cards;
+  }
+
+
   addCard(card) {
-    console.log(card);
-    JSON.stringify(localStorage.setItem('cards', card));
+    const cardId = this.getLastFourNumber(card.card_number);
+
+    return localStorage.setItem(`card-${cardId}`, JSON.stringify(card));
   }
 
 }
