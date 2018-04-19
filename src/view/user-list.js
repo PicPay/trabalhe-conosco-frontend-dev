@@ -28,25 +28,37 @@ export const UserData = ({
   )
 }
 
+// export const Button = (props) => {
+//   return (
+//     <button className="btn">
+//       <picture>
+//         <source srcSet={imgDownSvg}/>
+//         <img src={imgDownPng} srcSet={`${imgDownPng},${imgDownPng2x} 2x, ${imgDownPng3x} 3x`} alt="" />
+//       </picture>
+//     </button>
+//   )
+// }
+
 export const Button = (props) => {
   return (
     <button className="btn">
-      <picture>
-        <source srcSet={imgDownSvg}/>
-        <img src={imgDownPng} srcSet={`${imgDownPng},${imgDownPng2x} 2x, ${imgDownPng3x} 3x`} alt="" />
-      </picture>
+      {props.content}
     </button>
   )
 }
 
 export const PaymentButton = (props) => {
+  const buttonContent = <picture>
+    <source srcSet={imgDownSvg}/>
+    <img src={imgDownPng} srcSet={`${imgDownPng},${imgDownPng2x} 2x, ${imgDownPng3x} 3x`} alt="" />
+  </picture>
   return (
     <div className="payment-button">
       <picture>
         <source srcSet={imgPaySvg} alt=""/>
         <img src={imgPayPng} srcSet={`${imgPayPng},${imgPayPng2x} 2x, ${imgPayPng3x} 3x`} alt="" />
       </picture>
-      <Button />
+      <Button content={buttonContent}/>
     </div>
   )
 }

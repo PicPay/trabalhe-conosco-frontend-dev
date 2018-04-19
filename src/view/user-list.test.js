@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
-import { UserData, UserPanel, UserList } from './user-list'
+import { UserData, UserPanel, UserList, Button } from './user-list'
 
 const userList = [
   {
@@ -58,5 +58,13 @@ describe('#UserList', function () {
 
     const content = wrapper.find(UserPanel)
     expect(content).toHaveLength(3)
+  })
+})
+
+describe('#Button', function () {
+  it('should render without throwing an error', function () {
+    const wrapper = mount(<Button content={'Ok'}/>)
+
+    expect(wrapper.text()).toMatch('Ok')
   })
 })
