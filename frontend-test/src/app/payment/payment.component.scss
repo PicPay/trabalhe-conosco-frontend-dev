@@ -36,6 +36,7 @@
       border-radius: 20px;
       text-transform: uppercase;
       color: $primary;
+      overflow: hidden;
       @include linear-gradient($accent-light, $accent, vertical);
       &:last-child {
         margin: 10px 0 0;
@@ -94,6 +95,7 @@
     &[color="danger"] {
       color: $danger;
     }
+
   }
   .mat-line {
     font-size: 14px;

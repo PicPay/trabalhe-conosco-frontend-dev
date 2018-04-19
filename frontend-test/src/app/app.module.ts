@@ -17,6 +17,7 @@ import { PaymentComponent } from '@app/payment/payment.component';
 
 import { UserService } from '@app/_services/user.service';
 import { CardService } from '@app/_services/card.service';
+import { CreditcardPipe } from '@app/_pipes/creditcard.pipe';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CardService } from '@app/_services/card.service';
     AppComponent,
     UsersComponent,
     PaymentComponent,
+    CreditcardPipe,
   ],
   imports: [
     BrowserModule,

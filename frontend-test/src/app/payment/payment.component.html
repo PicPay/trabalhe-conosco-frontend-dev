@@ -85,7 +85,7 @@
         <mat-nav-list fxLayout="column" fxLayoutAlign="center">
           <a mat-list-item *ngFor="let card of cards">
             <mat-icon mat-list-icon>credit_card</mat-icon>
-            <h3 mat-line>{{ card.card_number }}</h3>
+            <p mat-line><strong>{{ card.card_number | creditcard }}</strong></p>
           </a>
         </mat-nav-list>
         </div>
