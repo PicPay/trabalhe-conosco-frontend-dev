@@ -29,71 +29,73 @@
           <p mat-line><strong>Cadastrar agora.</strong></p>
         </a>
 
-        <a mat-list-item *ngIf="cards.length" (click)="changeStep(2)">
+        <a mat-list-item *ngIf="selectedCard" (click)="changeStep(2)">
           <mat-icon mat-list-icon>credit_card</mat-icon>
           <p mat-line>Forma de Pagamento:</p>
-          <p mat-line><strong>Cartão de Crédito com final 0000</strong><p>
-        </a>
-      </mat-nav-list>
-
-      <button mat-raised-button color="accent" type="submit">Pagar</button>
-    </div>
-  </mat-step>
-
-  <mat-step>
-    <form #addCardForm="ngForm" (ngSubmit)="addCard(addCardForm.value)">
-      <div mat-dialog-content fxLayout="column">
-        <mat-form-field>
-          <mat-select placeholder="Selecione a bandeira" name="flag" [(ngModel)]="card.flag" required>
-            <mat-option *ngFor="let flag of cardFlags" [value]="flag.value">
-              {{ flag.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="Nome escrito no cartão" name="name" [(ngModel)]="card.name" required>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="Número do Cartão" mask="0000 0000 0000 0000" name="card_number" [(ngModel)]="card.number" required>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="Validade (mm/aaaa)" mask='00/0000' name="expires_date" [(ngModel)]="card.expire_date" required>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="Código de segurança" mask='000' name="cvv" [(ngModel)]="card.cvv" required>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="CEP do endereço da fatura" mask='00000-000' name="cep" [(ngModel)]="card.cep" required>
-        </mat-form-field>
-      </div>
-
-      <div mat-dialog-actions fxLayoutAlign="center">
-        <button mat-button (click)="changeStep(0)" color="primary">Cancelar</button>
-        <button mat-raised-button color="accent" type="submit">Cadastrar</button>
-      </div>
-    </form>
-  </mat-step>
-
-    <mat-step>
-      <form #addCardForm="ngForm">
-        <div mat-dialog-content fxLayout="column">
-        <mat-nav-list fxLayout="column" fxLayoutAlign="center">
-          <a mat-list-item *ngFor="let card of cards">
-            <mat-icon mat-list-icon>credit_card</mat-icon>
-            <p mat-line><strong>{{ card.card_number | creditcard }}</strong></p>
+          <p mat-line><strong>Cartão de Crédito com final {{ selectedCard.card_number | creditcard: 'lastNumbers' }}</strong><p>
           </a>
         </mat-nav-list>
+        <button mat-raised-button color="accent" type="submit">Pagar</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <form #addCardForm="ngForm" (ngSubmit)="addCard(addCardForm.value)">
+        <div mat-dialog-content fxLayout="column">
+          <mat-form-field>
+            <mat-select placeholder="Selecione a bandeira" name="flag" [(ngModel)]="card.flag" required>
+              <mat-option *ngFor="let flag of cardFlags" [value]="flag.value">
+                {{ flag.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Nome escrito no cartão" name="name" [(ngModel)]="card.name" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Número do Cartão" mask="0000 0000 0000 0000" name="card_number" [(ngModel)]="card.number" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Validade (mm/aaaa)" mask='00/0000' name="expires_date" [(ngModel)]="card.expires_date" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Código de segurança" mask='000' name="cvv" [(ngModel)]="card.cvv" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="CEP do endereço da fatura" mask='00000-000' name="cep" [(ngModel)]="card.cep" required>
+          </mat-form-field>
         </div>
 
         <div mat-dialog-actions fxLayoutAlign="center">
           <button mat-button (click)="changeStep(0)" color="primary">Cancelar</button>
-          <button mat-raised-button color="accent" type="submit">Selecionar</button>
+          <button mat-raised-button color="accent" type="submit">Cadastrar</button>
         </div>
       </form>
     </mat-step>
-</mat-horizontal-stepper>
+
+    <mat-step>
+      <div mat-dialog-content fxLayout="column">
+        <mat-nav-list fxLayout="column" fxLayoutAlign="center">
+          <a mat-list-item *ngFor="let card of cards" (click)="selectCard(card)">
+            <mat-icon mat-list-icon>credit_card</mat-icon>
+            <p mat-line>
+              <strong>
+                {{ card.card_number | creditcard }}
+                <span [hidden]="!card.active"> - ativo</span>
+              </strong>
+            </p>
+          </a>
+        </mat-nav-list>
+      </div>
+
+      <div mat-dialog-actions fxLayoutAlign="center">
+        <button mat-button (click)="changeStep(0)" color="primary">Cancelar</button>
+        <button mat-raised-button color="accent" type="submit">Selecionar</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>

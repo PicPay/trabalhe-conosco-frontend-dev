@@ -8,8 +8,8 @@ export class CardService {
 
   constructor() { }
 
-  private getLastFourNumber(number) {
-    return +(number.toString().slice(-4));
+  private getLastFourNumber(number): any {
+    return number.toString().slice(-4);
   }
 
   getCards() {
@@ -25,7 +25,31 @@ export class CardService {
   addCard(card) {
     const cardId = this.getLastFourNumber(card.card_number);
 
+    if (this.getCards().length === 0) {
+      card.active = true;
+    } else {
+      card.active = false;
+    }
+
     return localStorage.setItem(`card-${cardId}`, JSON.stringify(card));
+  }
+
+  selectCard(card) {
+    const cardId = this.getLastFourNumber(card.card_number);
+
+    if (card.active) {
+      return;
+    }
+
+    this.getCards().filter(c => {
+      if (c.active) {
+        c.active = false;
+        localStorage.setItem(`card-${this.getLastFourNumber(c.card_number)}`, JSON.stringify(c));
+      } else if (!c.active) {
+        card.active = true;
+        localStorage.setItem(`card-${cardId}`, JSON.stringify(card));
+      }
+    });
   }
 
 }

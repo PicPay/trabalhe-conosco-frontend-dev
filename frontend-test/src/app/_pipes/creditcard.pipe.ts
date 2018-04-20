@@ -5,8 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CreditcardPipe implements PipeTransform {
 
-  transform(value: string): string {
-    const formatted = value.match(/[\s\S]{1,4}/g).join(' ');
+  transform(value: number, lastNumbers): string {
+    const formatted = value.toString().match(/[\s\S]{1,4}/g).join(' ');
+
+    if (lastNumbers) {
+      return value.toString().slice(-4);
+    }
 
     return formatted;
   }

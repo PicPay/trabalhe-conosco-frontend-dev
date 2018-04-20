@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { MatStepper, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NgForm } from '@angular/forms';
 
@@ -13,8 +13,17 @@ import { CardService } from '@app/_services/card.service';
 export class PaymentComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
 
+  selectedCard = {};
   cards: any = false;
-  card: any = {};
+  card: any = {
+    flag: 'visa-1',
+    name: 'dasdasd',
+    number: '8324723849732498',
+    expires_date: '498374',
+    cvv: '987',
+    cep: '98798798',
+  };
+
   cardFlags = [
     { value: 'master-0', viewValue: 'Master' },
     { value: 'visa-1', viewValue: 'Visa' },
@@ -27,20 +36,38 @@ export class PaymentComponent implements OnInit {
     private cardService: CardService
   ) {
     this.cards = this.cardService.getCards();
-    console.log(this.cardService.getCards());
+
+    const selectedCard = this.cards.filter(card => {
+      if (!card.active) {
+        return;
+      }
+      return card;
+    });
+
+    this.selectedCard = selectedCard[0];
   }
 
   ngOnInit() {
+    // console.log(this.selectedCard);
   }
 
-  getCards(): void {
+
+  getCards() {
     this.cards = this.cardService.getCards();
   }
 
-  addCard(card: NgForm): void {
-    console.log(card);
+  addCard(card: NgForm) {
     return this.cardService.addCard(card);
   }
+
+  selectCard(card): any {
+    this.selectedCard = card;
+    this.cardService.selectCard(this.selectedCard);
+
+    return undefined;
+
+  }
+
 
   changeStep(index: number) {
     this.stepper.selectedIndex = index;
