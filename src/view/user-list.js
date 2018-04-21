@@ -41,7 +41,7 @@ export const UserData = ({
 
 export const Button = (props) => {
   return (
-    <button className="btn">
+    <button onClick={props.onClick} className="btn">
       {props.content}
     </button>
   )
@@ -58,7 +58,7 @@ export const PaymentButton = (props) => {
         <source srcSet={imgPaySvg} alt=""/>
         <img src={imgPayPng} srcSet={`${imgPayPng},${imgPayPng2x} 2x, ${imgPayPng3x} 3x`} alt="" />
       </picture>
-      <Button content={buttonContent}/>
+      <Button onClick={props.onClick} content={buttonContent}/>
     </div>
   )
 }
@@ -67,13 +67,15 @@ export const UserPanel = (props) => {
   return (
     <div className="user-panel">
       <UserData {...props.user}/>
-      <PaymentButton />
+      <PaymentButton onClick={props.togglePaymentWindow}/>
     </div>
   )
 }
 
 export const UserList = (props) => {
   return (
-    props.userList.map((user, index) => <UserPanel key={index} user={user} />)
+    <div className="user-list">
+      {props.userList.map((user, index) => <UserPanel key={index} togglePaymentWindow={() => props.togglePaymentWindow(user)} user={user} />)}
+    </div>
   )
 }

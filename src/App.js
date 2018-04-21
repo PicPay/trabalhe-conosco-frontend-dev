@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import { UserList } from './view/user-list'
+import { PaymentWindow } from './view/payment'
 
 const userList = [
   {
@@ -24,9 +25,27 @@ const userList = [
 ]
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      paymentWindowIsOpen: false,
+      chosenUser: {},
+    }
+  }
+
+  togglePaymentWindow = (user) => {
+    this.setState({
+      paymentWindowIsOpen: !this.state.paymentWindowIsOpen,
+      chosenUser: user,
+    })
+  }
+
   render() {
     return (
-      <UserList userList={userList} />
+      <div>
+        <PaymentWindow onClose={() => this.togglePaymentWindow({})} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser}/>
+        <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={userList} />
+      </div>
     )
   }
 }
