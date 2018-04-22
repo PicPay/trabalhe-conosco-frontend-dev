@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { UserData, Button } from './user-list'
 
-export const PaymentWindow = (props) =>  {
-  const style = { display: (props.opened) ? null : 'none' }
-  return (
-    <div className="payment-window" style={style}>
-      <Button onClick={props.onClose} content="Voltar"/>
-      <UserData {...props.user} />
-      <input type="text" className="payment-value" />
-      <Button content="PAGAR"/>
-    </div>
-  )
+export class PaymentWindow extends Component  {
+  constructor(props) {
+    super(props)
+    this.state = { value: '' }
+  }
+
+  handleChange = (event) => {
+    this.setState({ value: event.target.value })
+  }
+
+  render() {
+    const style = { display: (this.props.opened) ? null : 'none' }
+    return (
+      <div className="payment-window" style={style}>
+        <Button onClick={this.props.onClose} content="Voltar"/>
+        <UserData {...this.props.user} />
+        <input type="text" className="payment-value" value={this.state.value} onChange={this.handleChange} />
+        <Button onClick={() => this.props.onPay(this.props.user.id, this.state.value)} content="PAGAR"/>
+      </div>
+    )
+  }
 }
 
 export const PaymentConfirmation = ({
