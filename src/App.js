@@ -17,9 +17,9 @@ class App extends Component {
   }
 
   renderUser = ({ img, name, id, username }) => (
-    <div key={id} className="Row">
+    <li key={id} className="Row" onClick={() => console.log('hotdog!')}>
       <UserRow img={img} name={name} id={id} username={username} />
-    </div>
+    </li>
   )
 
   render() {
@@ -34,9 +34,9 @@ class App extends Component {
             </div>
           </div>
         </header>
-        <div className="App-content-wrap">
+        <ul className="App-content-wrap">
           {this.state.users.map(this.renderUser)}
-        </div>
+        </ul>
       </div>
     );
   }

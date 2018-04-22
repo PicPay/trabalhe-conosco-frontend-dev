@@ -8,9 +8,9 @@ export const UserRow = ({img, name, id, username}) => (
       <div className="User-wrap">
         <img src={img} className="User-image" alt="usuario" />
         <div className="User-info-wrap">
-          <p className="User-name">{name}</p>
+          <h3 className="User-name">{name}</h3>
           <section className="User-detail-wrap">
-            <h3 className="User-detail">{id}</h3>
+            <p className="User-detail">{id}</p>
             <p className="User-detail-spaced">{username}</p>
           </section>
         </div>
