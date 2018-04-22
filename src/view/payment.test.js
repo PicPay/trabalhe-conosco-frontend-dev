@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { PaymentWindow, PaymentConfirmation } from './payment'
+import { PaymentWindow, PaymentConfirmation, ConfirmationWindow } from './payment'
 import { UserData, Button } from './user-list'
 
 describe('#PaymentWindow', function () {
@@ -24,5 +24,18 @@ describe('#PaymentConfirmation', function () {
     expect(wrapper.text()).toMatch('Data')
     expect(wrapper.text()).toMatch('Cartão')
     expect(wrapper.text()).toMatch('Valor')
+  })
+})
+
+describe('#ConfirmationWindow', function () {
+  it('should render without throwing an error', function () {
+    const wrapper = shallow(<ConfirmationWindow />)
+    const userContent = wrapper.find(UserData)
+    const paymentData = wrapper.find(PaymentConfirmation)
+    const buttons = wrapper.find(Button)
+
+    expect(userContent).toHaveLength(1)
+    expect(paymentData).toHaveLength(1)
+    expect(buttons).toHaveLength(2)
   })
 })

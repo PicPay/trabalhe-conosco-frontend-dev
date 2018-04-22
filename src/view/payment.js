@@ -28,3 +28,15 @@ export const PaymentConfirmation = ({
     </div>
   )
 }
+
+export const ConfirmationWindow = (props) =>  {
+  const style = { display: (props.opened) ? null : 'none' }
+  return (
+    <div className="confirmation-window" style={style}>
+      <UserData {...props.user} />
+      <PaymentConfirmation {...props.paymentData} />
+      <Button onClick={props.onClose} content="VOLTAR"/>
+      <Button content="PAGAR NOVAMENTE"/>
+    </div>
+  )
+}
