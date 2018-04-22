@@ -12,3 +12,19 @@ export const PaymentWindow = (props) =>  {
     </div>
   )
 }
+
+export const PaymentConfirmation = ({
+  transaction,
+  date,
+  card,
+  value,
+}) => {
+  return (
+    <div className="payment-confirmation">
+      <span>Transação: {transaction}</span>
+      <span>Data: {date}</span>
+      <span>Cartão: {card}</span>
+      <span>Valor: {value}</span>
+    </div>
+  )
+}
