@@ -1,0 +1,61 @@
+aside.navbarPicpay {
+	background: $light-teal;
+	padding: 10px .75rem;
+
+	.logo {
+		color: #fff;
+		font-weight: bold;
+		font-size: 13px;
+	}
+
+	.subtext {
+		color: $dusk-two;
+		font-family: $fontMont;
+		font-weight: 500;
+		font-size: 13px;
+	}
+}
+
+html {
+	height: 100%;
+}
+
+.goBack {
+	color: #fff;
+	font-weight: 400;
+
+	i {
+		color: $light-teal;
+		vertical-align: middle;
+		margin: 0 0 4px 0;
+	}
+}
+
+.noMargin {
+	margin-bottom: 0;
+}
+
+.pos-relative {
+	position: relative;
+}
+
+.callToAction {
+	font-weight: 500;
+	text-transform: uppercase;
+	padding: 8px 0;
+	height: auto;
+	border-radius: 24px;
+
+	&.teal {
+		background: $duck-egg-blue; /* browsers antigos */
+		background: -moz-linear-gradient(top, $duck-egg-blue 0%, $light-teal 100%);
+		background: -webkit-linear-gradient(top, $duck-egg-blue 0%,$light-teal 100%);
+		background: linear-gradient(to bottom, $duck-egg-blue 0%,$light-teal 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$duck-egg-blue, endColorstr=$light-teal,GradientType=1 );
+
+		color: $dusk-two;
+	}
+	&.giant {
+		width: 100%;
+	}
+}

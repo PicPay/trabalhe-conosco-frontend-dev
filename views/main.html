@@ -1,0 +1,21 @@
+<section class="mainList">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <div class="wrapper">
+          <ul class="collection" id="listOfPeople">
+            <li ng-repeat="person in people" class="collection-item avatar">
+              <img ng-src="{{person.img}}" alt="" class="circle">
+              <span class="title">{{person.name}}</span>
+              <p>id: {{person.id}} {{person.username}}</p>
+              <button class="secondary-content" ng-click="payThisPerson(person)">
+                <img class="" src="./build/img/pagar.svg" alt="" height="28" /> <span class="hide-on-small-only pay-text">pagar</span>
+                <img class="" src="./build/img/down.svg" alt="" height="28" />
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

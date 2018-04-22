@@ -1,0 +1,78 @@
+.payment {
+	min-height: calc(100vh - 40.8px); ;
+
+	background: $quase-preto; /* browsers antigos */
+	background: -moz-linear-gradient(top, $quase-preto 0%, $dusk-one 100%);
+	background: -webkit-linear-gradient(top, $quase-preto 0%,$dusk-one 100%);
+	background: linear-gradient(to bottom, $quase-preto 0%,$dusk-one 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$quase-preto, endColorstr=$dusk-one,GradientType=1 );
+
+	.circle {
+		border: 2px solid $white-one;
+	}
+
+	.subText, span.title {
+		color: $white-one;
+
+		@media screen and (min-width: $break-sm) {
+			color: $dusk-two;
+		}
+	}
+
+	.subText {
+		-webkit-margin-before: 5px;
+		-webkit-margin-after: 1em;
+	}
+
+	span.title {
+		font-weight: bold;
+		font-size: 24px;
+
+		@media screen and (min-width: $break-sm) {
+			
+		}
+	}
+
+	input.paymentValue {
+		font-family: $fontNunito;
+		font-size: 48px;
+		color: #fff;
+		text-align: center;
+		padding-bottom: 10px;
+		margin-top: 40px;
+		border-color: $dusk-two;
+	}
+
+	.actions {
+		width: 100%;
+		padding: 0 20px 4px;
+		position: absolute;
+		bottom: 20px;
+
+		.info {
+			padding-top: 20px;
+			border-top: 1px solid $white-one;
+
+			&.danger {
+				p, a {
+					color: $medium-pink;	
+				}
+			}
+			
+			p {
+				-webkit-margin-before: 0px;
+				-webkit-margin-after: 0px;
+			}
+			a {
+				font-weight: 500;
+				text-decoration: underline;
+			}
+
+			img {
+				border: none;
+				display: table;
+				margin: 0 0 0 auto;
+			}
+		}
+	}
+}

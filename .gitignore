@@ -1,0 +1,16 @@
+﻿# ignora arquivos indesejados
+.DS_Store
+DS_Store
+.sublime-workspace
+.ini
+.map
+
+# ignora pacotes do node (dependências do grunt)
+node_modules/
+pug/
+
+# ignora configurações do Sublime SFTP (para quem usa)
+sftp-config*.json
+
+#ignora os arquivos do git FTP (para quem usa)
+.git-ftp-tmp
