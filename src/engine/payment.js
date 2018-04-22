@@ -11,3 +11,14 @@ export const sendPayment = async (url, payload) => {
   const json = await response.json()
   return json
 }
+
+export const timestampToDate = (timestamp) => {
+  const date = new Date(timestamp * 1000)
+  return {
+    day: date.getDate(),
+    month: date.getMonth() + 1,
+    year: date.getFullYear(),
+    hour: date.getHours(),
+    minute: date.getMinutes(),
+  }
+}

@@ -1,4 +1,4 @@
-import { sendPayment } from './payment'
+import { sendPayment, timestampToDate } from './payment'
 import nock from 'nock'
 
 describe('#sendPayment', () => {
@@ -48,5 +48,20 @@ describe('#sendPayment', () => {
       })
     const response = await sendPayment('http://careers.picpay.com/tests/mobdev/transaction', payload)
     expect(response).toEqual(confirmation)
+  })
+})
+
+describe('#parseDate', () => {
+  test('should convert timestamp to date', async () => {
+    const timestamp = '1524404634'
+    const date = {
+      day: 22,
+      month: 4,
+      year: 2018,
+      hour: 10,
+      minute: 43,
+    }
+    const result = timestampToDate(timestamp)
+    expect(result).toEqual(date)
   })
 })
