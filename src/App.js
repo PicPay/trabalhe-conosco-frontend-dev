@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 import { UserList } from './view/user-list'
-import { PaymentWindow } from './view/payment'
+import { PaymentWindow, ConfirmationWindow } from './view/payment'
+import { sendPayment, timestampToDate } from './engine/payment'
 
 const userList = [
   {
@@ -24,13 +25,21 @@ const userList = [
   },
 ]
 
+const card = {
+  card_number: '1111111111111111',
+  cvv: 789,
+  expiry_date: '01/18',
+}
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       paymentWindowIsOpen: false,
+      confirmationWindowIsOpen: false,
       chosenUser: {},
     }
+    this.recipe = {}
   }
 
   togglePaymentWindow = (user) => {
@@ -40,10 +49,37 @@ class App extends Component {
     })
   }
 
+  sendPayment = (userId, value) => {
+    const payload = {
+      ...card,
+      value,
+      destination_user_id: userId,
+    }
+    sendPayment('http://careers.picpay.com/tests/mobdev/transaction', payload)
+      .then((result) => {
+        const status = result.transaction.success
+        if (status) {
+          const date = timestampToDate(result.transaction.timestamp)
+          this.recipe = {
+            transaction: result.transaction.id,
+            date: `${date.day}/${date.month}/${date.year}`,
+            card: `**** **** **** ${payload.card_number.substring(12)}`,
+            value: value,
+          }
+        }
+        this.setState({
+          paymentWindowIsOpen: !status,
+          confirmationWindowIsOpen: status,
+          chosenUser: result.transaction.destination_user,
+        })
+      })
+  }
+
   render() {
     return (
       <div>
-        <PaymentWindow onClose={() => this.togglePaymentWindow({})} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser}/>
+        <ConfirmationWindow onClose={() => this.togglePaymentWindow({})} opened={this.state.confirmationWindowIsOpen} user={this.state.chosenUser} paymentData={this.recipe}/>
+        <PaymentWindow onPay={this.sendPayment} onClose={() => this.togglePaymentWindow({})} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser}/>
         <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={userList} />
       </div>
     )
