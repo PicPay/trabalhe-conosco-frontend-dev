@@ -37,6 +37,7 @@ class App extends Component {
     super(props)
     this.state = {
       modalIsOpen: false,
+      paymentWindowIsOpen: false,
       confirmationWindowIsOpen: false,
       chosenUser: {},
       userList: [],
@@ -47,6 +48,7 @@ class App extends Component {
   togglePaymentWindow = (user) => {
     this.setState({
       paymentWindowIsOpen: !this.state.paymentWindowIsOpen,
+      modalIsOpen: !this.state.modalIsOpen,
       chosenUser: user,
     })
   }
@@ -87,8 +89,9 @@ class App extends Component {
   }
 
   render() {
+    const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
     return (
-      <div>
+      <div style={style}>
         <ConfirmationWindow onClose={() => this.togglePaymentWindow({})} opened={this.state.confirmationWindowIsOpen} user={this.state.chosenUser} paymentData={this.recipe}/>
         <PaymentWindow onPay={this.sendPayment} onClose={() => this.togglePaymentWindow({})} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser}/>
         <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />

@@ -7,12 +7,17 @@
 .user-panel .payment-button{
   margin-left: auto;
 }
-.user-data{
+.user-panel .user-data{
   display: flex;
   align-items: center;
   padding-left: 16px;
   padding-bottom: 10px;
   padding-top: 10px;
+  color: #ffffff;
+}
+.user-data{
+  display: flex;
+  align-items: center;
   color: #ffffff;
 }
 .btn{
@@ -38,6 +43,7 @@
 .user-name{
   height: 19px;
   font-size: 16px;
+  font-family: Roboto;
   font-weight: bold;
 }
 .user-info span{

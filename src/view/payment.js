@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { UserData, Button } from './user-list'
+import './payment.css'
 
 export class PaymentWindow extends Component  {
   constructor(props) {
@@ -15,10 +16,14 @@ export class PaymentWindow extends Component  {
     const style = { display: (this.props.opened) ? null : 'none' }
     return (
       <div className="payment-window" style={style}>
-        <Button onClick={this.props.onClose} content="Voltar"/>
+        <span className="back-button">
+          <Button onClick={this.props.onClose} content="Voltar"/>
+        </span>
         <UserData {...this.props.user} />
-        <input type="text" className="payment-value" value={this.state.value} onChange={this.handleChange} />
-        <Button onClick={() => this.props.onPay(this.props.user.id, this.state.value)} content="PAGAR"/>
+        <input type="text" className="payment-value" value={this.state.value} onChange={this.handleChange} placeholder="R$ 0,00" />
+        <span className="pay-button">
+          <Button onClick={() => this.props.onPay(this.props.user.id, this.state.value)} content="PAGAR"/>
+        </span>
       </div>
     )
   }
