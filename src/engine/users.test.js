@@ -22,7 +22,7 @@ describe('#getUsers', () => {
         },
       ])
 
-    const users = await fetchUsers('http://careers.picpay.com/tests/mobdev/users')
+    const users = await fetchUsers()
 
     expect(users).toEqual(usersList)
   })

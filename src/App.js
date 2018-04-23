@@ -3,27 +3,28 @@ import './App.css'
 import { UserList } from './view/user-list'
 import { PaymentWindow, ConfirmationWindow } from './view/payment'
 import { sendPayment, timestampToDate } from './engine/payment'
+import { fetchUsers } from './engine/users'
 
-const userList = [
-  {
-    id: 1001,
-    name: 'Eduardo Santos',
-    img: 'https://randomuser.me/api/portraits/men/9.jpg',
-    username: '@eduardo.santos',
-  },
-  {
-    id: 1002,
-    name: 'Israel Lima',
-    img: 'https://randomuser.me/api/portraits/men/6.jpg',
-    username: '@israel.lima',
-  },
-  {
-    id: 1003,
-    name: 'Joao Santos',
-    img: 'https://randomuser.me/api/portraits/men/5.jpg',
-    username: '@joao.santos',
-  },
-]
+// const userList = [
+//   {
+//     id: 1001,
+//     name: 'Eduardo Santos',
+//     img: 'https://randomuser.me/api/portraits/men/9.jpg',
+//     username: '@eduardo.santos',
+//   },
+//   {
+//     id: 1002,
+//     name: 'Israel Lima',
+//     img: 'https://randomuser.me/api/portraits/men/6.jpg',
+//     username: '@israel.lima',
+//   },
+//   {
+//     id: 1003,
+//     name: 'Joao Santos',
+//     img: 'https://randomuser.me/api/portraits/men/5.jpg',
+//     username: '@joao.santos',
+//   },
+// ]
 
 const card = {
   card_number: '1111111111111111',
@@ -35,9 +36,10 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      paymentWindowIsOpen: false,
+      modalIsOpen: false,
       confirmationWindowIsOpen: false,
       chosenUser: {},
+      userList: [],
     }
     this.recipe = {}
   }
@@ -47,6 +49,15 @@ class App extends Component {
       paymentWindowIsOpen: !this.state.paymentWindowIsOpen,
       chosenUser: user,
     })
+  }
+
+  componentDidMount =  () => {
+    fetchUsers()
+      .then((result) => {
+        this.setState({
+          userList: result,
+        })
+      })
   }
 
   sendPayment = (userId, value) => {
@@ -80,7 +91,7 @@ class App extends Component {
       <div>
         <ConfirmationWindow onClose={() => this.togglePaymentWindow({})} opened={this.state.confirmationWindowIsOpen} user={this.state.chosenUser} paymentData={this.recipe}/>
         <PaymentWindow onPay={this.sendPayment} onClose={() => this.togglePaymentWindow({})} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser}/>
-        <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={userList} />
+        <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
       </div>
     )
   }
