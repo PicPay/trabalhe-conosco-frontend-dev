@@ -17,6 +17,7 @@
 }
 .user-data{
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   color: #ffffff;
 }
@@ -37,6 +38,7 @@
 }
 .user{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   padding-left: 8px;
 }

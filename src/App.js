@@ -74,6 +74,7 @@ class App extends Component {
         if (status) {
           const date = timestampToDate(result.transaction.timestamp)
           this.recipe = {
+            confirmationMsg: 'Pagamento Confirmado!',
             transaction: result.transaction.id,
             date: `${date.day}/${date.month}/${date.year}`,
             card: `**** **** **** ${payload.card_number.substring(12)}`,

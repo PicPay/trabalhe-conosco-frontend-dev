@@ -8,17 +8,58 @@
   background-image: linear-gradient(259deg, #3c3e64, #1d1e2a);
 }
 
+.payment-window .rectangle-1{
+  width: 68%;
+  height: 2px;
+  background-color: #474971;
+}
+
+.payment-window .rectangle-2{
+  width: 87%;
+  height: 1px;
+  background-color: #d8d8d8;
+  margin-top: auto;
+}
+
+.payment-window .card{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 28px;
+}
+
+.card-msg{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #ef5778;
+  padding-left: 12px;
+}
+
+.card-msg a{
+  font-weight: bold;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #ef5778;
+}
+
 .payment-window input{
-  width: 172px;
+  width: 53%;
   height: 66px;
   font-size: 48px;
-  color: #d8d8d8;
+  font-family: NunitoSans;
+  text-decoration-color: #7de6c6;
+  text-align: center;
+  color: #ffffff;
   background: Transparent;
   border: none;
+  caret-color: #7de6c6;
 }
 
 .payment-window .user-data{
-  margin: 60px 45px 40px;
+  margin: 28px 45px 40px;
 }
 
 .payment-window .user-img{
@@ -33,18 +74,152 @@
 }
 
 .pay-button{
-  margin: auto 16px 24px;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+  width: 75%;
 }
 
 .back-button{
   align-self: flex-start;
+  margin-top: 16px;
+  margin-left: 22px;
+}
+
+.back-button .btn{
+  width: 37px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.button-icon{
+  height: 16px;;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #7de6c6;
 }
 
 .pay-button .btn{
-  width: 343px;
+  width: 100%;
   height: 48px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  color: #474971;
   border-radius: 24px;
   background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   border: none;
+}
+
+.confirmation-window{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(259deg, #3c3e64, #1d1e2a);
+}
+
+.confirmation-window .user-data{
+  margin: 28px 45px 72px;
+}
+
+.confirmation-window .user-img{
+  width: 80px;
+  height: 80px;
+}
+
+.confirmation-window .user-name{
+  height: 28px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.payment-confirmation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 58%;
+}
+
+.payment-confirmation .confirmation-msg{
+  height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.recipe-row{
+  display: flex;
+}
+
+.recipe{
+  width: 92%;
+  margin-top: 40px;
+}
+
+.recipe .rectangle-2{
+  width: 100%;
+  height: 1px;
+  margin-bottom: 20px;
+  background-color: #d8d8d8;
+}
+
+.recipe-label{
+  height: 16px;
+  font-weight: bold;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.recipe-data{
+  height: 16px;
+  font-weight: 500;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #7de6c6;
+  margin-left: auto;
+}
+
+.recipe-buttons{
+  display: flex;
+  width: 81%;
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+
+.recipe-buttons .btn{
+  width: 60%;
+  height: 48px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  color: #474971;
+  border-radius: 24px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.back-button-2{
+  width: 33%;
+  margin-right: 24px;
+}
+
+.back-button-2 .btn{
+  width: 100%;
+  height: 48px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 24px;
+  background-image: linear-gradient(211deg, #3c3e64, #1d1e2a);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border: solid 1px #ffffff;
 }
