@@ -39,7 +39,7 @@ export class PaymentWindow extends Component  {
           </div>
         </div>
         <span className="pay-button">
-          <Button onClick={() => this.props.onPay(this.props.user.id, this.state.value)} content="PAGAR"/>
+          <Button onClick={() => { this.props.onPay(this.props.user.id, this.state.value) }} content="PAGAR"/>
         </span>
       </div>
     )
@@ -83,7 +83,7 @@ export const ConfirmationWindow = (props) =>  {
       <PaymentConfirmation {...props.paymentData} />
       <div className="recipe-buttons">
         <span className="back-button-2"><Button onClick={props.onClose} content="VOLTAR"/></span>
-        <Button content="PAGAR NOVAMENTE"/>
+        <Button onClick={() => props.togglePaymentWindow(props.user)} content="PAGAR NOVAMENTE"/>
       </div>
     </div>
   )
