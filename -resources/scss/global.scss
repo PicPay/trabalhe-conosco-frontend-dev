@@ -59,3 +59,40 @@ html {
 		width: 100%;
 	}
 }
+
+.actions {
+	width: 100%;
+	padding: 0 20px 4px;
+	position: absolute;
+	bottom: 20px;
+
+	.info {
+		padding-top: 20px;
+		border-top: 1px solid $white-one;
+
+		@media screen and (min-height: $min-height-xs) {
+			border-color: transparent;	
+		}
+
+		&.danger {
+			p, a {
+				color: $medium-pink;	
+			}
+		}
+		
+		p {
+			-webkit-margin-before: 0px;
+			-webkit-margin-after: 0px;
+		}
+		a {
+			font-weight: 500;
+			text-decoration: underline;
+		}
+
+		img {
+			border: none;
+			display: table;
+			margin: 0 0 0 auto;
+		}
+	}
+}

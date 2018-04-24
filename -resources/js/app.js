@@ -1,18 +1,22 @@
-var app = angular.module('testeFrontApp', ['ngRoute', 'ngAnimate']);
+var app = angular.module('testeFrontApp', ['ngRoute', 'ngAnimate', 'LocalStorageModule']);
 
 app.config(function($routeProvider) {
 	$routeProvider.
 	when('/', {
-		templateUrl: '../views/main.html',
+		templateUrl: 'views/main.html',
 		controller: 'listCtrl'
 	})
 	.when('/list', {
-		templateUrl: '../views/main.html',
+		templateUrl: 'views/main.html',
 		controller: 'listCtrl'
 	})
 	.when('/payment', {
-		templateUrl: '../views/payment.html',
+		templateUrl: 'views/payment.html',
 		controller: 'paymentCtrl'
+	})
+	.when('/card', {
+		templateUrl: 'views/card.html',
+		controller: 'creditCardCtrl'
 	})
 });
 
@@ -51,14 +55,36 @@ app.controller('listCtrl', function($scope, $location, $http, personToPayFactory
 	}
 });
 
-app.controller('paymentCtrl', function($scope, personToPayFactory){
+app.controller('paymentCtrl', function($scope, personToPayFactory, localStorageService){
 	$scope.personToPay = personToPayFactory.get();
-	console.log($scope.personToPay);
+	$scope.creditCards = [];
+
+	$scope.creditCards = localStorageService.get('creditCards');
+	console.log($scope.creditCards);
+});
+
+app.controller('creditCardCtrl', function($scope, localStorageService){
+	$scope.creditCard = {
+		card_name: "",
+		card_number:"",
+		cvv:0,
+		expiry_date:"",
+		zip:""
+	};
+
+	$scope.saveCard = function() {
+		localStorageService.set('creditCards', $scope.creditCard);
+	}
+
+	$scope.getCard = function() {
+		let card = localStorageService.get('creditCards');
+		console.log(card);
+	}
 });
 
 app.directive('testHeader', function() {
 	return {
 		restrict: 'E',
-		templateUrl: '../views/test-header.html'
+		templateUrl: 'views/test-header.html'
 	}
 });
