@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import { UserList } from './view/user-list'
-import { PaymentWindow, ConfirmationWindow } from './view/payment'
+import { PaymentWindow, ConfirmationWindow, CreditCardForm } from './view/payment'
 import { sendPayment, timestampToDate } from './engine/payment'
 import { fetchUsers } from './engine/users'
 
@@ -39,6 +39,7 @@ class App extends Component {
       modalIsOpen: false,
       paymentWindowIsOpen: false,
       confirmationWindowIsOpen: false,
+      creditCardForm: false,
       chosenUser: {},
       userList: [],
     }
@@ -65,6 +66,20 @@ class App extends Component {
     this.setState({
       modalIsOpen: false,
       confirmationWindowIsOpen: false,
+    })
+  }
+
+  openCreditCardForm = () => {
+    this.setState({
+      creditCardForm: true,
+      paymentWindowIsOpen: false,
+    })
+  }
+
+  closeCreditCardForm = () => {
+    this.setState({
+      creditCardForm: false,
+      paymentWindowIsOpen: true,
     })
   }
 
@@ -108,8 +123,9 @@ class App extends Component {
     const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
     return (
       <div style={style}>
+        <CreditCardForm opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />
         <ConfirmationWindow togglePaymentWindow={this.togglePaymentWindow} onClose={this.closeConfirmationWindow} opened={this.state.confirmationWindowIsOpen} user={this.state.chosenUser} paymentData={this.recipe}/>
-        <PaymentWindow onPay={this.sendPayment} onClose={this.closePaymentWindow} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser}/>
+        <PaymentWindow onPay={this.sendPayment} onClose={this.closePaymentWindow} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser} addCard={this.openCreditCardForm}/>
         <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
       </div>
     )

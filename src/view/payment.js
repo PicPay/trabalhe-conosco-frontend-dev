@@ -105,3 +105,58 @@ export const ConfirmationWindow = (props) =>  {
     </div>
   )
 }
+
+export class CreditCardForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      inputSelected: Array(5).fill(0),
+    }
+    this.className = ['rectangle-1', 'rectangle-2']
+  }
+
+  handleClick(id) {
+    const inputSelected = this.state.inputSelected.slice()
+    inputSelected.fill(0)
+    inputSelected[id] = 1
+    this.setState({
+      inputSelected: inputSelected,
+    })
+  }
+
+  render() {
+    const style = { display: (this.props.opened) ? null : 'none' }
+    const buttonContent = <div><span className="button-icon">&lsaquo;</span><span>Voltar</span></div>
+    return (
+      <div className="credit-card-form" style={style}>
+        <span className="back-button">
+          <Button onClick={this.props.onClose} content={buttonContent}/>
+        </span>
+        <select required>
+          <option value="" disabled selected>Selecione a bandeira</option>
+          <option value="Mastercard">Mastercard</option>
+          <option value="Visa">Visa</option>
+        </select>
+        <div className="rectangle-1"></div>
+        <span className="label" style={(this.state.inputSelected[0]) ? {} : { display: 'none' } }>Nome escrito no cartão</span>
+        <input type="text" placeholder="Nome escrito no cartão" onClick={() => this.handleClick(0)} />
+        <div className={(this.state.inputSelected[0]) ? this.className[1] : this.className[0]}></div>
+        <span className="label" style={(this.state.inputSelected[1]) ? {} : { display: 'none' } }>Número do cartão</span>
+        <input type="text" placeholder="Número do cartão" onClick={() => this.handleClick(1)} />
+        <div className={(this.state.inputSelected[1]) ? this.className[1] : this.className[0]}></div>
+        <span className="label" style={(this.state.inputSelected[2]) ? {} : { display: 'none' } }>Validade (mm/aaaa)</span>
+        <input type="text" placeholder="Validade (mm/aaaa)" onClick={() => this.handleClick(2)} />
+        <div className={(this.state.inputSelected[2]) ? this.className[1] : this.className[0]}></div>
+        <span className="label" style={(this.state.inputSelected[3]) ? {} : { display: 'none' } }>Código de segurança</span>
+        <input type="text" placeholder="Código de segurança" onClick={() => this.handleClick(3)} />
+        <div className={(this.state.inputSelected[3]) ? this.className[1] : this.className[0]}></div>
+        <span className="label" style={(this.state.inputSelected[4]) ? {} : { display: 'none' } }>CEP do endereço da fatura</span>
+        <input type="text" placeholder="CEP do endereço da fatura" onClick={() => this.handleClick(4)} />
+        <div className={(this.state.inputSelected[4]) ? this.className[1] : this.className[0]}></div>
+        <span className="register-button">
+          <Button onClick={() => this.props.register()} content="CADASTRAR"/>
+        </span>
+      </div>
+    )
+  }
+}
