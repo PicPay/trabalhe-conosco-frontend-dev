@@ -4,6 +4,10 @@ import imgAlertSvg from './img/alert.svg'
 import imgAlertPng from './img/alert.png'
 import imgAlertPng2x from './img/alert@2x.png'
 import imgAlertPng3x from './img/alert@3x.png'
+import imgGreenSvg from './img/green.svg'
+import imgGreenPng from './img/green.png'
+import imgGreenPng2x from './img/green@2x.png'
+import imgGreenPng3x from './img/green@3x.png'
 import './payment.css'
 
 export class PaymentWindow extends Component  {
@@ -28,16 +32,29 @@ export class PaymentWindow extends Component  {
         <input type="text" className="payment-value" value={this.state.value} onChange={this.handleChange} placeholder="R$ 0,00" />
         <span className="rectangle-1"></span>
         <span className="rectangle-2"></span>
-        <div className="card">
-          <picture>
-            <source srcSet={imgAlertSvg} alt=""/>
-            <img src={imgAlertPng} srcSet={`${imgAlertPng},${imgAlertPng2x} 2x, ${imgAlertPng3x} 3x`} alt="" />
-          </picture>
-          <div className="card-msg">
-            <span>Nenhum cartão de crédito cadastrado.</span>
-            <a href="#" className="card-msg-2">Cadastrar agora.</a>
-          </div>
-        </div>
+        {(localStorage.getItem('defaultCard')) ? (
+          <div className="card">
+            <picture>
+              <source srcSet={imgGreenSvg} alt=""/>
+              <img src={imgGreenPng} srcSet={`${imgGreenPng},${imgGreenPng2x} 2x, ${imgGreenPng3x} 3x`} alt="" />
+            </picture>
+            <div className="card-msg">
+              <span>Forma de pagamento:</span>
+              <a href="#" className="card-msg-2" onClick={this.props.addCard} >
+                Cartão de crédito com final {JSON.parse(localStorage.getItem('defaultCard')).number.substring(12)}
+              </a>
+            </div></div>
+        ) : (
+          <div className="no-card">
+            <picture>
+              <source srcSet={imgAlertSvg} alt=""/>
+              <img src={imgAlertPng} srcSet={`${imgAlertPng},${imgAlertPng2x} 2x, ${imgAlertPng3x} 3x`} alt="" />
+            </picture>
+            <div className="no-card-msg">
+              <span>Nenhum cartão de crédito cadastrado.</span>
+              <a href="#" className="no-card-msg-2" onClick={this.props.addCard} >Cadastrar agora.</a>
+            </div></div>
+        )}
         <span className="pay-button">
           <Button onClick={() => { this.props.onPay(this.props.user.id, this.state.value) }} content="PAGAR"/>
         </span>

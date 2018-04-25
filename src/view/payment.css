@@ -34,11 +34,35 @@
   align-items: left;
   font-family: Roboto;
   font-size: 14px;
-  color: #ef5778;
+  color: #ffffff;
   padding-left: 12px;
 }
 
 .card-msg a{
+  font-weight: bold;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.payment-window .no-card{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 28px;
+}
+
+.no-card-msg{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #ef5778;
+  padding-left: 12px;
+}
+
+.no-card-msg a{
   font-weight: bold;
   font-family: Roboto;
   font-size: 14px;
