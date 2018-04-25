@@ -1,0 +1,55 @@
+.mycards {
+	h2, li.myCardsList-item, a.newCard {
+		font-size: 20px;
+		font-weight: 500;
+		color: $white-one;
+	}
+
+	h2 {
+		text-align: center;
+		margin: 24px 0 0 0;
+	}
+
+	ul.myCardsList {
+		padding: 0;
+		-webkit-margin-before: 0;
+		-webkit-margin-after: 0;
+
+		img.myCardsList-img {
+			display: inline-block;
+			vertical-align: middle;
+			margin-bottom: 3px;
+			margin-right: 16px;
+		}
+
+		li.myCardsList-item {
+			padding: 24px 32px;
+
+			&.active {
+				background: rgba(255,255,255,0.1);
+			}
+
+			img.checked {
+				margin-top: 3px;
+				vertical-align: middle;
+				display: inline-block;
+			}
+		}
+	}
+	.newCard {
+		border-top: 1px solid rgba(255, 255, 255, 0.24);
+		display: block;
+		padding: 24px 0;
+
+		img {
+			display: inline-block;
+			vertical-align: middle;
+			margin-bottom: 3px;
+		}
+	}
+
+	.scrollableArea {
+		height: calc((100vh / 8) * 4);
+		overflow-y: scroll;
+	}
+}

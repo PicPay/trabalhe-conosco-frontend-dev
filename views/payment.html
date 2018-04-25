@@ -1,11 +1,11 @@
-<section class="payment pos-relative">
+<section class="payment pos-relative defaultGradientBg defaultHeight">
 	<div class="container">
 		<div class="row">
 			<div class="col s12">
 				<p><a href="#!" class="goBack"><i class="small material-icons">chevron_left</i> Voltar</a></p>
 				<div class="row valign-wrapper">
 					<div class="col s4">
-						<img ng-src="{{personToPay.img}}" alt="{{personToPay.name}}" class="circle responsive-img">
+						<img ng-src="{{personToPay.img}}" alt="{{personToPay.name}}" class="circle responsive-img" />
 					</div>
 					<div class="col s8">
 						<span class="black-text">
@@ -15,7 +15,7 @@
 					</div>
 				</div>
 
-				<input class="paymentValue" type="number" placeholder="R$ 0,00">
+				<input class="paymentValue" type="number" placeholder="R$ 0,00" ng-model="value">
 			</div>
 		</div>
 	</div>
@@ -23,7 +23,7 @@
 	<aside class="actions">
 		<div class="row noMargin">
 			<div class="col s12">
-				<div class="info danger">
+				<div class="messages danger" ng-if="creditCards == []">
 					<div class="row valign-wrapper">
 						<div class="col s2">
 							<img ng-src="./build/img/alert.svg" class="responsive-img" height="20px">
@@ -34,9 +34,22 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="messages info" ng-if="creditCards != []">
+					<div class="row valign-wrapper">
+						<div class="col s2">
+							<img ng-src="./build/img/green.svg" class="responsive-img" height="20">
+						</div>
+						<div class="col s10">
+							<a href="#!mycards">
+								<p class="">Forma de pagamento: <br><b>Cartão de Crédito com final {{lastDigits}}</b></p>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<button class="btn callToAction teal giant">Pagar</button>
+		<button class="btn callToAction teal giant" ng-click="pay()">Pagar</button>
 	</aside>
 </section>

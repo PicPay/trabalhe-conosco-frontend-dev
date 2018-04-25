@@ -1,10 +1,3 @@
 .creditCard {
-	min-height: calc(100vh - 40.8px);
-	height: auto;
 
-	background: $quase-preto; /* browsers antigos */
-	background: -moz-linear-gradient(top, $quase-preto 0%, $dusk-one 100%);
-	background: -webkit-linear-gradient(top, $quase-preto 0%,$dusk-one 100%);
-	background: linear-gradient(to bottom, $quase-preto 0%,$dusk-one 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$quase-preto, endColorstr=$dusk-one,GradientType=1 );
 }

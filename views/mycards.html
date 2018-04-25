@@ -1,0 +1,41 @@
+<section class="mycards pos-relative defaultGradientBg defaultHeight">
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<p><a href="#!payment" class="goBack"><i class="small material-icons">chevron_left</i> Voltar</a></p>
+			</div>
+
+			<div class="col s10 offset-s1">	
+				<h2>Cartões Cadastrados</h2>
+			</div>
+		</div>
+	</div>
+
+	<ul class="myCardsList scrollableArea">
+		<li class="myCardsList-item" 
+			ng-repeat="card in creditCards" 
+			ng-click="targetThisCard(card, $index)" 
+			ng-class="{active: card.is_selected}"
+		>
+			<img ng-src="./build/img/green.svg" class="responsive-img myCardsList-img" height="20"> {{card.card_number}} 
+			<!-- <button class="btn-flat" ng-click="deleteThisCard($index)">
+				<i class="material-icons">clear</i>
+			</button> -->
+			<img ng-src="./build/img/check-mark.svg" class="responsive-img checked right" height="20" ng-if="card.is_selected">
+		</li>
+	</ul>
+
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<a href="#!card" class="newCard">
+					<img ng-src="./build/img/plus.svg" alt=""> Cadastrar novo cartão
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<aside class="actions">
+		<button class="btn callToAction teal giant" ng-click="chooseCard()">Selecionar Cartão</button>
+	</aside>
+</section>

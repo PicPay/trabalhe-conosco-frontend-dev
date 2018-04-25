@@ -1,4 +1,4 @@
-<section class="creditCard">
+<section class="creditCard pos-relative defaultGradientBg defaultHeight">
 	<div class="container">
 		<div class="row">
 			<div class="col s12">
@@ -13,23 +13,23 @@
 						</select>
 					</div> -->
 					<div class="input-field">
-						<input id="cardName" type="text" ng-model="creditCard.card_name" />
+						<input id="cardName" type="text" ng-model="creditCard.card_name" ng-required />
 						<label for="cardName">Nome escrito no cartão</label>
 					</div>
 					<div class="input-field">
-						<input id="cardNumber" type="text" ng-model="creditCard.card_number" />
+						<input id="cardNumber" type="text" mask="9999 9999 9999 9999" ng-model="creditCard.card_number" ng-required />
 						<label for="cardNumber">Número do cartão</label>
 					</div>
 					<div class="input-field">
-						<input id="validThru" type="text" ng-model="creditCard.expiry_date" />
+						<input id="validThru" type="text" mask="99/9999" ng-model="creditCard.expiry_date" ng-required />
 						<label for="validThru">Validade (mm/aaaa)</label>
 					</div>
 					<div class="input-field">
-						<input id="code" type="text" ng-model="creditCard.cvv" />
+						<input id="code" type="text" mask="999" ng-model="creditCard.cvv" ng-required />
 						<label for="code">Código de segurança</label>
 					</div>
 					<div class="input-field">
-						<input id="zip" type="text" ng-model="creditCard.zip" />
+						<input id="zip" type="text" mask="99999-999" ng-model="creditCard.zip" ng-required />
 						<label for="zip">CEP do endereço da fatura</label>
 					</div>
 				</form>
