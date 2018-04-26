@@ -23,7 +23,6 @@ export class PaymentWindow extends Component  {
   render() {
     const style = { display: (this.props.opened) ? null : 'none' }
     const buttonContent = <div><span className="button-icon">&lsaquo;</span><span>Voltar</span></div>
-    const cards = JSON.parse(localStorage.getItem('cards'))
     return (
       <div className="payment-window" style={style}>
         <span className="back-button">
@@ -33,7 +32,7 @@ export class PaymentWindow extends Component  {
         <input type="text" className="payment-value" value={this.state.value} onChange={this.handleChange} placeholder="R$ 0,00" />
         <span className="rectangle-1"></span>
         <span className="rectangle-2"></span>
-        {(cards) ? (
+        {(this.props.card) ? (
           <div className="card">
             <picture>
               <source srcSet={imgGreenSvg} alt=""/>
@@ -42,7 +41,7 @@ export class PaymentWindow extends Component  {
             <div className="card-msg">
               <span>Forma de pagamento:</span>
               <a href="#" className="card-msg-2" onClick={this.props.addCard} >
-                Cartão de crédito com final {cards.filter(card => card.default)[0].number.substring(12)}
+                Cartão de crédito com final {this.props.card.number.substring(12)}
               </a>
             </div></div>
         ) : (
@@ -137,15 +136,6 @@ export class CreditCardForm extends Component {
     })
   }
 
-  register = () => {
-    const existCard = localStorage.getItem('cards')
-    const cards = (existCard) ? JSON.parse(existCard) : [{ ...this.state.card, default: true }]
-    if (existCard) {
-      cards.push({ ...this.state.card, default: false })
-    }
-    localStorage.setItem('cards', JSON.stringify(cards))
-  }
-
   render() {
     const style = { display: (this.props.opened) ? null : 'none' }
     const buttonContent = <div><span className="button-icon">&lsaquo;</span><span>Voltar</span></div>
@@ -176,7 +166,7 @@ export class CreditCardForm extends Component {
         <input type="text" name="cep" placeholder="CEP do endereço da fatura" onClick={() => this.handleClick(4)} onChange={this.handleInputChange} />
         <div className={(this.state.inputSelected[4]) ? this.className[1] : this.className[0]}></div>
         <span className="register-button">
-          <Button onClick={() => this.register()} content="CADASTRAR"/>
+          <Button onClick={() => this.props.registerCard(this.state.card)} content="CADASTRAR"/>
         </span>
       </div>
     )

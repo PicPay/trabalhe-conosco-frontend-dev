@@ -26,12 +26,6 @@ import { fetchUsers } from './engine/users'
 //   },
 // ]
 
-const card = {
-  card_number: '1111111111111111',
-  cvv: 789,
-  expiry_date: '01/18',
-}
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -90,11 +84,33 @@ class App extends Component {
           userList: result,
         })
       })
+    const cards = JSON.parse(localStorage.getItem('cards'))
+    if (cards) {
+      const defaultCard = cards.filter(card => card.default)[0]
+      this.setState({
+        card: defaultCard,
+      })
+    }
+  }
+
+  registerCard = (card) => {
+    const existCard = localStorage.getItem('cards')
+    const cards = (existCard) ? JSON.parse(existCard) : [{ ...card, default: true }]
+    if (existCard) {
+      cards.push({ ...card, default: false })
+    }
+    const defaultCard = cards.filter(card => card.default)[0]
+    this.setState({
+      card: defaultCard,
+    })
+    localStorage.setItem('cards', JSON.stringify(cards))
   }
 
   sendPayment = (userId, value) => {
     const payload = {
-      ...card,
+      card_number: this.state.card.number,
+      cvv: this.state.card.cvv,
+      expiry_date: this.state.card.expiry_date,
       value,
       destination_user_id: userId,
     }
@@ -123,9 +139,9 @@ class App extends Component {
     const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
     return (
       <div style={style}>
-        <CreditCardForm opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />
+        <CreditCardForm registerCard={this.registerCard} opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />
         <ConfirmationWindow togglePaymentWindow={this.togglePaymentWindow} onClose={this.closeConfirmationWindow} opened={this.state.confirmationWindowIsOpen} user={this.state.chosenUser} paymentData={this.recipe}/>
-        <PaymentWindow onPay={this.sendPayment} onClose={this.closePaymentWindow} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser} addCard={this.openCreditCardForm}/>
+        <PaymentWindow card={this.state.card} onPay={this.sendPayment} onClose={this.closePaymentWindow} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser} addCard={this.openCreditCardForm}/>
         <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
       </div>
     )
