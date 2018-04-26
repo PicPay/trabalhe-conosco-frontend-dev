@@ -22,6 +22,27 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/mycards.html',
 		controller: 'myCardsCtrl'
 	})
+	.when('/receipt', {
+		templateUrl: 'views/receipt.html',
+		controller: 'receiptCtrl'
+	})
+});
+
+app.factory('receiptFactory', function() {
+	var receipt = [];
+
+	function set(data) {
+		receipt = data;
+	}
+
+	function get() {
+		return receipt;
+	}
+
+	return {
+		set: set,
+		get: get
+	}
 });
 
 app.factory('personToPayFactory', function() {
@@ -77,9 +98,10 @@ app.controller('listCtrl', function($scope, $location, $http, personToPayFactory
 	}
 });
 
-app.controller('paymentCtrl', function($scope, personToPayFactory, $http, creditCardsFactory){
+app.controller('paymentCtrl', function($scope, $location,  personToPayFactory, $http, creditCardsFactory, receiptFactory){
 	$scope.personToPay = personToPayFactory.get();
 	$scope.creditCards = creditCardsFactory.get();
+	console.log($scope.creditCards);
 	$scope.selectedCard = null;
 	$scope.lastDigits = 0;
 	$scope.value = "";
@@ -106,14 +128,15 @@ app.controller('paymentCtrl', function($scope, personToPayFactory, $http, credit
 			url: 'http://careers.picpay.com/tests/mobdev/transaction',
 			data: $scope.mountedObjectToPay
 		}).then(function successCallback(response) {
-			console.log(response);
+			receiptFactory.set(response);
+			$location.path("receipt")
 		}, function errorCallback(response) {
 			$scope.people = response.statusText;
 		});
 	}
 });
 
-app.controller('creditCardCtrl', function($scope, creditCardsFactory, $route){
+app.controller('creditCardCtrl', function($scope, creditCardsFactory, $route, $location){
 	$scope.creditCard = {
 		card_name: "",
 		card_number:"",
@@ -125,7 +148,7 @@ app.controller('creditCardCtrl', function($scope, creditCardsFactory, $route){
 
 	$scope.saveCard = function() {
 		creditCardsFactory.set($scope.creditCard);
-		$route.reload();
+		$location.path('mycards');
 	}
 
 	$scope.getCard = function() {
@@ -134,7 +157,7 @@ app.controller('creditCardCtrl', function($scope, creditCardsFactory, $route){
 	}
 });
 
-app.controller('myCardsCtrl', function($scope, creditCardsFactory, localStorageService, $route){
+app.controller('myCardsCtrl', function($scope, creditCardsFactory, localStorageService, $route, $location){
 
 	$scope.creditCards = creditCardsFactory.get();
 	console.log($scope.creditCards);
@@ -157,9 +180,16 @@ app.controller('myCardsCtrl', function($scope, creditCardsFactory, localStorageS
 
 	$scope.chooseCard = function() {
 		localStorage.setItem("creditCards", JSON.stringify($scope.creditCards));
-		$route.reload();
+		$location.path('payment');
 	}
 });
+
+app.controller('receiptCtrl', function($scope, receiptFactory, $route){
+	$scope.receipt = receiptFactory.get();
+	$scope.dateAndTime = new Date();
+	console.log($scope.receipt);
+});
+
 
 app.directive('testHeader', function() {
 	return {

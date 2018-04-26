@@ -1,0 +1,44 @@
+.receipt {
+	h2 {
+		font-size: 20px;
+		font-weight: 600;
+		color: $white-one;
+		text-align: center;
+		margin-bottom: 40px;
+	}
+
+	.receiptList {
+		.receiptList-item {
+			clear: both;
+			color: $white-one;
+			font-weight: 300;
+			padding-bottom: 4px;
+			border-bottom: 1px solid $white-two;
+			margin-top: 20px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			b {
+				font-weight: 600;
+				color: $light-teal;
+			}
+		}
+	}
+
+	.actions {
+		bottom: 0;
+
+		.tryAgain {
+			font-size: 12px;
+		}
+	}
+
+	.messages {
+		h2, h3 {
+			font-size: 20px;
+			text-align: center;
+		}
+	}
+}

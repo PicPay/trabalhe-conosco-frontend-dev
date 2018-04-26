@@ -18,6 +18,10 @@ aside.navbarPicpay {
 
 html {
 	height: 100%;
+
+	* {
+		letter-spacing: 0.7px;
+	}
 }
 
 input[type='text'], input[type='number'] {
@@ -62,13 +66,21 @@ input[type='text'], input[type='number'] {
 }
 
 .callToAction {
-	font-weight: 500;
+	font-weight: bold;
 	text-transform: uppercase;
-	padding: 8px 0;
+	padding: 8px 24px;
 	height: auto;
-	border-radius: 24px;
+	border-radius: 50px;
+	background: transparent;
+	border: 1px solid $white-one;
+	color: #fff;
+
+	&:hover {
+		background: transparent;
+	}
 
 	&.teal {
+		border-color: transparent;
 		background: $duck-egg-blue; /* browsers antigos */
 		background: -moz-linear-gradient(top, $duck-egg-blue 0%, $light-teal 100%);
 		background: -webkit-linear-gradient(top, $duck-egg-blue 0%,$light-teal 100%);
@@ -87,49 +99,72 @@ input[type='text'], input[type='number'] {
 	padding: 0 20px 4px;
 	position: absolute;
 	bottom: 20px;
+}
 
-	.messages {
-		padding-top: 20px;
-		border-top: 1px solid $white-one;
+.messages {
+	border-top: 1px solid $white-one;
 
-		@media screen and (min-height: $min-height-xs) {
-			border-color: transparent;	
+	@media screen and (min-height: $min-height-xs) {
+		border-color: transparent;	
+	}
+
+	p {
+		font-weight: 500;
+		-webkit-margin-before: 0px;
+		-webkit-margin-after: 0px;
+
+		b {
+			font-weight: 600;
 		}
+	}
 
-		p {
-			font-weight: 300;
-			-webkit-margin-before: 0px;
-			-webkit-margin-after: 0px;
+	a {
+		text-decoration: underline;
+	}
 
-			b {
-				font-weight: 500;
-			}
+	img {
+		border: none;
+		display: table;
+		margin: 0 0 0 auto;
+	}
+
+	&.danger {
+		p, a, h2, h3 {
+			color: $medium-pink;	
+		}
+	}
+
+	&.info {
+		p, a, h2, h3 {
+			color: $white-one;	
 		}
 
 		a {
-			text-decoration: underline;
+			text-decoration: none;
 		}
+	}
+}
 
-		img {
-			border: none;
-			display: table;
-			margin: 0 0 0 auto;
+.personNameId {
+	.circle {
+		border: 2px solid $white-one;
+	}
+
+	.subText, span.title {
+		color: $white-one;
+
+		@media screen and (min-width: $break-sm) {
+			color: $dusk-two;
 		}
+	}
 
-		&.danger {
-			p, a {
-				color: $medium-pink;	
-			}
-		}
+	.subText {
+		-webkit-margin-before: 5px;
+		-webkit-margin-after: 1em;
+	}
 
-		&.info {
-			p, a {
-				color: $white-one;	
-			}
-
-			a {
-				text-decoration: none;
-			}
-		}
+	span.title {
+		font-weight: bold;
+		font-size: 24px;
 	}
 }
