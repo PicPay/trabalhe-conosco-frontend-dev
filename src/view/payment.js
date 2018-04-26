@@ -23,6 +23,7 @@ export class PaymentWindow extends Component  {
   render() {
     const style = { display: (this.props.opened) ? null : 'none' }
     const buttonContent = <div><span className="button-icon">&lsaquo;</span><span>Voltar</span></div>
+    const cards = JSON.parse(localStorage.getItem('cards'))
     return (
       <div className="payment-window" style={style}>
         <span className="back-button">
@@ -32,7 +33,7 @@ export class PaymentWindow extends Component  {
         <input type="text" className="payment-value" value={this.state.value} onChange={this.handleChange} placeholder="R$ 0,00" />
         <span className="rectangle-1"></span>
         <span className="rectangle-2"></span>
-        {(localStorage.getItem('defaultCard')) ? (
+        {(cards) ? (
           <div className="card">
             <picture>
               <source srcSet={imgGreenSvg} alt=""/>
@@ -41,7 +42,7 @@ export class PaymentWindow extends Component  {
             <div className="card-msg">
               <span>Forma de pagamento:</span>
               <a href="#" className="card-msg-2" onClick={this.props.addCard} >
-                Cartão de crédito com final {JSON.parse(localStorage.getItem('defaultCard')).number.substring(12)}
+                Cartão de crédito com final {cards.filter(card => card.default)[0].number.substring(12)}
               </a>
             </div></div>
         ) : (
