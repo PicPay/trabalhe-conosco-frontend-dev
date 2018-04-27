@@ -3,7 +3,7 @@ aside.navbarPicpay {
 	padding: 10px .75rem;
 
 	.logo {
-		color: #fff;
+		color: $white-one;
 		font-weight: bold;
 		font-size: 13px;
 	}
@@ -26,15 +26,38 @@ html {
 
 input[type='text'], input[type='number'] {
 	font-family: $fontNunito;
-	color: #fff;
+	color: $white-one;
 	padding-bottom: 10px;
 	border-color: $dusk-two;
 	display: block;
 	-moz-appearance: textfield;
+
+	@media screen and (min-width: $break-sm) {
+		color: $dusk-two;
+	}
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid $light-teal;
+	box-shadow: 0 1px 0 0 $light-teal;
+
+	@media screen and (min-width: $break-sm) {
+		border-bottom: 1px solid $dusk-two;
+		box-shadow: 0 1px 0 0 $dusk-two;
+	}
+}
+
+input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
+
+	color: $light-teal;
+
+	@media screen and (min-width: $break-sm) {
+		color: $dusk-two;
+	}
 }
 
 .goBack {
-	color: #fff;
+	color: $white-one;
 	font-weight: 400;
 
 	i {
@@ -55,6 +78,10 @@ input[type='text'], input[type='number'] {
 .defaultHeight {
 	min-height: calc(100vh - 40.8px);
 	height: 100%;
+
+	@media screen and (min-width: $break-sm) {
+		min-height: unset;
+	}
 }
 
 .defaultGradientBg {
@@ -63,6 +90,11 @@ input[type='text'], input[type='number'] {
 	background: -webkit-linear-gradient(top, $quase-preto 0%,$dusk-one 100%);
 	background: linear-gradient(to bottom, $quase-preto 0%,$dusk-one 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$quase-preto, endColorstr=$dusk-one,GradientType=1 );
+
+	@media screen and (min-width: $break-sm) {
+		background: $white-one;
+		border-radius: 6px;
+	}
 }
 
 .callToAction {
@@ -73,7 +105,12 @@ input[type='text'], input[type='number'] {
 	border-radius: 50px;
 	background: transparent;
 	border: 1px solid $white-one;
-	color: #fff;
+	color: $white-one;
+
+	@media screen and (min-width: $break-sm) {
+		border: 1px solid $dusk-two;
+		color: $dusk-two;
+	}
 
 	&:hover {
 		background: transparent;
@@ -99,6 +136,12 @@ input[type='text'], input[type='number'] {
 	padding: 0 20px 4px;
 	position: absolute;
 	bottom: 20px;
+
+	@media screen and (min-width: $break-sm) {
+		position: relative;
+		bottom: unset;
+		margin: 20px auto;
+	}
 }
 
 .messages {
@@ -136,7 +179,11 @@ input[type='text'], input[type='number'] {
 
 	&.info {
 		p, a, h2, h3 {
-			color: $white-one;	
+			color: $white-one;
+
+			@media screen and (min-width: $break-sm) {
+				color: $dusk-two;
+			}
 		}
 
 		a {
@@ -145,9 +192,65 @@ input[type='text'], input[type='number'] {
 	}
 }
 
+.app-icon {
+	display: block;
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	mask-position: center top;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	-webkit-mask-position: center top;
+	content: "";
+	margin: 0 0 5px auto;
+
+	&.greenCard {
+		width: 28px;
+		height: 28px;
+		background-color: $light-teal;
+		mask-image: url(../img/green.svg);
+		-webkit-mask-image: url(../img/green.svg);
+
+		@media screen and (min-width: $break-sm) {
+			background-color: $dusk-two;
+		}
+	}
+
+	&.plus {
+		width: 28px;
+		height: 28px;
+		background-color: $light-teal;
+		mask-image: url(../img/plus.svg);
+		-webkit-mask-image: url(../img/plus.svg);
+
+		@media screen and (min-width: $break-sm) {
+			background-color: $dusk-two;
+		}
+	}
+
+	&.alert {
+		width: 20px;
+		height: 20px;
+		background-color: $medium-pink;
+		mask-image: url(../img/alert.svg);
+		-webkit-mask-image: url(../img/alert.svg);
+
+		@media screen and (min-width: $break-sm) {
+			background-color: $dusk-two;
+		}
+	}
+}
+
 .personNameId {
+	@media screen and (min-width: $break-sm) {
+		margin-top: 24px;
+	}
+
 	.circle {
 		border: 2px solid $white-one;
+
+		@media screen and (min-width: $break-sm) {
+
+		}
 	}
 
 	.subText, span.title {
@@ -167,4 +270,28 @@ input[type='text'], input[type='number'] {
 		font-weight: bold;
 		font-size: 24px;
 	}
+}
+
+.homeWrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.sample-show-hide {
+	-webkit-transition: 0.2s ease-in-out all;
+	transition: 0.2s ease-in-out all;
+	transition-delay: 0.2s;
+}
+.sample-show-hide.ng-enter {
+	opacity: 0;
+}
+.sample-show-hide.ng-enter-active {
+	opacity: 1;
+}
+.sample-show-hide.ng-leave {
+	opacity: 1;
+}
+.sample-show-hide.ng-leave-active {
+	opacity: 0;	
 }

@@ -3,6 +3,10 @@
 		font-size: 20px;
 		font-weight: 500;
 		color: $white-one;
+
+		@media screen and (min-width: $break-sm) {
+			color: $dusk-two;
+		}
 	}
 
 	h2 {
@@ -25,8 +29,20 @@
 		li.myCardsList-item {
 			padding: 24px 32px;
 
+			@media screen and (min-width: $break-sm) {
+				.cardInfoWrapper {
+					display: table;
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+
 			&.active {
 				background: rgba(255,255,255,0.1);
+
+				@media screen and (min-width: $break-sm) {
+					background: $light-teal-24;
+				}
 			}
 
 			img.checked {
@@ -36,20 +52,39 @@
 			}
 		}
 	}
+
+	.app-icon {
+		display: inline-block;
+		margin: 0px 5px 5px auto;
+		vertical-align: middle;
+	}
+
 	.newCard {
 		border-top: 1px solid rgba(255, 255, 255, 0.24);
 		display: block;
 		padding: 24px 0;
+		font-weight: 600;
 
 		img {
 			display: inline-block;
 			vertical-align: middle;
 			margin-bottom: 3px;
 		}
+
+		@media screen and (min-width: $break-sm) {
+			display: table;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 
 	.scrollableArea {
 		height: calc((100vh / 8) * 4);
 		overflow-y: scroll;
+
+		@media screen and (min-width: $break-sm) {
+			height: auto;
+			overflow-y: unset;
+		}
 	}
 }

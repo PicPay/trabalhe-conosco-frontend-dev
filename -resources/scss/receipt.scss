@@ -5,6 +5,10 @@
 		color: $white-one;
 		text-align: center;
 		margin-bottom: 40px;
+
+		@media screen and (min-width: $break-sm) {
+			color: $dusk-two;
+		}
 	}
 
 	.receiptList {
@@ -23,6 +27,14 @@
 			b {
 				font-weight: 600;
 				color: $light-teal;
+
+				@media screen and (min-width: $break-sm) {
+					color: $dusk-two;
+				}
+			}
+
+			@media screen and (min-width: $break-sm) {
+				color: $dusk-two;
 			}
 		}
 	}

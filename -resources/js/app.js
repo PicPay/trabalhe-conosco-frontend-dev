@@ -4,11 +4,11 @@ app.config(function($routeProvider) {
 	$routeProvider.
 	when('/', {
 		templateUrl: 'views/main.html',
-		controller: 'listCtrl'
+		controller: 'mainCtrl'
 	})
-	.when('/list', {
+	.when('/main', {
 		templateUrl: 'views/main.html',
-		controller: 'listCtrl'
+		controller: 'mainCtrl'
 	})
 	.when('/payment', {
 		templateUrl: 'views/payment.html',
@@ -80,8 +80,11 @@ app.factory('creditCardsFactory', function(localStorageService) {
 	}
 });
 
-app.controller('listCtrl', function($scope, $location, $http, personToPayFactory){
+app.controller('mainCtrl', function($scope, $location, $http, personToPayFactory){
 	$scope.people = [];
+	$scope.modalView = {
+		path: ''
+	};
 
 	$http({
 		method: 'GET',
@@ -94,7 +97,11 @@ app.controller('listCtrl', function($scope, $location, $http, personToPayFactory
 
 	$scope.payThisPerson = function (person){
 		personToPayFactory.set(person);
-		$location.path('payment');
+		$scope.modalView.path = "payment";
+	}
+
+	$scope.setModalView = function(newView){
+		$scope.modalView.path = newView;
 	}
 });
 
@@ -129,7 +136,8 @@ app.controller('paymentCtrl', function($scope, $location,  personToPayFactory, $
 			data: $scope.mountedObjectToPay
 		}).then(function successCallback(response) {
 			receiptFactory.set(response);
-			$location.path("receipt")
+			console.log(response);
+			$scope.modalView.path = "receipt";
 		}, function errorCallback(response) {
 			$scope.people = response.statusText;
 		});
@@ -148,7 +156,7 @@ app.controller('creditCardCtrl', function($scope, creditCardsFactory, $route, $l
 
 	$scope.saveCard = function() {
 		creditCardsFactory.set($scope.creditCard);
-		$location.path('mycards');
+		$scope.modalView.path = "mycards";
 	}
 
 	$scope.getCard = function() {
@@ -180,7 +188,8 @@ app.controller('myCardsCtrl', function($scope, creditCardsFactory, localStorageS
 
 	$scope.chooseCard = function() {
 		localStorage.setItem("creditCards", JSON.stringify($scope.creditCards));
-		$location.path('payment');
+		$scope.modalView.path = "payment";
+
 	}
 });
 

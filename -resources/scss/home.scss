@@ -1,4 +1,15 @@
 .mainList {
+
+    &.modalIsActive {
+        height: calc(100vh - 40.8px);
+        overflow: hidden;
+
+        @media screen and (min-width: $break-sm) {
+            height: auto;
+            overflow: scroll;
+        }
+    }
+
     .container {
         width: 100%;
 
