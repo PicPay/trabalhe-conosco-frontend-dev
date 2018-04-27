@@ -52,7 +52,8 @@
   padding-right: 12px;
   font-size: 12px;
 }
-picture{
+
+.payment-button picture{
   display: flex;
   align-items: center;
 }

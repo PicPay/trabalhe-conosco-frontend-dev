@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { PaymentWindow, PaymentConfirmation, ConfirmationWindow, CreditCardForm } from './payment'
+import { PaymentWindow, PaymentConfirmation, ConfirmationWindow, CreditCardForm, CreditCardList } from './payment'
 import { UserData, Button } from './user-list'
 
 describe('#PaymentWindow', function () {
@@ -50,5 +50,25 @@ describe('#CreditCardForm', function () {
     expect(inputs).toHaveLength(5)
     expect(buttons).toHaveLength(2)
     expect(select).toHaveLength(1)
+  })
+})
+
+describe('#CreditCardList', function () {
+  const cards = [
+    {
+      number: '1111111111111111', cvv: '789', expiryDate: '01/18', default: true,
+    },
+    {
+      number: '1111111111111112', cvv: '780', expiryDate: '01/18', default: false,
+    },
+  ]
+  it('should render without throwing an error', function () {
+    const wrapper = shallow(<CreditCardList cards={cards}/>)
+    const buttons = wrapper.find(Button)
+    const cardList = wrapper.find('.card')
+
+    expect(buttons).toHaveLength(3)
+    expect(cardList).toHaveLength(2)
+    expect(wrapper.text()).toMatch('Cartões Cadastrados')
   })
 })

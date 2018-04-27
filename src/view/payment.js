@@ -8,6 +8,14 @@ import imgGreenSvg from './img/green.svg'
 import imgGreenPng from './img/green.png'
 import imgGreenPng2x from './img/green@2x.png'
 import imgGreenPng3x from './img/green@3x.png'
+import imgCheckMarkSvg from './img/check-mark.svg'
+import imgCheckMarkPng from './img/check-mark.png'
+import imgCheckMarkPng2x from './img/check-mark@2x.png'
+import imgCheckMarkPng3x from './img/check-mark@3x.png'
+import imgPlusSvg from './img/plus.svg'
+import imgPlusPng from './img/plus.png'
+import imgPlusPng2x from './img/plus@2x.png'
+import imgPlusPng3x from './img/plus@3x.png'
 import './payment.css'
 
 export class PaymentWindow extends Component  {
@@ -40,7 +48,7 @@ export class PaymentWindow extends Component  {
             </picture>
             <div className="card-msg">
               <span>Forma de pagamento:</span>
-              <a href="#" className="card-msg-2" onClick={this.props.addCard} >
+              <a href="#" className="card-msg-2" onClick={this.props.openCreditCardList} >
                 Cartão de crédito com final {this.props.card.number.substring(12)}
               </a>
             </div></div>
@@ -167,6 +175,85 @@ export class CreditCardForm extends Component {
         <div className={(this.state.inputSelected[4]) ? this.className[1] : this.className[0]}></div>
         <span className="register-button">
           <Button onClick={() => this.props.registerCard(this.state.card)} content="CADASTRAR"/>
+        </span>
+      </div>
+    )
+  }
+}
+
+export class CreditCardList extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      cardSelected: [],
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const cardSelected = nextProps.cards.map(card => (card.default) ? 1 : 0)
+
+    return {
+      cardSelected: cardSelected,
+    }
+  }
+
+  selectCard = () => {
+    const cardSelected = this.state.cardSelected.slice()
+    const cards = this.props.cards.slice()
+    cards[cards.findIndex(card => card.default)].default = false
+    cards[cardSelected.findIndex(card => card)].default = true
+    this.props.editCard(cards)
+  }
+
+  handleClick(id) {
+    const cardSelected = Array(this.state.cardSelected.lentgh).fill(0)
+    cardSelected[id] = 1
+    this.setState({
+      cardSelected: cardSelected,
+    })
+  }
+
+  render() {
+    const style = { display: (this.props.opened) ? null : 'none' }
+    const buttonContent = <div><span className="button-icon">&lsaquo;</span><span>Voltar</span></div>
+    const className = ['card defaultCard', 'card']
+    const content = <div><picture>
+      <source srcSet={imgPlusSvg} alt=""/>
+      <img src={imgPlusPng} srcSet={`${imgPlusPng},${imgPlusPng2x} 2x, ${imgPlusPng3x} 3x`} alt="" />
+    </picture>
+    <span>Cadastrar novo cartão</span>
+    </div>
+    return (
+      <div className="card-list" style={style} >
+        <span className="back-button">
+          <Button onClick={this.props.onClose} content={buttonContent}/>
+        </span>
+        <span>Cartões Cadastrados</span>
+        <div className="cards">
+          {this.props.cards.map((card, index) => {
+            const cardNumber = `${card.number.substring(0, 4)} ${card.number.substring(4, 8)} ${card.number.substring(8, 12)} ${card.number.substring(12)}`
+            const defaultStyle = { display: (this.state.cardSelected[index]) ? null : 'none' }
+            return (
+              <div key={index} className={(this.state.cardSelected[index]) ? className[0] : className[1]} onClick={() => this.handleClick(index)}>
+                <picture>
+                  <source srcSet={imgGreenSvg} alt=""/>
+                  <img src={imgGreenPng} srcSet={`${imgGreenPng},${imgGreenPng2x} 2x, ${imgGreenPng3x} 3x`} alt="" />
+                </picture>
+                <span>{cardNumber}</span>
+                <picture className="check" style={defaultStyle}>
+                  <source srcSet={imgCheckMarkSvg} alt=""/>
+                  <img src={imgCheckMarkPng} srcSet={`${imgCheckMarkPng},${imgCheckMarkPng2x} 2x, ${imgCheckMarkPng3x} 3x`} alt="" />
+                </picture>
+              </div>
+            )
+          })}
+        </div>
+        <div className="rectangle-1"></div>
+        <span className="new-card">
+          <Button onClick={this.props.addCard} content={content} />
+        </span>
+        <span className="register-button">
+          <Button onClick={this.selectCard} content="SELECIONAR CARTÃO"/>
         </span>
       </div>
     )

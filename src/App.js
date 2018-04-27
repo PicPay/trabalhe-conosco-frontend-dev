@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import { UserList } from './view/user-list'
-import { PaymentWindow, ConfirmationWindow, CreditCardForm } from './view/payment'
+import { PaymentWindow, ConfirmationWindow, CreditCardForm, CreditCardList } from './view/payment'
 import { sendPayment, timestampToDate } from './engine/payment'
 import { fetchUsers } from './engine/users'
 
@@ -34,8 +34,10 @@ class App extends Component {
       paymentWindowIsOpen: false,
       confirmationWindowIsOpen: false,
       creditCardForm: false,
+      creditCardList: false,
       chosenUser: {},
       userList: [],
+      cards: [],
     }
     this.recipe = {}
   }
@@ -77,6 +79,13 @@ class App extends Component {
     })
   }
 
+  closeCreditCardList = () => {
+    this.setState({
+      creditCardList: false,
+      paymentWindowIsOpen: true,
+    })
+  }
+
   componentDidMount =  () => {
     fetchUsers()
       .then((result) => {
@@ -88,6 +97,7 @@ class App extends Component {
     if (cards) {
       const defaultCard = cards.filter(card => card.default)[0]
       this.setState({
+        cards: cards,
         card: defaultCard,
       })
     }
@@ -101,9 +111,30 @@ class App extends Component {
     }
     const defaultCard = cards.filter(card => card.default)[0]
     this.setState({
+      cards: cards,
       card: defaultCard,
     })
     localStorage.setItem('cards', JSON.stringify(cards))
+    this.closeCreditCardForm()
+  }
+
+  editCard = (cards) => {
+    const defaultCard = cards.filter(card => card.default)[0]
+    this.setState({
+      card: defaultCard,
+    })
+    localStorage.setItem('cards', JSON.stringify(cards))
+    this.setState({
+      cards: cards,
+    })
+    this.closeCreditCardList()
+  }
+
+  openCreditCardList = () => {
+    this.setState({
+      creditCardList: true,
+      paymentWindowIsOpen: false,
+    })
   }
 
   sendPayment = (userId, value) => {
@@ -139,9 +170,10 @@ class App extends Component {
     const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
     return (
       <div style={style}>
+        <CreditCardList editCard={this.editCard} addCard={this.openCreditCardForm} opened={this.state.creditCardList} onClose={this.closeCreditCardList} cards={this.state.cards} />
         <CreditCardForm registerCard={this.registerCard} opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />
         <ConfirmationWindow togglePaymentWindow={this.togglePaymentWindow} onClose={this.closeConfirmationWindow} opened={this.state.confirmationWindowIsOpen} user={this.state.chosenUser} paymentData={this.recipe}/>
-        <PaymentWindow card={this.state.card} onPay={this.sendPayment} onClose={this.closePaymentWindow} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser} addCard={this.openCreditCardForm}/>
+        <PaymentWindow card={this.state.card} editCard={this.openCreditCardList} onPay={this.sendPayment} onClose={this.closePaymentWindow} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser} openCreditCardList={this.openCreditCardList} addCard={this.openCreditCardForm}/>
         <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
       </div>
     )
