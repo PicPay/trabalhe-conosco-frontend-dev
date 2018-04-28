@@ -1,0 +1,47 @@
+.avatar.ng-enter, .avatar.ng-move {
+  transition: all 0.5s linear;
+  opacity: 0;
+}
+.avatar.ng-enter.ng-enter-active,
+.avatar.ng-move.ng-move-active {
+  opacity: 1;
+}
+.avatar.ng-leave {
+  animation: 0.5s fadeIn;
+}
+
+.avatar.ng-enter-stagger {
+  transition-delay: 0.05s;
+  animation-delay: 0.05s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.switch-show-hide {
+  -webkit-transition: 0.2s linear all;
+  transition: 0.2s linear all;
+  transition-delay: 0.05s;
+}
+.switch-show-hide.ng-enter-prepare {
+  opacity: 0;
+}
+.switch-show-hide.ng-enter {
+  opacity: 0;
+}
+.switch-show-hide.ng-enter-active {
+  opacity: 1;
+}
+.switch-show-hide.ng-leave {
+  opacity: 0;
+}
+.switch-show-hide.ng-leave-active {
+  opacity: 0; 
+}

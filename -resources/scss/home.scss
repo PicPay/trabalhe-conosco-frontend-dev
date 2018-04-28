@@ -1,0 +1,76 @@
+.mainList {
+
+    &.modalIsActive {
+        height: calc(100vh - 40.8px);
+        overflow: hidden;
+
+        @media screen and (min-width: $break-sm) {
+            height: auto;
+        }
+    }
+
+    .container {
+        width: 100%;
+
+        @media screen and (min-width: $break-sm) {
+            width: 90%;
+        }
+    }
+
+    .row .col {
+        padding: 0;
+
+        @media screen and (min-width: $break-sm) {
+            padding: 0 0.75rem;
+        }
+    }
+
+    .collection {
+        margin: 0;
+
+        .circle {
+            border: 2px solid $white-one;
+        }
+        .collection-item {
+            background: $quase-preto; /* browsers antigos */
+            background: -moz-linear-gradient(left, $quase-preto 0%, $dusk-one 100%);
+            background: -webkit-linear-gradient(left, $quase-preto 0%,$dusk-one 100%);
+            background: linear-gradient(to right, $quase-preto 0%,$dusk-one 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$quase-preto, endColorstr=$dusk-one,GradientType=1 );
+
+            &.avatar {
+                min-height: unset;
+            }
+
+            span.pay-text, span.title, p {
+                color: $white-one;
+            }
+
+            span.pay-text {
+                text-transform: uppercase;
+                font-size: 20px;
+                vertical-align: top;
+                display: inline-block;
+                margin: 3px 5px 0;
+            }
+
+            span.title {
+                font-weight: bold;
+
+                @media screen and (min-width: $break-sm) {
+                    font-size: 24px;
+                }
+            }
+
+            p {
+                color: $white-one;
+                font-size: 12px;
+            }
+
+            button {
+                background: transparent;
+                border: none;
+            }
+        }
+    }
+}
