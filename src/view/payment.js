@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { UserData, Button } from './user-list'
+import { UserData } from './user-list'
+import { Button } from './generics-components'
 import imgAlertSvg from './img/alert.svg'
 import imgAlertPng from './img/alert.png'
 import imgAlertPng2x from './img/alert@2x.png'
@@ -29,13 +30,8 @@ export class PaymentWindow extends Component  {
   }
 
   render() {
-    const style = { display: (this.props.opened) ? null : 'none' }
-    const buttonContent = <div><span className="button-icon">&lsaquo;</span><span>Voltar</span></div>
     return (
-      <div className="payment-window" style={style}>
-        <span className="back-button">
-          <Button onClick={this.props.onClose} content={buttonContent}/>
-        </span>
+      <div className="payment-window">
         <UserData {...this.props.user} />
         <input type="text" className="payment-value" value={this.state.value} onChange={this.handleChange} placeholder="R$ 0,00" />
         <span className="rectangle-1"></span>

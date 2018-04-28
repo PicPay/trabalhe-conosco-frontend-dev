@@ -2,15 +2,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
-  width: 100%;
   height: 100%;
-  background-image: linear-gradient(259deg, #3c3e64, #1d1e2a);
+  width: 100%;
+}
+
+.payment-window .payment-value{
+  width: 53%;
+  height: 66px;
+  margin-top: 10.6%;
+  font-size: 48px;
+  font-family: 'Nunito Sans';
+  text-decoration-color: #7de6c6;
+  text-align: center;
+  color: #ffffff;
+  background: Transparent;
+  border: none;
+  caret-color: #7de6c6;
 }
 
 .payment-window .rectangle-1{
   width: 68%;
   height: 2px;
+  margin-top: 2%;
   background-color: #474971;
 }
 
@@ -24,23 +37,21 @@
 .payment-window .card{
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 28px;
+  margin-top: 5.3%;
+  margin-bottom: 4.5%;
 }
 
 .card-msg{
   display: flex;
   flex-direction: column;
   align-items: left;
-  font-family: Roboto;
   font-size: 14px;
   color: #ffffff;
-  padding-left: 12px;
+  padding-left: 3.2%;
 }
 
 .card-msg a{
   font-weight: bold;
-  font-family: Roboto;
   font-size: 14px;
   color: #ffffff;
 }
@@ -48,15 +59,14 @@
 .payment-window .no-card{
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 28px;
+  margin-top: 5.5%;
+  margin-bottom: 7.8%;
 }
 
 .no-card-msg{
   display: flex;
   flex-direction: column;
   align-items: left;
-  font-family: Roboto;
   font-size: 14px;
   color: #ef5778;
   padding-left: 12px;
@@ -64,26 +74,8 @@
 
 .no-card-msg a{
   font-weight: bold;
-  font-family: Roboto;
   font-size: 14px;
   color: #ef5778;
-}
-
-.payment-window input{
-  width: 53%;
-  height: 66px;
-  font-size: 48px;
-  font-family: NunitoSans;
-  text-decoration-color: #7de6c6;
-  text-align: center;
-  color: #ffffff;
-  background: Transparent;
-  border: none;
-  caret-color: #7de6c6;
-}
-
-.payment-window .user-data{
-  margin: 28px 45px 40px;
 }
 
 .payment-window .user-img{
@@ -103,23 +95,8 @@
   width: 75%;
 }
 
-.back-button{
-  align-self: flex-start;
-  margin-top: 16px;
-  margin-left: 22px;
-}
-
-.back-button .btn{
-  width: 37px;
-  height: 16px;
-  font-family: Roboto;
-  font-size: 14px;
-  color: #ffffff;
-}
-
 .button-icon{
   height: 16px;;
-  font-family: Roboto;
   font-size: 14px;
   color: #7de6c6;
 }
@@ -127,7 +104,6 @@
 .pay-button .btn{
   width: 100%;
   height: 48px;
-  font-family: Roboto;
   font-size: 14px;
   font-weight: bold;
   color: #474971;
@@ -136,7 +112,7 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   border: none;
 }
-
+/*
 .confirmation-window{
   display: flex;
   flex-direction: column;
@@ -411,4 +387,4 @@ option{
 
 .defaultCard{
   background-color: rgba(255, 255, 255, 0.1);
-}
+} */
