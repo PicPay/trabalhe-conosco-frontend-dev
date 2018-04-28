@@ -20,7 +20,7 @@
 						<label for="cardName">Nome escrito no cartão</label>
 					</div>
 					<div class="input-field">
-						<input id="cardNumber" type="text" mask="9999 9999 9999 9999" ng-model="creditCard.card_number" mask-limit="true" mask-validate='true' required />
+						<input id="cardNumber" type="text" mask="9999 9999 9999 9999" ng-minlength="1" ng-model="creditCard.card_number" required />
 						<label for="cardNumber">Número do cartão</label>
 					</div>
 					<div class="input-field">
