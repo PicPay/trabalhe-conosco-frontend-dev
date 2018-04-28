@@ -8,10 +8,10 @@
 			<div class="col s12 m10 offset-m1">
 				<p  class="hide-on-med-and-up"><a href="javascript:void(0)" ng-click="setModalView('')" class="goBack"><i class="small material-icons">chevron_left</i> Voltar</a></p>
 				<div class="row valign-wrapper personNameId">
-					<div class="col s3">
+					<div class="col s4">
 						<img ng-src="{{receipt.data.transaction.destination_user.img}}" alt="{{receipt.data.transaction.destination_user.name}}" class="circle responsive-img" />
 					</div>
-					<div class="col s9">
+					<div class="col s8">
 						<span class="black-text">
 							<span class="title">{{receipt.data.transaction.destination_user.name}}</span>
 							<p class="subText">id: {{receipt.data.transaction.destination_user.id}} {{receipt.data.transaction.destination_user.username}}</p>
@@ -61,6 +61,5 @@
 				</div>
 			</div>
 		</div>
-		
 	</aside>
 </section>

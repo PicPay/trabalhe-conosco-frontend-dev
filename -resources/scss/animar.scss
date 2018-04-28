@@ -15,33 +15,59 @@
   animation-delay: 0.05s;
 }
 
-@keyframes fadeIn {
-  from { opacity: 1; }
-  to   { opacity: 0; }
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 }
 
-@keyframes fadeOut {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
 }
 
 .switch-show-hide {
-  -webkit-transition: 0.2s linear all;
-  transition: 0.2s linear all;
-  transition-delay: 0.05s;
+  -webkit-animation: fadeInRight .3s;
+  -moz-animation: fadeInRight .3s;
+  -ms-animation: fadeInRight .3s;
+  animation: fadeInRight .3s;
 }
-.switch-show-hide.ng-enter-prepare {
-  opacity: 0;
+
+/* AnimateCss */
+
+@charset "UTF-8";
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
-.switch-show-hide.ng-enter {
-  opacity: 0;
-}
-.switch-show-hide.ng-enter-active {
-  opacity: 1;
-}
-.switch-show-hide.ng-leave {
-  opacity: 0;
-}
-.switch-show-hide.ng-leave-active {
-  opacity: 0; 
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }

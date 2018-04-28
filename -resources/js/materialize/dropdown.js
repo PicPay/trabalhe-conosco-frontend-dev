@@ -421,7 +421,6 @@
       };
     }
 
-
     /**
      * Animate in dropdown
      */

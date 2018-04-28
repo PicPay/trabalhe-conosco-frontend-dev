@@ -1,0 +1,1 @@
+"use strict";app.directive("testHeader",function(){return{restrict:"E",templateUrl:"views/test-header.html"}});

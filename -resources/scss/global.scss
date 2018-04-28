@@ -2,17 +2,34 @@ aside.navbarPicpay {
 	background: $light-teal;
 	padding: 10px .75rem;
 
+	.container {
+		margin: 0 auto 0 0;
+
+		@media screen and (min-width: $break-sm) {
+			margin: 0 auto;
+		}
+	}
+
+	@media screen and (min-width: $break-sm) {
+		padding: 28px .75rem;
+	}
+	
+	.logo, .subtext {
+		font-size: 13px;
+
+		@media screen and (min-width: $break-sm) {
+			font-size: 20px;
+		}
+	}
 	.logo {
 		color: $white-one;
 		font-weight: bold;
-		font-size: 13px;
 	}
 
 	.subtext {
 		color: $dusk-two;
 		font-family: $fontMont;
 		font-weight: 500;
-		font-size: 13px;
 	}
 }
 
@@ -56,6 +73,18 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 	}
 }
 
+.dropdown-content li>a, .dropdown-content li>span {
+	color: $dusk-two;
+}
+
+.select-wrapper .caret {
+	fill: $white-one;
+
+	@media screen and (min-width: $break-sm) {
+		fill: $dusk-two;
+	}
+}
+
 .goBack {
 	color: $white-one;
 	font-weight: 400;
@@ -93,7 +122,7 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 
 	@media screen and (min-width: $break-sm) {
 		background: $white-one;
-		border-radius: 6px;
+		border-radius: 8px;
 	}
 }
 
@@ -141,6 +170,10 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 		position: relative;
 		bottom: unset;
 		margin: 20px auto;
+
+		@-moz-document url-prefix() {
+			padding-bottom: 20px;
+		}
 	}
 }
 
@@ -249,7 +282,10 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 		border: 2px solid $white-one;
 
 		@media screen and (min-width: $break-sm) {
-
+			height: 80px;
+			width: 80px;
+			margin: 0 0 0 auto;
+			display: table;
 		}
 	}
 
@@ -264,6 +300,7 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 	.subText {
 		-webkit-margin-before: 5px;
 		-webkit-margin-after: 1em;
+		margin: 0;
 	}
 
 	span.title {

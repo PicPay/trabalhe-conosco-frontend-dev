@@ -10,10 +10,8 @@
     }
 
     .container {
-        width: 100%;
-
-        @media screen and (min-width: $break-sm) {
-            width: 90%;
+        @media screen and (max-width: $break-sm) {
+            width: 100%;
         }
     }
 
@@ -28,9 +26,10 @@
     .collection {
         margin: 0;
 
-        .circle {
-            border: 2px solid $white-one;
+        @media screen and (min-width: $break-sm) {
+            border: none;
         }
+
         .collection-item {
             background: $quase-preto; /* browsers antigos */
             background: -moz-linear-gradient(left, $quase-preto 0%, $dusk-one 100%);
@@ -38,8 +37,45 @@
             background: linear-gradient(to right, $quase-preto 0%,$dusk-one 100%);
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$quase-preto, endColorstr=$dusk-one,GradientType=1 );
 
+            @media screen and (min-width: $break-sm) {
+                padding: 20px 40px;
+                display: inline-block;
+                height: auto;
+                width: 100%;
+                line-height: unset;
+                margin: -4px 0 0 0;
+                border-bottom: none;
+            }
+
             &.avatar {
                 min-height: unset;
+
+                &:not(.circle-clipper)>.circle, &:not(.circle-clipper)>.circle {
+                    border: 2px solid $white-one;
+
+                    @media screen and (min-width: $break-sm) {
+                        height: 80px;
+                        width: 80px;
+                        position: relative;
+                        float: left;
+                    }
+                }
+
+                .secondary-content {
+                    @media screen and (min-width: $break-sm) {
+                        position: relative;
+                        top: unset;
+                        right: unset;
+                        margin: 25px 0 0 0;
+                    }
+                }
+            }
+
+            .personTxtWrapper {
+                @media screen and (min-width: $break-sm) {
+                    float: left;
+                    margin: 10px 30px;
+                }
             }
 
             span.pay-text, span.title, p {
