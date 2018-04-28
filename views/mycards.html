@@ -19,9 +19,11 @@
 		<li class="myCardsList-item" ng-repeat="card in creditCards" ng-click="targetThisCard(card, $index)" ng-class="{active: card.is_selected}">
 			<span class="cardInfoWrapper">
 				<div class="app-icon greenCard"></div> {{card.card_number}} 
+				<!-- O botão abaixo serve pra apagar um cartão da lista. Não mantive no layout pois não era a melhor solução de UI e não estava previsto no layout de vocês, mas se precisarem usar é só descomentar ele.
 				<button class="btn-flat" ng-click="deleteThisCard($index)">
 					<i class="material-icons">clear</i>
-				</button>
+				</button> 
+				-->
 				<img ng-src="./build/img/check-mark.svg" class="responsive-img checked right" height="20" ng-if="card.is_selected">
 			</span>
 		</li>
@@ -30,7 +32,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col s12">
-				<a href="javascript:void(0)" class="newCard" ng-click="setModalView('card')">
+				<a href="javascript:void(0)" class="newCard" ng-click="setModalView('creditcard')">
 					<div class="app-icon plus"></div> Cadastrar novo cartão
 				</a>
 			</div>
@@ -38,6 +40,14 @@
 	</div>
 
 	<aside class="actions">
-		<button class="btn callToAction teal giant" ng-click="chooseCard()">Selecionar Cartão</button>
+		<button class="btn callToAction teal giant hide-on-med-and-up" ng-click="chooseCard()">Selecionar Cartão</button>
+		<div class="container hide-on-small-only">
+			<div class="row">
+				<div class="col s12">
+					<a class="btn callToAction left" href="javascript:void(0)" ng-click="setModalView('payment')">Voltar</a>
+					<button class="btn callToAction teal right" ng-click="chooseCard()">Selecionar Cartão</button>
+				</div>
+			</div>
+		</div>
 	</aside>
 </section>

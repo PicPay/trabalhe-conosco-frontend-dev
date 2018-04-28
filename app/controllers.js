@@ -1,85 +1,6 @@
-var app = angular.module('testeFrontApp', ['ngRoute', 'ngAnimate', 'LocalStorageModule', 'ngMask']);
+/* Controllers que manipulam o model de cada view */
 
-app.config(function($routeProvider) {
-	$routeProvider.
-	when('/', {
-		templateUrl: 'views/main.html',
-		controller: 'mainCtrl'
-	})
-	.when('/main', {
-		templateUrl: 'views/main.html',
-		controller: 'mainCtrl'
-	})
-	.when('/payment', {
-		templateUrl: 'views/payment.html',
-		controller: 'paymentCtrl'
-	})
-	.when('/card', {
-		templateUrl: 'views/card.html',
-		controller: 'creditCardCtrl'
-	})
-	.when('/mycards', {
-		templateUrl: 'views/mycards.html',
-		controller: 'myCardsCtrl'
-	})
-	.when('/receipt', {
-		templateUrl: 'views/receipt.html',
-		controller: 'receiptCtrl'
-	})
-});
-
-app.factory('receiptFactory', function() {
-	var receipt = [];
-
-	function set(data) {
-		receipt = data;
-	}
-
-	function get() {
-		return receipt;
-	}
-
-	return {
-		set: set,
-		get: get
-	}
-});
-
-app.factory('personToPayFactory', function() {
-	var person = [];
-
-	function set(data) {
-		person = data;
-	}
-
-	function get() {
-		return person;
-	}
-
-	return {
-		set: set,
-		get: get
-	}
-});
-
-app.factory('creditCardsFactory', function(localStorageService) {
-	var creditCards = JSON.parse(localStorage.getItem("creditCards") || "[]");
-
-	function set(data) {
-		creditCards.push(data);
-		localStorage.setItem("creditCards", JSON.stringify(creditCards));
-	}
-
-	function get() {
-		return JSON.parse(localStorage.getItem("creditCards") || "[]");
-	}
-
-	return {
-		set: set,
-		get: get
-	}
-});
-
+/* Controller da main view */
 app.controller('mainCtrl', function($scope, $location, $http, personToPayFactory){
 	$scope.people = [];
 	$scope.modalView = {
@@ -105,10 +26,11 @@ app.controller('mainCtrl', function($scope, $location, $http, personToPayFactory
 	}
 });
 
+/* Controller da view de pagamento */
 app.controller('paymentCtrl', function($scope, $location,  personToPayFactory, $http, creditCardsFactory, receiptFactory){
 	$scope.personToPay = personToPayFactory.get();
 	$scope.creditCards = creditCardsFactory.get();
-	console.log($scope.creditCards);
+	
 	$scope.selectedCard = null;
 	$scope.lastDigits = 0;
 	$scope.value = "";
@@ -136,7 +58,7 @@ app.controller('paymentCtrl', function($scope, $location,  personToPayFactory, $
 			data: $scope.mountedObjectToPay
 		}).then(function successCallback(response) {
 			receiptFactory.set(response);
-			console.log(response);
+			
 			$scope.modalView.path = "receipt";
 		}, function errorCallback(response) {
 			$scope.people = response.statusText;
@@ -144,7 +66,13 @@ app.controller('paymentCtrl', function($scope, $location,  personToPayFactory, $
 	}
 });
 
+/* Controller do cadastro de cartão de crédito */
 app.controller('creditCardCtrl', function($scope, creditCardsFactory, $route, $location){
+	angular.element(document).ready(function () {
+		var elem = document.querySelector('select');
+		var instance = M.FormSelect.init(elem);
+	});
+
 	$scope.creditCard = {
 		card_name: "",
 		card_number:"",
@@ -161,18 +89,17 @@ app.controller('creditCardCtrl', function($scope, creditCardsFactory, $route, $l
 
 	$scope.getCard = function() {
 		let card = creditCardsFactory.get();
-		console.log(card);
 	}
 });
 
+/* Controller da view que mostram os cartões cadastrados deste usuário */
 app.controller('myCardsCtrl', function($scope, creditCardsFactory, localStorageService, $route, $location){
 
 	$scope.creditCards = creditCardsFactory.get();
-	console.log($scope.creditCards);
 
 	$scope.targetThisCard = function(card, index) {
 		card.is_selected = true;
-		console.log(card);
+
 
 		angular.forEach($scope.creditCards, function(value, key) {
 			if (key != index) {
@@ -189,20 +116,11 @@ app.controller('myCardsCtrl', function($scope, creditCardsFactory, localStorageS
 	$scope.chooseCard = function() {
 		localStorage.setItem("creditCards", JSON.stringify($scope.creditCards));
 		$scope.modalView.path = "payment";
-
 	}
 });
 
+/* Controller do recibo */
 app.controller('receiptCtrl', function($scope, receiptFactory, $route){
 	$scope.receipt = receiptFactory.get();
 	$scope.dateAndTime = new Date();
-	console.log($scope.receipt);
-});
-
-
-app.directive('testHeader', function() {
-	return {
-		restrict: 'E',
-		templateUrl: 'views/test-header.html'
-	}
 });

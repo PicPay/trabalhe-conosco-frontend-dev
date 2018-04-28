@@ -7,8 +7,10 @@
             <ul class="collection" id="listOfPeople">
               <li ng-repeat="person in people" class="collection-item avatar">
                 <img ng-src="{{person.img}}" alt="" class="circle">
-                <span class="title">{{person.name}}</span>
-                <p>id: {{person.id}} {{person.username}}</p>
+                <div class="personTxtWrapper">
+                  <span class="title">{{person.name}}</span>
+                  <p>id: {{person.id}} {{person.username}}</p>
+                </div>
                 <button class="secondary-content" ng-click="payThisPerson(person)">
                   <img class="" src="./build/img/pagar.svg" alt="" height="28" /> <span class="hide-on-small-only pay-text">pagar</span>
                   <img class="" src="./build/img/down.svg" alt="" height="28" />
@@ -21,6 +23,7 @@
     </div>
   </section>
 
+  <!-- Modal onde serão mostrados os passos do pagamento -->
   <section class="modalToShowViews-Wrapper" ng-show="modalView.path != ''">
     <section class="modalToShowViews">
       <div class="animate-switch-container" ng-switch on="modalView.path">
@@ -30,8 +33,8 @@
         <div class="animate-switch" ng-switch-when="mycards" >
           <div class="switch-show-hide" ng-include="'views/mycards.html'"></div>
         </div>
-        <div class="animate-switch" ng-switch-when="card" >
-          <div class="switch-show-hide" ng-include="'views/card.html'"></div>
+        <div class="animate-switch" ng-switch-when="creditcard" >
+          <div class="switch-show-hide" ng-include="'views/creditcard.html'"></div>
         </div>
         <div class="animate-switch" ng-switch-when="receipt" >
           <div class="switch-show-hide" ng-include="'views/receipt.html'"></div>
