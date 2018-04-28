@@ -4,6 +4,7 @@ import { UserList } from './view/user-list'
 import { PaymentWindow, ConfirmationWindow, CreditCardForm, CreditCardList } from './view/payment'
 import { sendPayment, timestampToDate } from './engine/payment'
 import { fetchUsers } from './engine/users'
+import { Modal } from './view/generics-components'
 
 // const userList = [
 //   {
@@ -31,61 +32,59 @@ class App extends Component {
     super(props)
     this.state = {
       modalIsOpen: false,
-      paymentWindowIsOpen: false,
-      confirmationWindowIsOpen: false,
-      creditCardForm: false,
-      creditCardList: false,
+      // paymentWindowIsOpen: false,
+      // confirmationWindowIsOpen: false,
+      // creditCardForm: false,
+      // creditCardList: false,
       chosenUser: {},
       userList: [],
-      cards: [],
+      // cards: [],
     }
-    this.recipe = {}
+    // this.recipe = {}
   }
 
-  togglePaymentWindow = (user) => {
+  togglePaymentWindow = (userId) => {
     this.setState({
-      paymentWindowIsOpen: !this.state.paymentWindowIsOpen,
-      modalIsOpen: true,
-      confirmationWindowIsOpen: false,
-      chosenUser: user,
-    })
+      chosenUserId: userId,
+    }, this.showModal)
   }
 
-  closePaymentWindow = () => {
-    this.setState({
-      modalIsOpen: false,
-      paymentWindowIsOpen: false,
-    })
-  }
-
-  closeConfirmationWindow = () => {
-    this.setState({
-      modalIsOpen: false,
-      confirmationWindowIsOpen: false,
-    })
-  }
-
-  openCreditCardForm = () => {
-    this.setState({
-      creditCardForm: true,
-      paymentWindowIsOpen: false,
-    })
-  }
-
-  closeCreditCardForm = () => {
-    this.setState({
-      creditCardForm: false,
-      paymentWindowIsOpen: true,
-    })
-  }
-
-  closeCreditCardList = () => {
-    this.setState({
-      creditCardList: false,
-      paymentWindowIsOpen: true,
-    })
-  }
-
+  //
+  // closePaymentWindow = () => {
+  //   this.setState({
+  //     modalIsOpen: false,
+  //     paymentWindowIsOpen: false,
+  //   })
+  // }
+  //
+  // closeConfirmationWindow = () => {
+  //   this.setState({
+  //     modalIsOpen: false,
+  //     confirmationWindowIsOpen: false,
+  //   })
+  // }
+  //
+  // openCreditCardForm = () => {
+  //   this.setState({
+  //     creditCardForm: true,
+  //     paymentWindowIsOpen: false,
+  //   })
+  // }
+  //
+  // closeCreditCardForm = () => {
+  //   this.setState({
+  //     creditCardForm: false,
+  //     paymentWindowIsOpen: true,
+  //   })
+  // }
+  //
+  // closeCreditCardList = () => {
+  //   this.setState({
+  //     creditCardList: false,
+  //     paymentWindowIsOpen: true,
+  //   })
+  // }
+  //
   componentDidMount =  () => {
     fetchUsers()
       .then((result) => {
@@ -102,79 +101,93 @@ class App extends Component {
       })
     }
   }
+  //
+  // registerCard = (card) => {
+  //   const existCard = localStorage.getItem('cards')
+  //   const cards = (existCard) ? JSON.parse(existCard) : [{ ...card, default: true }]
+  //   if (existCard) {
+  //     cards.push({ ...card, default: false })
+  //   }
+  //   const defaultCard = cards.filter(card => card.default)[0]
+  //   this.setState({
+  //     cards: cards,
+  //     card: defaultCard,
+  //   })
+  //   localStorage.setItem('cards', JSON.stringify(cards))
+  //   this.closeCreditCardForm()
+  // }
+  //
+  // editCard = (cards) => {
+  //   const defaultCard = cards.filter(card => card.default)[0]
+  //   this.setState({
+  //     card: defaultCard,
+  //   })
+  //   localStorage.setItem('cards', JSON.stringify(cards))
+  //   this.setState({
+  //     cards: cards,
+  //   })
+  //   this.closeCreditCardList()
+  // }
+  //
+  // openCreditCardList = () => {
+  //   this.setState({
+  //     creditCardList: true,
+  //     paymentWindowIsOpen: false,
+  //   })
+  // }
+  //
+  // sendPayment = (userId, value) => {
+  //   const payload = {
+  //     card_number: this.state.card.number,
+  //     cvv: this.state.card.cvv,
+  //     expiry_date: this.state.card.expiry_date,
+  //     value,
+  //     destination_user_id: userId,
+  //   }
+  //   sendPayment('http://careers.picpay.com/tests/mobdev/transaction', payload)
+  //     .then((result) => {
+  //       const status = result.transaction.success
+  //       if (status) {
+  //         const date = timestampToDate(result.transaction.timestamp)
+  //         this.recipe = {
+  //           confirmationMsg: 'Pagamento Confirmado!',
+  //           transaction: result.transaction.id,
+  //           date: `${date.day}/${date.month}/${date.year}`,
+  //           card: `**** **** **** ${payload.card_number.substring(12)}`,
+  //           value: value,
+  //         }
+  //       }
+  //       this.setState({
+  //         paymentWindowIsOpen: !status,
+  //         confirmationWindowIsOpen: status,
+  //         chosenUser: result.transaction.destination_user,
+  //       })
+  //     })
+  // }
 
-  registerCard = (card) => {
-    const existCard = localStorage.getItem('cards')
-    const cards = (existCard) ? JSON.parse(existCard) : [{ ...card, default: true }]
-    if (existCard) {
-      cards.push({ ...card, default: false })
-    }
-    const defaultCard = cards.filter(card => card.default)[0]
+  showModal = (modalContent) => {
     this.setState({
-      cards: cards,
-      card: defaultCard,
+      modalIsOpen: true,
     })
-    localStorage.setItem('cards', JSON.stringify(cards))
-    this.closeCreditCardForm()
   }
 
-  editCard = (cards) => {
-    const defaultCard = cards.filter(card => card.default)[0]
+  closeModal = (modalContent) => {
     this.setState({
-      card: defaultCard,
+      modalIsOpen: false,
     })
-    localStorage.setItem('cards', JSON.stringify(cards))
-    this.setState({
-      cards: cards,
-    })
-    this.closeCreditCardList()
-  }
-
-  openCreditCardList = () => {
-    this.setState({
-      creditCardList: true,
-      paymentWindowIsOpen: false,
-    })
-  }
-
-  sendPayment = (userId, value) => {
-    const payload = {
-      card_number: this.state.card.number,
-      cvv: this.state.card.cvv,
-      expiry_date: this.state.card.expiry_date,
-      value,
-      destination_user_id: userId,
-    }
-    sendPayment('http://careers.picpay.com/tests/mobdev/transaction', payload)
-      .then((result) => {
-        const status = result.transaction.success
-        if (status) {
-          const date = timestampToDate(result.transaction.timestamp)
-          this.recipe = {
-            confirmationMsg: 'Pagamento Confirmado!',
-            transaction: result.transaction.id,
-            date: `${date.day}/${date.month}/${date.year}`,
-            card: `**** **** **** ${payload.card_number.substring(12)}`,
-            value: value,
-          }
-        }
-        this.setState({
-          paymentWindowIsOpen: !status,
-          confirmationWindowIsOpen: status,
-          chosenUser: result.transaction.destination_user,
-        })
-      })
   }
 
   render() {
     const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
     return (
-      <div style={style}>
-        <CreditCardList editCard={this.editCard} addCard={this.openCreditCardForm} opened={this.state.creditCardList} onClose={this.closeCreditCardList} cards={this.state.cards} />
+      <div className="App" style={style}>
+        { this.state.modalIsOpen && (<Modal onClose={this.closeModal} content={<PaymentWindow user={this.state.userList.find(user => user.id === this.state.chosenUserId)} />}/>)}
+        <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
+        {/* <CreditCardList editCard={this.editCard} addCard={this.openCreditCardForm} opened={this.state.creditCardList} onClose={this.closeCreditCardList} cards={this.state.cards} />
         <CreditCardForm registerCard={this.registerCard} opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />
         <ConfirmationWindow togglePaymentWindow={this.togglePaymentWindow} onClose={this.closeConfirmationWindow} opened={this.state.confirmationWindowIsOpen} user={this.state.chosenUser} paymentData={this.recipe}/>
         <PaymentWindow card={this.state.card} editCard={this.openCreditCardList} onPay={this.sendPayment} onClose={this.closePaymentWindow} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser} openCreditCardList={this.openCreditCardList} addCard={this.openCreditCardForm}/>
-        <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
+        <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />*/}
       </div>
     )
   }
