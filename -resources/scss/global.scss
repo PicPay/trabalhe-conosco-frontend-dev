@@ -277,21 +277,3 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 	width: 100%;
 	height: 100%;
 }
-
-.sample-show-hide {
-	-webkit-transition: 0.2s ease-in-out all;
-	transition: 0.2s ease-in-out all;
-	transition-delay: 0.2s;
-}
-.sample-show-hide.ng-enter {
-	opacity: 0;
-}
-.sample-show-hide.ng-enter-active {
-	opacity: 1;
-}
-.sample-show-hide.ng-leave {
-	opacity: 1;
-}
-.sample-show-hide.ng-leave-active {
-	opacity: 0;	
-}

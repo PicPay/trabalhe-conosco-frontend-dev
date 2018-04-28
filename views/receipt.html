@@ -1,12 +1,12 @@
 <section class="receipt pos-relative defaultGradientBg defaultHeight" ng-controller="receiptCtrl">
-	<aside class="modalToShowViewsHeader" ng-click="setModalView('')">
+	<aside class="modalToShowViewsHeader hide-on-small-only" ng-click="setModalView('')">
 		<p>Confirmação de pagamento <i class="small material-icons right">close</i></p>
 	</aside>
 
 	<div class="container">
 		<div class="row">
 			<div class="col s12 m10 offset-m1">
-				<p  class="hide-on-med-and-up"><a href="#!" class="goBack"><i class="small material-icons">chevron_left</i> Voltar</a></p>
+				<p  class="hide-on-med-and-up"><a href="javascript:void(0)" ng-click="setModalView('')" class="goBack"><i class="small material-icons">chevron_left</i> Voltar</a></p>
 				<div class="row valign-wrapper personNameId">
 					<div class="col s3">
 						<img ng-src="{{receipt.data.transaction.destination_user.img}}" alt="{{receipt.data.transaction.destination_user.name}}" class="circle responsive-img" />
