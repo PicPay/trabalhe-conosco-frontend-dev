@@ -2,7 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { PaymentWindow, PaymentConfirmation, ConfirmationWindow, CreditCardForm, CreditCardList } from './payment'
-import { UserData, Button } from './user-list'
+import { UserData } from './user-list'
+import { Button } from './generics-components'
 
 describe('#PaymentWindow', function () {
   it('should render without throwing an error', function () {
@@ -11,7 +12,7 @@ describe('#PaymentWindow', function () {
     const buttons = wrapper.find(Button)
 
     expect(userContent).toHaveLength(1)
-    expect(buttons).toHaveLength(2)
+    expect(buttons).toHaveLength(1)
     expect(wrapper.find('.payment-value')).toHaveLength(1)
   })
 })
