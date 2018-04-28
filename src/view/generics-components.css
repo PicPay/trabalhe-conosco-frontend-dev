@@ -17,7 +17,11 @@
 
 .modal .back-button {
   align-self: flex-start;
-  margin: 4% 6% auto 7.5%;
+  margin-top: 4.3%;
+  margin-right: auto;
+  margin-bottom: 7.5%;
+  margin-left: 6%;
+
 }
 
 .back-button .btn{
