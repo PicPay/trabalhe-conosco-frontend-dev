@@ -45,7 +45,7 @@ export const UserPanel = (props) => {
 export const UserList = (props) => {
   return (
     <div className="user-list">
-      {props.userList.map((user, index) => <UserPanel key={index} togglePaymentWindow={() => props.togglePaymentWindow(user)} user={user} />)}
+      {props.userList.map((user, index) => <UserPanel key={index} togglePaymentWindow={() => props.togglePaymentWindow(user.id)} user={user} />)}
     </div>
   )
 }
