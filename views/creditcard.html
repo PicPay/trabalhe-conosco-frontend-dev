@@ -41,7 +41,7 @@
 	</div>
 
 	<aside class="actions">
-		<button class="btn callToAction teal giant hide-on-med-and-up" ng-click="saveCard()">Cadastrar</button>
+		<button class="btn callToAction teal giant hide-on-med-and-up" ng-click="saveCard()" ng-disabled="creditCard.card_number.length < 19">Cadastrar</button>
 		<div class="container hide-on-small-only">
 			<div class="row">
 				<div class="col s12">
