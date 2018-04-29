@@ -7,6 +7,10 @@
 		@media screen and (min-width: $break-sm) {
 			color: $dusk-two;
 		}
+
+		@media screen and (max-height: 480px) {
+			font-size: 16px;
+		}
 	}
 
 	h2 {
@@ -35,6 +39,10 @@
 					margin-left: auto;
 					margin-right: auto;
 				}
+			}
+
+			@media screen and (max-height: 480px) {
+				padding: 12px 32px;
 			}
 
 			&.active {
@@ -85,6 +93,10 @@
 		@media screen and (min-width: $break-sm) {
 			height: auto;
 			overflow-y: unset;
+		}
+
+		@media screen and (max-height: 480px) {
+			height: calc((100vh / 10) * 3);
 		}
 	}
 }
