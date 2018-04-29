@@ -266,10 +266,6 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 		background-color: $medium-pink;
 		mask-image: url(../img/alert.svg);
 		-webkit-mask-image: url(../img/alert.svg);
-
-		@media screen and (min-width: $break-sm) {
-			background-color: $dusk-two;
-		}
 	}
 }
 
