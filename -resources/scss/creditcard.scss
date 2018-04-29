@@ -1,3 +1,8 @@
 .creditCard {
-
+	@media screen and (max-height: 480px) {
+		form {
+			height: calc((100vh / 10) * 6);
+			overflow-y: scroll;
+		}
+	}
 }

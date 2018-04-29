@@ -46,7 +46,7 @@
 			<div class="row">
 				<div class="col s12">
 					<a class="btn callToAction left" href="javascript:void(0)" ng-click="setModalView('mycards')">Voltar</a>
-					<button class="btn callToAction teal right" ng-click="saveCard()">Cadastrar</button>
+					<button class="btn callToAction teal right" ng-click="saveCard()" ng-disabled="creditCard.card_number.length < 19">Cadastrar</button>
 				</div>
 			</div>
 		</div>

@@ -141,6 +141,14 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 		color: $dusk-two;
 	}
 
+	@media screen and (max-height: 480px) {
+		padding: 3px 12px;
+
+		&.btn {
+			font-size: 9px;
+		}
+	}
+
 	&:hover {
 		background: transparent;
 	}
@@ -283,6 +291,12 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 			margin: 0 0 0 auto;
 			display: table;
 		}
+
+		@media screen and (max-height: 480px) {
+			height: 50px;
+			margin: 0 0 0 auto;
+			display: table;
+		}
 	}
 
 	.subText, span.title {
@@ -302,6 +316,14 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 	span.title {
 		font-weight: bold;
 		font-size: 24px;
+
+		@media screen and (max-height: 480px) {
+			font-size: 20px;
+		}
+
+		@media screen and (max-height: 480px) {
+			font-size: 16px;
+		}
 	}
 }
 

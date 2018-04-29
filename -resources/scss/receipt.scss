@@ -9,6 +9,12 @@
 		@media screen and (min-width: $break-sm) {
 			color: $dusk-two;
 		}
+
+		@media screen and (max-height: 480px) {
+			font-size: 16px;
+			margin-bottom: 5px;
+			margin-top: 10px;
+		}
 	}
 
 	.receiptList {
@@ -37,6 +43,7 @@
 				color: $dusk-two;
 			}
 		}
+
 	}
 
 	.actions {
@@ -51,6 +58,10 @@
 		h2, h3 {
 			font-size: 20px;
 			text-align: center;
+
+			@media screen and (max-height: 480px) {
+				font-size: 16px;
+			}
 		}
 	}
 }
