@@ -47,7 +47,7 @@
   align-items: left;
   font-size: 14px;
   color: #ffffff;
-  padding-left: 3.2%;
+  padding-left: 12px;
 }
 
 .card-msg a{
@@ -112,6 +112,95 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   border: none;
 }
+
+.credit-card-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 4.3%;
+}
+
+.credit-card-form input{
+  width: 89%;
+  height: 22px;
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  text-align: left;
+  color: #ffffff;
+  background: Transparent;
+  border: none;
+}
+
+.credit-card-form .rectangle-1{
+  width: 89%;
+  height: 2px;
+  margin-bottom: 40px;
+  background-color: #acb1bd;
+}
+
+.credit-card-form .rectangle-2{
+  width: 89%;
+  height: 2px;
+  margin-bottom: 10.7%;
+  background-color: #7de6c6;
+}
+
+.credit-card-form .back-button{
+  margin-bottom: 44px;
+}
+
+.register-button {
+  width: 91%;
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+
+.register-button .btn{
+  width: 100%;
+  height: 48px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  color: #474971;
+  border-radius: 24px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.credit-card-form .label{
+  width: 89%;
+  height: 16px;
+  font-family: 'Nunito Sans';
+  font-size: 12px;
+  font-weight: bold;
+  color: #7de6c6;
+}
+
+.credit-card-form select{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 89%;
+  height: 22px;
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  text-align: left;
+  color: #ffffff;
+  background: url(img/white.svg) no-repeat 100%;
+  border: none;
+}
+
+select:required:invalid {
+color: #acb1bd;
+}
+
+option{
+  -moz-appearance: none;
+  background-color: #1d1e2a;
+}
+
 /*
 .confirmation-window{
   display: flex;

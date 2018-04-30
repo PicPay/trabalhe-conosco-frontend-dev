@@ -32,12 +32,14 @@ class App extends Component {
     super(props)
     this.state = {
       modalIsOpen: false,
+      lastPage: 'userList',
       // paymentWindowIsOpen: false,
       // confirmationWindowIsOpen: false,
       // creditCardForm: false,
       // creditCardList: false,
       chosenUser: {},
       userList: [],
+      cardList: [],
       // cards: [],
     }
     // this.recipe = {}
@@ -46,7 +48,20 @@ class App extends Component {
   togglePaymentWindow = (userId) => {
     this.setState({
       chosenUserId: userId,
+      activeComponent: 'paymentWindow',
+      lastPage: 'userList',
     }, this.showModal)
+  }
+
+  editCard = () => {
+    if (this.state.defaultCardNumber) {
+      // OPEN CARD LIST
+    } else {
+      this.setState({
+        lastPage: 'paymentWindow',
+        activeComponent: 'creditCardForm',
+      }, this.showModal)
+    }
   }
 
   //
@@ -94,28 +109,22 @@ class App extends Component {
       })
     const cards = JSON.parse(localStorage.getItem('cards'))
     if (cards) {
-      const defaultCard = cards.filter(card => card.default)[0]
+      const defaultCardNumber = cards.find(card => card.default).number
       this.setState({
         cards: cards,
-        card: defaultCard,
+        card: defaultCardNumber,
       })
     }
   }
-  //
-  // registerCard = (card) => {
-  //   const existCard = localStorage.getItem('cards')
-  //   const cards = (existCard) ? JSON.parse(existCard) : [{ ...card, default: true }]
-  //   if (existCard) {
-  //     cards.push({ ...card, default: false })
-  //   }
-  //   const defaultCard = cards.filter(card => card.default)[0]
-  //   this.setState({
-  //     cards: cards,
-  //     card: defaultCard,
-  //   })
-  //   localStorage.setItem('cards', JSON.stringify(cards))
-  //   this.closeCreditCardForm()
-  // }
+
+  registerCard = (card) => {
+    const cardList = localStorage.getItem('cards')
+    const newCardList = (cardList) ? [...JSON.parse(cardList), { ...card, default: false }] : [{ ...card, default: true }]
+    localStorage.setItem('cardList', JSON.stringify(newCardList))
+    this.setState({
+      cardList: newCardList,
+    }, this.closeModal)
+  }
   //
   // editCard = (cards) => {
   //   const defaultCard = cards.filter(card => card.default)[0]
@@ -165,23 +174,35 @@ class App extends Component {
   //     })
   // }
 
-  showModal = (modalContent) => {
+  showModal = () => {
     this.setState({
       modalIsOpen: true,
     })
   }
 
-  closeModal = (modalContent) => {
-    this.setState({
-      modalIsOpen: false,
-    })
+  closeModal = () => {
+    if (this.state.lastPage === 'userList' || this.state.lastPage === this.state.activeComponent) {
+      this.setState({
+        activeComponent: 'userList',
+        modalIsOpen: false,
+      })
+    } else {
+      this.setState({
+        activeComponent: this.state.lastPage,
+      })
+    }
   }
 
   render() {
     const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
+    const defaultCard = this.state.cardList.find(card => card.default)
+    const components = {
+      paymentWindow: <PaymentWindow editCard={this.editCard} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} defaultCard={defaultCard} />,
+      creditCardForm: <CreditCardForm registerCard={this.registerCard} onClose={this.closeCreditCardForm} />,
+    }
     return (
       <div className="App" style={style}>
-        { this.state.modalIsOpen && (<Modal onClose={this.closeModal} content={<PaymentWindow user={this.state.userList.find(user => user.id === this.state.chosenUserId)} />}/>)}
+        { this.state.modalIsOpen && (<Modal onClose={this.closeModal} content={components[this.state.activeComponent]}/>)}
         <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
         {/* <CreditCardList editCard={this.editCard} addCard={this.openCreditCardForm} opened={this.state.creditCardList} onClose={this.closeCreditCardList} cards={this.state.cards} />
         <CreditCardForm registerCard={this.registerCard} opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />

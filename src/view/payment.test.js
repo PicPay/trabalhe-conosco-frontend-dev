@@ -49,7 +49,7 @@ describe('#CreditCardForm', function () {
     const select = wrapper.find('select')
 
     expect(inputs).toHaveLength(5)
-    expect(buttons).toHaveLength(2)
+    expect(buttons).toHaveLength(1)
     expect(select).toHaveLength(1)
   })
 })

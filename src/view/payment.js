@@ -36,7 +36,7 @@ export class PaymentWindow extends Component  {
         <input type="text" className="payment-value" value={this.state.value} onChange={this.handleChange} placeholder="R$ 0,00" />
         <span className="rectangle-1"></span>
         <span className="rectangle-2"></span>
-        {(this.props.card) ? (
+        {(this.props.defaultCard) ? (
           <div className="card">
             <picture>
               <source srcSet={imgGreenSvg} alt=""/>
@@ -45,7 +45,7 @@ export class PaymentWindow extends Component  {
             <div className="card-msg">
               <span>Forma de pagamento:</span>
               <a href="#" className="card-msg-2" onClick={this.props.openCreditCardList} >
-                Cartão de crédito com final {this.props.card.number.substring(12)}
+                Cartão de crédito com final {this.props.defaultCard.number.substring(12)}
               </a>
             </div></div>
         ) : (
@@ -56,7 +56,7 @@ export class PaymentWindow extends Component  {
             </picture>
             <div className="no-card-msg">
               <span>Nenhum cartão de crédito cadastrado.</span>
-              <a href="#" className="no-card-msg-2" onClick={this.props.addCard} >Cadastrar agora.</a>
+              <a href="#" className="no-card-msg-2" onClick={this.props.editCard} >Cadastrar agora.</a>
             </div></div>
         )}
         <span className="pay-button">
@@ -141,13 +141,8 @@ export class CreditCardForm extends Component {
   }
 
   render() {
-    const style = { display: (this.props.opened) ? null : 'none' }
-    const buttonContent = <div><span className="button-icon">&lsaquo;</span><span>Voltar</span></div>
     return (
-      <div className="credit-card-form" style={style}>
-        <span className="back-button">
-          <Button onClick={this.props.onClose} content={buttonContent}/>
-        </span>
+      <div className="credit-card-form" >
         <select name="flag" onChange={this.handleInputChange} required>
           <option value="" disabled selected>Selecione a bandeira</option>
           <option value="Mastercard">Mastercard</option>
