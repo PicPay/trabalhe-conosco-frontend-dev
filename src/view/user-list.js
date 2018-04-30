@@ -24,7 +24,7 @@ export const UserData = ({
 }
 
 export const PaymentButton = (props) => {
-  const buttonContent = <img src={imgDownSvg}  alt="" />
+  const buttonContent = <div className="content"><span className="label">PAGAR</span><img src={imgDownSvg}  alt="" /></div>
   return (
     <div className="payment-button">
       <img src={imgPaySvg} alt="" />
