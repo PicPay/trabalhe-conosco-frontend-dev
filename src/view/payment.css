@@ -201,6 +201,78 @@ option{
   background-color: #1d1e2a;
 }
 
+.card-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+}
+
+.card-list .back-button{
+  margin-bottom: 24px;
+}
+
+.card-list .cards{
+  width: 100%;
+  margin-top: 24px;
+}
+
+.card-list .card{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 8.5%;
+  padding-right: 8.5%;
+
+}
+
+.card-list .check{
+  margin-left: auto;
+}
+
+.card-list .rectangle-1{
+  width: 83%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.24);
+  margin-top: 1px;
+}
+
+.new-card {
+  margin-top: 24px;
+  width: 83%;
+}
+
+.new-card .btn{
+  width: 100%;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  border: none;
+}
+
+.new-card .btn div{
+  display: flex;
+  align-items: center;
+}
+
+.new-card .btn span{
+  margin-left: 4%;
+}
+
+.card-list .card span{
+  margin-left: 4%;
+}
+
+.defaultCard{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 /*
 .confirmation-window{
   display: flex;

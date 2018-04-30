@@ -68,7 +68,7 @@ describe('#CreditCardList', function () {
     const buttons = wrapper.find(Button)
     const cardList = wrapper.find('.card')
 
-    expect(buttons).toHaveLength(3)
+    expect(buttons).toHaveLength(2)
     expect(cardList).toHaveLength(2)
     expect(wrapper.text()).toMatch('Cartões Cadastrados')
   })

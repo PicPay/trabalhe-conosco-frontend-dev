@@ -54,14 +54,24 @@ class App extends Component {
   }
 
   editCard = () => {
-    if (this.state.defaultCardNumber) {
-      // OPEN CARD LIST
+    if (this.state.cardList.length !== 0) {
+      this.setState({
+        lastPage: 'paymentWindow',
+        activeComponent: 'creditCardList',
+      }, this.showModal)
     } else {
       this.setState({
         lastPage: 'paymentWindow',
         activeComponent: 'creditCardForm',
       }, this.showModal)
     }
+  }
+
+  addCard = () => {
+    this.setState({
+      lastPage: 'creditCardList',
+      activeComponent: 'creditCardForm',
+    }, this.showModal)
   }
 
   //
@@ -107,24 +117,29 @@ class App extends Component {
           userList: result,
         })
       })
-    const cards = JSON.parse(localStorage.getItem('cards'))
-    if (cards) {
-      const defaultCardNumber = cards.find(card => card.default).number
+    const cardList = JSON.parse(localStorage.getItem('cardList'))
+    if (cardList) {
       this.setState({
-        cards: cards,
-        card: defaultCardNumber,
+        cardList: cardList,
       })
     }
   }
 
   registerCard = (card) => {
-    const cardList = localStorage.getItem('cards')
-    const newCardList = (cardList) ? [...JSON.parse(cardList), { ...card, default: false }] : [{ ...card, default: true }]
+    const newCardList = (this.state.cardList.length !== 0) ? [...this.state.cardList, { ...card, default: false }] : [{ ...card, default: true }]
     localStorage.setItem('cardList', JSON.stringify(newCardList))
     this.setState({
       cardList: newCardList,
     }, this.closeModal)
   }
+
+  editCardList = (cardList) => {
+    localStorage.setItem('cardList', JSON.stringify(cardList))
+    this.setState({
+      cardList: cardList,
+    }, this.closeModal)
+  }
+
   //
   // editCard = (cards) => {
   //   const defaultCard = cards.filter(card => card.default)[0]
@@ -199,6 +214,7 @@ class App extends Component {
     const components = {
       paymentWindow: <PaymentWindow editCard={this.editCard} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} defaultCard={defaultCard} />,
       creditCardForm: <CreditCardForm registerCard={this.registerCard} onClose={this.closeCreditCardForm} />,
+      creditCardList: <CreditCardList editCardList={this.editCardList} addCard={this.addCard} cards={this.state.cardList} />,
     }
     return (
       <div className="App" style={style}>

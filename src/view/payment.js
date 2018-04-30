@@ -10,13 +10,7 @@ import imgGreenPng from './img/green.png'
 import imgGreenPng2x from './img/green@2x.png'
 import imgGreenPng3x from './img/green@3x.png'
 import imgCheckMarkSvg from './img/check-mark.svg'
-import imgCheckMarkPng from './img/check-mark.png'
-import imgCheckMarkPng2x from './img/check-mark@2x.png'
-import imgCheckMarkPng3x from './img/check-mark@3x.png'
 import imgPlusSvg from './img/plus.svg'
-import imgPlusPng from './img/plus.png'
-import imgPlusPng2x from './img/plus@2x.png'
-import imgPlusPng3x from './img/plus@3x.png'
 import './payment.css'
 
 export class PaymentWindow extends Component  {
@@ -44,7 +38,7 @@ export class PaymentWindow extends Component  {
             </picture>
             <div className="card-msg">
               <span>Forma de pagamento:</span>
-              <a href="#" className="card-msg-2" onClick={this.props.openCreditCardList} >
+              <a href="#" className="card-msg-2" onClick={this.props.editCard} >
                 Cartão de crédito com final {this.props.defaultCard.number.substring(12)}
               </a>
             </div></div>
@@ -193,11 +187,11 @@ export class CreditCardList extends Component {
     const cards = this.props.cards.slice()
     cards[cards.findIndex(card => card.default)].default = false
     cards[cardSelected.findIndex(card => card)].default = true
-    this.props.editCard(cards)
+    this.props.editCardList(cards)
   }
 
   handleClick(id) {
-    const cardSelected = Array(this.state.cardSelected.lentgh).fill(0)
+    const cardSelected = Array(this.state.cardSelected.length).fill(0)
     cardSelected[id] = 1
     this.setState({
       cardSelected: cardSelected,
@@ -205,20 +199,13 @@ export class CreditCardList extends Component {
   }
 
   render() {
-    const style = { display: (this.props.opened) ? null : 'none' }
-    const buttonContent = <div><span className="button-icon">&lsaquo;</span><span>Voltar</span></div>
     const className = ['card defaultCard', 'card']
-    const content = <div><picture>
-      <source srcSet={imgPlusSvg} alt=""/>
-      <img src={imgPlusPng} srcSet={`${imgPlusPng},${imgPlusPng2x} 2x, ${imgPlusPng3x} 3x`} alt="" />
-    </picture>
-    <span>Cadastrar novo cartão</span>
+    const content = <div>
+      <img src={imgPlusSvg} alt="" />
+      <span>Cadastrar novo cartão</span>
     </div>
     return (
-      <div className="card-list" style={style} >
-        <span className="back-button">
-          <Button onClick={this.props.onClose} content={buttonContent}/>
-        </span>
+      <div className="card-list" >
         <span>Cartões Cadastrados</span>
         <div className="cards">
           {this.props.cards.map((card, index) => {
@@ -226,15 +213,9 @@ export class CreditCardList extends Component {
             const defaultStyle = { display: (this.state.cardSelected[index]) ? null : 'none' }
             return (
               <div key={index} className={(this.state.cardSelected[index]) ? className[0] : className[1]} onClick={() => this.handleClick(index)}>
-                <picture>
-                  <source srcSet={imgGreenSvg} alt=""/>
-                  <img src={imgGreenPng} srcSet={`${imgGreenPng},${imgGreenPng2x} 2x, ${imgGreenPng3x} 3x`} alt="" />
-                </picture>
+                <img src={imgGreenSvg}  alt="" />
                 <span>{cardNumber}</span>
-                <picture className="check" style={defaultStyle}>
-                  <source srcSet={imgCheckMarkSvg} alt=""/>
-                  <img src={imgCheckMarkPng} srcSet={`${imgCheckMarkPng},${imgCheckMarkPng2x} 2x, ${imgCheckMarkPng3x} 3x`} alt="" />
-                </picture>
+                <img className="check" style={defaultStyle} src={imgCheckMarkSvg}  alt="" />
               </div>
             )
           })}
