@@ -3,6 +3,7 @@
   align-items: center;
   background-image: linear-gradient(259deg, #3c3e64, #1d1e2a);
   box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+  color: #ffffff;
 }
 .user-panel .payment-button{
   margin-left: auto;
@@ -13,19 +14,13 @@
   padding-left: 16px;
   padding-bottom: 10px;
   padding-top: 10px;
-  color: #ffffff;
 }
 .user-data{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  color: #ffffff;
 }
-.btn{
-  background: Transparent;
-  border: none;
-  cursor:pointer;
-}
+
 .payment-button{
   display: flex;
   align-items: center;
@@ -45,7 +40,6 @@
 .user-name{
   height: 19px;
   font-size: 16px;
-  font-family: Roboto;
   font-weight: bold;
 }
 .user-info span{
@@ -53,7 +47,7 @@
   font-size: 12px;
 }
 
-.payment-button picture{
+.payment-button img{
   display: flex;
   align-items: center;
 }

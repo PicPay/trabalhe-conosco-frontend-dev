@@ -2,15 +2,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
-  width: 100%;
   height: 100%;
-  background-image: linear-gradient(259deg, #3c3e64, #1d1e2a);
+  width: 100%;
+}
+
+.payment-window .payment-value{
+  width: 53%;
+  height: 66px;
+  margin-top: 10.6%;
+  font-size: 48px;
+  font-family: 'Nunito Sans';
+  text-decoration-color: #7de6c6;
+  text-align: center;
+  color: #ffffff;
+  background: Transparent;
+  border: none;
+  caret-color: #7de6c6;
 }
 
 .payment-window .rectangle-1{
   width: 68%;
   height: 2px;
+  margin-top: 2%;
   background-color: #474971;
 }
 
@@ -24,15 +37,14 @@
 .payment-window .card{
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 28px;
+  margin-top: 5.3%;
+  margin-bottom: 4.5%;
 }
 
 .card-msg{
   display: flex;
   flex-direction: column;
   align-items: left;
-  font-family: Roboto;
   font-size: 14px;
   color: #ffffff;
   padding-left: 12px;
@@ -40,7 +52,6 @@
 
 .card-msg a{
   font-weight: bold;
-  font-family: Roboto;
   font-size: 14px;
   color: #ffffff;
 }
@@ -48,15 +59,14 @@
 .payment-window .no-card{
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 28px;
+  margin-top: 5.5%;
+  margin-bottom: 7.8%;
 }
 
 .no-card-msg{
   display: flex;
   flex-direction: column;
   align-items: left;
-  font-family: Roboto;
   font-size: 14px;
   color: #ef5778;
   padding-left: 12px;
@@ -64,26 +74,8 @@
 
 .no-card-msg a{
   font-weight: bold;
-  font-family: Roboto;
   font-size: 14px;
   color: #ef5778;
-}
-
-.payment-window input{
-  width: 53%;
-  height: 66px;
-  font-size: 48px;
-  font-family: NunitoSans;
-  text-decoration-color: #7de6c6;
-  text-align: center;
-  color: #ffffff;
-  background: Transparent;
-  border: none;
-  caret-color: #7de6c6;
-}
-
-.payment-window .user-data{
-  margin: 28px 45px 40px;
 }
 
 .payment-window .user-img{
@@ -103,28 +95,69 @@
   width: 75%;
 }
 
-.back-button{
-  align-self: flex-start;
-  margin-top: 16px;
-  margin-left: 22px;
-}
-
-.back-button .btn{
-  width: 37px;
-  height: 16px;
-  font-family: Roboto;
-  font-size: 14px;
-  color: #ffffff;
-}
-
 .button-icon{
   height: 16px;;
-  font-family: Roboto;
   font-size: 14px;
   color: #7de6c6;
 }
 
 .pay-button .btn{
+  width: 100%;
+  height: 48px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #474971;
+  border-radius: 24px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.credit-card-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 4.3%;
+}
+
+.credit-card-form input{
+  width: 89%;
+  height: 22px;
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  text-align: left;
+  color: #ffffff;
+  background: Transparent;
+  border: none;
+}
+
+.credit-card-form .rectangle-1{
+  width: 89%;
+  height: 2px;
+  margin-bottom: 40px;
+  background-color: #acb1bd;
+}
+
+.credit-card-form .rectangle-2{
+  width: 89%;
+  height: 2px;
+  margin-bottom: 10.7%;
+  background-color: #7de6c6;
+}
+
+.credit-card-form .back-button{
+  margin-bottom: 44px;
+}
+
+.register-button {
+  width: 91%;
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+
+.register-button .btn{
   width: 100%;
   height: 48px;
   font-family: Roboto;
@@ -137,6 +170,208 @@
   border: none;
 }
 
+.credit-card-form .label{
+  width: 89%;
+  height: 16px;
+  font-family: 'Nunito Sans';
+  font-size: 12px;
+  font-weight: bold;
+  color: #7de6c6;
+}
+
+.credit-card-form select{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 89%;
+  height: 22px;
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  text-align: left;
+  color: #ffffff;
+  background: url(img/white.svg) no-repeat 100%;
+  border: none;
+}
+
+select:required:invalid {
+color: #acb1bd;
+}
+
+option{
+  -moz-appearance: none;
+  background-color: #1d1e2a;
+}
+
+.card-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+}
+
+.card-list .back-button{
+  margin-bottom: 24px;
+}
+
+.card-list .cards{
+  width: 100%;
+  margin-top: 24px;
+}
+
+.card-list .card{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 8.5%;
+  padding-right: 8.5%;
+
+}
+
+.card-list .check{
+  margin-left: auto;
+}
+
+.card-list .rectangle-1{
+  width: 83%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.24);
+  margin-top: 1px;
+}
+
+.new-card {
+  margin-top: 24px;
+  width: 83%;
+}
+
+.new-card .btn{
+  width: 100%;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  border: none;
+}
+
+.new-card .btn div{
+  display: flex;
+  align-items: center;
+}
+
+.new-card .btn span{
+  margin-left: 4%;
+}
+
+.card-list .card span{
+  margin-left: 4%;
+}
+
+.defaultCard{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.confirmation-window{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.confirmation-window .user-img{
+  width: 80px;
+  height: 80px;
+}
+
+.confirmation-window .user-name{
+  height: 28px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.payment-confirmation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 58%;
+  margin-top: 72px;
+}
+
+.payment-confirmation .confirmation-msg{
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.recipe-row{
+  display: flex;
+}
+
+.recipe{
+  width: 92%;
+  margin-top: 40px;
+}
+
+.recipe .rectangle-2{
+  width: 100%;
+  height: 1px;
+  margin-bottom: 20px;
+  background-color: #d8d8d8;
+}
+
+.recipe-label{
+  height: 16px;
+  font-size: 14px;
+}
+
+.recipe-data{
+  height: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #7de6c6;
+  margin-left: auto;
+}
+
+.recipe-buttons{
+  display: flex;
+  width: 81%;
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+
+.recipe-buttons .btn{
+  width: 60%;
+  height: 48px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  color: #474971;
+  border-radius: 24px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.back-button-2{
+  width: 33%;
+  margin-right: 24px;
+}
+
+.back-button-2 .btn{
+  width: 100%;
+  height: 48px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 24px;
+  background-image: linear-gradient(211deg, #3c3e64, #1d1e2a);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border: solid 1px #ffffff;
+}
+/*
 .confirmation-window{
   display: flex;
   flex-direction: column;
@@ -411,4 +646,4 @@ option{
 
 .defaultCard{
   background-color: rgba(255, 255, 255, 0.1);
-}
+} */

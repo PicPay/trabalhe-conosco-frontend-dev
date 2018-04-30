@@ -2,7 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { PaymentWindow, PaymentConfirmation, ConfirmationWindow, CreditCardForm, CreditCardList } from './payment'
-import { UserData, Button } from './user-list'
+import { UserData } from './user-list'
+import { Button } from './generics-components'
 
 describe('#PaymentWindow', function () {
   it('should render without throwing an error', function () {
@@ -11,7 +12,7 @@ describe('#PaymentWindow', function () {
     const buttons = wrapper.find(Button)
 
     expect(userContent).toHaveLength(1)
-    expect(buttons).toHaveLength(2)
+    expect(buttons).toHaveLength(1)
     expect(wrapper.find('.payment-value')).toHaveLength(1)
   })
 })
@@ -36,7 +37,7 @@ describe('#ConfirmationWindow', function () {
 
     expect(userContent).toHaveLength(1)
     expect(paymentData).toHaveLength(1)
-    expect(buttons).toHaveLength(3)
+    expect(buttons).toHaveLength(2)
   })
 })
 
@@ -48,7 +49,7 @@ describe('#CreditCardForm', function () {
     const select = wrapper.find('select')
 
     expect(inputs).toHaveLength(5)
-    expect(buttons).toHaveLength(2)
+    expect(buttons).toHaveLength(1)
     expect(select).toHaveLength(1)
   })
 })
@@ -67,7 +68,7 @@ describe('#CreditCardList', function () {
     const buttons = wrapper.find(Button)
     const cardList = wrapper.find('.card')
 
-    expect(buttons).toHaveLength(3)
+    expect(buttons).toHaveLength(2)
     expect(cardList).toHaveLength(2)
     expect(wrapper.text()).toMatch('Cartões Cadastrados')
   })
