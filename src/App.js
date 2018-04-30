@@ -32,7 +32,7 @@ class App extends Component {
     super(props)
     this.state = {
       modalIsOpen: false,
-      lastPage: 'userList',
+      navigationPath: ['userList'],
       // paymentWindowIsOpen: false,
       // confirmationWindowIsOpen: false,
       // creditCardForm: false,
@@ -46,31 +46,35 @@ class App extends Component {
   }
 
   togglePaymentWindow = (userId) => {
+    const activeComponent = 'paymentWindow'
+    const navigationPath = [...this.state.navigationPath, activeComponent]
     this.setState({
       chosenUserId: userId,
-      activeComponent: 'paymentWindow',
-      lastPage: 'userList',
+      activeComponent: activeComponent,
+      navigationPath: navigationPath,
     }, this.showModal)
   }
 
   editCard = () => {
     if (this.state.cardList.length !== 0) {
       this.setState({
-        lastPage: 'paymentWindow',
         activeComponent: 'creditCardList',
+        navigationPath: [...this.state.navigationPath, 'creditCardList'],
       }, this.showModal)
     } else {
       this.setState({
-        lastPage: 'paymentWindow',
         activeComponent: 'creditCardForm',
+        navigationPath: [...this.state.navigationPath, 'creditCardForm'],
       }, this.showModal)
     }
   }
 
   addCard = () => {
+    const activeComponent = 'creditCardForm'
+    const navigationPath = [...this.state.navigationPath, activeComponent]
     this.setState({
-      lastPage: 'creditCardList',
-      activeComponent: 'creditCardForm',
+      activeComponent: activeComponent,
+      navigationPath: navigationPath,
     }, this.showModal)
   }
 
@@ -196,16 +200,14 @@ class App extends Component {
   }
 
   closeModal = () => {
-    if (this.state.lastPage === 'userList' || this.state.lastPage === this.state.activeComponent) {
-      this.setState({
-        activeComponent: 'userList',
-        modalIsOpen: false,
-      })
-    } else {
-      this.setState({
-        activeComponent: this.state.lastPage,
-      })
-    }
+    const activeComponent = this.state.navigationPath.slice(-2)[0]
+    const navigationPath = this.state.navigationPath.slice(0, this.state.navigationPath.length - 1)
+
+    this.setState({
+      activeComponent: activeComponent,
+      navigationPath: navigationPath,
+      modalIsOpen: (activeComponent !== 'userList'),
+    })
   }
 
   render() {
