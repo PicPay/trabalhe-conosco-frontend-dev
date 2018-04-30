@@ -272,7 +272,105 @@ option{
 .defaultCard{
   background-color: rgba(255, 255, 255, 0.1);
 }
+.confirmation-window{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
 
+.confirmation-window .user-img{
+  width: 80px;
+  height: 80px;
+}
+
+.confirmation-window .user-name{
+  height: 28px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.payment-confirmation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 58%;
+  margin-top: 72px;
+}
+
+.payment-confirmation .confirmation-msg{
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.recipe-row{
+  display: flex;
+}
+
+.recipe{
+  width: 92%;
+  margin-top: 40px;
+}
+
+.recipe .rectangle-2{
+  width: 100%;
+  height: 1px;
+  margin-bottom: 20px;
+  background-color: #d8d8d8;
+}
+
+.recipe-label{
+  height: 16px;
+  font-size: 14px;
+}
+
+.recipe-data{
+  height: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #7de6c6;
+  margin-left: auto;
+}
+
+.recipe-buttons{
+  display: flex;
+  width: 81%;
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+
+.recipe-buttons .btn{
+  width: 60%;
+  height: 48px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  color: #474971;
+  border-radius: 24px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.back-button-2{
+  width: 33%;
+  margin-right: 24px;
+}
+
+.back-button-2 .btn{
+  width: 100%;
+  height: 48px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 24px;
+  background-image: linear-gradient(211deg, #3c3e64, #1d1e2a);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border: solid 1px #ffffff;
+}
 /*
 .confirmation-window{
   display: flex;

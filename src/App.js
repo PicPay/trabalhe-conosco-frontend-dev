@@ -164,34 +164,46 @@ class App extends Component {
   //   })
   // }
   //
-  // sendPayment = (userId, value) => {
-  //   const payload = {
-  //     card_number: this.state.card.number,
-  //     cvv: this.state.card.cvv,
-  //     expiry_date: this.state.card.expiry_date,
-  //     value,
-  //     destination_user_id: userId,
-  //   }
-  //   sendPayment('http://careers.picpay.com/tests/mobdev/transaction', payload)
-  //     .then((result) => {
-  //       const status = result.transaction.success
-  //       if (status) {
-  //         const date = timestampToDate(result.transaction.timestamp)
-  //         this.recipe = {
-  //           confirmationMsg: 'Pagamento Confirmado!',
-  //           transaction: result.transaction.id,
-  //           date: `${date.day}/${date.month}/${date.year}`,
-  //           card: `**** **** **** ${payload.card_number.substring(12)}`,
-  //           value: value,
-  //         }
-  //       }
-  //       this.setState({
-  //         paymentWindowIsOpen: !status,
-  //         confirmationWindowIsOpen: status,
-  //         chosenUser: result.transaction.destination_user,
-  //       })
-  //     })
-  // }
+  sendPayment = (userId, value) => {
+    console.log(value)
+    const card = this.state.cardList.find(card => card.default)
+    const payload = {
+      card_number: card.number,
+      cvv: card.cvv,
+      expiry_date: card.expiry_date,
+      value,
+      destination_user_id: userId,
+    }
+    sendPayment('http://careers.picpay.com/tests/mobdev/transaction', payload)
+      .then((result) => {
+        const status = result.transaction.success
+        if (status) {
+          const date = timestampToDate(result.transaction.timestamp)
+          const year = date.year.toString().substring(2, 4)
+          const month = (date.month > 10) ? date.month : `0${date.month.toString()}`
+          const hour = (date.hour > 10) ? date.hour : `0${date.hour.toString()}`
+          const minute = (date.minute > 10) ? date.minute : `0${date.minute.toString()}`
+          this.recipe = {
+            confirmationMsg: 'Pagamento confirmado!',
+            transaction: result.transaction.id,
+            date: `${date.day}/${month}/${year} - ${hour}:${minute}`,
+            card: `**** **** **** ${payload.card_number.substring(12)}`,
+            value: Number(value).toFixed(2).replace('.', ','),
+          }
+        }
+        const activeComponent = 'confirmationWindow'
+        const navigationPath = [...this.state.navigationPath, activeComponent]
+        this.setState({
+          activeComponent: activeComponent,
+          navigationPath: navigationPath,
+        }, this.showModal)
+        // this.setState({
+        //   paymentWindowIsOpen: !status,
+        //   confirmationWindowIsOpen: status,
+        //   chosenUser: result.transaction.destination_user,
+        // })
+      })
+  }
 
   showModal = () => {
     this.setState({
@@ -214,9 +226,10 @@ class App extends Component {
     const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
     const defaultCard = this.state.cardList.find(card => card.default)
     const components = {
-      paymentWindow: <PaymentWindow editCard={this.editCard} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} defaultCard={defaultCard} />,
+      paymentWindow: <PaymentWindow onPay={this.sendPayment} editCard={this.editCard} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} defaultCard={defaultCard} />,
       creditCardForm: <CreditCardForm registerCard={this.registerCard} onClose={this.closeCreditCardForm} />,
       creditCardList: <CreditCardList editCardList={this.editCardList} addCard={this.addCard} cards={this.state.cardList} />,
+      confirmationWindow: <ConfirmationWindow togglePaymentWindow={this.togglePaymentWindow} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} paymentData={this.recipe}/>,
     }
     return (
       <div className="App" style={style}>

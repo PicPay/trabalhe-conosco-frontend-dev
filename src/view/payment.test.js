@@ -37,7 +37,7 @@ describe('#ConfirmationWindow', function () {
 
     expect(userContent).toHaveLength(1)
     expect(paymentData).toHaveLength(1)
-    expect(buttons).toHaveLength(3)
+    expect(buttons).toHaveLength(2)
   })
 })
 

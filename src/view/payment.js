@@ -78,7 +78,7 @@ export const PaymentConfirmation = ({
         <div className="rectangle-2"></div>
         <div className="recipe-row"><span className="recipe-label">Cartão</span><span className="recipe-data">{card}</span></div>
         <div className="rectangle-2"></div>
-        <div className="recipe-row"><span className="recipe-label">Valor</span><span className="recipe-data">{value}</span></div>
+        <div className="recipe-row"><span className="recipe-label">Valor</span><span className="recipe-data">R$ {value}</span></div>
         <div className="rectangle-2"></div>
       </div>
 
@@ -87,13 +87,8 @@ export const PaymentConfirmation = ({
 }
 
 export const ConfirmationWindow = (props) =>  {
-  const style = { display: (props.opened) ? null : 'none' }
-  const buttonContent = <div><span className="button-icon">&lsaquo;</span><span>Voltar</span></div>
   return (
-    <div className="confirmation-window" style={style}>
-      <span className="back-button">
-        <Button onClick={props.onClose} content={buttonContent}/>
-      </span>
+    <div className="confirmation-window" >
       <UserData {...props.user} />
       <PaymentConfirmation {...props.paymentData} />
       <div className="recipe-buttons">
