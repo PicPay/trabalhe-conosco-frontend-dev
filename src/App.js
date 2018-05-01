@@ -236,15 +236,28 @@ class App extends Component {
   render() {
     const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
     const defaultCard = this.state.cardList.find(card => card.default)
+    const user = (this.state.userList.find(user => user.id === this.state.chosenUserId))
     const components = {
-      paymentWindow: <PaymentWindow onPay={this.sendPayment} editCard={this.editCard} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} defaultCard={defaultCard} />,
-      creditCardForm: <CreditCardForm registerCard={this.registerCard} onClose={this.closeCreditCardForm} />,
-      creditCardList: <CreditCardList editCardList={this.editCardList} addCard={this.addCard} cards={this.state.cardList} />,
-      confirmationWindow: <ConfirmationWindow togglePaymentWindow={this.backNavigation} onClose={this.closeModal} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} paymentData={this.recipe}/>,
+      paymentWindow: {
+        content: <PaymentWindow onPay={this.sendPayment} editCard={this.editCard} user={user} defaultCard={defaultCard} />,
+        header: <div><span>Pagamento para </span><span style={{ color: '#7de6c6' }}>{(user) ? user.name : ''}</span></div>,
+      },
+      creditCardForm: {
+        content: <CreditCardForm registerCard={this.registerCard} onClose={this.closeCreditCardForm} />,
+        header: 'Teste',
+      },
+      creditCardList: {
+        content: <CreditCardList editCardList={this.editCardList} addCard={this.addCard} cards={this.state.cardList} />,
+        header: 'Teste',
+      },
+      confirmationWindow: {
+        content: <ConfirmationWindow togglePaymentWindow={this.backNavigation} onClose={this.closeModal} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} paymentData={this.recipe}/>,
+        header: 'Teste',
+      },
     }
     return (
       <div className="App" style={style}>
-        { this.state.modalIsOpen && (<Modal onClose={this.backNavigation} content={components[this.state.activeComponent]}/>)}
+        { this.state.modalIsOpen && (<Modal onClose={this.backNavigation} title={components[this.state.activeComponent].header} content={components[this.state.activeComponent].content}/>)}
         <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
         {/* <CreditCardList editCard={this.editCard} addCard={this.openCreditCardForm} opened={this.state.creditCardList} onClose={this.closeCreditCardList} cards={this.state.cards} />
         <CreditCardForm registerCard={this.registerCard} opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />

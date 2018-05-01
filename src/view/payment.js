@@ -2,13 +2,8 @@ import React, { Component } from 'react'
 import { UserData } from './user-list'
 import { Button } from './generics-components'
 import imgAlertSvg from './img/alert.svg'
-import imgAlertPng from './img/alert.png'
-import imgAlertPng2x from './img/alert@2x.png'
-import imgAlertPng3x from './img/alert@3x.png'
 import imgGreenSvg from './img/green.svg'
-import imgGreenPng from './img/green.png'
-import imgGreenPng2x from './img/green@2x.png'
-import imgGreenPng3x from './img/green@3x.png'
+import imgBlueSvg from './img/blue.svg'
 import imgCheckMarkSvg from './img/check-mark.svg'
 import imgPlusSvg from './img/plus.svg'
 import './payment.css'
@@ -32,10 +27,8 @@ export class PaymentWindow extends Component  {
         <span className="rectangle-2"></span>
         {(this.props.defaultCard) ? (
           <div className="card">
-            <picture>
-              <source srcSet={imgGreenSvg} alt=""/>
-              <img src={imgGreenPng} srcSet={`${imgGreenPng},${imgGreenPng2x} 2x, ${imgGreenPng3x} 3x`} alt="" />
-            </picture>
+            <img className="green" src={imgGreenSvg} alt="" />
+            <img className="blue" src={imgBlueSvg} alt="" />
             <div className="card-msg">
               <span>Forma de pagamento:</span>
               <a href="#" className="card-msg-2" onClick={this.props.editCard} >
@@ -44,10 +37,7 @@ export class PaymentWindow extends Component  {
             </div></div>
         ) : (
           <div className="no-card">
-            <picture>
-              <source srcSet={imgAlertSvg} alt=""/>
-              <img src={imgAlertPng} srcSet={`${imgAlertPng},${imgAlertPng2x} 2x, ${imgAlertPng3x} 3x`} alt="" />
-            </picture>
+            <img src={imgAlertSvg} alt="" />
             <div className="no-card-msg">
               <span>Nenhum cartão de crédito cadastrado.</span>
               <a href="#" className="no-card-msg-2" onClick={this.props.editCard} >Cadastrar agora.</a>
