@@ -17,6 +17,6 @@ describe('#Modal', function () {
     const buttons = wrapper.find(Button)
 
     expect(wrapper.text()).toMatch('Texto')
-    expect(buttons).toHaveLength(1)
+    expect(buttons).toHaveLength(2)
   })
 })
