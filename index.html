@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8" />
+    <script data-require="angular.js@1.2.x" src="https://code.angularjs.org/1.2.25/angular.js" data-semver="1.2.25"></script>
+    <script src="js/rw-money-mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+    <!-- UIkit CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/css/uikit.min.css" />
+
+	<!-- UIkit JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
+
+	<!-- Jquery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+</head>
+
+<style type="text/css">
+
+.Rectangle {
+  width: 532px;
+  height: 48px;
+  border-radius: 24px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  background-image: linear-gradient(to bottom, var(--duck-egg-blue), var(--light-teal));
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+</style>
+
+<script type="text/javascript">
+
+var app = angular.module('app', ['ngStorage','rw.moneymask']);
+
+var URI = 'http://careers.picpay.com/tests/mobdev/users';
+
+app.controller('MyController', function($scope, $http, $localStorage, $location) {
+
+	  var vm = this;
+	  vm.mydata = [];
+
+	        $http.get(URI)
+	            .then(function(result) {
+	              console.log(result);
+	              vm.mydata = result.data;
+	  }); 
+
+	$scope.newContacts = {};
+	$scope.saved = localStorage.getItem('contacts');
+	$scope.contacts = (localStorage.getItem('contacts') !== null) ? JSON.parse($scope.saved) : [{bandeira:'visa',nome:'philipe',card_number:'1111111111111111',expiry_date:'01/18',cvv:'860',cep:'29171447'}];
+
+	localStorage.setItem('contacts', JSON.stringify($scope.contacts));
+
+	$scope.saveContacts = function()
+	{
+		$scope.contacts.push($scope.newContacts);
+		localStorage.setItem('contacts', JSON.stringify($scope.contacts))
+		console.log($scope.newContacts);
+
+		alert("Cadastro realizado com sucesso");
+		window.location.href='http://localhost/PicPay/index.html';
+	}
+
+	$scope.verificar = function()
+	{
+		uikit.modal('#myModal', {modal: false, keyboard: false, bgclose: false, center: true}).show();
+	}
+
+    $scope.pagar = function(id,card_number,cvv,expiry_date,value)
+    {
+    	if(card_number==1111111111111111)
+    	{ 
+	    	$http({
+	    		method: 'POST',
+	    		url: 'http://careers.picpay.com/tests/mobdev/transaction',
+	    		data: { 'card_number': card_number, 'cvv': cvv, 'value': value, 'expiry_date': expiry_date, 'destination_user_id': id },
+	    		headers: {
+	    			'Content-Type': 'application/json'
+	    		}
+	    	})
+	    	.success(function(data)
+	    	{
+	    		alert('Pagamento realizado com sucesso');
+	    		window.location.href='http://localhost/PicPay/index.html';
+	    	}).error(function(error){
+	    		alert('Ocorreu um erro: Número de cartão inválido');
+	    		window.location.href='http://localhost/PicPay/index.html';
+	    	});
+	    }else{
+	    	window.alert("Erro: Cartão inválido");
+	    	window.location.href='http://localhost/PicPay/index.html';
+	    }
+    }
+});
+
+</script>	
+  
+<body ng-controller="MyController as controller">
+
+<table>
+  	<tr ng-repeat="data in controller.mydata">
+
+		<td><img src="{{data.img}}" width="72" height="72"/></td>
+		<td><b>{{data.name}}<br>ID:{{data.id}}&nbsp&nbsp</b><b>{{data.username}}</b></td>
+		<td><button ng-class="['uk-button', 'uk-button-primary', 'uk-button-small']" ng-href="#modal-editar{{data.id}}" uk-toggle>PAGAR</button>
+
+			<!-- MODAL PAGAR -->
+			<div class="Rectangle-4-Copy-4" id="modal-editar{{data.id}}" uk-modal>
+				
+				<div ng-class="['uk-modal-dialog']">
+					<button ng-class="['uk-modal-close-default']" type="button" uk-close></button>
+				<div ng-class="['uk-modal-header']">
+					<h2 ng-class="['uk-modal-title']">Pagamento para {{data.name}}</h2>
+				</div>				
+				<center>
+				<div ng-class="['uk-modal-body']">
+					<img src="{{data.img}}" width="72" height="72"/><br><b>{{data.name}}</b><br>
+					ID:{{data.id}}&nbsp&nbsp</b>{{data.username}}
+				</div>
+				
+				R$ <input type="text" placeholder="R$ 0,00" ng-model="newContacts.value" ng-class="['uk-input','uk-form-width-medium','uk-form-small']" money-mask money-mask-prepend="R$" required /><br><br>
+				
+				<button ng-class="['uk-button', 'uk-button-primary', 'uk-button-small']" ng-click="verificar()" ng-href="#modal-cadastrar{{data.id}}" uk-toggle >CADASTRAR NOVO CARTÃO</button>
+				<br><br>
+				<button ng-class="['uk-button', 'uk-button-primary', 'uk-button-small']" ng-href="#modal-listar{{data.id}}" uk-toggle>PAGAR</button><br><br>
+			</div>
+
+			<!-- MODAL CADASTRAR CARTÃO DE CRÉDITO -->
+
+			<div class="Rectangle-4-Copy-4" id="modal-cadastrar{{data.id}}" uk-modal>
+				
+				<div ng-class="['uk-modal-dialog']">
+					<button ng-class="['uk-modal-close-default']" type="button" uk-close></button>
+				<div ng-class="['uk-modal-header']">
+					<h2 ng-class="['uk-modal-title']">Cadastro Cartão de Crédito</h2>
+				</div>				
+				<center>
+				<div ng-class="['uk-modal-body']">
+					<input type="text" ng-model="newContacts.bandeira" ng-class="['uk-input','uk-form-width-medium','uk-form-small']" placeholder="Selecione a Bandeira">
+				</div>
+
+				<div ng-class="['uk-modal-body']">
+					<input type="text" ng-model="newContacts.nome" ng-class="['uk-input','uk-form-width-medium','uk-form-small']" placeholder="Nome escrito no cartão">
+				</div>
+
+				<div ng-class="['uk-modal-body']">
+					<input type="text" ng-model="newContacts.card_number" ng-class="['uk-input','uk-form-width-medium','uk-form-small']" placeholder="Número do cartão">
+				</div>
+
+				<div ng-class="['uk-modal-body']">
+					<input type="date" ng-model="newContacts.expiry_date" ng-class="['uk-input','uk-form-width-medium','uk-form-small']" placeholder="Validade (mm/aaaa)">
+				</div>
+
+				<div ng-class="['uk-modal-body']">
+					<input type="text" ng-model="newContacts.cvv" ng-class="['uk-input','uk-form-width-medium','uk-form-small']" placeholder="Código de Segurança">
+				</div>
+
+				<div ng-class="['uk-modal-body']">
+					<input type="text" ng-model="newContacts.cep" id="ngCep" ng-class="['uk-input','uk-form-width-medium','uk-form-small']" class="form-control cep-mask" placeholder="CEP do endereço da fatura">
+				</div>
+				
+				<button class="Rectangle" ng-click="saveContacts()">Cadastrar</button><br><br>
+
+			</div>
+
+			<div class="Rectangle-4-Copy-4" id="modal-cadastrar{{data.id}}" uk-modal>
+				
+				<div ng-class="['uk-modal-dialog']">
+					<button ng-class="['uk-modal-close-default']" type="button" uk-close></button>
+				<div ng-class="['uk-modal-header']">
+					<h2 ng-class="['uk-modal-title']">Cadastro Cartão de Crédito</h2>
+				</div>				
+				<center>
+				<div ng-class="['uk-modal-body']">
+					<input type="text" ng-model="ngBandeira" ng-class="['uk-input','uk-form-width-medium','uk-form-small']" placeholder="Selecione a Bandeira">
+				</div>
+			</div>
+
+			<!-- MODAL LISTAR CARTÕES -->
+			<div class="Rectangle-4-Copy-4" id="modal-listar{{data.id}}" uk-modal>
+				
+				<div ng-class="['uk-modal-dialog']">
+					<button ng-class="['uk-modal-close-default']" type="button" uk-close></button>
+					<br><h2 align="center" ng-class="['uk-modal-title']">Selecione o cartão</h2>
+				<div ng-class="['uk-modal-header']">			
+					
+					<div ng-class="['uk-modal-body']">
+							<table ng-class="['uk-table', 'uk-table-divider', 'uk-table-hover', 'uk-table-middle']">
+								<thead>
+									<tr>
+										<th ng-class="['uk-table-shrink']">Num. do cartão</th>
+										<th ng-class="['uk-table-shrink']">cvv</th>
+										<th ng-class="['uk-table-shrink']">expiração</th>
+									</tr>
+								</thead>		
+								<tbody>
+									<tr ng-repeat="cartoes in contacts track by $index">
+										<td>{{cartoes.card_number}}</td>
+										<td>{{cartoes.cvv}}</td>
+										<td>{{cartoes.expiry_date}}</td>
+										<td><button ng-class="['uk-button', 'uk-button-primary', 'uk-button-small']" ng-click="pagar(data.id,cartoes.card_number,cartoes.cvv,cartoes.expiry_date,newContacts.value)" uk-toggle>PAGAR</button></td>
+									</tr>	
+								</tbody>
+							</table>	
+					</div>
+			</div>
+	</td>
+	</tr>
+	</div>
+</table>
+</body>
+
+</html>
