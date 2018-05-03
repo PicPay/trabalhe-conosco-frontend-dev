@@ -6,6 +6,7 @@ import imgGreenSvg from './img/green.svg'
 import imgBlueSvg from './img/blue.svg'
 import imgCheckMarkSvg from './img/check-mark.svg'
 import imgPlusSvg from './img/plus.svg'
+import imgPlusBlueSvg from './img/plus-blue.svg'
 import './payment.css'
 
 export class PaymentWindow extends Component  {
@@ -185,8 +186,9 @@ export class CreditCardList extends Component {
 
   render() {
     const className = ['card defaultCard', 'card']
-    const content = <div>
-      <img src={imgPlusSvg} alt="" />
+    const content = <div className="button-container">
+      <img className="green" src={imgPlusSvg} alt="" />
+      <img className="blue" src={imgPlusBlueSvg} alt="" />
       <span>Cadastrar novo cartão</span>
     </div>
     return (
@@ -198,9 +200,12 @@ export class CreditCardList extends Component {
             const defaultStyle = { display: (this.state.cardSelected[index]) ? null : 'none' }
             return (
               <div key={index} className={(this.state.cardSelected[index]) ? className[0] : className[1]} onClick={() => this.handleClick(index)}>
-                <img src={imgGreenSvg}  alt="" />
-                <span>{cardNumber}</span>
-                <img className="check" style={defaultStyle} src={imgCheckMarkSvg}  alt="" />
+                <div className="card-container">
+                  <img className="green" src={imgGreenSvg}  alt="" />
+                  <img className="blue" src={imgBlueSvg} alt="" />
+                  <span>{cardNumber}</span>
+                  <img className="check" style={defaultStyle} src={imgCheckMarkSvg}  alt="" />
+                </div>
               </div>
             )
           })}

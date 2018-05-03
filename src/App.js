@@ -248,7 +248,7 @@ class App extends Component {
       },
       creditCardList: {
         content: <CreditCardList editCardList={this.editCardList} addCard={this.addCard} cards={this.state.cardList} />,
-        header: 'Teste',
+        header: 'Cadastro Cartão de Crédito',
       },
       confirmationWindow: {
         content: <ConfirmationWindow togglePaymentWindow={this.backNavigation} onClose={this.closeModal} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} paymentData={this.recipe}/>,
