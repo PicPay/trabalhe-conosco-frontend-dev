@@ -244,7 +244,7 @@ class App extends Component {
       },
       creditCardForm: {
         content: <CreditCardForm registerCard={this.registerCard} onClose={this.closeCreditCardForm} />,
-        header: 'Teste',
+        header: 'Cadastro Cartão de Crédito',
       },
       creditCardList: {
         content: <CreditCardList editCardList={this.editCardList} addCard={this.addCard} cards={this.state.cardList} />,
