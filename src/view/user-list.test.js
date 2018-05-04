@@ -1,7 +1,8 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
-import { UserData, UserPanel, UserList, Button } from './user-list'
+import { UserData, UserPanel, UserList } from './user-list'
+import { Button } from './generics-components'
 
 const userList = [
   {

@@ -41,6 +41,10 @@
   margin-bottom: 4.5%;
 }
 
+.blue {
+  display: none;
+}
+
 .card-msg{
   display: flex;
   flex-direction: column;
@@ -51,6 +55,7 @@
 }
 
 .card-msg a{
+  text-decoration: none;
   font-weight: bold;
   font-size: 14px;
   color: #ffffff;
@@ -143,7 +148,7 @@
 .credit-card-form .rectangle-2{
   width: 89%;
   height: 2px;
-  margin-bottom: 10.7%;
+  margin-bottom: 40px;
   background-color: #7de6c6;
 }
 
@@ -215,23 +220,23 @@ option{
 }
 
 .card-list .cards{
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin-top: 24px;
+  align-items: center;
 }
 
 .card-list .card{
   display: flex;
-  align-items: center;
-  text-align: center;
+  justify-content: center;
+  width: 100%;
   padding-top: 24px;
   padding-bottom: 24px;
-  padding-left: 8.5%;
-  padding-right: 8.5%;
-
 }
 
 .card-list .check{
-  margin-left: auto;
+  margin-left: 46px;
 }
 
 .card-list .rectangle-1{
@@ -243,7 +248,6 @@ option{
 
 .new-card {
   margin-top: 24px;
-  width: 83%;
 }
 
 .new-card .btn{
@@ -262,11 +266,28 @@ option{
 }
 
 .new-card .btn span{
-  margin-left: 4%;
+  margin-left: 16px;
 }
 
 .card-list .card span{
-  margin-left: 4%;
+  margin-left: 16px;
+  margin-right: 70px;
+}
+
+.card-list .defaultCard span{
+  margin-right: 0px;
+}
+
+.card-container{
+  display: flex;
+  align-items: center;
+}
+
+.button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 70px;
 }
 
 .defaultCard{
@@ -310,7 +331,7 @@ option{
 }
 
 .recipe{
-  width: 92%;
+  width: 100%;
   margin-top: 40px;
 }
 
@@ -371,6 +392,170 @@ option{
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   border: solid 1px #ffffff;
 }
+
+@media only screen and (min-width: 768px) {
+
+  .payment-window{
+    height: 397px;
+    color: #474971;
+  }
+
+  .payment-window .user-img{
+    border: none;
+  }
+
+  .payment-window .payment-value{
+    width: 172px;
+    height: 66px;
+    margin-top: 32px;
+    padding: 0px;
+    font-size: 48px;
+    font-family: 'Nunito Sans';
+    text-decoration-color: #d8d8d8;
+    text-align: center;
+    color: #d8d8d8;
+    background: Transparent;
+    border: none;
+    caret-color: #7de6c6;
+  }
+
+  .payment-window .rectangle-1{
+    width: 256px;
+    height: 2px;
+    margin-top: 8px;
+  }
+
+  .payment-window .rectangle-2{
+    width: 560px;
+  }
+
+  .blue {
+    display: inline;
+  }
+
+  .green {
+    display: none;
+  }
+
+  .card-msg{
+    color: #474971;
+  }
+
+  .card-msg a{
+    color: #474971;
+  }
+
+  .payment-window .card{
+    margin-top: 20px;
+    margin-bottom: 28px;
+  }
+
+  .pay-button{
+    width: 532px;
+  }
+
+  .credit-card-form .rectangle-1{
+    background-color: #dae1f0;
+  }
+
+  .credit-card-form .rectangle-2{
+    background-color: #474971;
+  }
+
+  .credit-card-form .label{
+    color: #474971;
+  }
+
+  .credit-card-form input{
+    color: #000000;
+  }
+
+  .credit-card-form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #acb1bd;
+      opacity: 1; /* Firefox */
+  }
+
+  .credit-card-form input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #acb1bd;
+  }
+
+  .credit-card-form input::-ms-input-placeholder { /* Microsoft Edge */
+      color: #acb1bd;
+  }
+
+  .credit-card-form select{
+    color: #000000;
+    background: url(img/black.svg) no-repeat 100%;
+  }
+
+  .new-card .btn{
+    color: #474971;
+  }
+
+  .defaultCard{
+    background-color: rgba(125, 230, 198, 0.24);
+  }
+
+  .card-list{
+    margin-top: 16px;
+  }
+
+  .card-list .cards{
+    margin-top: 40px;
+  }
+
+  .card-list .rectangle-1{
+    width: 100%;
+    background-color: rgba(71, 73, 113, 0.24);
+  }
+  .card-list .btn{
+    color: #474971;
+  }
+
+  .card-list .register-button{
+    margin-top: 87px;
+  }
+
+  .payment-confirmation{
+    margin-top: 60px;
+  }
+
+  .payment-confirmation{
+    width: 264px;
+  }
+
+  .recipe{
+    margin-top: 32px;
+    margin-bottom: 80px;
+  }
+
+  .recipe-data{
+    font-weight: bold;
+    color: #474971;
+  }
+
+  .recipe-buttons{
+    width: auto;
+    margin-bottom: 24px;
+  }
+
+  .recipe-buttons .btn{
+    width: 181px;
+  }
+
+  .back-button-2{
+    width: 181px;
+  }
+
+  .back-button-2 .btn{
+    color: #474971;
+    background-image: none;
+    box-shadow: none;
+    border: solid 1px #474971;
+  }
+  
+}
+
 /*
 .confirmation-window{
   display: flex;

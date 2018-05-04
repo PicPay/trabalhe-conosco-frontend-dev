@@ -179,13 +179,14 @@ class App extends Component {
         if (status) {
           const date = timestampToDate(result.transaction.timestamp)
           const year = date.year.toString().substring(2, 4)
-          const month = (date.month > 10) ? date.month : `0${date.month.toString()}`
-          const hour = (date.hour > 10) ? date.hour : `0${date.hour.toString()}`
-          const minute = (date.minute > 10) ? date.minute : `0${date.minute.toString()}`
+          const month = (date.month >= 10) ? date.month : `0${date.month.toString()}`
+          const day = (date.day >= 10) ? date.day : `0${date.day.toString()}`
+          const hour = (date.hour >= 10) ? date.hour : `0${date.hour.toString()}`
+          const minute = (date.minute >= 10) ? date.minute : `0${date.minute.toString()}`
           this.recipe = {
             confirmationMsg: 'Pagamento confirmado!',
             transaction: result.transaction.id,
-            date: `${date.day}/${month}/${year} - ${hour}:${minute}`,
+            date: `${day}/${month}/${year} - ${hour}:${minute}`,
             card: `**** **** **** ${payload.card_number.substring(12)}`,
             value: Number(value).toFixed(2).replace('.', ','),
           }
@@ -236,15 +237,28 @@ class App extends Component {
   render() {
     const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
     const defaultCard = this.state.cardList.find(card => card.default)
+    const user = (this.state.userList.find(user => user.id === this.state.chosenUserId))
     const components = {
-      paymentWindow: <PaymentWindow onPay={this.sendPayment} editCard={this.editCard} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} defaultCard={defaultCard} />,
-      creditCardForm: <CreditCardForm registerCard={this.registerCard} onClose={this.closeCreditCardForm} />,
-      creditCardList: <CreditCardList editCardList={this.editCardList} addCard={this.addCard} cards={this.state.cardList} />,
-      confirmationWindow: <ConfirmationWindow togglePaymentWindow={this.backNavigation} onClose={this.closeModal} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} paymentData={this.recipe}/>,
+      paymentWindow: {
+        content: <PaymentWindow onPay={this.sendPayment} editCard={this.editCard} user={user} defaultCard={defaultCard} />,
+        header: <div><span>Pagamento para </span><span style={{ color: '#7de6c6' }}>{(user) ? user.name : ''}</span></div>,
+      },
+      creditCardForm: {
+        content: <CreditCardForm registerCard={this.registerCard} onClose={this.closeCreditCardForm} />,
+        header: 'Cadastro Cartão de Crédito',
+      },
+      creditCardList: {
+        content: <CreditCardList editCardList={this.editCardList} addCard={this.addCard} cards={this.state.cardList} />,
+        header: 'Cadastro Cartão de Crédito',
+      },
+      confirmationWindow: {
+        content: <ConfirmationWindow togglePaymentWindow={this.backNavigation} onClose={this.closeModal} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} paymentData={this.recipe}/>,
+        header: 'Recibo',
+      },
     }
     return (
       <div className="App" style={style}>
-        { this.state.modalIsOpen && (<Modal onClose={this.backNavigation} content={components[this.state.activeComponent]}/>)}
+        { this.state.modalIsOpen && (<Modal onClose={this.backNavigation} title={components[this.state.activeComponent].header} content={components[this.state.activeComponent].content}/>)}
         <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
         {/* <CreditCardList editCard={this.editCard} addCard={this.openCreditCardForm} opened={this.state.creditCardList} onClose={this.closeCreditCardList} cards={this.state.cards} />
         <CreditCardForm registerCard={this.registerCard} opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />

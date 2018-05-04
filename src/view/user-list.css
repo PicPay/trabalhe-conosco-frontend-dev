@@ -24,13 +24,20 @@
 .payment-button{
   display: flex;
   align-items: center;
+  margin-right: 16px;
 }
+
+.payment-button .label{
+  display: none;
+}
+
 .user-img{
   width: 52px;
   height: 52px;
   border: solid 1px #ffffff;
   border-radius: 50%;
 }
+
 .user{
   display: flex;
   flex-wrap: wrap;
@@ -48,6 +55,66 @@
 }
 
 .payment-button img{
-  display: flex;
-  align-items: center;
+  width: 28px;
+  height: 28px;
+  margin-left: 8px;
+}
+
+.payment-button .btn img{
+  width: 24px;
+  height: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+  .user-panel .user-data{
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  .user-img{
+    width: 80px;
+    height: 80px;
+  }
+
+  .user{
+    padding-left: 16px;
+  }
+
+  .user-name{
+    height: 28px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .user-info span{
+    padding-right: 16px;
+    font-size: 14px;
+  }
+
+  .payment-button .label{
+    display: inline;
+    height: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 16px;
+    color: #ffffff;
+  }
+
+  .payment-button .content{
+    display: flex;
+    align-items: center;
+  }
+
+  .payment-button img{
+    width: 32px;
+    height: 32px;
+  }
+
+  .payment-button .btn img{
+    width: 32px;
+    height: 32px;
+  }
+
 }
