@@ -235,7 +235,8 @@ class App extends Component {
   }
 
   render() {
-    const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
+    // const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
+    const className = (this.state.modalIsOpen) ? 'hidden' : { position: 'static' }
     const defaultCard = this.state.cardList.find(card => card.default)
     const user = (this.state.userList.find(user => user.id === this.state.chosenUserId))
     const components = {
@@ -257,9 +258,9 @@ class App extends Component {
       },
     }
     return (
-      <div className="App" style={style}>
+      <div className="App" >
         { this.state.modalIsOpen && (<Modal onClose={this.backNavigation} title={components[this.state.activeComponent].header} content={components[this.state.activeComponent].content}/>)}
-        <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />
+        <div className={className}><UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} /></div>
         {/* <CreditCardList editCard={this.editCard} addCard={this.openCreditCardForm} opened={this.state.creditCardList} onClose={this.closeCreditCardList} cards={this.state.cards} />
         <CreditCardForm registerCard={this.registerCard} opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />
         <ConfirmationWindow togglePaymentWindow={this.togglePaymentWindow} onClose={this.closeConfirmationWindow} opened={this.state.confirmationWindowIsOpen} user={this.state.chosenUser} paymentData={this.recipe}/>

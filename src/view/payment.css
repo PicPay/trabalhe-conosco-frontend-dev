@@ -9,7 +9,7 @@
 .payment-window .payment-value{
   width: 53%;
   height: 66px;
-  margin-top: 10.6%;
+  margin-top: 40px;
   font-size: 48px;
   font-family: 'Nunito Sans';
   text-decoration-color: #7de6c6;
@@ -23,7 +23,7 @@
 .payment-window .rectangle-1{
   width: 68%;
   height: 2px;
-  margin-top: 2%;
+  margin-top: 7.5px;
   background-color: #474971;
 }
 
@@ -37,8 +37,8 @@
 .payment-window .card{
   display: flex;
   align-items: center;
-  margin-top: 5.3%;
-  margin-bottom: 4.5%;
+  margin-top: 20px;
+  margin-bottom: 17px;
 }
 
 .blue {
@@ -64,8 +64,8 @@
 .payment-window .no-card{
   display: flex;
   align-items: center;
-  margin-top: 5.5%;
-  margin-bottom: 7.8%;
+  margin-top: 20px;
+  margin-bottom: 29px;
 }
 
 .no-card-msg{
@@ -124,7 +124,7 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  margin-top: 4.3%;
+  margin-top: 16px;
 }
 
 .credit-card-form input{
@@ -553,7 +553,7 @@ option{
     box-shadow: none;
     border: solid 1px #474971;
   }
-  
+
 }
 
 /*
