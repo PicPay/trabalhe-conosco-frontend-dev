@@ -6,43 +6,16 @@ import { sendPayment, timestampToDate } from './engine/payment'
 import { fetchUsers } from './engine/users'
 import { Modal } from './view/generics-components'
 
-// const userList = [
-//   {
-//     id: 1001,
-//     name: 'Eduardo Santos',
-//     img: 'https://randomuser.me/api/portraits/men/9.jpg',
-//     username: '@eduardo.santos',
-//   },
-//   {
-//     id: 1002,
-//     name: 'Israel Lima',
-//     img: 'https://randomuser.me/api/portraits/men/6.jpg',
-//     username: '@israel.lima',
-//   },
-//   {
-//     id: 1003,
-//     name: 'Joao Santos',
-//     img: 'https://randomuser.me/api/portraits/men/5.jpg',
-//     username: '@joao.santos',
-//   },
-// ]
-
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       modalIsOpen: false,
       navigationPath: ['userList'],
-      // paymentWindowIsOpen: false,
-      // confirmationWindowIsOpen: false,
-      // creditCardForm: false,
-      // creditCardList: false,
       chosenUser: {},
       userList: [],
       cardList: [],
-      // cards: [],
     }
-    // this.recipe = {}
   }
 
   togglePaymentWindow = (userId) => {
@@ -78,42 +51,6 @@ class App extends Component {
     }, this.showModal)
   }
 
-  //
-  // closePaymentWindow = () => {
-  //   this.setState({
-  //     modalIsOpen: false,
-  //     paymentWindowIsOpen: false,
-  //   })
-  // }
-  //
-  // closeConfirmationWindow = () => {
-  //   this.setState({
-  //     modalIsOpen: false,
-  //     confirmationWindowIsOpen: false,
-  //   })
-  // }
-  //
-  // openCreditCardForm = () => {
-  //   this.setState({
-  //     creditCardForm: true,
-  //     paymentWindowIsOpen: false,
-  //   })
-  // }
-  //
-  // closeCreditCardForm = () => {
-  //   this.setState({
-  //     creditCardForm: false,
-  //     paymentWindowIsOpen: true,
-  //   })
-  // }
-  //
-  // closeCreditCardList = () => {
-  //   this.setState({
-  //     creditCardList: false,
-  //     paymentWindowIsOpen: true,
-  //   })
-  // }
-  //
   componentDidMount =  () => {
     fetchUsers()
       .then((result) => {
@@ -144,26 +81,6 @@ class App extends Component {
     }, this.backNavigation)
   }
 
-  //
-  // editCard = (cards) => {
-  //   const defaultCard = cards.filter(card => card.default)[0]
-  //   this.setState({
-  //     card: defaultCard,
-  //   })
-  //   localStorage.setItem('cards', JSON.stringify(cards))
-  //   this.setState({
-  //     cards: cards,
-  //   })
-  //   this.closeCreditCardList()
-  // }
-  //
-  // openCreditCardList = () => {
-  //   this.setState({
-  //     creditCardList: true,
-  //     paymentWindowIsOpen: false,
-  //   })
-  // }
-  //
   sendPayment = (userId, value) => {
     const card = this.state.cardList.find(card => card.default)
     const payload = {
@@ -197,11 +114,6 @@ class App extends Component {
           activeComponent: activeComponent,
           navigationPath: navigationPath,
         }, this.showModal)
-        // this.setState({
-        //   paymentWindowIsOpen: !status,
-        //   confirmationWindowIsOpen: status,
-        //   chosenUser: result.transaction.destination_user,
-        // })
       })
   }
 
@@ -235,7 +147,6 @@ class App extends Component {
   }
 
   render() {
-    // const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
     const className = (this.state.modalIsOpen) ? 'hidden' : 'container'
     const defaultCard = this.state.cardList.find(card => card.default)
     const user = (this.state.userList.find(user => user.id === this.state.chosenUserId))
@@ -262,11 +173,6 @@ class App extends Component {
         <div className="app-header"><span className="picpay-logo">PicPay</span><span className="header-rectangle"></span><span className="app-title">Front-End Test</span></div>
         { this.state.modalIsOpen && (<Modal onClose={this.backNavigation} title={components[this.state.activeComponent].header} content={components[this.state.activeComponent].content}/>)}
         <div className={className}><UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} /></div>
-        {/* <CreditCardList editCard={this.editCard} addCard={this.openCreditCardForm} opened={this.state.creditCardList} onClose={this.closeCreditCardList} cards={this.state.cards} />
-        <CreditCardForm registerCard={this.registerCard} opened={this.state.creditCardForm} onClose={this.closeCreditCardForm} />
-        <ConfirmationWindow togglePaymentWindow={this.togglePaymentWindow} onClose={this.closeConfirmationWindow} opened={this.state.confirmationWindowIsOpen} user={this.state.chosenUser} paymentData={this.recipe}/>
-        <PaymentWindow card={this.state.card} editCard={this.openCreditCardList} onPay={this.sendPayment} onClose={this.closePaymentWindow} opened={this.state.paymentWindowIsOpen} user={this.state.chosenUser} openCreditCardList={this.openCreditCardList} addCard={this.openCreditCardForm}/>
-        <UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} />*/}
       </div>
     )
   }
