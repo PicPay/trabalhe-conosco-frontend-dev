@@ -42,7 +42,6 @@
 @media only screen and (min-width: 768px) {
   .App {
     color: #474971;
-    position: fixed;
   }
 
   .hidden{
@@ -79,5 +78,10 @@
   .app-title{
     font-size: 20px;
   }
+
+  .fixed{
+    position: fixed;
+  }
+
 
 }
