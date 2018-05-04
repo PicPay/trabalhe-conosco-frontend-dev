@@ -197,15 +197,12 @@ export class CreditCardList extends Component {
         <div className="cards">
           {this.props.cards.map((card, index) => {
             const cardNumber = `${card.number.substring(0, 4)} ${card.number.substring(4, 8)} ${card.number.substring(8, 12)} ${card.number.substring(12)}`
-            const defaultStyle = { display: (this.state.cardSelected[index]) ? null : 'none' }
             return (
               <div key={index} className={(this.state.cardSelected[index]) ? className[0] : className[1]} onClick={() => this.handleClick(index)}>
-                <div className="card-container">
-                  <img className="green" src={imgGreenSvg}  alt="" />
-                  <img className="blue" src={imgBlueSvg} alt="" />
-                  <span>{cardNumber}</span>
-                  <img className="check" style={defaultStyle} src={imgCheckMarkSvg}  alt="" />
-                </div>
+                <img className="green" src={imgGreenSvg}  alt="" />
+                <img className="blue" src={imgBlueSvg} alt="" />
+                <span>{cardNumber}</span>
+                {(this.state.cardSelected[index]) ? (<img className="check" src={imgCheckMarkSvg}  alt="" />) : '' }
               </div>
             )
           })}
