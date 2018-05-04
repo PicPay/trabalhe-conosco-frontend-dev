@@ -236,7 +236,7 @@ class App extends Component {
 
   render() {
     // const style = (this.state.modalIsOpen) ? { position: 'fixed' } : { position: 'static' }
-    const className = (this.state.modalIsOpen) ? 'hidden' : { position: 'static' }
+    const className = (this.state.modalIsOpen) ? 'hidden' : 'container'
     const defaultCard = this.state.cardList.find(card => card.default)
     const user = (this.state.userList.find(user => user.id === this.state.chosenUserId))
     const components = {
@@ -259,6 +259,7 @@ class App extends Component {
     }
     return (
       <div className="App" >
+        <div className="app-header"><span className="picpay-logo">PicPay</span><span className="header-rectangle"></span><span className="app-title">Front-End Test</span></div>
         { this.state.modalIsOpen && (<Modal onClose={this.backNavigation} title={components[this.state.activeComponent].header} content={components[this.state.activeComponent].content}/>)}
         <div className={className}><UserList togglePaymentWindow={this.togglePaymentWindow} paymentWindowIsOpen={this.state.paymentWindowIsOpen} userList={this.state.userList} /></div>
         {/* <CreditCardList editCard={this.editCard} addCard={this.openCreditCardForm} opened={this.state.creditCardList} onClose={this.closeCreditCardList} cards={this.state.cards} />

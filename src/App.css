@@ -4,6 +4,37 @@
   width: 100%;
 }
 
+.app-header{
+  display: flex;
+  align-items: center;
+  height: 32px;
+  background-color: #7de6c6;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.header-rectangle{
+  width: 1px;
+  height: 16px;
+  background-color: #474971;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.picpay-logo{
+  font-family: Montserrat;
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-left: 16px;
+}
+
+.app-title{
+  font-family: Montserrat;
+  font-size: 10px;
+  font-weight: bold;
+  color: #474971;
+}
+
 .hidden{
   display: none;
 }
@@ -13,7 +44,40 @@
     color: #474971;
     position: fixed;
   }
+
   .hidden{
-    display: inline;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-header{
+    height: 80px;
+  }
+
+  .picpay-logo{
+    font-size: 20px;
+    color: #ffffff;
+    margin-left: calc((100% - 1054px) / 2 + 16px);
+  }
+
+  .header-rectangle{
+    width: 2px;
+    height: 32px;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .app-title{
+    font-size: 20px;
+  }
+
 }
