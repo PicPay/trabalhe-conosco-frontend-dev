@@ -331,7 +331,7 @@ option{
 }
 
 .recipe{
-  width: 92%;
+  width: 100%;
   margin-top: 40px;
 }
 
@@ -488,8 +488,6 @@ option{
     background: url(img/black.svg) no-repeat 100%;
   }
 
-  .
-
   .new-card .btn{
     color: #474971;
   }
@@ -518,6 +516,44 @@ option{
     margin-top: 87px;
   }
 
+  .payment-confirmation{
+    margin-top: 60px;
+  }
+
+  .payment-confirmation{
+    width: 264px;
+  }
+
+  .recipe{
+    margin-top: 32px;
+    margin-bottom: 80px;
+  }
+
+  .recipe-data{
+    font-weight: bold;
+    color: #474971;
+  }
+
+  .recipe-buttons{
+    width: auto;
+    margin-bottom: 24px;
+  }
+
+  .recipe-buttons .btn{
+    width: 181px;
+  }
+
+  .back-button-2{
+    width: 181px;
+  }
+
+  .back-button-2 .btn{
+    color: #474971;
+    background-image: none;
+    box-shadow: none;
+    border: solid 1px #474971;
+  }
+  
 }
 
 /*

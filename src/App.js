@@ -179,13 +179,14 @@ class App extends Component {
         if (status) {
           const date = timestampToDate(result.transaction.timestamp)
           const year = date.year.toString().substring(2, 4)
-          const month = (date.month > 10) ? date.month : `0${date.month.toString()}`
-          const hour = (date.hour > 10) ? date.hour : `0${date.hour.toString()}`
-          const minute = (date.minute > 10) ? date.minute : `0${date.minute.toString()}`
+          const month = (date.month >= 10) ? date.month : `0${date.month.toString()}`
+          const day = (date.day >= 10) ? date.day : `0${date.day.toString()}`
+          const hour = (date.hour >= 10) ? date.hour : `0${date.hour.toString()}`
+          const minute = (date.minute >= 10) ? date.minute : `0${date.minute.toString()}`
           this.recipe = {
             confirmationMsg: 'Pagamento confirmado!',
             transaction: result.transaction.id,
-            date: `${date.day}/${month}/${year} - ${hour}:${minute}`,
+            date: `${day}/${month}/${year} - ${hour}:${minute}`,
             card: `**** **** **** ${payload.card_number.substring(12)}`,
             value: Number(value).toFixed(2).replace('.', ','),
           }
@@ -252,7 +253,7 @@ class App extends Component {
       },
       confirmationWindow: {
         content: <ConfirmationWindow togglePaymentWindow={this.backNavigation} onClose={this.closeModal} user={this.state.userList.find(user => user.id === this.state.chosenUserId)} paymentData={this.recipe}/>,
-        header: 'Teste',
+        header: 'Recibo',
       },
     }
     return (
