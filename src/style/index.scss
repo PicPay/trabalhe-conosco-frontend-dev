@@ -1,0 +1,84 @@
+@import "./globals";
+
+@include react-md-typography;
+@include react-md-accessibility;
+@include react-md-grid;
+@include react-md-transitions;
+// @include react-md-autocompletes;
+@include react-md-avatars;
+// @include react-md-bottom-navigations;
+@include react-md-buttons;
+@include react-md-cards;
+// @include react-md-chips;
+// @include react-md-collapsers;
+@include react-md-data-tables;
+@include react-md-dialogs;
+@include react-md-dividers;
+@include react-md-drawers;
+// @include react-md-expansion-panels;
+// @include react-md-file-inputs;
+@include react-md-inks;
+@include react-md-icons;
+@include react-md-lists;
+@include react-md-media;
+@include react-md-menus;
+@include react-md-navigation-drawers;
+@include react-md-overlays;
+@include react-md-papers;
+// @include react-md-pickers;
+@include react-md-progress;
+// @include react-md-select-fields;
+// @include react-md-selection-controls;
+// @include react-md-sliders;
+@include react-md-subheaders;
+// @include react-md-snackbars;
+// @include react-md-tabs;
+@include react-md-text-fields;
+@include react-md-toolbars;
+@include react-md-tooltips;
+
+@include react-md-helpers-everything;
+@include react-md-colors;
+
+
+body {
+  margin: 0;
+}
+
+input {
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+a {
+  color: $md-secondary-color;
+  text-decoration: none;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+  @media #{$md-tablet-media} {
+    width: 6px;
+  }
+}
+::-webkit-scrollbar:horizontal {
+  @media #{$md-tablet-media} {
+    height: 6px;
+  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @media #{$md-tablet-media} {
+    // background: darken($md-light-theme-background-color, 10%);
+  }
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @media #{$md-tablet-media} {
+    // background: $md-secondary-color;
+    background: darken($md-light-theme-background-color, 30%);
+  }
+}

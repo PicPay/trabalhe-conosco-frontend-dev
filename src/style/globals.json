@@ -1,0 +1,9 @@
+{
+  "media": {
+    "landscape": "(orientation: landscape)",
+    "portrait": "(orientation: portrait)",
+    "mobile": "(max-width: 425px)",
+    "tablet": "(min-width: 426px) and (max-width: 1024px)",
+    "desktop": "(min-width: 1025px)"
+  }
+}

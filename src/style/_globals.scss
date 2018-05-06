@@ -1,0 +1,27 @@
+@import "~react-md/src/scss/react-md";
+
+/* orientation */
+$landscape: '(orientation: landscape)';
+$portrait: '(orientation: portrait)';
+
+/* mobile */
+$md-mobile-min-width: 0px;
+$md-mobile-max-width: 425px;
+$md-mobile-media: screen and (min-width: #{$md-mobile-min-width});
+$md-mobile-portrait-media: screen and (min-width: #{$md-mobile-min-width}) and #{$portrait};
+$md-mobile-landscape-media: screen and (min-width: #{$md-mobile-min-width}) and #{$landscape};
+
+/* tablet */
+$md-tablet-min-width: 426px;
+$md-tablet-max-width: 1024px;
+$md-tablet-media: screen and (min-width: #{$md-tablet-min-width});
+$md-tablet-portrait-media: screen and (min-width: #{$md-tablet-min-width}) and #{$portrait};
+$md-tablet-landscape-media: screen and (min-width: #{$md-tablet-min-width}) and #{$landscape};
+
+/* desktop */
+$md-desktop-min-width: 1025px;
+$md-desktop-media: screen and (min-width: #{$md-desktop-min-width});
+
+
+$md-primary-color: #2131e4;
+$md-error-color: #ff1744;
