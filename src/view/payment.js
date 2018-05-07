@@ -106,8 +106,7 @@ export class CreditCardForm extends Component {
   }
 
   handleClick(id) {
-    const inputSelected = this.state.inputSelected.slice()
-    inputSelected.fill(0)
+    const inputSelected = Array(5).fill(0)
     inputSelected[id] = 1
     this.setState({
       inputSelected: inputSelected,
