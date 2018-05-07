@@ -193,7 +193,7 @@
   font-size: 16px;
   text-align: left;
   color: #ffffff;
-  background: url(img/white.svg) no-repeat 100%;
+  background: url(../img/white.svg) no-repeat 100%;
   border: none;
 }
 
@@ -485,7 +485,7 @@ option{
 
   .credit-card-form select{
     color: #000000;
-    background: url(img/black.svg) no-repeat 100%;
+    background: url(../img/black.svg) no-repeat 100%;
   }
 
   .new-card .btn{

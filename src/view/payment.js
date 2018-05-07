@@ -7,7 +7,7 @@ import imgBlueSvg from './img/blue.svg'
 import imgCheckMarkSvg from './img/check-mark.svg'
 import imgPlusSvg from './img/plus.svg'
 import imgPlusBlueSvg from './img/plus-blue.svg'
-import './payment.css'
+import './css/payment.css'
 
 export class PaymentWindow extends Component  {
   constructor(props) {

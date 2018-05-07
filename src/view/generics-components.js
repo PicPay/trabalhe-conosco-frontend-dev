@@ -1,5 +1,5 @@
 import React from 'react'
-import './generics-components.css'
+import './css/generics-components.css'
 import imgCloseSvg from './img/shape-copy.svg'
 
 export const Button = (props) => {

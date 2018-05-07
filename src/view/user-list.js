@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from './generics-components'
 import imgPaySvg from './img/pagar.svg'
 import imgDownSvg from './img/down.svg'
-import './user-list.css'
+import './css/user-list.css'
 
 export const UserData = ({
   img,
