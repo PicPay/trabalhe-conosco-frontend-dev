@@ -16,14 +16,15 @@ export class PaymentWindow extends Component  {
   }
 
   handleChange = (event) => {
-    this.setState({ value: event.target.value })
+    this.setState({ value: event.target.value.replace('R$ ', '') })
   }
 
   render() {
+    const paymentValue = (this.state.value) ? `R$ ${this.state.value.replace('R$ ', '')}` : ''
     return (
       <div className="payment-window">
         <UserData {...this.props.user} />
-        <input type="text" className="payment-value" value={this.state.value} onChange={this.handleChange} placeholder="R$ 0,00" />
+        <input type="text" className="payment-value" value={paymentValue} onChange={this.handleChange} placeholder="R$ 0,00" />
         <span className="rectangle-1"></span>
         <span className="rectangle-2"></span>
         {(this.props.defaultCard) ? (
@@ -45,7 +46,7 @@ export class PaymentWindow extends Component  {
             </div></div>
         )}
         <span className="pay-button">
-          <Button onClick={() => { this.props.onPay(this.props.user.id, this.state.value) }} content="PAGAR"/>
+          <Button onClick={() => { this.props.onPay(this.props.user.id, this.state.value.replace(',', '.')) }} content="PAGAR"/>
         </span>
       </div>
     )
