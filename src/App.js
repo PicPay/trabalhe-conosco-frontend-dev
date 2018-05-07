@@ -107,6 +107,10 @@ class App extends Component {
             card: `**** **** **** ${payload.card_number.substring(12)}`,
             value: Number(value).toFixed(2).replace('.', ','),
           }
+        } else {
+          this.recipe = {
+            confirmationMsg: 'Pagamento recusado!',
+          }
         }
         const activeComponent = 'confirmationWindow'
         const navigationPath = [...this.state.navigationPath, activeComponent]

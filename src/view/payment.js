@@ -67,16 +67,18 @@ export const PaymentConfirmation = ({
   return (
     <div className="payment-confirmation">
       <span className="confirmation-msg">{confirmationMsg}</span>
-      <div className="recipe">
-        <div className="recipe-row"><span className="recipe-label">Transação</span><span className="recipe-data">{transaction}</span></div>
-        <div className="rectangle-2"></div>
-        <div className="recipe-row"><span className="recipe-label">Data</span><span className="recipe-data">{date}</span></div>
-        <div className="rectangle-2"></div>
-        <div className="recipe-row"><span className="recipe-label">Cartão</span><span className="recipe-data">{card}</span></div>
-        <div className="rectangle-2"></div>
-        <div className="recipe-row"><span className="recipe-label">Valor</span><span className="recipe-data">R$ {value}</span></div>
-        <div className="rectangle-2"></div>
-      </div>
+      {(transaction) ? (
+        <div className="recipe">
+          <div className="recipe-row"><span className="recipe-label">Transação</span><span className="recipe-data">{transaction}</span></div>
+          <div className="rectangle-2"></div>
+          <div className="recipe-row"><span className="recipe-label">Data</span><span className="recipe-data">{date}</span></div>
+          <div className="rectangle-2"></div>
+          <div className="recipe-row"><span className="recipe-label">Cartão</span><span className="recipe-data">{card}</span></div>
+          <div className="rectangle-2"></div>
+          <div className="recipe-row"><span className="recipe-label">Valor</span><span className="recipe-data">R$ {value}</span></div>
+          <div className="rectangle-2"></div>
+        </div>
+      ) : (<div className="recipe"></div>)}
 
     </div>
   )
