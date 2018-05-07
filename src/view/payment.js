@@ -19,6 +19,10 @@ export class PaymentWindow extends Component  {
     this.setState({ value: event.target.value.replace('R$ ', '') })
   }
 
+  onClick = () => {
+    (this.props.defaultCard && this.state.value) && this.props.onPay(this.props.user.id, this.state.value.replace(',', '.'))
+  }
+
   render() {
     const paymentValue = (this.state.value) ? `R$ ${this.state.value.replace('R$ ', '')}` : ''
     return (
@@ -46,7 +50,7 @@ export class PaymentWindow extends Component  {
             </div></div>
         )}
         <span className="pay-button">
-          <Button onClick={() => { this.props.onPay(this.props.user.id, this.state.value.replace(',', '.')) }} content="PAGAR"/>
+          <Button onClick={this.onClick} content="PAGAR"/>
         </span>
       </div>
     )
