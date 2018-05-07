@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+input:focus{
+  outline: none;
+}
+
 .app-header{
   display: flex;
   align-items: center;
