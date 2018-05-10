@@ -9,6 +9,7 @@ import {
   MatDialogModule,
   MatStepperModule,
   MatInputModule,
+  MatRadioModule,
   MatSelectModule
 } from '@angular/material';
 
@@ -22,6 +23,7 @@ import {
     MatDialogModule,
     MatStepperModule,
     MatInputModule,
+    MatRadioModule,
     MatSelectModule
   ],
   exports: [
@@ -33,6 +35,7 @@ import {
     MatDialogModule,
     MatStepperModule,
     MatInputModule,
+    MatRadioModule,
     MatSelectModule
   ],
   declarations: []

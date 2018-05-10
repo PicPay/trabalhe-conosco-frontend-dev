@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CardService } from '@app/_services/card.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  constructor(private cardService: CardService) {
+    const cards = this.cardService.getCards();
+
+    if (cards === null) {
+      localStorage.setItem('cards', JSON.stringify([]));
+    }
+    console.log(cards);
+  }
 }

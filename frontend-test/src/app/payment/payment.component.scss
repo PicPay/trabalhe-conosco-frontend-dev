@@ -43,6 +43,10 @@
       }
     }
   }
+
+  h4 {
+    text-align: center;
+  }
 }
 
 /deep/ .mat-stepper-horizontal {
@@ -99,5 +103,12 @@
   }
   .mat-line {
     font-size: 14px;
+  }
+}
+
+.card {
+  transition: .3s all;
+  &.active {
+    background-color: rgba($accent-light, .5);
   }
 }

@@ -1,55 +1,50 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Card } from '@app/_models/card';
 
 @Injectable()
 export class CardService {
+  paymentUrl = 'http://careers.picpay.com/tests/mobdev/transaction';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   private getLastFourNumber(number): any {
     return number.toString().slice(-4);
   }
 
   getCards() {
-    const cards = [];
-    for (let i = 0, len = localStorage.length; i < len; ++i) {
-      const card = JSON.parse(localStorage.getItem(localStorage.key(i)));
-      cards.push(card);
-    }
+    const cards = JSON.parse(localStorage.getItem('cards'));
+
     return cards;
   }
 
 
   addCard(card) {
     const cardId = this.getLastFourNumber(card.card_number);
+    const cards = this.getCards();
 
-    if (this.getCards().length === 0) {
+    switch (cards.length) {
+      case 0:
       card.active = true;
-    } else {
+      break;
+      default:
       card.active = false;
+      break;
     }
 
-    return localStorage.setItem(`card-${cardId}`, JSON.stringify(card));
+    cards.push(card);
+
+    return localStorage.setItem('cards', JSON.stringify(cards));
   }
 
-  selectCard(card) {
-    const cardId = this.getLastFourNumber(card.card_number);
+  saveCard(cards) {
+    return localStorage.setItem('cards', JSON.stringify(cards));
+  }
 
-    if (card.active) {
-      return;
-    }
-
-    this.getCards().filter(c => {
-      if (c.active) {
-        c.active = false;
-        localStorage.setItem(`card-${this.getLastFourNumber(c.card_number)}`, JSON.stringify(c));
-      } else if (!c.active) {
-        card.active = true;
-        localStorage.setItem(`card-${cardId}`, JSON.stringify(card));
-      }
-    });
+  pay(data): Observable<any> {
+    return this.http.post(this.paymentUrl, data);
   }
 
 }
