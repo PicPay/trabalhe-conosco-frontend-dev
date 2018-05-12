@@ -1,26 +1,19 @@
 import React from 'react';
-import { Button, List, ListItem } from 'react-md';
+import { Link } from 'react-router-dom';
+import { Button, Divider, FontIcon } from 'react-md';
 import DialogContainer from './DialogContainer';
+import UserTag from './UserTag';
+
+/* eslint-disable */
+const data = {
+  "id": 1001,
+  "name": "Eduardo Santos",
+  "img": "https://randomuser.me/api/portraits/men/9.jpg",
+  "username": "@eduardo.santos"
+}
+/* eslint-enable */
 
 export default class SimpleListDialog extends React.PureComponent {
-  state = { visible: false };
-
-  show = () => {
-    this.setState({ visible: true });
-  };
-
-  hide = () => {
-    this.setState({ visible: false });
-  };
-
-  handleKeyDown = (e) => {
-    const key = e.which || e.keyCode;
-    if (key === 13 || key === 32) {
-      // also close on enter or space keys
-      this.hide();
-    }
-  };
-
   render() {
     const { visible } = this.props;
     return (
@@ -35,12 +28,21 @@ export default class SimpleListDialog extends React.PureComponent {
             <Button raised className="button--primary dialog-button--only-one" >Confirm</Button>,
           ]}
         >
-          <List onClick={this.hide} onKeyDown={this.handleKeyDown}>
-            <ListItem primaryText="Single line text goes here" />
-            <ListItem primaryText="Two line wrapped text goes here making it wrap to the next line" />
-            <ListItem primaryText="Single line text goes here" />
-            <ListItem primaryText="Three line wrapped text goes here making it wrap to the next line and continues longer to be here" />
-          </List>
+          <div className="flexbox-center--column">
+            <UserTag user={data} />
+            <Divider className="divider" />
+            <li className="flexbox-center">
+              <FontIcon className="error" style={{ marginRight: '12px' }}>error</FontIcon>
+              <div>
+                <p className="error" style={{ marginBottom: '0' }}>Nenhum cartão de crédito cadastrado.</p>
+                <Link
+                  to="/"
+                  className="error"
+                  style={{ fontWeight: 'bold', textDecoration: 'underline' }}
+                >Cadastrar agora.</Link>
+              </div>
+            </li>
+          </div>
         </DialogContainer>
       </div>
     );

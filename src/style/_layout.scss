@@ -3,3 +3,8 @@
   display: flex;
   align-items: center;
 }
+
+.flexbox-center--column {
+  @extend .flexbox-center;
+  flex-direction: column;
+}

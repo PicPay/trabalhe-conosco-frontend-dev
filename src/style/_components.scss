@@ -21,6 +21,19 @@
   }
 }
 
+.list-item--user-tag {
+  @extend %list-item;
+  .md-fake-btn {
+    background: white !important;
+  }
+  .md-tile-text--primary {
+    font-weight: bold;
+  }
+  .md-text, .md-text--secondary {
+    color: $md-secondary-color;
+  }
+}
+
 .avatar {
   border: solid 2px #ffffff !important;
 }
@@ -43,6 +56,10 @@
   background-color: $md-secondary-color;
 }
 
+.dialog__content {
+  padding: 0 40px;
+}
+
 .dialog__footer {
   padding-top: 24px;
   padding-bottom: 24px;
@@ -51,4 +68,15 @@
 .dialog-button--only-one {
   margin: 0 54px;
   width: calc(100% - 108px);
+}
+
+.error {
+  color: $md-error-color;
+}
+
+.divider {  
+  height: 1px;
+  background-color: #d8d8d8;
+  width: 100%;
+  margin-bottom: 20px;
 }

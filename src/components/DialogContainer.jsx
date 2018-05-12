@@ -21,7 +21,9 @@ export default class SimpleListDialog extends React.PureComponent {
             titleId={this.props.id}
             actions={<Button icon onClick={this.props.onHide}>close</Button>}
           />
-          {this.props.children}
+          <section className="dialog__content" >
+            {this.props.children}
+          </section>
         </DialogContainer>
       </div>
     );
