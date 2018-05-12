@@ -10,7 +10,7 @@ export default class SimpleListDialog extends React.PureComponent {
       <div>
         <DialogContainer
           {...filteredProps}
-          aria-label={this.props.title}
+          aria-label={this.props.id}
           dialogClassName={cn('dialog', this.props.dialogClassName)}
           footerClassName={cn('dialog__footer', this.props.footerClassName)}
         >

@@ -36,10 +36,9 @@ export default class SimpleListDialog extends React.PureComponent {
     return (
       <div>
         <DialogContainer
-          id="simple-list-dialog"
+          id="confirm-payment"
           visible={visible}
           onHide={this.hide}
-          dialogClassName="dialog"
           title={<div>
             Pagamento para <span className="md-text--theme-secondary">{name}</span>
           </div>}
