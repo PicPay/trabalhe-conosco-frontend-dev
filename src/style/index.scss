@@ -1,5 +1,4 @@
 @import "./globals";
-@import "./components";
 
 @include react-md-typography;
 @include react-md-accessibility;
@@ -41,6 +40,8 @@
 @include react-md-helpers-everything;
 @include react-md-colors;
 
+@import "./components";
+@import "./layout";
 
 body {
   margin: 0;

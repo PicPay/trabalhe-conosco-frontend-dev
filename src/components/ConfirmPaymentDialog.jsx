@@ -24,12 +24,15 @@ export default class SimpleListDialog extends React.PureComponent {
     const { visible } = this.props;
     return (
       <div>
-        <Button raised onClick={this.show}>Open the dialog</Button>
         <DialogContainer
           id="simple-list-dialog"
           visible={visible}
           title="Simple List Dialog"
           onHide={this.hide}
+          dialogClassName="dialog"
+          actions={[
+            <Button raised className="button--primary dialog-button--only-one" >Confirm</Button>,
+          ]}
         >
           <List onClick={this.hide} onKeyDown={this.handleKeyDown}>
             <ListItem primaryText="Single line text goes here" />
