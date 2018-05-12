@@ -30,7 +30,7 @@
     font-weight: bold;
   }
   .md-text, .md-text--secondary {
-    color: $md-secondary-color;
+    color: $md-primary-color;
   }
 }
 
@@ -39,8 +39,8 @@
 }
 
 .button--primary {
-  color: $md-secondary-color;
-  background-image: linear-gradient(to bottom, $duck-egg-blue, $md-primary-color);
+  color: $md-primary-color;
+  background-image: linear-gradient(to bottom, $duck-egg-blue, $md-secondary-color);
   font-weight: bold;
   border-radius: 24px;
 }
@@ -53,7 +53,7 @@
 }
 
 .dialog__header {
-  background-color: $md-secondary-color;
+  background-color: $md-primary-color;
 }
 
 .dialog__content {
@@ -78,5 +78,21 @@
   height: 1px;
   background-color: #d8d8d8;
   width: 100%;
-  margin-bottom: 20px;
+  margin: 20px 0;
+}
+
+$quantity-field-size: 256px;
+.quantity-field {
+  width: $quantity-field-size;
+  .md-text-field-message--active {
+    text-align: center;
+  }
+}
+$quantity-input-size: 172px;
+.quantity-input {
+  font-size: 48px;
+  width: 172px;
+  text-align: end;
+  margin-left: ($quantity-field-size - $quantity-input-size) / 2;
+  color: $md-primary-color;
 }

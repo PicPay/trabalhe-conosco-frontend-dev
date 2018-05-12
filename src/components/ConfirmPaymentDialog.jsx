@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Divider, FontIcon } from 'react-md';
+import { Button, Divider, FontIcon, TextField } from 'react-md';
 import DialogContainer from './DialogContainer';
 import UserTag from './UserTag';
 
@@ -14,8 +14,25 @@ const data = {
 /* eslint-enable */
 
 export default class SimpleListDialog extends React.PureComponent {
+  state = {
+    value: '',
+    error: '',
+  }
+  handleChange = (value) => {
+    const filteredValue = value.replace(/[^\d]/g, '');
+    const length = filteredValue.length;
+    let finalValue;
+    if (length > 1) {
+      finalValue = `${filteredValue.slice(0, -2)},${filteredValue.slice(-2)}`;
+    } else {
+      finalValue = filteredValue;
+    }
+    this.setState({ value: finalValue });
+  }
   render() {
     const { visible } = this.props;
+    const { value, error } = this.state;
+    const { name } = data
     return (
       <div>
         <DialogContainer
@@ -23,13 +40,25 @@ export default class SimpleListDialog extends React.PureComponent {
           visible={visible}
           onHide={this.hide}
           dialogClassName="dialog"
-          title="New Event"
+          title={<div>
+            Pagamento para <span className="md-text--theme-secondary">{name}</span>
+          </div>}
           actions={[
             <Button raised className="button--primary dialog-button--only-one" >Confirm</Button>,
           ]}
         >
           <div className="flexbox-center--column">
             <UserTag user={data} />
+            <TextField
+              id="quantity"
+              placeholder="R$ 0,00"
+              className="quantity-field"
+              inputClassName="quantity-input"
+              value={value}
+              onChange={this.handleChange}
+              error={Boolean(error)}
+              errorText={error}
+            />
             <Divider className="divider" />
             <li className="flexbox-center">
               <FontIcon className="error" style={{ marginRight: '12px' }}>error</FontIcon>
