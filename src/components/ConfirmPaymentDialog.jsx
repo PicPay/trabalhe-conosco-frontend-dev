@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, DialogContainer, List, ListItem } from 'react-md';
+import { Button, List, ListItem } from 'react-md';
+import DialogContainer from './DialogContainer';
 
 export default class SimpleListDialog extends React.PureComponent {
   state = { visible: false };
@@ -27,9 +28,9 @@ export default class SimpleListDialog extends React.PureComponent {
         <DialogContainer
           id="simple-list-dialog"
           visible={visible}
-          title="Simple List Dialog"
           onHide={this.hide}
           dialogClassName="dialog"
+          title="New Event"
           actions={[
             <Button raised className="button--primary dialog-button--only-one" >Confirm</Button>,
           ]}

@@ -39,6 +39,15 @@
   }
 }
 
+.dialog__header {
+  background-color: $md-secondary-color;
+}
+
+.dialog__footer {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
 .dialog-button--only-one {
   margin: 0 54px;
   width: calc(100% - 108px);
