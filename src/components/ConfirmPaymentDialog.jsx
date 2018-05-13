@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Divider, FontIcon, TextField } from 'react-md';
 import DialogContainer from './DialogContainer';
 import UserTag from './UserTag';
+import * as routes from '../constants/routes';
 
 /* eslint-disable */
 const data = {
@@ -64,7 +65,7 @@ export default class SimpleListDialog extends React.PureComponent {
               <div>
                 <p className="error" style={{ marginBottom: '0' }}>Nenhum cartão de crédito cadastrado.</p>
                 <Link
-                  to="/"
+                  to={routes.REGISTER_CARD}
                   className="error"
                   style={{ fontWeight: 'bold', textDecoration: 'underline' }}
                 >Cadastrar agora.</Link>
