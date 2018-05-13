@@ -7,7 +7,7 @@ export const types = {
 };
 
 export const actions = {
-  register: (name, cardFLag, cardNumber, expirationDate, cvvNumber, CEP) =>
+  register: (cardFLag, name, cardNumber, expirationDate, cvvNumber, CEP) =>
     ({ type: types.REGISTER_CARD, card: { name, cardFLag, cardNumber, expirationDate, cvvNumber, CEP } }),
 };
 

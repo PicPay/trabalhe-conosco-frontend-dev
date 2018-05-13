@@ -1,33 +1,39 @@
+/* eslint react/no-did-update-set-state: 0 */
 import React from 'react';
 import { Button, SelectField, TextField } from 'react-md';
 import DialogContainer from './DialogContainer';
 
+const initialState = {
+  cardFLag: {
+    value: '',
+    error: '',
+  },
+  name: {
+    value: '',
+    error: '',
+  },
+  cardNumber: {
+    value: '',
+    error: '',
+  },
+  expirationDate: {
+    value: '',
+    error: '',
+  },
+  cvvNumber: {
+    value: '',
+    error: '',
+  },
+  CEP: {
+    value: '',
+    error: '',
+  },
+};
+
 export default class SimpleListDialog extends React.Component {
-  state = {
-    cardFLag: {
-      value: '',
-      error: '',
-    },
-    name: {
-      value: '',
-      error: '',
-    },
-    cardNumber: {
-      value: '',
-      error: '',
-    },
-    expirationDate: {
-      value: '',
-      error: '',
-    },
-    cvvNumber: {
-      value: '',
-      error: '',
-    },
-    CEP: {
-      value: '',
-      error: '',
-    },
+  state = initialState;
+  componentDidUpdate(prevProps) {
+    if (this.props.visible !== prevProps.visible) this.setState(initialState);
   }
   handleChangeName = (value) => {
     const filteredValue = value.replace(/\d/g, '');
@@ -35,8 +41,8 @@ export default class SimpleListDialog extends React.Component {
   }
   handleChange = field => value => this.setState({ [field]: { value, error: '' } });
   render() {
-    const { visible, onHide } = this.props;
-    const { name, cardFLag, cardNumber, expirationDate, cvvNumber, CEP } = this.state;
+    const { visible, onHide, onSubmit } = this.props;
+    const { cardFLag, name, cardNumber, expirationDate, cvvNumber, CEP } = this.state;
     return (
       <div>
         <DialogContainer
@@ -45,7 +51,13 @@ export default class SimpleListDialog extends React.Component {
           onHide={onHide}
           title="Cadastrar Cartão de Crédito"
           actions={[
-            <Button raised className="button--primary dialog-button--only-one" >CADASTRAR</Button>,
+            <Button
+              raised
+              className="button--primary dialog-button--only-one"
+              onClick={() =>
+                onSubmit(cardFLag.value, name.value, cardNumber.value, expirationDate.value, cvvNumber.value, CEP.value)
+              }
+            >CADASTRAR</Button>,
           ]}
         >
           <div className="flexbox-center--column" style={{ paddingTop: '24px' }}>
