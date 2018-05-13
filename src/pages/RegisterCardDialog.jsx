@@ -10,7 +10,7 @@ const RegisterCardPage = ({ history, location, registerCard, selectCard }) => {
   const handleSubmit = (cardFLag, name, cardNumber, expirationDate, cvvNumber, CEP) => {
     registerCard(name, cardFLag, cardNumber, expirationDate, cvvNumber, CEP);
     selectCard(cardNumber);
-    history.goBack();
+    history.push(routes.CONFIRM_PAYMENT, location.state);
   };
   return (
     <RegisterCardDialog

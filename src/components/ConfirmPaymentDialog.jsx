@@ -6,15 +6,6 @@ import DialogContainer from './DialogContainer';
 import UserTag from './UserTag';
 import * as routes from '../constants/routes';
 
-/* eslint-disable */
-const data = {
-  "id": 1001,
-  "name": "Eduardo Santos",
-  "img": "https://randomuser.me/api/portraits/men/9.jpg",
-  "username": "@eduardo.santos"
-}
-/* eslint-enable */
-
 const initialState = {
   value: '',
   error: '',
@@ -36,24 +27,26 @@ export default class SimpleListDialog extends React.PureComponent {
     this.setState({ value: finalValue });
   }
   render() {
-    const { visible, selectedCard, onHide } = this.props;
+    const { visible, selectedCard, onHide, user } = this.props;
     const { value, error } = this.state;
-    const { name } = data;
+    const { id: userId, name } = user || {};
     return (
       <div>
         <DialogContainer
           id="confirm-payment"
           visible={visible}
           onHide={onHide}
-          title={<div>
-            Pagamento para <span className="md-text--theme-secondary">{name}</span>
-          </div>}
+          title={!name
+            ? 'Nenhum usuário foi selecionado'
+            : <div>
+              Pagamento para <span className="md-text--theme-secondary">{name}</span>
+            </div>}
           actions={[
             <Button raised className="button--primary dialog-button--only-one" >Confirm</Button>,
           ]}
         >
-          <div className="flexbox-center--column">
-            <UserTag user={data} />
+          {user && <div className="flexbox-center--column">
+            <UserTag user={user} />
             <TextField
               id="quantity"
               placeholder="R$ 0,00"
@@ -65,23 +58,34 @@ export default class SimpleListDialog extends React.PureComponent {
               errorText={error}
             />
             <Divider className="divider" />
-            {selectedCard
-              ? <Link to={{ pathname: routes.SELECT_CARD, state: { test: 'exampleTest' } }}>
-                {selectedCard.cardNumber}
+            {selectedCard && selectedCard.cardNumber && selectedCard.cardNumber.slice
+              ? <Link
+                to={{ pathname: routes.SELECT_CARD, state: { userId } }}
+                className="flexbox-center"
+              >
+                <FontIcon className="primary-color" style={{ marginRight: '12px' }}>credit_card</FontIcon>
+                <div>
+                  <p className="primary-color" style={{ marginBottom: '0' }}>Forma de pagamento:</p>
+                  <Link
+                    to={{ pathname: routes.REGISTER_CARD, state: { userId } }}
+                    className="primary-color"
+                    style={{ fontWeight: 'bold' }}
+                  >Cartão de Crédito com final {selectedCard.cardNumber.slice(-4)}</Link>
+                </div>
               </Link>
               : <li className="flexbox-center">
                 <FontIcon className="error" style={{ marginRight: '12px' }}>error</FontIcon>
                 <div>
                   <p className="error" style={{ marginBottom: '0' }}>Nenhum cartão de crédito cadastrado.</p>
                   <Link
-                    to={routes.REGISTER_CARD}
+                    to={{ pathname: routes.REGISTER_CARD, state: { userId } }}
                     className="error"
                     style={{ fontWeight: 'bold', textDecoration: 'underline' }}
                   >Cadastrar agora.</Link>
                 </div>
               </li>
             }
-          </div>
+          </div>}
         </DialogContainer>
       </div>
     );

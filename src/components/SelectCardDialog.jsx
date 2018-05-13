@@ -6,18 +6,19 @@ import DialogContainer from './DialogContainer';
 
 export default class SimpleListDialog extends React.PureComponent {
   render() {
-    const { visible, onHide, registerNewCard, cards, selectedCardNumber } = this.props;
+    const { visible, onHide, registerNewCard, cards, selectedCardNumber, selectCard, onSelectSubmit } = this.props;
     return (
       <div>
         <DialogContainer
           id="confirm-payment"
           visible={visible}
           onHide={onHide}
-          title="Selecionar Cartão de Crédito"          
+          title="Selecionar Cartão de Crédito"         
           actions={[
             <Button
               raised
               className="button--primary dialog-button--only-one"
+              onClick={onSelectSubmit}
             >SELECIONAR</Button>,
           ]}
         >
@@ -31,6 +32,7 @@ export default class SimpleListDialog extends React.PureComponent {
                   primaryText={cardNumber}
                   leftIcon={<FontIcon primary>credit_card</FontIcon>}
                   rightIcon={selectedCardNumber === cardNumber ? <FontIcon secondary>check</FontIcon> : undefined}
+                  onClick={() => selectCard(cardNumber)}
                 />
               ))}
               <ListItem

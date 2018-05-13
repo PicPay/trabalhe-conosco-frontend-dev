@@ -14,7 +14,13 @@ export default ({ users, apiStatus }) => (
         secondaryText={<span>{`id: ${id}`}&ensp;&ensp;{username}</span>}
         leftAvatar={<Avatar src={img} className="avatar" />}
         rightIcon={
-          <Link className="flexbox-center" to={routes.CONFIRM_PAYMENT}>
+          <Link
+            className="flexbox-center"
+            to={{
+              pathname: routes.CONFIRM_PAYMENT,
+              state: { userId: id },
+            }}
+          >
             <div>PAGAR&ensp;</div><FontIcon >keyboard_arrow_right</FontIcon>
           </Link>
         }
