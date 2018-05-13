@@ -6,6 +6,7 @@ import { format } from 'date-fns'
 import DialogContainer from './DialogContainer';
 import UserTag from './UserTag';
 import * as routes from '../constants/routes';
+import { hideCard } from '../utils/masks';
 const data = {
   "transaction": {
     "id": 12314,
@@ -78,7 +79,7 @@ export default class PaymentReceipt extends React.PureComponent {
             <Divider className="transaction-row__divider" />
             <div className="transaction-row">
               <p>Cartão</p>
-              <p>{selectedCard.cardNumber}</p>
+              <p>{hideCard(selectedCard.cardNumber)}</p>
             </div>
             <Divider className="transaction-row__divider" />
             <div className="transaction-row">

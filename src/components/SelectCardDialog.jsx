@@ -3,6 +3,7 @@ import React from 'react';
 import { FontIcon, List, ListItem, Button } from 'react-md';
 import cn from 'classnames';
 import DialogContainer from './DialogContainer';
+import { maskCard } from '../utils/masks';
 
 export default class SelectCardDialog extends React.PureComponent {
   render() {
@@ -13,7 +14,7 @@ export default class SelectCardDialog extends React.PureComponent {
           id="confirm-payment"
           visible={visible}
           onHide={onHide}
-          title="Selecionar Cartão de Crédito"         
+          title="Selecionar Cartão de Crédito"
           actions={[
             <Button
               raised
@@ -29,7 +30,7 @@ export default class SelectCardDialog extends React.PureComponent {
                 <ListItem
                   key={cardNumber}
                   className={cn('list-item--card', { 'list-item--card--selected': selectedCardNumber === cardNumber })}
-                  primaryText={cardNumber}
+                  primaryText={maskCard(cardNumber)}
                   leftIcon={<FontIcon primary>credit_card</FontIcon>}
                   rightIcon={selectedCardNumber === cardNumber ? <FontIcon secondary>check</FontIcon> : undefined}
                   onClick={() => selectCard(cardNumber)}
