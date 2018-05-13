@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
   }
 };
 
-export const getAllById = state => state.entities.cards.byId;
+export const getAllById = state => state.entities.cards;
 
 export const getOneByNumber = (state, number) => getAllById(state)[number];
 

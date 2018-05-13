@@ -1,3 +1,4 @@
+/* eslint react/no-did-update-set-state: 0 */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Divider, FontIcon, TextField } from 'react-md';
@@ -14,10 +15,14 @@ const data = {
 }
 /* eslint-enable */
 
+const initialState = {
+  value: '',
+  error: '',
+};
 export default class SimpleListDialog extends React.PureComponent {
-  state = {
-    value: '',
-    error: '',
+  state = initialState
+  componentDidUpdate(prevProps) {
+    if (this.props.visible !== prevProps.visible) this.setState(initialState);
   }
   handleChange = (value) => {
     const filteredValue = value.replace(/[^\d]/g, '');
@@ -31,15 +36,15 @@ export default class SimpleListDialog extends React.PureComponent {
     this.setState({ value: finalValue });
   }
   render() {
-    const { visible } = this.props;
+    const { visible, selectedCard, onHide } = this.props;
     const { value, error } = this.state;
-    const { name } = data
+    const { name } = data;
     return (
       <div>
         <DialogContainer
           id="confirm-payment"
           visible={visible}
-          onHide={this.hide}
+          onHide={onHide}
           title={<div>
             Pagamento para <span className="md-text--theme-secondary">{name}</span>
           </div>}
@@ -60,17 +65,22 @@ export default class SimpleListDialog extends React.PureComponent {
               errorText={error}
             />
             <Divider className="divider" />
-            <li className="flexbox-center">
-              <FontIcon className="error" style={{ marginRight: '12px' }}>error</FontIcon>
-              <div>
-                <p className="error" style={{ marginBottom: '0' }}>Nenhum cartão de crédito cadastrado.</p>
-                <Link
-                  to={routes.REGISTER_CARD}
-                  className="error"
-                  style={{ fontWeight: 'bold', textDecoration: 'underline' }}
-                >Cadastrar agora.</Link>
-              </div>
-            </li>
+            {selectedCard
+              ? <Link to={{ pathname: routes.SELECT_CARD, state: { test: 'exampleTest' } }}>
+                {selectedCard.cardNumber}
+              </Link>
+              : <li className="flexbox-center">
+                <FontIcon className="error" style={{ marginRight: '12px' }}>error</FontIcon>
+                <div>
+                  <p className="error" style={{ marginBottom: '0' }}>Nenhum cartão de crédito cadastrado.</p>
+                  <Link
+                    to={routes.REGISTER_CARD}
+                    className="error"
+                    style={{ fontWeight: 'bold', textDecoration: 'underline' }}
+                  >Cadastrar agora.</Link>
+                </div>
+              </li>
+            }
           </div>
         </DialogContainer>
       </div>
