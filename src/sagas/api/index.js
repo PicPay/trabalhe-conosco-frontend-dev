@@ -1,8 +1,8 @@
 import { all, fork } from 'redux-saga/effects';
-import api from './api';
+import getUsers from './getUsers';
 
 export default function* () {
   yield all([
-    fork(api),
+    fork(getUsers),
   ]);
 }

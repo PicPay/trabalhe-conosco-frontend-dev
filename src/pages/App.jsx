@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-import UsersList from '../components/UsersList';
-import users from '../data/getUsers.json';
+import UsersList from '../containers/UsersList';
 import ConfirmPaymentDialog from './ConfirmPaymentDialog';
 import RegisterCardDialog from './RegisterCardDialog';
 import SelectCardDialog from './SelectCardDialog';
@@ -12,7 +11,7 @@ export default class SimpleListDialog extends React.PureComponent {
     return (
       <BrowserRouter>
         <div>
-          <UsersList users={users} />
+          <UsersList />
           <Route path="*" component={ConfirmPaymentDialog} />
           <Route path="*" component={RegisterCardDialog} />
           <Route path="*" component={SelectCardDialog} />

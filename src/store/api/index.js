@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import cards from './cards';
-import users from './users';
+import getUsers from './getUsers';
 
 export default combineReducers({
-  cards,
-  users,
+  getUsers,
 });

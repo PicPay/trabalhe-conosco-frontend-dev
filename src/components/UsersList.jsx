@@ -1,10 +1,11 @@
 import React from 'react';
-import { Avatar, FontIcon, List, ListItem } from 'react-md';
+import { Avatar, FontIcon, List, ListItem, CircularProgress } from 'react-md';
 import { Link } from 'react-router-dom';
 import * as routes from '../constants/routes';
 
-export default ({ users }) => (
+export default ({ users, apiStatus }) => (
   <List className="list">
+    {apiStatus.isFetching && <CircularProgress centered />}
     {users.map(({ id, name, img, username }) => (
       <ListItem
         key={id}

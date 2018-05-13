@@ -10,6 +10,7 @@ import { throttle } from 'lodash';
 // import api from './api';
 import entities from './entities';
 import ui from './ui';
+import api from './api';
 
 /**
  * Sagas
@@ -28,6 +29,7 @@ export const saveReduxStore = state => saveState(state, STORE_KEY);
 const reducers = combineReducers({
   entities,
   ui,
+  api,
 });
 
 /**
