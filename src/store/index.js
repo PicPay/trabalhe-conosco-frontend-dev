@@ -8,7 +8,8 @@ import { throttle } from 'lodash';
  * Reducers
  */
 // import api from './api';
-// import entities from './entities';
+import entities from './entities';
+import ui from './ui';
 
 /**
  * Sagas
@@ -25,6 +26,8 @@ export const saveReduxStore = state => saveState(state, STORE_KEY);
  * Create combined reducer
  */
 const reducers = combineReducers({
+  entities,
+  ui,
 });
 
 /**
@@ -44,9 +47,10 @@ const store = createStore(
 );
 
 store.subscribe(throttle(() => {
-  const { entities } = store.getState();
+  const { entities, ui } = store.getState();
   saveReduxStore({
     entities,
+    ui,
   });
 }, 1000));
 
