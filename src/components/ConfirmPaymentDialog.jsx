@@ -10,7 +10,7 @@ const initialState = {
   value: '',
   error: '',
 };
-export default class SimpleListDialog extends React.PureComponent {
+export default class ConfirmPaymentDialog extends React.PureComponent {
   state = initialState
   componentDidUpdate(prevProps) {
     if (this.props.visible !== prevProps.visible) this.setState(initialState);
@@ -42,7 +42,7 @@ export default class SimpleListDialog extends React.PureComponent {
               Pagamento para <span className="md-text--theme-secondary">{name}</span>
             </div>}
           actions={[
-            <Button raised className="button--primary dialog-button--only-one" >Confirm</Button>,
+            <Button raised className="button--primary dialog-button--only-one" >PAGAR</Button>,
           ]}
         >
           {user && <div className="flexbox-center--column">
@@ -66,11 +66,10 @@ export default class SimpleListDialog extends React.PureComponent {
                 <FontIcon className="primary-color" style={{ marginRight: '12px' }}>credit_card</FontIcon>
                 <div>
                   <p className="primary-color" style={{ marginBottom: '0' }}>Forma de pagamento:</p>
-                  <Link
-                    to={{ pathname: routes.REGISTER_CARD, state: { userId } }}
+                  <span
                     className="primary-color"
                     style={{ fontWeight: 'bold' }}
-                  >Cartão de Crédito com final {selectedCard.cardNumber.slice(-4)}</Link>
+                  >Cartão de Crédito com final {selectedCard.cardNumber.slice(-4)}</span>
                 </div>
               </Link>
               : <li className="flexbox-center">

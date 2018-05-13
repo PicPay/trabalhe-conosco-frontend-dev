@@ -1,14 +1,14 @@
 import React from 'react';
 import cn from 'classnames';
-import { Button, DialogContainer, Toolbar } from 'react-md';
+import { Button, DialogContainer as DialogContainerMD, Toolbar } from 'react-md';
 
-export default class SimpleListDialog extends React.PureComponent {
+export default class DialogContainer extends React.PureComponent {
   render() {
     const filteredProps = { ...this.props };
     delete filteredProps.title;
     return (
       <div>
-        <DialogContainer
+        <DialogContainerMD
           {...filteredProps}
           aria-label={this.props.id}
           dialogClassName={cn('dialog', this.props.dialogClassName)}
@@ -24,7 +24,7 @@ export default class SimpleListDialog extends React.PureComponent {
           <section className="dialog__content" >
             {this.props.children}
           </section>
-        </DialogContainer>
+        </DialogContainerMD>
       </div>
     );
   }

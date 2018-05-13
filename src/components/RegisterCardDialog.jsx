@@ -30,7 +30,7 @@ const initialState = {
   },
 };
 
-export default class SimpleListDialog extends React.Component {
+export default class RegisterCardDialog extends React.Component {
   state = initialState;
   componentDidUpdate(prevProps) {
     if (this.props.visible !== prevProps.visible) this.setState(initialState);

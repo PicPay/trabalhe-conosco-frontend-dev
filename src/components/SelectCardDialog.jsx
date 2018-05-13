@@ -4,7 +4,7 @@ import { FontIcon, List, ListItem, Button } from 'react-md';
 import cn from 'classnames';
 import DialogContainer from './DialogContainer';
 
-export default class SimpleListDialog extends React.PureComponent {
+export default class SelectCardDialog extends React.PureComponent {
   render() {
     const { visible, onHide, registerNewCard, cards, selectedCardNumber, selectCard, onSelectSubmit } = this.props;
     return (

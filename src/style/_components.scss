@@ -62,13 +62,34 @@
   border-radius: 24px;
 }
 
+.button--secondary {
+  color: $md-primary-color;
+  background-image: white;
+  font-weight: bold;
+  border-radius: 24px;
+  border-color: $md-primary-color;
+  border-style: solid;
+  border-width: 1px;
+}
+
 .dialog {
   width: 100%;
+  max-width: 100%;
   @media (min-width: 720px) {
     width: 640px;
   }
   .md-dialog-content--padded {
     padding: 0;
+  }
+  .md-title--toolbar {    
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    @media #{$md-tablet-media} {
+      font-size: 20px;
+    }
   }
 }
 
@@ -77,17 +98,44 @@
 }
 
 .dialog__content {
-  padding: 0 40px;
+  padding: 0 12px;
+  @media #{$md-tablet-media} {
+    padding: 0 40px;
+  }
 }
 
 .dialog__footer {
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  @media #{$md-tablet-media} {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
 }
 
 .dialog-button--only-one {
   margin: 0 54px;
   width: calc(100% - 108px);
+}
+
+$dialog-button--with-two-size: 181px;
+.dialog-button--with-two {
+  width: auto;  
+  @media (min-width: $dialog-button--with-two-size * 2 + 48) {
+    width: $dialog-button--with-two-size;
+  }
+}
+
+.dialog__footer--with-two-buttons {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  @media (min-width: $dialog-button--with-two-size * 2 + 48) {
+    width: $dialog-button--with-two-size * 2 + 48;
+    justify-content: space-between;
+  }
 }
 
 .error {
@@ -115,4 +163,23 @@ $quantity-input-size: 172px;
   text-align: end;
   margin-left: ($quantity-field-size - $quantity-input-size) / 2;
   color: $md-primary-color;
+}
+
+.transaction-row {  
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 280px;
+  p {
+    margin: 0;
+    color: $md-primary-color;
+  }
+}
+
+.transaction-row__divider {
+  height: 1px;
+  background-color: #d8d8d8;
+  width: 100%;
+  margin-bottom: 12px;
+  width: 280px;
 }
