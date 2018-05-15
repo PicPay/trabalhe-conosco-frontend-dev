@@ -1,4 +1,5 @@
 require('core-js/fn/object/values')
+import 'promise-polyfill/src/polyfill';
 
 Number.isNaN = Number.isNaN || function(value) {     
   return value !== value;

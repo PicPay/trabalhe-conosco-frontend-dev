@@ -37,6 +37,7 @@
     "neutrino-middleware-hot": "^6.2.1",
     "node-sass": "^4.7.2",
     "normalizr": "^3.2.4",
+    "promise-polyfill": "^7.1.2",
     "prop-types": "^15.6.0",
     "re-reselect": "^1.0.1",
     "react": "^16.2.0",
