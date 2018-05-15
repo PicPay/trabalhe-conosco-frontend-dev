@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "neutrino start",
-    "build": "neutrino build",
+    "build": "neutrino build && npm run generateSW",
     "lint": "eslint -c .eslintrc --ignore-path .eslintignore .",
     "lint:fix": "eslint --fix -c .eslintrc --ignore-path .eslintignore .",
     "server": "node server",

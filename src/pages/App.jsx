@@ -8,6 +8,19 @@ import PaymentReceiptDialog from './PaymentReceiptDialog';
 // import * as routes from '../constants/routes';
 
 export default class SimpleListDialog extends React.PureComponent {
+  componentDidMount() {
+    if ('serviceWorker' in navigator) {
+      // Register a service worker hosted at the root of the
+      // site using the default scope.
+      navigator.serviceWorker.register('/sw.js').then((registration) => {
+        console.log('Service worker registration succeeded:', registration);
+      }).catch((error) => {
+        console.log('Service worker registration failed:', error);
+      });
+    } else {
+      console.log('Service workers are not supported.');
+    }
+  }
   render() {
     return (
       <BrowserRouter>

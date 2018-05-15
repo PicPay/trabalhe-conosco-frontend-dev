@@ -59,7 +59,7 @@ export default class ConfirmPaymentDialog extends React.PureComponent {
             >{apiStatus.isFetching ? 'PAGANDO...' : 'PAGAR'}</Button>,
           ]}
         >
-          {user && <div className="flexbox-center--column">
+          {user && <div className="flexbox-center--column" style={{ paddingTop: '24px' }} >
             <UserTag user={user} />
             <TextField
               id="quantity"

@@ -1,43 +1,18 @@
-![PicPay](https://user-images.githubusercontent.com/1765696/26998603-711fcf30-4d5c-11e7-9281-0d9eb20337ad.png)
+# Sobre a implementação
 
-# Teste Frontend
+A solução foi implementada usando JavaScript (ES7, transpilado com Babel), usando as libs React e Redux, junto com outras relacionadas às duas. Foi utilizado SASS para implementar o CSS.
 
-O teste deve ser feito para Web com layout responsivo e é uma simulação de envio de dinheiro para uma outra pessoa via cartão de crédito. 
+A aplicação também é uma PWA (Progressive Web App), e é possível instalá-la no desktop ou smartphone Android que suportam Service Worker, e navegar nela offline (podendo cadastrar um cartão offline). Para instalar basta ir: no desktop em "More Tools > Add to desktop..." ou em um smartphone em "Add to Home screen", em mais opções do browser.
 
-O layout está disponível em https://zpl.io/VOBNjrQ. Para acessar, use o login *picpay* e senha *picpayfte*.
+O service worker foi implementado com o framework Workbox.
 
-Você deve fazer um ***Fork*** deste repositório e soliciar um ***Pull Request***, **com seu nome na descrição**, para nossa avaliação.
+# Testando a aplicação
 
-O seu usuário deverá escolher uma pessoa em uma lista, informar o valor a ser enviado e finalizar o pagamento com o cartão de crédito cadastrado. Se ele não possuir cartão de crédito cadastrado, deverá informar o dados do cartão (número do cartão, data de validade e CVV, além do id do usuário de destino) antes de finalizar o pagamento.
-
-Os cartões devem ser persistidos no armazenamento do navegador para serem usados em pagamentos futuros.
-
-
-
------
-###### Lista de usuários
-
-Para listar as pessoas que podem receber pagamentos, faça uma requisição para o json nessa url: http://careers.picpay.com/tests/mobdev/users
-
------
-
-###### Pagamento
-
-Realizar um `POST` para http://careers.picpay.com/tests/mobdev/transaction com os seguintes atributos:
-+ ID do usuário que irá receber o pagamento
-+ Número do cartão
-+ Vencimento do cartão
-+ CVV
-+ Valor total
-
-``` json
-{  
-   "card_number":"1111111111111111",
-   "cvv":789,
-   "value":79.9,
-   "expiry_date":"01/18",
-   "destination_user_id":1002
-}
+Para testar a aplicação execute os comandos:
+```sh
+$ npm install
+$ npm run build
+$ npm run server
 ```
 
-## Para fins de teste, o número de cartão 1111111111111111 aprova a transação, qualquer outro recusa. 
+Fique a vontade para testar o app, online ou offline, e tentar quebrá-lo.

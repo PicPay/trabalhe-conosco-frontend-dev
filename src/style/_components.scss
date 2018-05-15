@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  height: 80px;
+  height: 60px;
   width: 100%;
   div {
     width: 100%;
@@ -105,6 +105,7 @@
 .dialog {
   width: 100%;
   max-width: 100%;
+  overflow: auto;
   @media #{$md-tablet-media} {
     max-width: calc(100% - 80px);
   }

@@ -33,7 +33,7 @@ export default class PaymentReceipt extends React.PureComponent {
             </div>
           }
         >
-          {transaction && cardNumber && <div className="flexbox-center--column">
+          {transaction && cardNumber && <div className="flexbox-center--column" style={{ paddingTop: '12px' }}>
             {user && <UserTag user={user} />}
             <h2 className="primary-color" style={{ marginBottom: '24px', textAlign: 'center' }} >
               {transaction.success ? 'Pagamento confirmado!' : 'Não foi possível efetuar o pagamento!'}
