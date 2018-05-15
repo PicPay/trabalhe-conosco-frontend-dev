@@ -12,6 +12,9 @@ export default class SimpleListDialog extends React.PureComponent {
     return (
       <BrowserRouter>
         <div>
+          <div className="main-toolbar">
+            <div><h4>Front-End Test</h4></div>
+          </div>
           <UsersList />
           <Route path="*" component={ConfirmPaymentDialog} />
           <Route path="*" component={RegisterCardDialog} />

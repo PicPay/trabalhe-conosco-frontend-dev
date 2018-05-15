@@ -39,7 +39,7 @@ const allIds = (state = [], action) => {
 export default combineReducers({
   byId,
   allIds,
-})
+});
 
 export const getAllById = state => state.entities.cards.byId;
 

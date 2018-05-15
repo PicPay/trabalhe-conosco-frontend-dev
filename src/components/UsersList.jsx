@@ -5,7 +5,7 @@ import * as routes from '../constants/routes';
 
 export default ({ users, apiStatus }) => (
   <List className="list">
-    {apiStatus.isFetching && <CircularProgress centered />}
+    {apiStatus.isFetching && <CircularProgress centered id="loading-users" />}
     {users.map(({ id, name, img, username }) => (
       <ListItem
         key={id}

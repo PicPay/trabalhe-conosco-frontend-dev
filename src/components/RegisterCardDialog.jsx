@@ -72,7 +72,7 @@ export default class RegisterCardDialog extends React.Component {
       valid = false;
       this.setState({ cardFLag: { ...cardFLag, error: 'Selecionar bandeira' } });
     }
-    if (!name.value) {
+    if (!name.value.trim()) {
       valid = false;
       this.setState({ name: { ...name, error: 'Informar nome' } });
     } 
@@ -93,7 +93,7 @@ export default class RegisterCardDialog extends React.Component {
       this.setState({ CEP: { ...CEP, error: 'CEP inválido' } });
     }
     if (valid) {
-      onSubmit(cardFLag.value, name.value, cardNumber.value, expirationDate.value, cvvNumber.value, CEP.value);
+      onSubmit(cardFLag.value, name.value.trim(), cardNumber.value, expirationDate.value, cvvNumber.value, CEP.value);
     }
   }
   render() {

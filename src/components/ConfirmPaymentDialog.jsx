@@ -1,10 +1,11 @@
 /* eslint react/no-did-update-set-state: 0 */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Divider, FontIcon, TextField } from 'react-md';
+import { Button, Divider, FontIcon, TextField, CircularProgress } from 'react-md';
 import DialogContainer from './DialogContainer';
 import UserTag from './UserTag';
 import * as routes from '../constants/routes';
+import { unmaskCurrency2Float } from '../utils/masks';
 
 const initialState = {
   value: '',
@@ -24,10 +25,19 @@ export default class ConfirmPaymentDialog extends React.PureComponent {
     } else {
       finalValue = filteredValue;
     }
-    this.setState({ value: finalValue });
+    this.setState({ value: finalValue, error: '' });
+  }
+  isValid = () => Boolean(unmaskCurrency2Float(this.state.value) > 0);
+  handleSubmit = () => {
+    const { selectedCard, user, apiStatus, request, history } = this.props;
+    const { value } = this.state;
+    if (!this.isValid()) this.setState({ error: 'Valor inválido' });
+    else if (!apiStatus.isFetching) {
+      request(value, selectedCard, user, history);
+    }
   }
   render() {
-    const { visible, selectedCard, onHide, user } = this.props;
+    const { visible, selectedCard, onHide, user, apiStatus } = this.props;
     const { value, error } = this.state;
     const { id: userId, name } = user || {};
     return (
@@ -42,7 +52,11 @@ export default class ConfirmPaymentDialog extends React.PureComponent {
               Pagamento para <span className="md-text--theme-secondary">{name}</span>
             </div>}
           actions={[
-            <Button raised className="button--primary dialog-button--only-one" >PAGAR</Button>,
+            <Button
+              raised
+              className="button--primary dialog-button--only-one"
+              onClick={this.handleSubmit}
+            >{apiStatus.isFetching ? 'PAGANDO...' : 'PAGAR'}</Button>,
           ]}
         >
           {user && <div className="flexbox-center--column">
@@ -85,6 +99,7 @@ export default class ConfirmPaymentDialog extends React.PureComponent {
               </li>
             }
           </div>}
+          {apiStatus.isFetching && <CircularProgress centered id="paying" />}
         </DialogContainer>
       </div>
     );
