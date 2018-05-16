@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
-import { MatStepper, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig, MatStepper, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs';
 
 import { Card } from '@app/_models/card';
 import { CardService } from '@app/_services/card.service';
@@ -18,6 +18,7 @@ export class PaymentComponent implements OnInit {
   card: any = {};
   selectedCard: any = {};
   paymentValue: number = null;
+  paymentSuccess: any = {};
 
   cardFlags = [
     { value: 'master', viewValue: 'Master' },
@@ -28,6 +29,7 @@ export class PaymentComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PaymentComponent>,
+    public snackBar: MatSnackBar,
     private cardService: CardService
   ) {
     this.cards = this.cardService.getCards();
@@ -84,7 +86,7 @@ export class PaymentComponent implements OnInit {
     return this.cards;
   }
 
-  pay(id, value) {
+  pay(user, value) {
     const card = this.getSelectedCard();
     const data = {
       'card_number': card.card_number,
@@ -92,13 +94,24 @@ export class PaymentComponent implements OnInit {
       'cvv': parseInt(card.cvv),
       'value': value,
       'expiry_date': card.expires_date.match(/[\s\S]{1,2}/g).join('/'),
-      'destination_user_id': id
+      'destination_user_id': user.id
     };
     this.cardService.pay(data).subscribe(res => {
-      if (res.success) {
-        this.changeStep(3);
+      if (!res.transaction.success) {
+        const config = new MatSnackBarConfig();
+        config.panelClass = ['mat-snack-bar-error'];
+        this.snackBar.open(`O pagamento para ${user.name} foi recusado. Verifique os dados do cartão e tente novamente.`, 'Fechar', config);
+
+        return;
       }
+
+      this.paymentSuccess = res.transaction;
+      this.changeStep(3);
     });
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
   changeStep(index: number) {

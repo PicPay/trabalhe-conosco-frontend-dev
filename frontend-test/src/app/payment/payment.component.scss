@@ -38,8 +38,24 @@
       color: $primary;
       overflow: hidden;
       @include linear-gradient($accent-light, $accent, vertical);
+      &[disabled] {
+        opacity: .7;
+      }
       &:last-child {
         margin: 10px 0 0;
+      }
+    }
+    &.success {
+      padding-top: 30px;
+      .mat-raised-button {
+        width: auto;
+        & + .mat-raised-button {
+          margin: 0 0 0 20px;
+        }
+        &[color="outline"] {
+          border: 1px solid $primary;
+          background: transparent;
+        }
       }
     }
   }
@@ -73,13 +89,13 @@
   }
 }
 
-.mat-input-container.payment {
+.mat-form-field.payment {
   margin-top: 20px;
   font-size: 40px;
   text-align: center;
   color: $primary-light;
 
-  /deep/ .mat-input-infix {
+  /deep/ .mat-form-field-infix {
     border-top: 0;
     width: 270px;
   }
@@ -110,5 +126,22 @@
   transition: .3s all;
   &.active {
     background-color: rgba($accent-light, .5);
+  }
+}
+
+/deep/ .mat-snack-bar-error {
+  background-color: $danger;
+  .mat-button {
+    color: #fff;
+    background-color: $primary;
+  }
+}
+
+.payment-success {
+  margin: 0 auto;
+  font-size: 14px;
+  max-width: 280px;
+  & > div {
+    margin: 10px;
   }
 }

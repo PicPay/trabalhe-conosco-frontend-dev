@@ -13,6 +13,5 @@ export class AppComponent {
     if (cards === null) {
       localStorage.setItem('cards', JSON.stringify([]));
     }
-    console.log(cards);
   }
 }
