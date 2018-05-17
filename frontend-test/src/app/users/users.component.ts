@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { User } from '@app/_models/user';
 import { UserService } from '@app/_services/user.service';
@@ -17,12 +16,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer,
     public dialog: MatDialog
-  ) {
-    iconRegistry.addSvgIcon('dollar-icon', sanitizer.bypassSecurityTrustResourceUrl('assets/dollar.svg'));
-  }
+  ) {}
 
   ngOnInit() {
     this.getUsers();
@@ -37,10 +32,6 @@ export class UsersComponent implements OnInit {
     const dialogRef = this.dialog.open(PaymentComponent, {
       width: '640px',
       data: { user }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 

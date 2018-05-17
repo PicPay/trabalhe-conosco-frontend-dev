@@ -17,6 +17,8 @@ import { PaymentComponent } from '@app/payment/payment.component';
 
 import { UserService } from '@app/_services/user.service';
 import { CardService } from '@app/_services/card.service';
+import { PaymentService } from '@app/_services/payment.service';
+
 import { CreditcardPipe } from '@app/_pipes/creditcard.pipe';
 
 
@@ -41,7 +43,7 @@ import { CreditcardPipe } from '@app/_pipes/creditcard.pipe';
   entryComponents: [
     PaymentComponent
   ],
-  providers: [UserService, CardService],
+  providers: [UserService, CardService, PaymentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 import { Card } from '@app/_models/card';
 
 @Injectable()
 export class CardService {
-  paymentUrl = 'http://careers.picpay.com/tests/mobdev/transaction';
-
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   private getLastFourNumber(number): any {
     return number.toString().slice(-4);
@@ -42,9 +38,4 @@ export class CardService {
   saveCard(cards) {
     return localStorage.setItem('cards', JSON.stringify(cards));
   }
-
-  pay(data): Observable<any> {
-    return this.http.post(this.paymentUrl, data);
-  }
-
 }

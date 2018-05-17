@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 
 import { Card } from '@app/_models/card';
 import { CardService } from '@app/_services/card.service';
+import { PaymentService } from '@app/_services/payment.service';
 
 @Component({
   selector: 'app-payment',
@@ -14,23 +15,24 @@ import { CardService } from '@app/_services/card.service';
 export class PaymentComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
 
-  cards: any = false;
-  card: any = {};
-  selectedCard: any = {};
-  paymentValue: number = null;
-  paymentSuccess: any = {};
-
   cardFlags = [
     { value: 'master', viewValue: 'Master' },
     { value: 'visa', viewValue: 'Visa' },
     { value: 'dinners', viewValue: 'Dinners' }
   ];
 
+  cards: any = false;
+  card: any = {};
+  selectedCard: any = {};
+  paymentValue: number = null;
+  paymentSuccess: any = {};
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PaymentComponent>,
     public snackBar: MatSnackBar,
-    private cardService: CardService
+    private cardService: CardService,
+    private paymentService: PaymentService
   ) {
     this.cards = this.cardService.getCards();
 
@@ -38,7 +40,6 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.selectedCard)
   }
 
   private getSelectedCard() {
@@ -96,10 +97,11 @@ export class PaymentComponent implements OnInit {
       'expiry_date': card.expires_date.match(/[\s\S]{1,2}/g).join('/'),
       'destination_user_id': user.id
     };
-    this.cardService.pay(data).subscribe(res => {
+    this.paymentService.pay(data).subscribe(res => {
       if (!res.transaction.success) {
         const config = new MatSnackBarConfig();
         config.panelClass = ['mat-snack-bar-error'];
+        config.duration = 5000;
         this.snackBar.open(`O pagamento para ${user.name} foi recusado. Verifique os dados do cartão e tente novamente.`, 'Fechar', config);
 
         return;

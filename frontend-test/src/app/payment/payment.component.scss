@@ -10,9 +10,9 @@
     font-weight: 400;
     color: white;
     background-color: $primary-light;
-
-    strong {
-      color: $accent;
+    .mat-icon-button {
+      position: relative;
+      right: -16px;
     }
   }
 
