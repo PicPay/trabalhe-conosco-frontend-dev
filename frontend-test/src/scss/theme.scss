@@ -1,0 +1,22 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$color-primary: mat-palette($mat-indigo);
+$color-accent : mat-palette($mat-teal, 200, 100, 600);
+$color-warn : mat-palette($mat-red);
+$theme: mat-light-theme($color-primary, $color-accent, $color-warn);
+
+@include angular-material-theme($theme);
+
+
+// Include the alternative theme styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.dark-theme {
+  $dark-primary: mat-palette($mat-teal, 200, 100, 600);
+  $dark-accent:  mat-palette($mat-teal, 200, 100, 600);
+  $dark-warn:    mat-palette($mat-red);
+  $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  @include angular-material-theme($dark-theme);
+}

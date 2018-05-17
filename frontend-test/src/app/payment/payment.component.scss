@@ -1,0 +1,196 @@
+// @import '~@angular/material/theming';
+@import '../../scss/colors';
+
+/deep/ {
+  @media (max-width: 600px) {
+    .cdk-global-overlay-wrapper > .cdk-overlay-pane:not(.mat-snack-bar-handset) {
+      height: 100vh;
+      width: 100vw !important;
+      max-width: 100vw !important;
+    }
+    .mat-horizontal-content-container {
+      height: calc(100vh - 52px);
+      @include linear-gradient($primary, $primary-dark, vertical);
+      color: #fff;
+    }
+    .mat-horizontal-stepper-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      form {
+        height: 100%;
+      }
+    }
+    .mat-dialog-content {
+      padding: 16px !important;
+      flex-grow: 2;
+    }
+    .payment-success {
+      h4{
+        font-size: 20px;
+      }
+      & > div {
+        border-bottom: 1px solid #fff;
+        padding-bottom: 5px;
+        margin-bottom: 15px !important;
+        span:last-child {
+          color: $accent;
+        }
+      }
+    }
+  }
+
+
+  .mat-dialog-container {
+    padding: 0;
+
+    .mat-toolbar {
+      height: 52px;
+      font-size: 18px;
+      &:not([color="accent"]) {
+        font-size: 14px;
+        font-weight: 400;
+        color: white;
+        background-color: $primary-light;
+      }
+      .mat-icon-button {
+        position: relative;
+        right: -16px;
+      }
+    }
+
+    .mat-dialog-content,
+    .mat-dialog-actions {
+      margin: 0;
+    }
+
+    .mat-dialog-content {
+      padding: 10px 50px 0;
+    }
+
+    .mat-dialog-actions {
+      padding-top: 0;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-bottom: 20px;
+      text-align: center;
+      .mat-raised-button {
+        width:100%;
+        border-radius: 20px;
+        text-transform: uppercase;
+        color: $primary;
+        overflow: hidden;
+        @include linear-gradient($accent-light, $accent, vertical);
+        &[disabled] {
+          opacity: .7;
+        }
+        &:last-child {
+          margin: 10px 0 0;
+        }
+      }
+      &.success {
+        padding-top: 30px;
+        .mat-raised-button {
+          width: auto;
+          & + .mat-raised-button {
+            margin: 0 0 0 20px;
+          }
+          &[color="outline"] {
+            border: 1px solid $primary;
+            background: transparent;
+          }
+        }
+      }
+    }
+
+    h4 {
+      text-align: center;
+    }
+  }
+
+  .mat-stepper-horizontal {
+    .mat-horizontal-stepper-header-container {
+      display: none;
+    }
+
+    .mat-horizontal-content-container {
+      padding: 0;
+    }
+  }
+
+  .mat-list,
+  .mat-nav-list {
+    .mat-list-item {
+      color: $primary-light;
+      .mat-list-avatar.avatar-medium {
+        width: auto;
+        height: 65px;
+        border: 2px solid white;
+      }
+
+      h3 {
+        margin-bottom: 5px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .mat-form-field.payment {
+    margin-top: 20px;
+    font-size: 40px;
+    text-align: center;
+    color: $primary-light;
+
+    .mat-form-field-infix {
+      border-top: 0;
+      width: 270px;
+    }
+
+    label:not(.mat-focused) {
+      color: #d8d8d8;
+    }
+
+    &.mat-focused label {
+      color: $primary-light;
+    }
+  }
+
+  .mat-nav-list {
+    .mat-list-item {
+      text-align: left;
+    }
+    .mat-line {
+      font-size: 14px;
+    }
+  }
+
+  .card {
+    transition: .3s all;
+    &.active {
+      background-color: rgba($accent-light, .5);
+    }
+  }
+
+  .mat-snack-bar-error {
+    background-color: $danger;
+    .mat-button {
+      color: #fff;
+      background-color: $primary;
+    }
+  }
+
+  .payment-success {
+    margin: 0 auto;
+    font-size: 14px;
+    max-width: 280px;
+    & > div {
+      margin: 10px;
+    }
+  }
+
+  .goback {
+    padding: 16px 16px 0;
+  }
+}

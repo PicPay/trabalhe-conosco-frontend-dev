@@ -1,0 +1,10 @@
+<svg version="1.1" id="picpay" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<path class="st0" d="M11.4,5.5H5.8v4.9H11c3.3,0,5.2,1.6,5.2,4.6s-1.9,4.7-5.2,4.7H5.8v-9.2H0V32h5.8v-7.4h5.5
+	c6.7,0,10.6-3.6,10.6-9.8C21.9,9,18.1,5.5,11.4,5.5z"/>
+<path id="path3337" class="st0" d="M28.6,5.5h-3.4v3.4h3.4V5.5z M9.8,7.1H5v4.2h4.5c2.8,0,4.5,1.4,4.5,4s-1.6,4-4.5,4H5v-7.9H0v18.5
+	h5v-6.4h4.7c5.8,0,9.1-3.1,9.1-8.4C18.8,10.1,15.6,7.1,9.8,7.1z M32,2.1H21.9v10.1H32V2.1z M30.4,10.5h-6.7V3.7h6.7V10.5z"/>
+</svg>
