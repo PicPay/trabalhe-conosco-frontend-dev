@@ -26,3 +26,21 @@ $danger: #ef5778;
 [color="accent"] {
   color: $accent;
 }
+
+[color="danger"] {
+  color: $danger !important;
+}
+
+@media (max-width: 600px) {
+  .dark-theme {
+    [color="primary"] {
+      color: #fff;
+    }
+    .mat-input-element {
+      color: #fff;
+    }
+    [disabled] {
+      color: rgba($primary, .7);
+    }
+  }
+}

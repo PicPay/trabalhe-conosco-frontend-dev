@@ -89,6 +89,15 @@ export class PaymentComponent implements OnInit {
 
   pay(user, value) {
     const card = this.getSelectedCard();
+    const config = new MatSnackBarConfig();
+    config.panelClass = ['mat-snack-bar-error'];
+    config.duration = 4000;
+
+    if (!card) {
+      this.snackBar.open(`Você não tem nenhum cartão cadastrado.`, 'Fechar', config);
+      return;
+    }
+
     const data = {
       'card_number': card.card_number,
       // tslint:disable-next-line:radix
@@ -97,13 +106,10 @@ export class PaymentComponent implements OnInit {
       'expiry_date': card.expires_date.match(/[\s\S]{1,2}/g).join('/'),
       'destination_user_id': user.id
     };
+
     this.paymentService.pay(data).subscribe(res => {
       if (!res.transaction.success) {
-        const config = new MatSnackBarConfig();
-        config.panelClass = ['mat-snack-bar-error'];
-        config.duration = 5000;
         this.snackBar.open(`O pagamento para ${user.name} foi recusado. Verifique os dados do cartão e tente novamente.`, 'Fechar', config);
-
         return;
       }
 
