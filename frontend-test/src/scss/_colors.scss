@@ -1,8 +1,11 @@
-$color-purple: #3c3e64;
-$color-purple-dark: #1d1e2a;
-$color-purple-light: #474971;
+$primary: #3c3e64;
+$primary-dark: #1d1e2a;
+$primary-light: #474971;
 
-$color-cyan: #7de6c6;
+$accent: #7de6c6;
+$accent-light: #b4f4e5;
+
+$danger: #ef5778;
 
 @mixin linear-gradient($from, $to, $direction: horizontal vertical) {
   background-color: $from;
@@ -14,4 +17,12 @@ $color-cyan: #7de6c6;
   @if $direction == vertical {
     background: linear-gradient(to bottom, $from 0%, $to 100%);
   }
+}
+
+[color="primary"] {
+  color: $primary;
+}
+
+[color="accent"] {
+  color: $accent;
 }

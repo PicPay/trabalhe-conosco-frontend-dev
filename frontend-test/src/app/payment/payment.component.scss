@@ -1,4 +1,5 @@
-@import '../../scss/_colors';
+// @import '~@angular/material/theming';
+@import '../../scss/colors';
 
 /deep/ .mat-dialog-container {
   padding: 0;
@@ -8,15 +9,139 @@
     font-size: 14px;
     font-weight: 400;
     color: white;
-    background-color: $color-purple-light;
-
-    strong {
-      color: $color-cyan;
+    background-color: $primary-light;
+    .mat-icon-button {
+      position: relative;
+      right: -16px;
     }
   }
 
   .mat-dialog-content,
   .mat-dialog-actions {
     margin: 0;
+  }
+
+  .mat-dialog-content {
+    padding: 10px 50px 0;
+  }
+
+  .mat-dialog-actions {
+    padding-top: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    text-align: center;
+    .mat-raised-button {
+      width:100%;
+      border-radius: 20px;
+      text-transform: uppercase;
+      color: $primary;
+      overflow: hidden;
+      @include linear-gradient($accent-light, $accent, vertical);
+      &[disabled] {
+        opacity: .7;
+      }
+      &:last-child {
+        margin: 10px 0 0;
+      }
+    }
+    &.success {
+      padding-top: 30px;
+      .mat-raised-button {
+        width: auto;
+        & + .mat-raised-button {
+          margin: 0 0 0 20px;
+        }
+        &[color="outline"] {
+          border: 1px solid $primary;
+          background: transparent;
+        }
+      }
+    }
+  }
+
+  h4 {
+    text-align: center;
+  }
+}
+
+/deep/ .mat-stepper-horizontal {
+  .mat-horizontal-stepper-header-container {
+    display: none;
+  }
+
+  .mat-horizontal-content-container {
+    padding: 0;
+  }
+}
+
+.mat-list-item {
+  color: $primary-light;
+  .mat-list-avatar {
+    width: auto;
+    height: 65px;
+  }
+
+  h3 {
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.mat-form-field.payment {
+  margin-top: 20px;
+  font-size: 40px;
+  text-align: center;
+  color: $primary-light;
+
+  /deep/ .mat-form-field-infix {
+    border-top: 0;
+    width: 270px;
+  }
+
+  /deep/ label:not(.mat-focused) {
+    color: #d8d8d8;
+  }
+
+  /deep/ &.mat-focused label {
+    color: $primary-light;
+  }
+}
+
+.mat-nav-list {
+  .mat-list-item {
+    text-align: left;
+    &[color="danger"] {
+      color: $danger;
+    }
+
+  }
+  .mat-line {
+    font-size: 14px;
+  }
+}
+
+.card {
+  transition: .3s all;
+  &.active {
+    background-color: rgba($accent-light, .5);
+  }
+}
+
+/deep/ .mat-snack-bar-error {
+  background-color: $danger;
+  .mat-button {
+    color: #fff;
+    background-color: $primary;
+  }
+}
+
+.payment-success {
+  margin: 0 auto;
+  font-size: 14px;
+  max-width: 280px;
+  & > div {
+    margin: 10px;
   }
 }

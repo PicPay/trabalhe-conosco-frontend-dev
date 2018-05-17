@@ -1,10 +1,158 @@
-<!-- <header></header> -->
-<mat-toolbar>
-  <span>Pagamento para <strong>{{ data.user.name }}</strong></span>
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
+  <span>Pagamento para <strong color="accent">{{ data.user.name }}</strong></span>
+  <button mat-icon-button (click)="closeDialog()">
+    <mat-icon aria-label="close">close</mat-icon>
+  </button>
 </mat-toolbar>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-</div>
+
+<mat-horizontal-stepper #stepper>
+  <mat-step>
+    <div mat-dialog-content>
+      <mat-list>
+        <mat-list-item fxlayout="row" fxLayoutAlign="center">
+          <img mat-list-avatar [src]="data.user.img" [alt]="data.user.name">
+          <h3 mat-line>{{ data.user.name }}</h3>
+          <p mat-line>id: {{ data.user.id }} &nbsp; {{ data.user.username }}</p>
+        </mat-list-item>
+      </mat-list>
+
+      <mat-form-field class="payment" fxLayout="row" fxLayoutAlign="center" [floatLabel]="'never'">
+        <input matInput [(ngModel)]="paymentValue" maxlength="12" placeholder="R$ 0,00" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'center' }" cdkFocusInitial>
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+
+    </div>
+
+    <div mat-dialog-actions fxLayoutAlign="center">
+      <mat-nav-list fxLayout="row" fxLayoutAlign="center">
+        <a mat-list-item *ngIf="!cards.length" color="danger" (click)="changeStep(1)">
+          <mat-icon mat-list-icon>error</mat-icon>
+          <p mat-line>Nenhum cartão de crédito cadastrado.</p>
+          <p mat-line><strong>Cadastrar agora.</strong></p>
+        </a>
+
+        <a mat-list-item *ngIf="selectedCard" (click)="changeStep(2)">
+          <mat-icon mat-list-icon>credit_card</mat-icon>
+          <p mat-line>Forma de Pagamento:</p>
+          <p mat-line><strong>Cartão de Crédito com final {{ selectedCard.card_number | creditcard: 'lastNumbers' }}</strong><p>
+        </a>
+      </mat-nav-list>
+      <button mat-raised-button color="accent" [disabled]="!paymentValue" (click)="pay(data.user, paymentValue)" type="submit">Pagar</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <form #addCardForm="ngForm" (ngSubmit)="addCard(addCardForm.value)">
+      <div mat-dialog-content fxLayout="column">
+        <mat-form-field>
+          <mat-select placeholder="Selecione a bandeira" name="flag" [(ngModel)]="card.flag" required>
+            <mat-option *ngFor="let flag of cardFlags" [value]="flag.value">
+              {{ flag.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Nome escrito no cartão" name="name" [(ngModel)]="card.name" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Número do Cartão" mask="0000 0000 0000 0000" name="card_number" [(ngModel)]="card.number" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Validade (mm/aa)" mask='00/00' name="expires_date" [(ngModel)]="card.expires_date" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Código de segurança" mask='000' name="cvv" [(ngModel)]="card.cvv" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="CEP do endereço da fatura" mask='00000-000' name="cep" [(ngModel)]="card.cep" required>
+        </mat-form-field>
+      </div>
+
+      <div mat-dialog-actions fxLayoutAlign="center">
+        <button mat-button (click)="changeStep(0)" type="button" color="primary">Cancelar</button>
+        <button mat-raised-button color="accent" type="submit">Cadastrar</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <div mat-dialog-content fxLayout="column">
+      <mat-nav-list fxLayout="column" fxLayoutAlign="center stretch">
+        <h4 color="primary" class="text-center">Cartões Cadastrados</h4>
+        <a mat-list-item *ngFor="let card of cards" (click)="selectCard(card)" class="card" [ngClass]="{'active': card.active}">
+          <mat-icon mat-list-icon>credit_card</mat-icon>
+          <p mat-line>
+            <strong>
+              {{ card.card_number | creditcard }}
+            </strong>
+          </p>
+          <span [hidden]="!card.active"><mat-icon mat-list-icon>done</mat-icon></span>
+        </a>
+
+        <a mat-list-item (click)="changeStep(1)">
+          <mat-icon mat-list-icon>add</mat-icon>
+          <p mat-line>
+            <strong>
+              Cadastrar novo cartão
+            </strong>
+          </p>
+        </a>
+      </mat-nav-list>
+    </div>
+
+    <div mat-dialog-actions fxLayoutAlign="center">
+      <button mat-button (click)="changeStep(0)" color="primary">Cancelar</button>
+      <button mat-raised-button color="accent" (click)="saveCards(cards)" type="submit">Selecionar</button>
+    </div>
+  </mat-step>
+
+    <mat-step>
+      <div mat-dialog-content>
+        <mat-list>
+          <mat-list-item fxlayout="row" fxLayoutAlign="center">
+            <img mat-list-avatar [src]="data.user.img" [alt]="data.user.name">
+            <h3 mat-line>{{ data.user.name }}</h3>
+            <p mat-line>id: {{ data.user.id }} &nbsp; {{ data.user.username }}</p>
+          </mat-list-item>
+        </mat-list>
+
+        <div class="payment-success" color="primary">
+          <h4 color="primary" class="text-center">Pagamento confirmado!</h4>
+
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Transação</span>
+            <span>{{ paymentSuccess.id }}</span>
+          </div>
+          <mat-divider></mat-divider>
+
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Data</span>
+            <span>{{ paymentSuccess.timestamp | date: 'dd/MM/yyyy - h:mm a' }}</span>
+          </div>
+          <mat-divider></mat-divider>
+
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Cartão</span>
+            <span *ngIf="selectedCard">**** **** **** {{ selectedCard.card_number | creditcard: 'lastNumbers' }}</span>
+          </div>
+          <mat-divider></mat-divider>
+
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Valor</span>
+            <span>R$ {{ paymentSuccess.value }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div mat-dialog-actions class="success" fxLayoutAlign="center">
+        <button mat-raised-button color="outline" (click)="closeDialog()">Voltar</button>
+        <button mat-raised-button color="accent" (click)="changeStep(0)" type="submit">Pagar Novamente</button>
+      </div>
+    </mat-step>
+</mat-horizontal-stepper>
