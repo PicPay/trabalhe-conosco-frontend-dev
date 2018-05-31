@@ -2,4 +2,210 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
+}
+
+.itemLista{
+  display: flex;
+  width: 100%;
+}
+
+.sep{
+  width: 433px;
+}
+
+.linha{
+  width: 100%;
+  margin-top: 8px;
+}
+
+.conjunto{
+  margin-left: 16px;
+}
+
+.botoesPagamento{
+  display: flex;
+  margin-left: 45%;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  padding-left: 23.39%;
+  height: 5vw;
+  max-height: 80px;
+  min-height: 32px;
+  background-color: #7de6c6;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  object-fit: contain;
+}
+
+.usuLista {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0.25;
+  height: 6.3vw;
+  max-height: 120px;
+  min-height: 72px;
+  width: 100%;
+  max-width: 1054px;
+  background-image: linear-gradient(264deg, #3c3e64, #1d1e2a);
+  box-shadow: 0 -1px 0 0 #ffffff;
+}
+
+.foto {
+  margin-left: 4.3%;
+  max-width: 80px;
+  height: 5vw;
+  max-height: 80px;
+  min-height: 52px;
+  border: solid 2px #ffffff;
+  border-radius: 50%;
+}
+
+.nome {
+  width: 220px;
+  height: 28px;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.id {
+  display: inline;
+  width: 50px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.username {
+  display: inline;
+  margin-left: 12px;
+  width: 75px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.pagar {
+  margin-top: 4px;
+  margin-right: 20px;
+  margin-left: 11px;
+  width: 65px;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.cifrao {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.down {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+
+/*Mobile*/
+@media only screen and (max-width: 1150px) {
+  .sep{
+    display: none;
+  }
+
+  .botoesPagamento{
+    margin-left: 40%;
+  }
+
+  .navBar{
+    padding-left: 15%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+    .navBar {
+      padding-left: 4.3%;
+    }
+
+    .foto {
+      margin-left: 2.6%;
+    }
+
+    .botoesPagamento{
+      margin-left: 35%;
+    }
+
+    .pagar{
+      display: none;
+    }
+
+    .nome{
+      height: 19px;
+      font-size: 16px;
+    }
+
+    .username{
+      height: 14px;
+      font-size: 14px;
+    }
+
+    .id{
+      height: 14px;
+      font-size: 14px;
+    }
+
+    .linha{
+      margin-top: 4px;
+    }
+
+    .cifrao {
+      width: 28px;
+      height: 28px;
+      margin-right: 8px;
+    }
+
+    .down {
+      width: 24px;
+      height: 24px;
+      margin-top: 3px;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+  .botoesPagamento{
+    margin-left: 10%;
+  }
+
 }
