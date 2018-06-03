@@ -11,6 +11,8 @@ const UsuLista = (props) =>{
           nome={term.name}
           imagem={term.img}
           iden={term.id}
+          onUserSelect={props.onUserSelect}
+          tModalNenhumCartao={props.tModalNenhumCartao}
           username={term.username}/>
       );
     });

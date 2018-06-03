@@ -1,0 +1,349 @@
+/*Modal*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.3);
+  padding: 50;
+}
+
+.modalNenhumCartao{
+  background-color: #fff;
+  border-radius: 6px;
+  max-width: 640px;
+  height: 472px;
+  margin: 7% auto;
+}
+
+.retanguloTitulo {
+  width: 100%;
+  padding-top: 16px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  height: 51px;
+  background-color: #474971;
+}
+
+.logo{
+  display: none;
+}
+
+.pagamentoParaNome {
+  display: inline;
+  margin-left: 24px;
+  width: 248px;
+  height: 19px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+
+}
+
+.pagamentoParaNome div {
+  display: inline;
+  font-weight: bold;
+  color: #7de6c6;
+
+}
+
+.fechar {
+  display: inline;
+  margin-left: 330px;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.containerUsuario{
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.containerVoltar{
+  display: none;
+}
+
+.conjunto{
+  margin-top: 14px;
+}
+
+
+.modalNenhumCartao .foto{
+  display: inline-block;
+  margin: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.modalNenhumCartao .nome{
+  display: inline;
+  width: 189px;
+  height: 28px;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.modalNenhumCartao .id{
+  display: inline;
+  width: 50px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.modalNenhumCartao .username{
+  display: inline;
+  width: 75px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.voltar{
+  display: none;
+}
+
+
+.modalNenhumCartao .conjunto{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.R-000 {
+  max-width: 250px;
+  min-width: 172px;
+  height: 66px;
+  caret-color: #7de6c6;
+  border: none;
+  border-color: transparent;
+  background-color: transparent;
+  font-family: Nunito Sans;
+  font-size: 48px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #d8d8d8;
+}
+
+.R-000::placeholder{
+  font-family: Nunito Sans;
+  font-size: 48px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #d8d8d8;
+}
+
+.divisoria {
+  width: 256px;
+  height: 2px;
+  margin-left: 192px;
+  background-color: #474971;
+}
+
+.divisoria-2 {
+  width: 560px;
+  height: 1px;
+  margin-left: 40px;
+  margin-top: 56px;
+  background-color: #d8d8d8;
+}
+
+
+.containerDinheiro{
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+
+.msgAviso {
+  display: inline;
+  margin-left: 12px;
+  height: 32px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ef5778;
+}
+
+.msgAviso div {
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.avisoCadastro{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.alert {
+  margin-top: 6px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.botao {
+  width: 532px;
+  height: 48px;
+  outline: none;
+  margin-left: 54px;
+  margin-top: 24px;
+  border-radius: 24px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #474971;
+}
+
+/*Mobile*/
+@media only screen and (max-width: 768px) {
+    .modalNenhumCartao{
+      margin: auto;
+      width: 100vw;
+      height: 100vh;
+      background-image: linear-gradient(211deg, #3c3e64, #1d1e2a);
+      box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+    }
+
+    .retanguloTitulo {
+      border-radius: 0;
+      padding: 0;
+      background-color: #7de6c6;
+      height: 32px;
+    }
+
+    .logo{
+      display: inline;
+      margin-left: 16px;
+      margin-top: 8px;
+    }
+
+    .pagamentoParaNome {
+      display: none;
+    }
+
+    .fechar {
+      display: none;
+    }
+
+    .containerUsuario{
+      margin: auto;
+    }
+
+    .containerVoltar{
+      display: block;
+      height: 60px;
+      padding-top: 16px;
+      padding-left: 22.5px;
+    }
+
+    .voltar{
+      display: inline;
+      cursor: pointer;
+      width: 37px;
+      height: 16px;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #ffffff;
+    }
+
+    .left {
+        display: inline;
+        width: 15px;
+        height: 10px;
+        margin-right: 4.5px;
+        transform: rotate(-180deg);
+    }
+
+    .modalNenhumCartao .nome{
+      color: #ffffff;
+    }
+
+    .modalNenhumCartao .id{
+      color: #ffffff;
+    }
+
+    .modalNenhumCartao .username{
+      color: #ffffff;
+    }
+
+    .divisoria-2 {
+      margin-top: 30vh;
+      margin-right: 10px;
+      margin-left: 0;
+      width: 327px;
+    }
+
+    .divisoria {
+      margin-left: 0;
+    }
+
+    .botao {
+      width: 91%;
+      margin-left: 0;
+      margin-right: 10px;
+    }
+
+    .containerFlex{
+      display: flex;
+      justify-content: center;
+    }
+
+}

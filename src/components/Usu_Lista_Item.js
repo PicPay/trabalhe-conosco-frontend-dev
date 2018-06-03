@@ -2,16 +2,20 @@ import React, {Component} from 'react';
 import '../css/index.css';
 
 class UsuListaItem extends Component{
+  constructor(props){
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
+  handleClick(){
+    this.props.onUserSelect(this.props);
+    this.props.tModalNenhumCartao();
+  }
 
 render(){
   return(
     <div>
       <div className="itemLista">
-
-        <div className="sep">
-        </div>
-
         <div className="usuLista">
             <img className="foto" alt="Foto do usuário." src={this.props.imagem} />
 
@@ -31,14 +35,10 @@ render(){
               <div className="pagar">PAGAR</div>
               <picture>
                 <source media="(min-width: 768px)" srcSet={require("../img/down_maior.png")} />
-                <img src={require("../img/down_menor.png")} alt="Seta para direita, pagamento." className="down"/>
+                <img src={require("../img/down_menor.png")} alt="Seta para direita, pagamento." onClick={this.handleClick} className="down"/>
               </picture>
             </div>
         </div>
-        
-        <div className="sep">
-        </div>
-
       </div>
     </div>
   );

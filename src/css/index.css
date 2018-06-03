@@ -5,13 +5,25 @@
   outline: none;
 }
 
+.navBar {
+  display: flex;
+  align-items: center;
+  padding-left: 23.39%;
+  height: 5vw;
+  max-height: 80px;
+  min-height: 32px;
+  background-color: #7de6c6;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.navBar picture{
+  object-fit: contain;
+}
+
+/*Usu_Lista_Item*/
 .itemLista{
   display: flex;
   width: 100%;
-}
-
-.sep{
-  width: 433px;
 }
 
 .linha{
@@ -28,25 +40,11 @@
   margin-left: 45%;
 }
 
-.navBar {
-  display: flex;
-  align-items: center;
-  padding-left: 23.39%;
-  height: 5vw;
-  max-height: 80px;
-  min-height: 32px;
-  background-color: #7de6c6;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-}
-
-.logo {
-  object-fit: contain;
-}
-
 .usuLista {
   display: flex;
   align-items: center;
   flex-shrink: 0.25;
+  margin: auto;
   height: 6.3vw;
   max-height: 120px;
   min-height: 72px;
@@ -133,6 +131,7 @@
 }
 
 .down {
+  cursor: pointer;
   width: 32px;
   height: 32px;
   object-fit: contain;
@@ -205,7 +204,7 @@
 
 @media only screen and (max-width: 530px) {
   .botoesPagamento{
-    margin-left: 10%;
+    margin-left: 0;
   }
 
 }
