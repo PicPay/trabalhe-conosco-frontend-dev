@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import '../css/index.css';
 
 class UsuListaItem extends Component{
   constructor(props){

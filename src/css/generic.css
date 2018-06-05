@@ -1,0 +1,168 @@
+.linha{
+  width: 100%;
+  margin-top: 8px;
+}
+
+.conjunto{
+  margin-left: 16px;
+}
+
+.foto {
+  border: solid 2px #ffffff;
+  border-radius: 50%;
+}
+
+.nome {
+  width: 220px;
+  height: 28px;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.id {
+  display: inline;
+  width: 50px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.username {
+  display: inline;
+  margin-left: 12px;
+  width: 75px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+/*Modal*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.3);
+  padding: 50;
+}
+
+.retanguloTitulo {
+  width: 100%;
+  padding-top: 16px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  height: 51px;
+  background-color: #474971;
+}
+
+.logo{
+  display: none;
+}
+
+.fechar {
+  display: inline;
+  float: right;
+  margin-right: 24px;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.botao {
+  outline: none;
+  border-radius: 24px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #474971;
+}
+
+.containerVoltar{
+  display: none;
+}
+
+.voltar{
+  display: none;
+}
+
+.left{
+  display: none;
+}
+
+/*Mobile*/
+@media only screen and (max-width: 768px) {
+      .retanguloTitulo {
+        border-radius: 0;
+        padding: 0;
+        background-color: #7de6c6;
+        height: 32px;
+      }
+
+      .logo{
+        display: inline;
+        margin-left: 16px;
+        margin-top: 8px;
+      }
+
+      .fechar {
+        display: none;
+      }
+
+      .containerVoltar{
+        display: block;
+        height: 60px;
+        padding-top: 16px;
+        padding-left: 22.5px;
+      }
+
+      .voltar{
+        display: inline;
+        cursor: pointer;
+        width: 37px;
+        height: 16px;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ffffff;
+      }
+
+      .left {
+          display: inline;
+          width: 15px;
+          height: 10px;
+          margin-right: 4.5px;
+          transform: rotate(-180deg);
+      }
+}

@@ -20,26 +20,17 @@
   object-fit: contain;
 }
 
+
 /*Usu_Lista_Item*/
+
+/*Container para item da lista de usuarios da pagina principal*/
 .itemLista{
   display: flex;
   width: 100%;
 }
 
-.linha{
-  width: 100%;
-  margin-top: 8px;
-}
 
-.conjunto{
-  margin-left: 16px;
-}
-
-.botoesPagamento{
-  display: flex;
-  margin-left: 45%;
-}
-
+/*Item da lista de usuarios da pagina principal*/
 .usuLista {
   display: flex;
   align-items: center;
@@ -54,17 +45,15 @@
   box-shadow: 0 -1px 0 0 #ffffff;
 }
 
-.foto {
-  margin-left: 4.3%;
-  max-width: 80px;
-  height: 5vw;
-  max-height: 80px;
-  min-height: 52px;
-  border: solid 2px #ffffff;
-  border-radius: 50%;
+
+/*Separação entre elementos do conjunto de nome/id/username*/
+.linha{
+  width: 100%;
+  margin-top: 8px;
 }
 
-.nome {
+/*Nome*/
+.usuLista .conjunto .nome {
   width: 220px;
   height: 28px;
   font-family: Roboto;
@@ -77,7 +66,8 @@
   color: #ffffff;
 }
 
-.id {
+/*Id*/
+.usuLista .conjunto .id {
   display: inline;
   width: 50px;
   height: 16px;
@@ -91,7 +81,8 @@
   color: #ffffff;
 }
 
-.username {
+/*Username*/
+.usuLista .conjunto .username {
   display: inline;
   margin-left: 12px;
   width: 75px;
@@ -107,7 +98,25 @@
   color: #ffffff;
 }
 
-.pagar {
+/*Foto*/
+.usuLista .foto {
+  margin-left: 4.3%;
+  max-width: 80px;
+  height: 5vw;
+  max-height: 80px;
+  min-height: 52px;
+  border: solid 2px #ffffff;
+  border-radius: 50%;
+}
+
+/*Conjunto de Cifrão/Pagar/Seta pra direita*/
+.botoesPagamento{
+  display: flex;
+  margin-left: 45%;
+}
+
+/*Pagar*/
+.botoesPagamento div {
   margin-top: 4px;
   margin-right: 20px;
   margin-left: 11px;
@@ -124,12 +133,14 @@
   color: #ffffff;
 }
 
+/*Cifrao*/
 .cifrao {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
 
+/*Seta pra direita*/
 .down {
   cursor: pointer;
   width: 32px;

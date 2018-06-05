@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/index.css';
 import UsuListaItem from './Usu_Lista_Item';
 
 

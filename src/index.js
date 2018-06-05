@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import './css/generic.css';
 import './css/index.css';
 import axios from 'axios';
 import UsuLista from './components/Usu_Lista';

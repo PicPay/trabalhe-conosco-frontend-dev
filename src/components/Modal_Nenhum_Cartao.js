@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../css/Modal_Nenhum_Cartao.css';
-import IntlCurrencyInput from "react-intl-currency-input";
+import IntlCurrencyInput from 'react-intl-currency-input';
+import ModalCadastroCartao from './Modal_Cadastro_Cartao';
 
 const currencyConfig = {
     locale: "pt-BR",
@@ -18,6 +19,19 @@ const currencyConfig = {
 
 class ModalNenhumCartao extends Component {
 
+  constructor(props){
+  super(props);
+
+  this.state={
+    isOpenModalCadastroCartao: false
+    }
+  }
+
+  toggleModalCadastroCartao = () => {
+      this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
+  }
+
+
 
   render() {
 
@@ -27,6 +41,14 @@ class ModalNenhumCartao extends Component {
 
     return (
       <div className="backdrop">
+
+      <ModalCadastroCartao
+      show={this.state.isOpenModalCadastroCartao}
+      nome={this.props.sUser.nome}
+      closeParent={this.props.onClose}
+      onClose={this.toggleModalCadastroCartao}/>
+
+
         <div className="modalNenhumCartao">
 
           <div className="retanguloTitulo">
@@ -64,7 +86,7 @@ class ModalNenhumCartao extends Component {
           <div className="avisoCadastro">
             <img className="alert" alt="Símbolo de alerta." src={require("../img/alert.png")} />
             <div className="msgAviso">Nenhum cartão de crédito cadastrado.
-                <div>Cadastrar agora.</div>
+                <div onClick={this.toggleModalCadastroCartao}>Cadastrar agora.</div>
             </div>
           </div>
 
