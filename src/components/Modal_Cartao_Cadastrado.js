@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import IntlCurrencyInput from 'react-intl-currency-input';
 import '../css/Modal_Cartao_Cadastrado.css';
+import axios from 'axios';
 
 const currencyConfig = {
     locale: "pt-BR",
@@ -17,6 +18,38 @@ const currencyConfig = {
 };
 
 class ModalCartaoCadastrado extends Component {
+
+  constructor(props){
+    super(props);
+
+    this.state={
+      valorPago: null
+    }
+  }
+
+//Função para fazer a requisição POST da transação
+  async transaction(card, cvv, value, validade, id){
+    const response = await axios.post('http://careers.picpay.com/tests/mobdev/transaction', {
+      "card_number": card,
+      "cvv": cvv,
+      "value": value,
+      "expiry_date": validade,
+      "destination_user_id":id
+      });
+
+     console.log(response);
+  }
+
+//Execução da função transaction ao clicar no botão PAGAR
+  handleClick = (vetor) => {
+    this.transaction(vetor[5], vetor[3], this.state.valorPago, vetor[2], this.props.sUser.iden);
+  }
+
+//Função para pegar o valor digitado a ser pago e guardar em valorPago
+  handleChange = (event, value, maskedValue) => {
+    event.preventDefault();
+    this.setState({valorPago: maskedValue})
+  };
 
   render() {
 
@@ -54,7 +87,7 @@ class ModalCartaoCadastrado extends Component {
           </div>
 
           <div className="containerDinheiro">
-              <IntlCurrencyInput currency="BRL" config={currencyConfig} className="R-000" />
+              <IntlCurrencyInput currency="BRL" config={currencyConfig} className="R-000" onChange={this.handleChange}/>
           </div>
 
           <div className="containerFlex">
@@ -75,7 +108,7 @@ class ModalCartaoCadastrado extends Component {
           </div>
 
           <div className="containerFlex">
-              <button type="button" className="botao" >PAGAR</button>
+              <button type="button" className="botao" onClick={() => this.handleClick(vetor)}>PAGAR</button>
           </div>
 
         </div>
