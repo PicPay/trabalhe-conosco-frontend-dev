@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 
 class UsuListaItem extends Component{
-  constructor(props){
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
 
-  handleClick(){
+//Função para lidar com o clique
+
+  handleClick = () => {
     this.props.onUserSelect(this.props);
-    this.props.tModalNenhumCartao();
+    if (localStorage.getItem(this.props.nome) === null) {
+      this.props.tModalNenhumCartao();
+    } else{
+      this.props.tModalCartaoCadastrado();
+    }
   }
 
 render(){

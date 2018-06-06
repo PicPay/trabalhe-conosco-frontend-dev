@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import '../css/Modal_Nenhum_Cartao.css';
 import IntlCurrencyInput from 'react-intl-currency-input';
-import ModalCadastroCartao from './Modal_Cadastro_Cartao';
+import '../css/Modal_Cartao_Cadastrado.css';
 
 const currencyConfig = {
     locale: "pt-BR",
@@ -17,21 +16,7 @@ const currencyConfig = {
     },
 };
 
-class ModalNenhumCartao extends Component {
-
-  constructor(props){
-  super(props);
-
-  this.state={
-    isOpenModalCadastroCartao: false
-    }
-  }
-
-  toggleModalCadastroCartao = () => {
-      this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
-  }
-
-
+class ModalCartaoCadastrado extends Component {
 
   render() {
 
@@ -39,17 +24,12 @@ class ModalNenhumCartao extends Component {
       return null;
     }
 
+    var aux = localStorage.getItem(this.props.sUser.nome);
+    var vetor = aux.split(',');
+    var elemento = vetor[5].slice(-4);
+
     return (
       <div className="backdrop">
-
-      <ModalCadastroCartao
-      show={this.state.isOpenModalCadastroCartao}
-      nome={this.props.sUser.nome}
-      tModalCartaoCadastrado={this.props.tModalCartaoCadastrado}
-      closeParent={this.props.onClose}
-      onClose={this.toggleModalCadastroCartao}/>
-
-
         <div className="modalNenhumCartao">
 
           <div className="retanguloTitulo">
@@ -85,9 +65,12 @@ class ModalNenhumCartao extends Component {
           </div>
 
           <div className="avisoCadastro">
-            <img className="alert" alt="Símbolo de alerta." src={require("../img/alert.png")} />
-            <div className="msgAviso">Nenhum cartão de crédito cadastrado.
-                <div onClick={this.toggleModalCadastroCartao}>Cadastrar agora.</div>
+            <picture className="imgCartao">
+              <source media="(min-width: 768px)" srcSet={require("../img/blue.png")} />
+              <img src={require("../img/green.png")} alt="Logo da empresa." />
+            </picture>
+            <div className="formaPagamento">Forma de pagamento:
+                <div>Cartão de crédito com final {elemento}</div>
             </div>
           </div>
 
@@ -101,4 +84,4 @@ class ModalNenhumCartao extends Component {
   }
 }
 
-export default ModalNenhumCartao;
+export default ModalCartaoCadastrado;

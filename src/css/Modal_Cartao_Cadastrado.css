@@ -1,0 +1,31 @@
+.imgCartao {
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+  object-fit: contain;
+}
+
+.formaPagamento {
+  width: 208px;
+  height: 32px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.formaPagamento div {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .formaPagamento {
+    color: #ffffff;
+  }
+}

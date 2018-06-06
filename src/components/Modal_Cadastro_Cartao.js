@@ -25,11 +25,14 @@ class ModalCadastroCartao extends Component {
 //Função para lidar com o clique no botão "Cadastrar"
   handleClick = () => {
       this.armazenaCartao();
+      this.props.closeParent();
+      this.props.onClose();
+      this.props.tModalCartaoCadastrado();
   }
 
 
 //Função para armazenar os dados de cartões cadastrados nas variáveis locais(cookies), máximo de 3 cartões
-  armazenaCartao = () =>{
+  armazenaCartao = () => {
     if (localStorage.getItem(this.props.nome) === null) {
         localStorage.setItem(this.props.nome, this.state.bandeira+','+this.state.nomeC+','+this.state.validade+','+
         this.state.codigo+','+this.state.CEP+','+this.state.numero+',');

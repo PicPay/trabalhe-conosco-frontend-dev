@@ -5,6 +5,7 @@ import './css/index.css';
 import axios from 'axios';
 import UsuLista from './components/Usu_Lista';
 import ModalNenhumCartao from './components/Modal_Nenhum_Cartao';
+import ModalCartaoCadastrado from './components/Modal_Cartao_Cadastrado';
 
 class App extends Component{
   constructor(props){
@@ -13,6 +14,7 @@ class App extends Component{
       this.state={
         usuarios: [],
         isOpenModalNenhumCartao: false,
+        isOpenModalCartaoCadastrado:false,
         selectedUser: null
         };
 
@@ -26,6 +28,10 @@ class App extends Component{
 
   toggleModalNenhumCartao = (isOpen) => {
       this.setState({isOpenModalNenhumCartao: !this.state.isOpenModalNenhumCartao});
+      }
+
+  toggleModalCartaoCadastrado = () => {
+      this.setState({isOpenModalCartaoCadastrado: !this.state.isOpenModalCartaoCadastrado});
       }
 
     render(){
@@ -42,13 +48,20 @@ class App extends Component{
 
           <UsuLista
             tModalNenhumCartao={this.toggleModalNenhumCartao}
+            tModalCartaoCadastrado={this.toggleModalCartaoCadastrado}
             onUserSelect={selectedUser => this.setState({selectedUser})}
             pessoas={this.state.usuarios}/>
 
           <ModalNenhumCartao
             sUser={this.state.selectedUser}
             show={this.state.isOpenModalNenhumCartao}
+            tModalCartaoCadastrado={this.toggleModalCartaoCadastrado}
             onClose={this.toggleModalNenhumCartao}/>
+
+          <ModalCartaoCadastrado
+            sUser={this.state.selectedUser}
+            show={this.state.isOpenModalCartaoCadastrado}
+            onClose={this.toggleModalCartaoCadastrado}></ModalCartaoCadastrado>
 
         </div>
       )

@@ -12,6 +12,7 @@ const UsuLista = (props) =>{
           iden={term.id}
           onUserSelect={props.onUserSelect}
           tModalNenhumCartao={props.tModalNenhumCartao}
+          tModalCartaoCadastrado={props.tModalCartaoCadastrado}
           username={term.username}/>
       );
     });
