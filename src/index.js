@@ -26,7 +26,7 @@ class App extends Component{
     this.setState({usuarios: response.data});
   }
 
-  toggleModalNenhumCartao = (isOpen) => {
+  toggleModalNenhumCartao = () => {
       this.setState({isOpenModalNenhumCartao: !this.state.isOpenModalNenhumCartao});
       }
 

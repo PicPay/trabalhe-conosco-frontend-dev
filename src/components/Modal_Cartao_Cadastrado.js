@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import IntlCurrencyInput from 'react-intl-currency-input';
 import '../css/Modal_Cartao_Cadastrado.css';
 import axios from 'axios';
+import ModalEscolhaCartao from './Modal_Escolha_Cartao';
 
 const currencyConfig = {
     locale: "pt-BR",
@@ -23,9 +24,16 @@ class ModalCartaoCadastrado extends Component {
     super(props);
 
     this.state={
+      isOpenModalEscolhaCartao: false,
       valorPago: null
     }
   }
+
+  toggleModalEscolhaCartao = () => {
+      this.setState({isOpenModalEscolhaCartao: !this.state.isOpenModalEscolhaCartao});
+      }
+
+
 
 //Função para fazer a requisição POST da transação
   async transaction(card, cvv, value, validade, id){
@@ -63,6 +71,13 @@ class ModalCartaoCadastrado extends Component {
 
     return (
       <div className="backdrop">
+
+      <ModalEscolhaCartao
+      show={this.state.isOpenModalEscolhaCartao}
+      nome={this.props.sUser.nome}
+      vetorCartao={vetor}
+      onClose={this.toggleModalEscolhaCartao}/>
+
         <div className="modalNenhumCartao">
 
           <div className="retanguloTitulo">
@@ -102,7 +117,7 @@ class ModalCartaoCadastrado extends Component {
               <source media="(min-width: 768px)" srcSet={require("../img/blue.png")} />
               <img src={require("../img/green.png")} alt="Logo da empresa." />
             </picture>
-            <div className="formaPagamento">Forma de pagamento:
+            <div className="formaPagamento" onClick={this.toggleModalEscolhaCartao}>Forma de pagamento:
                 <div>Cartão de crédito com final {elemento}</div>
             </div>
           </div>
