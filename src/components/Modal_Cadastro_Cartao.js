@@ -17,17 +17,21 @@ class ModalCadastroCartao extends Component {
         isHiddenNumero: true,
         isHiddenValidade: true,
         isHiddenCodigo: true,
-        isHiddenCEP: true
+        isHiddenCEP: true,
       };
-
-    }
+  }
 
 //Função para lidar com o clique no botão "Cadastrar"
   handleClick = () => {
-      this.armazenaCartao();
-      this.props.closeParent();
-      this.props.onClose();
-      this.props.tModalCartaoCadastrado();
+      if (this.props.pai==="escolha"){
+        this.armazenaCartao();
+        this.props.onClose();
+      } else {
+        this.armazenaCartao();
+        this.props.closeParent();
+        this.props.onClose();
+        this.props.tModalCartaoCadastrado();
+    }
   }
 
 

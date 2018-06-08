@@ -25,13 +25,19 @@ class ModalCartaoCadastrado extends Component {
 
     this.state={
       isOpenModalEscolhaCartao: false,
-      valorPago: null
+      valorPago: null,
+      cartao: null
     }
   }
 
-  toggleModalEscolhaCartao = () => {
-      this.setState({isOpenModalEscolhaCartao: !this.state.isOpenModalEscolhaCartao});
-      }
+
+setCartao = (card) => {
+  this.setState({cartao: card.slice(-4)})
+}
+
+toggleModalEscolhaCartao = () => {
+  this.setState({isOpenModalEscolhaCartao: !this.state.isOpenModalEscolhaCartao});
+}
 
 
 
@@ -67,7 +73,6 @@ class ModalCartaoCadastrado extends Component {
 
     var aux = localStorage.getItem(this.props.sUser.nome);
     var vetor = aux.split(',');
-    var elemento = vetor[5].slice(-4);
 
     return (
       <div className="backdrop">
@@ -75,7 +80,7 @@ class ModalCartaoCadastrado extends Component {
       <ModalEscolhaCartao
       show={this.state.isOpenModalEscolhaCartao}
       nome={this.props.sUser.nome}
-      vetorCartao={vetor}
+      setCartao={this.setCartao}
       onClose={this.toggleModalEscolhaCartao}/>
 
         <div className="modalNenhumCartao">
@@ -118,7 +123,7 @@ class ModalCartaoCadastrado extends Component {
               <img src={require("../img/green.png")} alt="Logo da empresa." />
             </picture>
             <div className="formaPagamento" onClick={this.toggleModalEscolhaCartao}>Forma de pagamento:
-                <div>Cartão de crédito com final {elemento}</div>
+                <div>Cartão de crédito com final {this.state.cartao}</div>
             </div>
           </div>
 
