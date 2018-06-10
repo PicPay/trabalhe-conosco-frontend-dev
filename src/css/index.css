@@ -45,68 +45,27 @@
   box-shadow: 0 -1px 0 0 #ffffff;
 }
 
-
-/*Separação entre elementos do conjunto de nome/id/username*/
-.linha{
-  width: 100%;
-  margin-top: 8px;
+.usuLista .conjunto{
+  padding-top: 0;
 }
 
-/*Nome*/
-.usuLista .conjunto .nome {
-  width: 220px;
-  height: 28px;
-  font-family: Roboto;
-  font-size: 24px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #ffffff;
-}
-
-/*Id*/
-.usuLista .conjunto .id {
-  display: inline;
-  width: 50px;
-  height: 16px;
-  font-family: Roboto;
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #ffffff;
-}
-
-/*Username*/
+/*Nome, Id, Username*/
+.usuLista .conjunto .nome,
+.usuLista .conjunto .id,
 .usuLista .conjunto .username {
-  display: inline;
-  margin-left: 12px;
-  width: 75px;
-  height: 16px;
-  font-family: Roboto;
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
   color: #ffffff;
 }
+
 
 /*Foto*/
 .usuLista .foto {
   margin-left: 4.3%;
-  max-width: 80px;
   height: 5vw;
-  max-height: 80px;
+  width: 5vw;
   min-height: 52px;
-  border: solid 2px #ffffff;
-  border-radius: 50%;
+  max-height: 80px;
+  min-width: 52px;
+  max-width: 80px;
 }
 
 /*Conjunto de Cifrão/Pagar/Seta pra direita*/
@@ -169,7 +128,7 @@
       padding-left: 4.3%;
     }
 
-    .foto {
+    .usuLista .foto {
       margin-left: 2.6%;
     }
 
@@ -181,22 +140,19 @@
       display: none;
     }
 
-    .nome{
+    .usuLista .nome{
       height: 19px;
       font-size: 16px;
     }
 
-    .username{
+    .usuLista .username,
+    .usuLista .id
+    {
       height: 14px;
       font-size: 14px;
     }
 
-    .id{
-      height: 14px;
-      font-size: 14px;
-    }
-
-    .linha{
+    .usuLista .linha{
       margin-top: 4px;
     }
 

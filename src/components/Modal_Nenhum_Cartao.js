@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../css/Modal_Nenhum_Cartao.css';
 import IntlCurrencyInput from 'react-intl-currency-input';
 import ModalCadastroCartao from './Modal_Cadastro_Cartao';
+import ContainerUsuario from './Container_Usuario';
 
 const currencyConfig = {
     locale: "pt-BR",
@@ -63,15 +64,7 @@ class ModalNenhumCartao extends Component {
               <div className="voltar" onClick={this.props.onClose}>Voltar</div>
           </div>
 
-          <div className="containerUsuario">
-          <img className="foto" alt="Foto do usuário." src={this.props.sUser.imagem} />
-          <div className="conjunto">
-              <div className="nome">{this.props.sUser.nome}</div>
-              <br />
-              <div className="id">id: {this.props.sUser.iden}</div>
-              <div className="username">{this.props.sUser.username}</div>
-          </div>
-          </div>
+          <ContainerUsuario sUser={this.props.sUser}/>
 
           <div className="containerDinheiro">
               <IntlCurrencyInput currency="BRL" config={currencyConfig} className="R-000" />

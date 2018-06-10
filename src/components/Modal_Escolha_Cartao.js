@@ -21,11 +21,11 @@ toggleModalCadastroCartao = () => {
 
 handleClick = (vetor) => {
   if(this.state.marcado === true){
-    this.props.setCartao(vetor[5]);
+    this.props.setValores(vetor[5], vetor[3], vetor[2]);
   } else if(this.state.marcado2 === true){
-    this.props.setCartao(vetor[11]);
+    this.props.setValores(vetor[11], vetor[9], vetor[8]);
   } else if(this.state.marcado3 === true){
-    this.props.setCartao(vetor[17]);
+    this.props.setValores(vetor[17], vetor[15], vetor[14]);
   }
   this.props.onClose();
 }
@@ -42,7 +42,6 @@ changeMarcado = (vetor5) => {
             }
         }
       }
-
 changeMarcado2 = (vetor11) => {
         if(vetor11 != null){
             if (this.state.marcado2 === false){
@@ -54,7 +53,6 @@ changeMarcado2 = (vetor11) => {
             }
         }
       }
-
 changeMarcado3 = (vetor17) => {
         if(vetor17 != null){
             if (this.state.marcado3 === false){
@@ -149,4 +147,5 @@ const Child = () => (
     <img src={require("../img/green.png")} alt="Logo da empresa." />
   </picture>
 )
+
 export default ModalEscolhaCartao;
