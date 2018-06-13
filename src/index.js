@@ -39,7 +39,7 @@ class App extends Component{
         <div>
 
           <div className="navBar">
-            <picture>
+            <picture onClick={this.toggleModal}>
               <source media="(min-width: 768px)" srcSet={require("./img/logo_maior.png")} />
               <img src={require("./img/logo_menor.png")} alt="Logo da empresa." />
             </picture>
@@ -49,7 +49,7 @@ class App extends Component{
           <UsuLista
             tModalNenhumCartao={this.toggleModalNenhumCartao}
             tModalCartaoCadastrado={this.toggleModalCartaoCadastrado}
-            onUserSelect={selectedUser => this.setState({selectedUser})}
+            onUserSelect={(selectedUser) => this.setState({selectedUser})}
             pessoas={this.state.usuarios}/>
 
           <ModalNenhumCartao

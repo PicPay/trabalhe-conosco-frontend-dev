@@ -82,6 +82,7 @@
 .botaoPgNvm {
   width: 181px;
   height: 48px;
+  cursor: pointer;
   font-family: Roboto;
   font-size: 14px;
   font-weight: bold;
@@ -99,6 +100,7 @@
 .botaoVoltar {
   width: 181px;
   height: 48px;
+  cursor: pointer;
   border-radius: 24px;
   margin-right: 24px;
   font-family: Roboto;

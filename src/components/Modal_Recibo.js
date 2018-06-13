@@ -69,7 +69,7 @@ handleFechar = () => {
 
           <div className="botoesRecibo">
               <button type="button" className="botaoVoltar" onClick={this.handleFechar}>VOLTAR</button>
-              <button type="button" className="botaoPgNvm" >PAGAR NOVAMENTE</button>
+              <button type="button" className="botaoPgNvm" onClick={() => this.setState({nTransacao: this.state.nTransacao+1})} >PAGAR NOVAMENTE</button>
           </div>
 
         </div>

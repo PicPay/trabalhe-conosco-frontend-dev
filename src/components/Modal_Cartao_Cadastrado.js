@@ -66,13 +66,17 @@ setValores = (card, cvv, validade) => {
   }
 
   handleClickFechar = (vetor) => {
-    this.setState({card: "xxxx"})
+    this.setState({card: "xxxx"});
     this.props.onClose();
   }
 
 //Execução da função transaction ao clicar no botão PAGAR
-  handleClickPagar = () => {
-    this.transaction(this.state.card, this.state.cvv, this.state.valorPago, this.state.validade, this.props.sUser.iden);
+  handleClickPagar = (vetor) => {
+    if(this.state.card === "xxxx"){
+      this.transaction(vetor[5], this.state.cvv, this.state.valorPago, this.state.validade, this.props.sUser.iden);
+    }else {
+      this.transaction(this.state.card, this.state.cvv, this.state.valorPago, this.state.validade, this.props.sUser.iden);
+    }
     this.toggleModalRecibo();
   }
 
@@ -83,13 +87,17 @@ setValores = (card, cvv, validade) => {
   };
 
   render() {
-
     if(!this.props.show) {
       return null;
     }
 
     var aux = localStorage.getItem(this.props.sUser.nome);
     var vetor = aux.split(',');
+    if(this.state.card === "xxxx"){
+        var carta = vetor[5].slice(-4);
+    } else {
+        carta = this.state.card.slice(-4);
+    }
 
     return (
       <div className="backdrop">
@@ -104,7 +112,7 @@ setValores = (card, cvv, validade) => {
       show={this.state.isOpenModalRecibo}
       sUser={this.props.sUser}
       valorPago={this.state.valorPago}
-      card={this.state.card}
+      card={carta}
       onClose={this.toggleModalRecibo}/>
 
         <div className="modalNenhumCartao">
@@ -139,7 +147,7 @@ setValores = (card, cvv, validade) => {
               <img src={require("../img/green.png")} alt="Logo da empresa." />
             </picture>
             <div className="formaPagamento" onClick={this.toggleModalEscolhaCartao}>Forma de pagamento:
-                <div>Cartão de crédito com final {this.state.card.slice(-4)}</div>
+                <div>Cartão de crédito com final {carta}</div>
             </div>
           </div>
 
