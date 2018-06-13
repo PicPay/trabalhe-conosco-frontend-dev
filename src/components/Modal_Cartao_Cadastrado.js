@@ -4,6 +4,7 @@ import '../css/Modal_Cartao_Cadastrado.css';
 import axios from 'axios';
 import ModalEscolhaCartao from './Modal_Escolha_Cartao';
 import ModalRecibo from './Modal_Recibo';
+import ModalAviso from './Modal_Aviso';
 import ContainerUsuario from './Container_Usuario';
 
 const currencyConfig = {
@@ -28,10 +29,12 @@ class ModalCartaoCadastrado extends Component {
     this.state={
       isOpenModalEscolhaCartao: false,
       isOpenModalRecibo: false,
+      isOpenModalAviso: false,
       valorPago: null,
       card: "xxxx",
       cvv: null,
-      validade: null
+      validade: null,
+      sucesso: false
     }
   }
 
@@ -50,6 +53,9 @@ setValores = (card, cvv, validade) => {
       this.setState({isOpenModalRecibo: !this.state.isOpenModalRecibo});
       }
 
+  toggleModalAviso = () => {
+      this.setState({isOpenModalAviso: !this.state.isOpenModalAviso});
+      }
 
 
 //Função para fazer a requisição POST da transação
@@ -62,7 +68,11 @@ setValores = (card, cvv, validade) => {
       "destination_user_id":id
       });
 
-     console.log(response);
+      if(response.data.transaction.success){
+        this.toggleModalRecibo();
+      }else {
+        this.toggleModalAviso();
+      }
   }
 
   handleClickFechar = (vetor) => {
@@ -77,8 +87,7 @@ setValores = (card, cvv, validade) => {
     }else {
       this.transaction(this.state.card, this.state.cvv, this.state.valorPago, this.state.validade, this.props.sUser.iden);
     }
-    this.toggleModalRecibo();
-  }
+}
 
 //Função para pegar o valor digitado a ser pago e guardar em valorPago
   handleChange = (event, value, maskedValue) => {
@@ -114,6 +123,11 @@ setValores = (card, cvv, validade) => {
       valorPago={this.state.valorPago}
       card={carta}
       onClose={this.toggleModalRecibo}/>
+
+      <ModalAviso
+      show={this.state.isOpenModalAviso}
+      aviso={"Este cartão não é aceito. Favor utilizar um cartão válido."}
+      onClose={this.toggleModalAviso}/>
 
         <div className="modalNenhumCartao">
 

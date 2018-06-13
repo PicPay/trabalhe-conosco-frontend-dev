@@ -3,6 +3,7 @@ import '../css/Modal_Nenhum_Cartao.css';
 import IntlCurrencyInput from 'react-intl-currency-input';
 import ModalCadastroCartao from './Modal_Cadastro_Cartao';
 import ContainerUsuario from './Container_Usuario';
+import ModalAviso from './Modal_Aviso';
 
 const currencyConfig = {
     locale: "pt-BR",
@@ -24,12 +25,17 @@ class ModalNenhumCartao extends Component {
   super(props);
 
   this.state={
-    isOpenModalCadastroCartao: false
+    isOpenModalCadastroCartao: false,
+    isOpenModalAviso: false
     }
   }
 
   toggleModalCadastroCartao = () => {
       this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
+  }
+
+  toggleModalAviso = () => {
+      this.setState({isOpenModalAviso: !this.state.isOpenModalAviso});
   }
 
 
@@ -49,6 +55,11 @@ class ModalNenhumCartao extends Component {
       tModalCartaoCadastrado={this.props.tModalCartaoCadastrado}
       closeParent={this.props.onClose}
       onClose={this.toggleModalCadastroCartao}/>
+
+      <ModalAviso
+      show={this.state.isOpenModalAviso}
+      aviso={"Nenhum cartão cadastrado. Favor cadastrar um cartão antes de pagar."}
+      onClose={this.toggleModalAviso}/>
 
 
         <div className="modalNenhumCartao">
@@ -85,7 +96,7 @@ class ModalNenhumCartao extends Component {
           </div>
 
           <div className="containerFlex">
-              <button type="button" className="botao" >PAGAR</button>
+              <button type="button" className="botao" onClick={this.toggleModalAviso}>PAGAR</button>
           </div>
 
         </div>
