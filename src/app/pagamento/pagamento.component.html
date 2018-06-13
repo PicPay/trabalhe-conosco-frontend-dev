@@ -22,8 +22,7 @@
 
       <div class="item centro">
         <label>
-          <input class="money" [(ngModel)]="pagamento" mask-money [prefix]="'R$'" *ngIf="pagamento"/>
-          <input class="money" value="R$ 0,00" (ngModel)="pagamento" mask-money [prefix]="'R$'" *ngIf="!pagamento"/>
+          <input class="money" [(ngModel)]="pagamento" mask-money [prefix]="'R$'" placeholder="R$ 0,00"/>
         </label>
       </div>
 

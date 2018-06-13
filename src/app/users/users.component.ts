@@ -47,7 +47,6 @@ export class UsersComponent implements OnInit,OnDestroy {
   }
   openDialog(): void{
     this.pag.pagina = 1;
-    console.log("deu ruim");
     this.dataservice.user = this.selectedUser;
     let dialogRef = this.dialog.open(DialogoComponent,{
       width: '640px',
