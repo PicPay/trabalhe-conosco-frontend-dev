@@ -5,7 +5,9 @@
 ## Tecnologias Utilizadas:
 
 [Angular JS](https://angular.io/) version 5.2.0
+
 [Angular Material](https://material.angular.io/) version 5.2.0
+
 [Angular CLI](https://cli.angular.io/) version 1.7.4.
 
 ## Utilização:
