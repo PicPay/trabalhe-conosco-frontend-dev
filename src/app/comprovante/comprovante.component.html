@@ -1,0 +1,68 @@
+<div class="container"><div class="coluna justificado">
+    <div>
+      <div routerLink="" class="item marge click">
+        <div class="Shape-Copy-2"></div>
+        <div>Voltar</div>
+      </div>
+
+      <div class="item centro">
+        
+        <div> <img src={{selectedUser.img}} class="img"/></div>
+        
+        <div class="block">
+          <div class="name">{{selectedUser.name}} </div>
+          <div class="linha flex">
+            <div class="id">{{selectedUser.id}}</div>
+            <div class="username">{{selectedUser.username}}</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="item centro margem">{{pagamento}} </div>
+
+      <div class="col" *ngIf="pagamento === 'Pagamento Confirmado!'">
+        <div class="item meio justificado">
+          <div>Transação</div>
+          <div class="dados">{{valorservice.transacao}}</div>
+        </div>
+        <div class="line meio"></div>
+
+        <div class="item meio justificado">
+          <div>Cartão</div>
+          <div class="dados">**** **** **** {{finaldocartao}}</div>
+        </div>
+        <div class="line meio"></div>
+
+        <div class="item meio justificado">
+          <div>Data</div>
+          <div class="dados">{{diamesano}} - {{tempo}}</div>
+        </div>
+        <div class="line meio"></div>
+
+        <div class="item meio justificado">
+          <div>Valor</div>
+          <div class="dados">R$ {{valorservice.valor}}</div>
+        </div>
+        <div class="line meio"></div>
+
+      </div>
+
+    </div>
+    <div class="item final centro">
+     
+      <div class="voltar2 centro click telapequena" routerLink="/cartoes">
+        <div>VOLTAR</div>
+      </div>
+      <div class="voltar2 centro click telagrande" (click)="alterapagina(3)">
+        <div>VOLTAR</div>
+      </div>
+      <div class="pagarnovamente centro click telapequena" routerLink="">
+          <div>PAGAR NOVAMENTE</div>
+      </div>
+      <div class="pagarnovamente centro click telagrande" (click)="fecha()">
+          <div>PAGAR NOVAMENTE</div>
+      </div>
+
+    </div>
+  </div>
+</div>

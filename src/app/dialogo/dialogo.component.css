@@ -1,0 +1,31 @@
+::ng-deep .rectazul{
+    width: 100%;
+    height: 50px;
+    background-color: #474971;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+::ng-deep .titulo{
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    color: #ffffff;
+    margin-left: 24px;
+}
+::ng-deep .fulano{
+   color: #7de6c6 !important;
+   font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 5px;
+}
+::ng-deep .fechar {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    cursor:pointer;
+    margin-left:360px;
+}

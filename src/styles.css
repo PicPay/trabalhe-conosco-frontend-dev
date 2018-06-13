@@ -1,0 +1,86 @@
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-dialog-container {
+    padding: 0px !important;
+}
+
+.cabecalho{
+    width: 100%;
+    background-color: #7de6c6;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.bl{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.title{
+    position: relative;
+    font-family: Montserrat;
+    text-align: left;
+    color: #474971;
+    font-weight: bold;
+}
+@media (min-width: 801px) { 
+    .cabecalho{
+        height: 80px;
+    }
+    .black {
+        margin-left: 16px;
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+    }
+    .bl{
+        width: 95%;
+        max-width: 1054px;
+    }
+    .Linha-Logo {
+        position: relative;
+        width: 2px;
+        height: 32px;
+        background-color: #474971;
+        margin: 12px;
+    }
+    .title{
+        font-size: 20px;
+    }
+}
+@media (max-width: 800px) { 
+    .cabecalho{
+        height: 32px;
+    }
+    .bl{
+        width: 100%;
+    }
+    .black {
+        margin-left: 16px;
+        width: 15px;
+        height: 13px;
+        background-color: #ffffff;
+    }
+    .Linha-Logo{
+        position: relative;
+        width: 1px;
+        height: 16px;
+        background-color: #474971;
+        margin: 6px;
+    }
+    .title{
+        font-size: 10px;
+    }
+}
+*:focus {
+    outline: 0;
+  }

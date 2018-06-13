@@ -1,0 +1,58 @@
+
+<form class="container" [formGroup]="cartaoForm">
+<div class="coluna justificado">
+  <div class="coluna start lista">
+
+    <div [routerLink]="['/pagamento', userservice.user.id]" class="voltar click">
+      <div class="Shape-Copy-2"></div>
+      <div>Voltar</div>
+    </div>    
+    
+    <div class="item">
+      <label class="label" for="1" *ngIf="cartaoForm.value.bandeira">Selecione a bandeira</label>
+        <select id="1" class="texto" formControlName="bandeira">
+          <!-- <option value="" disabled selected hidden>Please Choose...</option> -->
+          <option *ngFor="let bandeira of bandeiras" [value]="bandeira">{{bandeira}}</option>
+        </select>
+      
+      <div class="line"></div>
+    </div>
+
+    <div class="item">
+      <label for="2" class="label" *ngIf="cartaoForm.value.name">Nome escrito no cartão</label>
+      <input id="2" class="texto" (ngModelChange)="printa()" formControlName="name" placeholder="Nome escrito no cartão" required/>
+      <div class="line"></div>
+    </div>
+
+    <div class="item">
+      <label for="3" class="label" *ngIf="cartaoForm.value.numero">Número do cartão</label>
+      <input id="3"class="texto" formControlName="numero" placeholder="Número do cartão" mask-number [mask]="'9999999999999999'" [reqMin]="1" required/>
+      <div class="line"></div>
+    </div>
+
+    <div class="item">
+      <label for="4" class="label"*ngIf="cartaoForm.value.validade">Validade (mm/aaaa)</label>
+      <input id="4" class="texto" formControlName="validade" placeholder="Validade (mm/aaaa)" mask-number [mask]="'99/9999'" [reqMin]="1" required/>
+      <div class="line"></div>
+    </div>
+
+    <div class="item" >
+      <label for="5" class="label"*ngIf="cartaoForm.value.cod">Código de segurança</label>
+      <input  id="5" class="texto" formControlName="cod" placeholder="Código de segurança" mask-number [mask]="'999'" [reqMin]="1" required/>
+      <div class="line"></div>
+    </div>
+
+    <div class="item" >
+      <label for="6" class="label"*ngIf="cartaoForm.value.cep">CEP do endereço de cobrança (XXXXX-XXX)</label>
+      <input  id="6"class="texto" formControlName="cep" placeholder="CEP do endereço de cobrança" mask-number [mask]="'99999-999'" [reqMin]="1" required>
+      <div class="line"></div>
+    </div>
+
+  </div>
+
+  <button type="submit" class="click cadastrar telapequena" [disabled]="cartaoForm.invalid" (click)="adicionacartao()" routerLink="/cartoes">CADASTRAR</button> 
+  <button type="submit" class="click cadastrar telagrande" [disabled]="cartaoForm.invalid" (click)="adicionacartao()" (click)="alterapagina(3)" >CADASTRAR</button> 
+
+</div>
+</form>
+

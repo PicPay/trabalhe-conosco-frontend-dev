@@ -1,0 +1,32 @@
+<div class="containerusuario">
+  
+  <ul class = "users">
+    <li *ngFor="let user of users" (click)="onSelect(user)">
+      <span class="usuario flex">
+        <div class="info flex">
+          <div> <img src={{user.img}} class="img"/></div>
+          
+          <div class="block">
+            
+            <div class="name">{{user.name}}</div>
+            <div class="linha flex">
+              <div class="id">id: {{user.id}}</div>
+              <div class="username">{{user.username}}</div>
+            </div>
+          
+          </div>
+        </div>
+        <div *ngIf="user" [routerLink]="['/pagamento', user.id]" (click)="onSelect(user)" class="linha flex pagpequeno" >
+          <div> <img src="assets/img/pagar.png" class="pagar"/></div>
+          <div> <img src="assets/img/down.png" class="seta"/></div>
+        </div>
+        <div *ngIf="user" (click)="onSelect(user)" (click)="openDialog()" class="linha flex paggrande">
+            <div> <img src="assets/img/pagar.png" class="pagar"/></div>
+            <div class="pag"> PAGAR </div>
+            <div> <img src="assets/img/down.png" class="seta"/></div>
+          </div>
+
+      </span>
+    </li>
+  </ul>
+</div>

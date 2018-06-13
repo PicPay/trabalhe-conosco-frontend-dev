@@ -1,0 +1,184 @@
+.users {
+    display: inline-block;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    vertical-align: middle;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* border: 1px solid  rgb(2, 223, 2); */
+    max-width: 1054px;
+}
+.users li {
+    cursor: pointer;
+    position: relative;
+    background-image: linear-gradient(264deg, #3c3e64, #1d1e2a);
+    box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+    width: 100%;
+    /* border: 1px solid  rgb(24, 2, 223); */
+ 
+}
+
+.users li:hover {
+    background-image: linear-gradient(264deg, #2b2d4d, #010313) !important;
+}
+
+
+.usuario {
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid  rgba(229, 255, 0, 0.863); */
+    height: 100%;    
+}
+.info{
+
+    position: relative;
+    /* border: 1px solid  rgb(223, 2, 193); */
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.img {
+    border: solid 2px #ffffff;
+    border-radius: 100%;
+}
+
+.flex {
+    display: flex;
+}
+.block {
+   display:block;
+   position: relative;
+   /* border: 1px solid  rgba(229, 255, 0, 0.863); */
+}
+.linha {
+    position: relative;
+    flex-direction: row;
+    
+    /* border: 1px solid  rgba(229, 25, 0, 0.863); */
+    align-items: center;
+}
+.name {
+    font-weight: bold;
+    position: relative;
+	text-align: left;
+}
+
+.id {
+    font-weight: normal;
+    position: relative;
+	text-align: left;
+}
+.username {
+    position: relative;
+    left: 12px;
+	font-weight: normal;
+}
+
+@media (min-width: 801px) { 
+    .name{
+        font-size: 24px;
+    }
+    .block{
+        margin-left: 30px;
+    }
+    .containerusuario {
+        width: calc(100% - 2px);
+        height: calc(100% - 80px);
+        left: 0;
+        top: 80px;
+        position: absolute;
+    }
+    .users{
+        width: 95%;
+    }
+    .users li {
+        height: 150px;
+    }
+    .id .username{
+        font-size: 14px;
+    }
+    .pagar .seta{
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+    }
+    .paggrande{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .img{
+        width: 80px;
+        height: 80px;
+    }
+    .usuario{
+        width: 95%;
+        max-width: 974px;
+        margin: auto;
+    }
+    .pagpequeno{
+        display: none !important;
+    }
+    .pag{
+        margin-left: 10px;
+        margin-right: 15px;
+        margin-bottom: 6px;
+    }
+}
+@media (max-width: 800px) { 
+    .name{
+        font-size: 16px;
+    }
+    .block{
+        margin-left: 8px;
+    }
+    .containerusuario {
+        position: absolute;
+        width: calc(100%);
+        height: 100%;
+        left: 0;
+        top: 32px;
+    }
+    .users{
+        width: 100%;
+    }
+    .users li {
+        height: 72px;
+    }
+    .id{
+        font-size: 12px;
+    }
+    .username{
+        font-size: 12px;
+    }
+    .pagar {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+    .seta {
+        padding-left: 5px;
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+    }
+    .img{
+        width: 52px;
+        height: 52px;
+    }
+    .usuario{
+        width: 85%;
+        padding-right:4px;
+        margin: auto;
+    }
+    .paggrande{
+        display: none !important;
+    }
+
+}
