@@ -30,7 +30,7 @@ class ModalCartaoCadastrado extends Component {
       isOpenModalEscolhaCartao: false,
       isOpenModalRecibo: false,
       isOpenModalAviso: false,
-      valorPago: null,
+      valorPago: "R$ 0,00",
       card: "xxxx",
       cvv: null,
       validade: null,
@@ -75,8 +75,9 @@ setValores = (card, cvv, validade) => {
       }
   }
 
-  handleClickFechar = (vetor) => {
+  handleClickFechar = () => {
     this.setState({card: "xxxx"});
+    this.setState({valorPago: "R$ 0,00"});
     this.props.onClose();
   }
 
@@ -103,9 +104,9 @@ setValores = (card, cvv, validade) => {
     var aux = localStorage.getItem(this.props.sUser.nome);
     var vetor = aux.split(',');
     if(this.state.card === "xxxx"){
-        var carta = vetor[5].slice(-4);
+        var carta = vetor[5];
     } else {
-        carta = this.state.card.slice(-4);
+        carta = this.state.card;
     }
 
     return (
@@ -122,6 +123,10 @@ setValores = (card, cvv, validade) => {
       sUser={this.props.sUser}
       valorPago={this.state.valorPago}
       card={carta}
+      cvv={this.state.cvv}
+      validade={this.state.validade}
+      nTransacao={this.props.nTransacao}
+      addTransaction={this.props.addTransaction}
       onClose={this.toggleModalRecibo}/>
 
       <ModalAviso
@@ -139,7 +144,7 @@ setValores = (card, cvv, validade) => {
 
           <div className="containerVoltar">
               <img src={require("../img/down_menor.png")} alt="Seta para esquerda, voltar." className="left"/>
-              <div className="voltar" onClick={this.props.onClose}>Voltar</div>
+              <div className="voltar" onClick={this.handleClickFechar}>Voltar</div>
           </div>
 
           <ContainerUsuario sUser={this.props.sUser}/>
@@ -161,7 +166,7 @@ setValores = (card, cvv, validade) => {
               <img src={require("../img/green.png")} alt="Logo da empresa." />
             </picture>
             <div className="formaPagamento" onClick={this.toggleModalEscolhaCartao}>Forma de pagamento:
-                <div>Cartão de crédito com final {carta}</div>
+                <div>Cartão de crédito com final {carta.slice(-4)}</div>
             </div>
           </div>
 

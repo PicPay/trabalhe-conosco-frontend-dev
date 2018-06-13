@@ -15,7 +15,8 @@ class App extends Component{
         usuarios: [],
         isOpenModalNenhumCartao: false,
         isOpenModalCartaoCadastrado:false,
-        selectedUser: null
+        selectedUser: null,
+        nTransacao: 1
         };
 
         this.getUsuarios();
@@ -33,6 +34,10 @@ class App extends Component{
   toggleModalCartaoCadastrado = () => {
       this.setState({isOpenModalCartaoCadastrado: !this.state.isOpenModalCartaoCadastrado});
       }
+
+  addTransaction = () => {
+    this.setState({nTransacao: this.state.nTransacao+1});
+  }
 
     render(){
       return(
@@ -61,6 +66,8 @@ class App extends Component{
           <ModalCartaoCadastrado
             sUser={this.state.selectedUser}
             show={this.state.isOpenModalCartaoCadastrado}
+            nTransacao={this.state.nTransacao}
+            addTransaction={this.addTransaction}
             onClose={this.toggleModalCartaoCadastrado}></ModalCartaoCadastrado>
 
         </div>

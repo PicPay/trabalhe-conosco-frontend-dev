@@ -1,21 +1,31 @@
 import React, {Component} from 'react';
 import '../css/Modal_Recibo.css';
 import ContainerUsuario from './Container_Usuario';
+import axios from 'axios';
 
 class ModalRecibo extends Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-      nTransacao: 1
-    }
-  }
 
 handleFechar = () => {
-  this.setState({nTransacao: this.state.nTransacao+1});
+  this.props.addTransaction();
   this.props.onClose();
 }
 
+handlePgNvm = () => {
+  this.transaction(this.props.card, this.props.cvv, this.props.valorPago, this.props.validade, this.props.sUser.iden);
+  this.props.addTransaction();
+}
+
+  async transaction(card, cvv, value, validade, id){
+    const response = await axios.post('http://careers.picpay.com/tests/mobdev/transaction', {
+      "card_number": card,
+      "cvv": cvv,
+      "value": value,
+      "expiry_date": validade,
+      "destination_user_id":id
+      });
+
+      console.log(response);
+}
 
   render() {
 
@@ -50,7 +60,7 @@ handleFechar = () => {
           <div className="centroRecibo">
             <div className="containerCentro">
               <span className="descricao">Transação</span>
-              <span className="valor">{this.state.nTransacao}</span>
+              <span className="valor">{this.props.nTransacao}</span>
               <div className="separacao" />
 
               <span className="descricao">Data</span>
@@ -69,7 +79,7 @@ handleFechar = () => {
 
           <div className="botoesRecibo">
               <button type="button" className="botaoVoltar" onClick={this.handleFechar}>VOLTAR</button>
-              <button type="button" className="botaoPgNvm" onClick={() => this.setState({nTransacao: this.state.nTransacao+1})} >PAGAR NOVAMENTE</button>
+              <button type="button" className="botaoPgNvm" onClick={this.handlePgNvm} >PAGAR NOVAMENTE</button>
           </div>
 
         </div>
