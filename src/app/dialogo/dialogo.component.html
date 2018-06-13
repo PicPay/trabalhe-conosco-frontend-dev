@@ -1,0 +1,48 @@
+
+<div *ngIf="pag.pagina === 1">
+    <div class="rectazul"> <!-- Página para fazer o pagamento à alguém-->
+        <div class="titulo">Pagamento para</div>
+        <div class="fulano">{{user.name}}</div>
+        <div (click)="fecha()" class="marge"><img src="assets/img/shape-copy.png"
+          srcset="assets/img/shape-copy@2x.png 2x,
+                  assets/img/shape-copy@3x.png 3x"
+          class="fechar">
+        </div>
+
+    </div>
+  <app-pagamento></app-pagamento>
+</div>
+<div *ngIf="pag.pagina === 2"> <!-- Página para cadastrar um cartão de crédito-->
+  <div class="rectazul"> 
+    <div class="titulo">Cadastro Cartão de Crédito</div>
+    <div (click)="fecha()" class="marge"><img src="assets/img/shape-copy.png"
+      srcset="assets/img/shape-copy@2x.png 2x,
+              assets/img/shape-copy@3x.png 3x"
+      class="fechar">
+    </div>
+  </div>
+  <app-cartao></app-cartao>
+</div>
+<div *ngIf="pag.pagina === 3"> <!-- Página para mostrar os cartões de créditos cadastrados -->
+  <div class="rectazul">
+    <div class="titulo">Cadastro Cartão de Crédito</div>
+    <div (click)="fecha()" class="marge"><img src="assets/img/shape-copy.png"
+      srcset="assets/img/shape-copy@2x.png 2x,
+              assets/img/shape-copy@3x.png 3x"
+      class="fechar">
+    </div>
+  </div>
+  <app-cartoes></app-cartoes>
+</div>
+<div *ngIf="pag.pagina === 4"> <!-- Página para mostrar o comprovante de pagamento-->
+  <div class="rectazul">
+    <div class="titulo">Comprovante de Pagamento</div>
+    <div (click)="fecha()" class="marge"><img src="assets/img/shape-copy.png"
+      srcset="assets/img/shape-copy@2x.png 2x,
+              assets/img/shape-copy@3x.png 3x"
+      class="fechar">
+    </div>
+  </div>
+  <app-comprovante></app-comprovante>
+</div>
+

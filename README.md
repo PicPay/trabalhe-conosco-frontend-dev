@@ -1,34 +1,33 @@
 ![PicPay](https://user-images.githubusercontent.com/1765696/26998603-711fcf30-4d5c-11e7-9281-0d9eb20337ad.png)
 
-# Teste Frontend
+# Teste Frontend - Nicole Rizzi Nunes
 
-O teste deve ser feito para Web com layout responsivo e é uma simulação de envio de dinheiro para uma outra pessoa via cartão de crédito. 
+## Tecnologias Utilizadas:
 
-O layout está disponível em https://zpl.io/VOBNjrQ. Para acessar, use o login *picpay* e senha *picpayfte*.
+[Angular JS](https://angular.io/) version 5.2.0
 
-Você deve fazer um ***Fork*** deste repositório e soliciar um ***Pull Request***, **com seu nome na descrição**, para nossa avaliação.
+[Angular Material](https://material.angular.io/) version 5.2.0
 
-O seu usuário deverá escolher uma pessoa em uma lista, informar o valor a ser enviado e finalizar o pagamento com o cartão de crédito cadastrado. Se ele não possuir cartão de crédito cadastrado, deverá informar o dados do cartão (número do cartão, data de validade e CVV, além do id do usuário de destino) antes de finalizar o pagamento.
+[Angular CLI](https://cli.angular.io/) version 1.7.4.
 
-Os cartões devem ser persistidos no armazenamento do navegador para serem usados em pagamentos futuros.
+## Utilização:
 
+Caso não possua as tecnologias mencionadas acima, visite a aba "Get Started" do (https://angular.io/)
+Para utilizar a aplicação basta rodar neste diretório o comando `ng serve` e acesse no navegador o endereço `http://localhost:4200/`.
 
+A aplicação simula o comportamento do aplicativo da PicPay permitindo que um usuário (já pré-logado) cadastre cartões de crédito e efetue pagamentos a amigos.
 
------
-###### Lista de usuários
+A lista de amigos é retirada via json de `http://careers.picpay.com/tests/mobdev/users `
 
-Para listar as pessoas que podem receber pagamentos, faça uma requisição para o json nessa url: http://careers.picpay.com/tests/mobdev/users
+Quando um pagamento é feito, a aplicação faz uma requisição POST para `para http://careers.picpay.com/tests/mobdev/transaction` contendo no corpo da requisição um JSON com os seguintes atributos:
 
------
-
-###### Pagamento
-
-Realizar um `POST` para http://careers.picpay.com/tests/mobdev/transaction com os seguintes atributos:
 + ID do usuário que irá receber o pagamento
 + Número do cartão
 + Vencimento do cartão
 + CVV
 + Valor total
+
+Exemplo de requisição:
 
 ``` json
 {  
@@ -40,4 +39,4 @@ Realizar um `POST` para http://careers.picpay.com/tests/mobdev/transaction com o
 }
 ```
 
-## Para fins de teste, o número de cartão 1111111111111111 aprova a transação, qualquer outro recusa. 
+### Para fins de teste, o número de cartão 1111111111111111 aprova a transação, qualquer outro recusa. 

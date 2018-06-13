@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="coluna justificado altura">
+    <div class="coluna start lista">
+      <div [routerLink]="['/pagamento', userservice.user.id]" class="voltar click">
+        <div class="Shape-Copy-2"></div>
+        <div>Voltar</div>
+      </div>
+      <div class="item">
+        Cartões Cadastrados
+      </div>
+
+      <div class="linha justificado click manga" *ngFor="let cartao of cartoesservice.lista" [class.selected]="cartao === precartao" (click)="preSelect(cartao)" > 
+        <div class="linha start">
+          <div><img class="green" src="assets/img/green.png"
+            srcset="assets/img/green@2x.png 2x,
+                    assets/img/green@3x.png 3x">
+          </div>
+          <div class="item">{{cartao.numero}}</div>
+        </div>
+        
+        <div class="check_mark" *ngIf="cartao === precartao || (cartao === cartoesservice.cartao && precartao === null) ">
+          <img src="assets/img/check-mark.png"
+          srcset="assets/img/check-mark@2x.png 2x,
+          assets/img/check-mark@3x.png 3x"
+          class="check_mark">
+        </div>
+
+      </div>
+      <div class="line centro"></div>
+      <div class="linha start">
+        <div><img class="green" src="assets/img/mais.png"
+          srcset="assets/img/mais@2x.png 2x,
+                  assets/img/mais@3x.png 3x">
+        </div>
+        <div class="item click telapequena" routerLink="/cadastrar">Cadastrar novo cartão</div>
+        <div class="item click telagrande" (click)="alterapagina(2)">Cadastrar novo cartão</div>
+      </div>
+    </div>
+
+
+    <div class="botao centro click telapequena" [routerLink]="['/pagamento', userservice.user.id]" (click)="onSelect(precartao)" ><div>SELECIONAR CARTÃO</div></div>
+    <div class="botao centro click telagrande" (click)="onSelect(precartao)" (click)="alterapagina(1)" ><div>SELECIONAR CARTÃO</div></div>
+
+  </div>
+</div>
