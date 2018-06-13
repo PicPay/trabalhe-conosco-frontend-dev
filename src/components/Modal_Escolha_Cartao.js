@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import '../css/generic.css';
 import '../css/Modal_Escolha_Cartao.css';
 import ModalCadastroCartao from './Modal_Cadastro_Cartao';
+import ModalAviso from './Modal_Aviso';
+
 
 class ModalEscolhaCartao extends Component {
   constructor(props){
@@ -12,11 +14,25 @@ class ModalEscolhaCartao extends Component {
          marcado2: false,
          marcado3: false,
          isOpenModalCadastroCartao: false,
+         isOpenModalAviso: false
       }
   }
 
-toggleModalCadastroCartao = () => {
-      this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
+
+FecharModalCadastroCartao = () => {
+        this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
+    }
+
+AbrirModalCadastroCartao = (tamanho) => {
+      if(tamanho < 18){
+        this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
+      }else {
+        this.toggleModalAviso();
+      }
+  }
+
+  toggleModalAviso = () => {
+      this.setState({isOpenModalAviso: !this.state.isOpenModalAviso});
   }
 
 handleClick = (vetor) => {
@@ -76,16 +92,22 @@ render() {
     let container3 = this.state.marcado3 ? "containerMarcado" : "containerEscolha";
     var aux = localStorage.getItem(this.props.nome);
     var vetor = aux.split(',');
+    var tamanho = vetor.length;
 
     return (
       <div className="backdrop">
+
+      <ModalAviso
+      show={this.state.isOpenModalAviso}
+      aviso={"Número máximo de cartões atingido."}
+      onClose={this.toggleModalAviso}/>
 
       <ModalCadastroCartao
       show={this.state.isOpenModalCadastroCartao}
       nome={this.props.nome}
       pai={"escolha"}
       closeParent={this.props.onClose}
-      onClose={this.toggleModalCadastroCartao}/>
+      onClose={this.FecharModalCadastroCartao}/>
 
         <div className="modalCadastroCartao">
 
@@ -126,7 +148,7 @@ render() {
                 <source media="(min-width: 768px)" srcSet={require("../img/plus.png")} />
                 <img src={require("../img/plus_green.png")} alt="Logo da empresa." />
               </picture>
-              <span className="novoCartao" onClick={this.toggleModalCadastroCartao}>Cadastrar novo cartão</span>
+              <span className="novoCartao" onClick={() => this.AbrirModalCadastroCartao(tamanho)}>Cadastrar novo cartão</span>
           </div>
           <br/><br/>
 

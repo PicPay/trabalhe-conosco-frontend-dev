@@ -58,12 +58,19 @@ class ModalCadastroCartao extends Component {
           array.push(aux);
           localStorage.setItem(this.props.nome, array);
           //console.log(localStorage.getItem(this.props.nome));
-      } else {
-          console.log("numero ultrapassado");
       }
     }
   }
 
+
+handleFechar = () => {
+  this.setState({isHiddenCodigo: true});
+  this.setState({isHiddenNumero: true});
+  this.setState({isHiddenNome: true});
+  this.setState({isHiddenCEP: true});
+  this.setState({isHiddenValidade: true});
+  this.props.onClose();
+}
 
 //Funções para mostrar/apagar as legendas no cadastro
   toggleHiddenNome = () => {
@@ -83,25 +90,31 @@ class ModalCadastroCartao extends Component {
   }
 
 
-
   render() {
     if(!this.props.show) {
       return null;
     }
 
+    let containerNome = this.state.isHiddenNome ? "containerCadastro" : "containerCadastro2";
+    let containerNumero = this.state.isHiddenNumero ? "containerCadastro" : "containerCadastro2";
+    let containerValidade = this.state.isHiddenValidade ? "containerCadastro" : "containerCadastro2";
+    let containerCodigo = this.state.isHiddenCodigo ? "containerCadastro" : "containerCadastro2";
+    let containerCEP = this.state.isHiddenCEP ? "containerCadastro" : "containerCadastro2";
+
     return (
       <div className="backdrop">
+
         <div className="modalCadastroCartao">
 
           <div className="retanguloTitulo">
               <img src={require("../img/logo_menor.png")} alt="Logo da empresa." className="logo"/>
               <div className="pagamentoParaNome">Cadastro Cartão de Crédito</div>
-              <input type="image" src={require('../img/shape-copy.png')} alt="Fechar janela." onClick={this.props.onClose} className="fechar" />
+              <input type="image" src={require('../img/shape-copy.png')} alt="Fechar janela." onClick={this.handleFechar} className="fechar" />
           </div>
 
           <div className="containerVoltar">
               <img src={require("../img/down_menor.png")} alt="Seta para esquerda, voltar." className="left"/>
-              <div className="voltar" onClick={this.props.onClose}>Voltar</div>
+              <div className="voltar" onClick={this.handleFechar}>Voltar</div>
           </div>
 
           <div className="containerCadastro">
@@ -115,14 +128,14 @@ class ModalCadastroCartao extends Component {
             <div className="line"></div>
           </div>
 
-          <div className="containerCadastro">
+          <div className={containerNome}>
             {!this.state.isHiddenNome && <ChildNome />}
             <input type="text" className="Field-Label" placeholder="Nome escrito no cartão"
             onChange={event => this.setState({nomeC: event.target.value})} onClick={this.toggleHiddenNome} />
             <div className="line"></div>
           </div>
 
-          <div className="containerCadastro">
+          <div className={containerNumero}>
             {!this.state.isHiddenNumero && <ChildNumero />}
             <input type="text" className="numeroCartao" placeholder="Número do cartão"
              maxLength="16" onClick={this.toggleHiddenNumero}
@@ -130,21 +143,21 @@ class ModalCadastroCartao extends Component {
             <div className="line2"></div>
           </div>
 
-          <div className="containerCadastro">
+          <div className={containerValidade}>
             {!this.state.isHiddenValidade && <ChildValidade />}
             <input type="text" className="Field-Label" placeholder="Validade(mm/aaaa)"
             onChange={event => this.setState({validade: event.target.value})} onClick={this.toggleHiddenValidade}/>
             <div className="line"></div>
           </div>
 
-          <div className="containerCadastro">
+          <div className={containerCodigo}>
             {!this.state.isHiddenCodigo && <ChildCodigo />}
             <input type="text" className="Field-Label" placeholder="Código de segurança" maxLength="3"
             onChange={event => this.setState({codigo: event.target.value})} onClick={this.toggleHiddenCodigo}/>
             <div className="line"></div>
           </div>
 
-          <div className="containerCadastro">
+          <div className={containerCEP}>
             {!this.state.isHiddenCEP && <ChildCEP />}
             <input type="text" className="Field-Label" placeholder="CEP do endereço da fatura"
             onChange={event => this.setState({CEP: event.target.value})} onClick={this.toggleHiddenCEP}/>
