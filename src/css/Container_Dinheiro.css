@@ -1,0 +1,36 @@
+.R-000 {
+  max-width: 250px;
+  min-width: 172px;
+  height: 66px;
+  caret-color: #7de6c6;
+  border: none;
+  border-color: transparent;
+  background-color: transparent;
+  font-family: Nunito Sans;
+  font-size: 48px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #d8d8d8;
+}
+
+.R-000::placeholder{
+  font-family: Nunito Sans;
+  font-size: 48px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #d8d8d8;
+}
+
+.containerDinheiro{
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}

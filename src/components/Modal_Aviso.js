@@ -19,6 +19,7 @@ class ModalAviso extends Component {
           <div className="containerAviso">
             <span>{this.props.aviso}</span>
           </div>
+          
         </div>
       </div>
     );

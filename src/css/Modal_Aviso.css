@@ -6,8 +6,6 @@
   margin: 12% auto;
 }
 
-
-
 .containerAviso{
   display: flex;
   justify-content: center;
@@ -36,7 +34,7 @@
   }
 
   .containerAviso{
-    margin-right: 10px;
+    margin-right: 20px;
     color: #ffffff;
   }
 }

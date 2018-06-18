@@ -23,7 +23,6 @@ class ModalCadastroCartao extends Component {
 
 /*Função para lidar com o clique no botão "Cadastrar"
 Analisa se o modal foi aberto por escolha cartão ou nenhum cartão e faz as devidas ações*/
-
   handleClick = () => {
       if (this.props.pai==="escolha"){
         this.armazenaCartao();

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import IntlCurrencyInput from 'react-intl-currency-input';
+import '../css/Container_Dinheiro.css';
 
 const currencyConfig = {
     locale: "pt-BR",

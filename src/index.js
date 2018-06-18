@@ -22,11 +22,13 @@ class App extends Component{
         this.getUsuarios();
       }
 
+//GET request para receber os dados de usuários
   async getUsuarios(){
     const response = await axios.get('http://careers.picpay.com/tests/mobdev/users');
     this.setState({usuarios: response.data});
   }
 
+//Toggle dos modais
   toggleModalNenhumCartao = () => {
       this.setState({isOpenModalNenhumCartao: !this.state.isOpenModalNenhumCartao});
       }
@@ -35,6 +37,7 @@ class App extends Component{
       this.setState({isOpenModalCartaoCadastrado: !this.state.isOpenModalCartaoCadastrado});
       }
 
+//Adiciona +1 no número de transação
   addTransaction = () => {
     this.setState({nTransacao: this.state.nTransacao+1});
   }

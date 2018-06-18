@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../css/Retangulo_Titulo.css';
 
 class RetanguloTitulo extends Component {
 
