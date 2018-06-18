@@ -1,0 +1,124 @@
+.containerEscolha{
+  display: flex;
+  width: 100%;
+  height: 72px;
+}
+
+.titleCartoes{
+  width: 189px;
+  height: 24px;
+  margin-left: 226px;
+  margin-top: 16px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+.novoCartao{
+  width: 199px;
+  height: 24px;
+  cursor: pointer;
+  font-family: Roboto;
+  margin-top: 24px;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.separar{
+  width: 100%;
+  height: 1px;
+  background-color: rgba(71, 73, 113, 0.24);
+}
+
+.plus {
+  width: 28px;
+  height: 28px;
+  margin-left: 200px;
+  margin-right: 16px;
+  margin-top: 22px;
+  object-fit: contain;
+}
+.containerMarcado {
+  display: flex;
+  width: 100%;
+  height: 72px;
+  background-color: rgba(125, 230, 198, 0.24);
+}
+
+.checkMark {
+  width: 24px;
+  height: 24px;
+  margin-top: 24px;
+  margin-left: 24px;
+  object-fit: contain;
+}
+
+.cartoesCadastrados {
+  width: 197px;
+  height: 24px;
+  cursor: pointer;
+  margin-top: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.containerEscolha .checkMark{
+  display: none;
+}
+
+.containerEscolha picture,
+.containerMarcado picture{
+  margin-left: 200px;
+  margin-right: 16px;
+  margin-top: 22px;
+}
+
+@media only screen and (max-width: 768px) {
+  .containerEscolha{
+    justify-content: center;
+  }
+
+  .containerMarcado {
+    background-color: rgba(255, 255, 255, 0.1);
+    justify-content: center;
+  }
+
+  .titleCartoes{
+    margin-left: 0;
+    color: #ffffff;
+  }
+
+  .cartoesCadastrados,
+  .novoCartao {
+    color: #ffffff;
+  }
+
+  .plus {
+    margin-left: 0;
+  }
+
+
+  .containerEscolha picture,
+  .containerMarcado picture{
+    margin-left: 0;
+  }
+
+}

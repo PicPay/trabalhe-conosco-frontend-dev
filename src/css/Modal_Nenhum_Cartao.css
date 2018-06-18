@@ -1,0 +1,98 @@
+.modalNenhumCartao{
+  background-color: #fff;
+  border-radius: 6px;
+  max-width: 640px;
+  height: 472px;
+  margin: 7% auto;
+}
+
+
+.divisoria {
+  width: 256px;
+  height: 2px;
+  margin-left: 192px;
+  background-color: #474971;
+}
+
+.divisoria-2 {
+  width: 560px;
+  height: 1px;
+  margin-left: 40px;
+  margin-top: 56px;
+  background-color: #d8d8d8;
+}
+
+.msgAviso {
+  display: inline;
+  margin-left: 12px;
+  height: 32px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ef5778;
+}
+
+.msgAviso div {
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.avisoCadastro{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.alert {
+  margin-top: 6px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.modalNenhumCartao .botao {
+  width: 532px;
+  height: 48px;
+  margin-left: 54px;
+  margin-top: 24px;
+}
+
+/*Mobile*/
+@media only screen and (max-width: 768px) {
+    .modalNenhumCartao{
+      margin: auto;
+      width: 100vw;
+      height: 100vh;
+      background-image: linear-gradient(211deg, #3c3e64, #1d1e2a);
+      box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+    }
+
+    .divisoria-2 {
+      margin-top: 30vh;
+      margin-right: 10px;
+      margin-left: 0;
+      width: 327px;
+    }
+
+    .divisoria {
+      margin-left: 0;
+    }
+
+    .modalNenhumCartao .botao {
+      width: 91%;
+      margin-left: 0;
+      margin-right: 10px;
+    }
+
+    .containerFlex{
+      display: flex;
+      justify-content: center;
+    }
+
+}

@@ -1,0 +1,142 @@
+.modalMaior{
+    background-color: #fff;
+    border-radius: 6px;
+    width: 640px;
+    height: 587px;
+    margin: 3% auto;
+}
+
+.pgtoConfirmado{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.pgtoConfirmado span {
+  width: 217px;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #474971;
+}
+
+.centroRecibo{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.containerCentro{
+  width: 280px;
+}
+
+
+.descricao{
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #474971;
+}
+
+.valor{
+  height: 16px;
+  float: right;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #474971;
+}
+
+.separacao {
+  width: 280px;
+  height: 1px;
+  margin-bottom: 20px;
+  background-color: #d8d8d8;
+}
+
+.botoesRecibo {
+  display: flex;
+  justify-content: center;
+  margin-top: 52px;
+  width: 100%;
+  height: 96px;
+  border-radius: 6px;
+}
+
+.botaoPgNvm {
+  width: 181px;
+  height: 48px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  border-radius: 24px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  color: #474971;
+}
+
+.botaoVoltar {
+  width: 181px;
+  height: 48px;
+  cursor: pointer;
+  border-radius: 24px;
+  margin-right: 24px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #474971;
+  background-color: transparent;
+  border: solid 1px #474971;
+}
+
+@media only screen and (max-width: 768px) {
+  .modalMaior{
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(211deg, #3c3e64, #1d1e2a);
+    box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+  }
+
+  .descricao,
+  .pgtoConfirmado span{
+    color: #ffffff;
+  }
+
+  .valor{
+    color: #7de6c6;
+  }
+
+  .botaoVoltar{
+    width: 100px;
+    color: #ffffff;
+    border: solid 1px #ffffff;
+  }
+}

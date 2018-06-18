@@ -1,0 +1,177 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  padding-left: 23.39%;
+  height: 5vw;
+  max-height: 80px;
+  min-height: 32px;
+  background-color: #7de6c6;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.navBar picture{
+  object-fit: contain;
+}
+
+
+/*Usu_Lista_Item*/
+
+/*Container para item da lista de usuarios da pagina principal*/
+.itemLista{
+  display: flex;
+  width: 100%;
+}
+
+
+/*Item da lista de usuarios da pagina principal*/
+.usuLista {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0.25;
+  margin: auto;
+  height: 6.3vw;
+  max-height: 120px;
+  min-height: 72px;
+  width: 100%;
+  max-width: 1054px;
+  background-image: linear-gradient(264deg, #3c3e64, #1d1e2a);
+  box-shadow: 0 -1px 0 0 #ffffff;
+}
+
+.usuLista .conjunto{
+  padding-top: 0;
+}
+
+/*Nome, Id, Username*/
+.usuLista .conjunto .nome,
+.usuLista .conjunto .id,
+.usuLista .conjunto .username {
+  color: #ffffff;
+}
+
+
+/*Foto*/
+.usuLista .foto {
+  margin-left: 4.3%;
+  height: 5vw;
+  width: 5vw;
+  min-height: 52px;
+  max-height: 80px;
+  min-width: 52px;
+  max-width: 80px;
+}
+
+/*Conjunto de Cifrão/Pagar/Seta pra direita*/
+.botoesPagamento{
+  display: flex;
+  margin-left: 45%;
+}
+
+/*Pagar*/
+.botoesPagamento div {
+  margin-top: 4px;
+  margin-right: 20px;
+  margin-left: 11px;
+  width: 65px;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+/*Cifrao*/
+.cifrao {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/*Seta pra direita*/
+.down {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+
+/*Mobile*/
+@media only screen and (max-width: 1150px) {
+  .sep{
+    display: none;
+  }
+
+  .botoesPagamento{
+    margin-left: 40%;
+  }
+
+  .navBar{
+    padding-left: 15%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+    .navBar {
+      padding-left: 4.3%;
+    }
+
+    .usuLista .foto {
+      margin-left: 2.6%;
+    }
+
+    .botoesPagamento{
+      margin-left: 35%;
+    }
+
+    .pagar{
+      display: none;
+    }
+
+    .usuLista .nome{
+      height: 19px;
+      font-size: 16px;
+    }
+
+    .usuLista .username,
+    .usuLista .id
+    {
+      height: 14px;
+      font-size: 14px;
+    }
+
+    .usuLista .linha{
+      margin-top: 4px;
+    }
+
+    .cifrao {
+      width: 28px;
+      height: 28px;
+      margin-right: 8px;
+    }
+
+    .down {
+      width: 24px;
+      height: 24px;
+      margin-top: 3px;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+  .botoesPagamento{
+    margin-left: 0;
+  }
+
+}
