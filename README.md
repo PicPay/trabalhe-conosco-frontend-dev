@@ -1,8 +1,17 @@
 ![PicPay](https://user-images.githubusercontent.com/1765696/26998603-711fcf30-4d5c-11e7-9281-0d9eb20337ad.png)
 
+# Como rodar o código
+
+Código feito com a biblioteca React JS, portanto:
+
+1- Instalar as dependências com *npm install*
+2- Iniciar o programa com *npm start*
+
+
+
 # Teste Frontend
 
-O teste deve ser feito para Web com layout responsivo e é uma simulação de envio de dinheiro para uma outra pessoa via cartão de crédito. 
+O teste deve ser feito para Web com layout responsivo e é uma simulação de envio de dinheiro para uma outra pessoa via cartão de crédito.
 
 O layout está disponível em https://zpl.io/VOBNjrQ. Para acessar, use o login *picpay* e senha *picpayfte*.
 
@@ -40,4 +49,4 @@ Realizar um `POST` para http://careers.picpay.com/tests/mobdev/transaction com o
 }
 ```
 
-## Para fins de teste, o número de cartão 1111111111111111 aprova a transação, qualquer outro recusa. 
+## Para fins de teste, o número de cartão 1111111111111111 aprova a transação, qualquer outro recusa.
