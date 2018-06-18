@@ -51,7 +51,6 @@ class App extends Component{
               <source media="(min-width: 768px)" srcSet={require("./img/logo_maior.png")} />
               <img src={require("./img/logo_menor.png")} alt="Logo da empresa." />
             </picture>
-
           </div>
 
           <UsuLista
