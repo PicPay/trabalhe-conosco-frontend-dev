@@ -137,8 +137,7 @@ handleFechar = () => {
 
           <div className={containerNumero}>
             {!this.state.isHiddenNumero && <ChildNumero />}
-            <input type="text" className="numeroCartao" placeholder="Número do cartão"
-             maxLength="16" onClick={this.toggleHiddenNumero}
+            <input type="text" className="numeroCartao" placeholder="Número do cartão" onClick={this.toggleHiddenNumero}
              onChange={event => this.setState({numero: event.target.value})} />
             <div className="line2"></div>
           </div>

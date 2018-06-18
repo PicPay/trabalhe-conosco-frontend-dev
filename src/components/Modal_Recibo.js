@@ -54,7 +54,7 @@ handlePgNvm = () => {
           <ContainerUsuario   sUser={this.props.sUser}/>
 
           <div className="pgtoConfirmado">
-            <span>Pagamento confirmado!</span>
+            <span>{this.props.mensagem}</span>
           </div>
 
           <div className="centroRecibo">

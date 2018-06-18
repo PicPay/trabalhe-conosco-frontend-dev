@@ -4,7 +4,6 @@ import '../css/Modal_Cartao_Cadastrado.css';
 import axios from 'axios';
 import ModalEscolhaCartao from './Modal_Escolha_Cartao';
 import ModalRecibo from './Modal_Recibo';
-import ModalAviso from './Modal_Aviso';
 import ContainerUsuario from './Container_Usuario';
 
 const currencyConfig = {
@@ -29,12 +28,12 @@ class ModalCartaoCadastrado extends Component {
     this.state={
       isOpenModalEscolhaCartao: false,
       isOpenModalRecibo: false,
-      isOpenModalAviso: false,
       valorPago: "R$ 0,00",
       card: "xxxx",
       cvv: null,
       validade: null,
-      sucesso: false
+      sucesso: false,
+      mensagem: ''
     }
   }
 
@@ -53,15 +52,14 @@ setValores = (card, cvv, validade) => {
       this.setState({isOpenModalRecibo: !this.state.isOpenModalRecibo});
       }
 
-  toggleModalAviso = () => {
-      this.setState({isOpenModalAviso: !this.state.isOpenModalAviso});
-      }
-
 
 //Função para fazer a requisição POST da transação
   async transaction(card, cvv, value, validade, id){
+    var array = card.split(" ");
+    var aux = array.join('');
+
     const response = await axios.post('http://careers.picpay.com/tests/mobdev/transaction', {
-      "card_number": card,
+      "card_number": aux,
       "cvv": cvv,
       "value": value,
       "expiry_date": validade,
@@ -69,9 +67,11 @@ setValores = (card, cvv, validade) => {
       });
 
       if(response.data.transaction.success){
+        this.setState({mensagem: "Pagamento confirmado!"});
         this.toggleModalRecibo();
       }else {
-        this.toggleModalAviso();
+        this.setState({mensagem: "Pagamento negado! Cartão Inválido."});
+        this.toggleModalRecibo();
       }
   }
 
@@ -124,15 +124,11 @@ setValores = (card, cvv, validade) => {
       valorPago={this.state.valorPago}
       card={carta}
       cvv={this.state.cvv}
+      mensagem={this.state.mensagem}
       validade={this.state.validade}
       nTransacao={this.props.nTransacao}
       addTransaction={this.props.addTransaction}
       onClose={this.toggleModalRecibo}/>
-
-      <ModalAviso
-      show={this.state.isOpenModalAviso}
-      aviso={"Este cartão não é aceito. Favor utilizar um cartão válido."}
-      onClose={this.toggleModalAviso}/>
 
         <div className="modalNenhumCartao">
 
