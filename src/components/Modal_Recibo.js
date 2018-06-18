@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import '../css/Modal_Recibo.css';
 import ContainerUsuario from './Container_Usuario';
 import axios from 'axios';
+import RetanguloTitulo from './Retangulo_Titulo';
+
 
 class ModalRecibo extends Component {
 
@@ -43,18 +45,9 @@ async transaction(card, cvv, value, validade, id){
       <div className="backdrop">
         <div className="modalMaior">
 
-          <div className="retanguloTitulo">
-            <img src={require("../img/logo_menor.png")} alt="Logo da empresa." className="logo"/>
-            <div className="pagamentoParaNome">Pagamento para <div>{this.props.sUser.nome}</div></div>
-            <input type="image" src={require('../img/shape-copy.png')} alt="Fechar janela." onClick={this.handleFechar} className="fechar" />
-          </div>
+          <RetanguloTitulo titulo={"Pagamento para "} subtitulo={this.props.sUser.nome} onClose={this.handleFechar}/>
 
-          <div className="containerVoltar">
-              <img src={require("../img/down_menor.png")} alt="Seta para esquerda, voltar." className="left"/>
-              <div className="voltar" onClick={this.handleFechar}>Voltar</div>
-          </div>
-
-          <ContainerUsuario   sUser={this.props.sUser}/>
+          <ContainerUsuario sUser={this.props.sUser}/>
 
           <div className="pgtoConfirmado">
             <span>{this.props.mensagem}</span>

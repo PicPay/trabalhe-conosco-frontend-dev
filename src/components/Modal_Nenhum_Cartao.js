@@ -1,24 +1,10 @@
 import React, {Component} from 'react';
 import '../css/Modal_Nenhum_Cartao.css';
-import IntlCurrencyInput from 'react-intl-currency-input';
 import ModalCadastroCartao from './Modal_Cadastro_Cartao';
 import ContainerUsuario from './Container_Usuario';
 import ModalAviso from './Modal_Aviso';
-
-//Constante para configurar o intl-currency-input
-const currencyConfig = {
-    locale: "pt-BR",
-    formats: {
-    number: {
-    BRL: {
-        style: "currency",
-        currency: "BRL",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-        },
-      },
-    },
-};
+import RetanguloTitulo from './Retangulo_Titulo';
+import ContainerDinheiro from './Container_Dinheiro';
 
 class ModalNenhumCartao extends Component {
 
@@ -67,22 +53,11 @@ toggleModalAviso = () => {
 
         <div className="modalNenhumCartao">
 
-          <div className="retanguloTitulo">
-            <img src={require("../img/logo_menor.png")} alt="Logo da empresa." className="logo"/>
-            <div className="pagamentoParaNome">Pagamento para <div>{this.props.sUser.nome}</div></div>
-            <input type="image" src={require('../img/shape-copy.png')} alt="Fechar janela." onClick={this.props.onClose} className="fechar" />
-          </div>
-
-          <div className="containerVoltar">
-              <img src={require("../img/down_menor.png")} alt="Seta para esquerda, voltar." className="left"/>
-              <div className="voltar" onClick={this.props.onClose}>Voltar</div>
-          </div>
+          <RetanguloTitulo titulo={"Pagamento para "} subtitulo={this.props.sUser.nome} onClose={this.props.onClose}/>
 
           <ContainerUsuario sUser={this.props.sUser}/>
 
-          <div className="containerDinheiro">
-              <IntlCurrencyInput currency="BRL" config={currencyConfig} className="R-000" />
-          </div>
+          <ContainerDinheiro />
 
           <div className="containerFlex">
             <div className="divisoria"></div>
@@ -107,5 +82,6 @@ toggleModalAviso = () => {
     );
   }
 }
+
 
 export default ModalNenhumCartao;

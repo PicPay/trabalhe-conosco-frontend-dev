@@ -3,6 +3,7 @@ import '../css/Modal.css';
 import '../css/Modal_Escolha_Cartao.css';
 import ModalCadastroCartao from './Modal_Cadastro_Cartao';
 import ModalAviso from './Modal_Aviso';
+import RetanguloTitulo from './Retangulo_Titulo';
 
 
 class ModalEscolhaCartao extends Component {
@@ -114,16 +115,7 @@ render() {
 
         <div className="modalCadastroCartao">
 
-          <div className="retanguloTitulo">
-              <img src={require("../img/logo_menor.png")} alt="Logo da empresa." className="logo"/>
-              <div className="pagamentoParaNome">Cadastro Cartão de Crédito</div>
-              <input type="image" src={require('../img/shape-copy.png')} alt="Fechar janela." onClick={this.props.onClose} className="fechar" />
-          </div>
-
-          <div className="containerVoltar">
-              <img src={require("../img/down_menor.png")} alt="Seta para esquerda, voltar." className="left"/>
-              <div className="voltar" onClick={this.props.onClose}>Voltar</div>
-          </div>
+          <RetanguloTitulo titulo={"Cadastro Cartão de Crédito"} onClose={this.props.onClose} />
 
           <div className="containerEscolha">
               <span className="titleCartoes">Cartões Cadastrados</span>

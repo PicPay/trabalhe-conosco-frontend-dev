@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../css/Modal_Cadastro_Cartao.css';
-
+import RetanguloTitulo from './Retangulo_Titulo';
 
 class ModalCadastroCartao extends Component {
   constructor(props){
@@ -61,7 +61,7 @@ Analisa se o modal foi aberto por escolha cartão ou nenhum cartão e faz as dev
     }
   }
 
-//Ao fechar o modal, esconde novamente as legendas no cadastro 
+//Ao fechar o modal, esconde novamente as legendas no cadastro
 handleFechar = () => {
   this.setState({isHiddenCodigo: true});
   this.setState({isHiddenNumero: true});
@@ -105,16 +105,7 @@ handleFechar = () => {
 
         <div className="modalCadastroCartao">
 
-          <div className="retanguloTitulo">
-              <img src={require("../img/logo_menor.png")} alt="Logo da empresa." className="logo"/>
-              <div className="pagamentoParaNome">Cadastro Cartão de Crédito</div>
-              <input type="image" src={require('../img/shape-copy.png')} alt="Fechar janela." onClick={this.handleFechar} className="fechar" />
-          </div>
-
-          <div className="containerVoltar">
-              <img src={require("../img/down_menor.png")} alt="Seta para esquerda, voltar." className="left"/>
-              <div className="voltar" onClick={this.handleFechar}>Voltar</div>
-          </div>
+          <RetanguloTitulo titulo={"Cadastro Cartão de Crédito"} onClose={this.handleFechar} />
 
           <div className="containerCadastro">
             <select name="cartao" className="Field-Label" onChange={event => this.setState({bandeira: event.target.value})}>

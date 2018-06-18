@@ -1,25 +1,11 @@
 import React, {Component} from 'react';
-import IntlCurrencyInput from 'react-intl-currency-input';
 import '../css/Modal_Cartao_Cadastrado.css';
 import axios from 'axios';
 import ModalEscolhaCartao from './Modal_Escolha_Cartao';
 import ModalRecibo from './Modal_Recibo';
 import ContainerUsuario from './Container_Usuario';
-
-//Constante para configurar o intl-currency-input
-const currencyConfig = {
-    locale: "pt-BR",
-    formats: {
-    number: {
-    BRL: {
-        style: "currency",
-        currency: "BRL",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-        },
-      },
-    },
-};
+import RetanguloTitulo from './Retangulo_Titulo';
+import ContainerDinheiro from './Container_Dinheiro';
 
 class ModalCartaoCadastrado extends Component {
 
@@ -135,22 +121,11 @@ toggleModalRecibo = () => {
 
         <div className="modalNenhumCartao">
 
-          <div className="retanguloTitulo">
-            <img src={require("../img/logo_menor.png")} alt="Logo da empresa." className="logo"/>
-            <div className="pagamentoParaNome">Pagamento para <div>{this.props.sUser.nome}</div></div>
-            <input type="image" src={require('../img/shape-copy.png')} alt="Fechar janela." onClick={this.handleClickFechar} className="fechar" />
-          </div>
-
-          <div className="containerVoltar">
-              <img src={require("../img/down_menor.png")} alt="Seta para esquerda, voltar." className="left"/>
-              <div className="voltar" onClick={this.handleClickFechar}>Voltar</div>
-          </div>
+          <RetanguloTitulo titulo={"Pagamento para "} subtitulo={this.props.sUser.nome} onClose={this.handleClickFechar}/>
 
           <ContainerUsuario sUser={this.props.sUser}/>
 
-          <div className="containerDinheiro">
-              <IntlCurrencyInput currency="BRL" config={currencyConfig} className="R-000" onChange={this.handleChange}/>
-          </div>
+          <ContainerDinheiro handleChange={this.handleChange} />
 
           <div className="containerFlex">
             <div className="divisoria"></div>
