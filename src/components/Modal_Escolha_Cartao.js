@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../css/generic.css';
+import '../css/Modal.css';
 import '../css/Modal_Escolha_Cartao.css';
 import ModalCadastroCartao from './Modal_Cadastro_Cartao';
 import ModalAviso from './Modal_Aviso';
@@ -18,23 +18,26 @@ class ModalEscolhaCartao extends Component {
       }
   }
 
-
+//Lida com o abrir/fechar de modal cadastro cartão
+//Duas funções necessárias neste caso especial
 FecharModalCadastroCartao = () => {
-        this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
-    }
+    this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
+}
 
 AbrirModalCadastroCartao = (tamanho) => {
       if(tamanho < 18){
         this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
       }else {
         this.toggleModalAviso();
-      }
-  }
+    }
+}
 
-  toggleModalAviso = () => {
-      this.setState({isOpenModalAviso: !this.state.isOpenModalAviso});
-  }
+//Toggle do modal aviso
+toggleModalAviso = () => {
+    this.setState({isOpenModalAviso: !this.state.isOpenModalAviso});
+}
 
+//Função que lida com o cartão selecionado, muda a aparência no modal
 handleClick = (vetor) => {
   if(this.state.marcado === true){
     this.props.setValores(vetor[5], vetor[3], vetor[2]);

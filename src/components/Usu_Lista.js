@@ -3,6 +3,7 @@ import UsuListaItem from './Usu_Lista_Item';
 
 
 const UsuLista = (props) =>{
+  //Gera a lista de usuários na tela principal
   const Lista = props.pessoas.map((term)=>{
       return (
         <UsuListaItem

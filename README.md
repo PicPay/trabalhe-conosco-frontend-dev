@@ -4,8 +4,8 @@
 
 Código feito com a biblioteca React JS, portanto:
 
-1- Instalar as dependências com *npm install*
-2- Iniciar o programa com *npm start*
+1. Instalar as dependências com *npm install*
+2. Iniciar o programa com *npm start*
 
 
 

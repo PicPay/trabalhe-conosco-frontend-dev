@@ -5,17 +5,20 @@ import axios from 'axios';
 
 class ModalRecibo extends Component {
 
+//Ao fechar, adicionar +1 ao número de transação
 handleFechar = () => {
   this.props.addTransaction();
   this.props.onClose();
 }
 
+//Lida com o botão pagar novamente, fazendo outra transação ao ser clicado
 handlePgNvm = () => {
   this.transaction(this.props.card, this.props.cvv, this.props.valorPago, this.props.validade, this.props.sUser.iden);
   this.props.addTransaction();
 }
 
-  async transaction(card, cvv, value, validade, id){
+//Função para fazer o POST request
+async transaction(card, cvv, value, validade, id){
     const response = await axios.post('http://careers.picpay.com/tests/mobdev/transaction', {
       "card_number": card,
       "cvv": cvv,

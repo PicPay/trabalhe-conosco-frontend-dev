@@ -6,6 +6,7 @@ import ModalEscolhaCartao from './Modal_Escolha_Cartao';
 import ModalRecibo from './Modal_Recibo';
 import ContainerUsuario from './Container_Usuario';
 
+//Constante para configurar o intl-currency-input
 const currencyConfig = {
     locale: "pt-BR",
     formats: {
@@ -37,20 +38,21 @@ class ModalCartaoCadastrado extends Component {
     }
   }
 
+
 setValores = (card, cvv, validade) => {
   this.setState({card});
   this.setState({cvv});
   this.setState({validade});
 }
 
+//Toggle modais
+toggleModalEscolhaCartao = () => {
+  this.setState({isOpenModalEscolhaCartao: !this.state.isOpenModalEscolhaCartao});
+}
 
-  toggleModalEscolhaCartao = () => {
-      this.setState({isOpenModalEscolhaCartao: !this.state.isOpenModalEscolhaCartao});
-      }
-
-  toggleModalRecibo = () => {
-      this.setState({isOpenModalRecibo: !this.state.isOpenModalRecibo});
-      }
+toggleModalRecibo = () => {
+  this.setState({isOpenModalRecibo: !this.state.isOpenModalRecibo});
+}
 
 
 //Função para fazer a requisição POST da transação
@@ -75,6 +77,7 @@ setValores = (card, cvv, validade) => {
       }
   }
 
+//Lida com o fechamento, faz os acertos necessários nos valores dos states
   handleClickFechar = () => {
     this.setState({card: "xxxx"});
     this.setState({valorPago: "R$ 0,00"});

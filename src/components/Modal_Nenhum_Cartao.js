@@ -5,6 +5,7 @@ import ModalCadastroCartao from './Modal_Cadastro_Cartao';
 import ContainerUsuario from './Container_Usuario';
 import ModalAviso from './Modal_Aviso';
 
+//Constante para configurar o intl-currency-input
 const currencyConfig = {
     locale: "pt-BR",
     formats: {
@@ -30,13 +31,15 @@ class ModalNenhumCartao extends Component {
     }
   }
 
-  toggleModalCadastroCartao = () => {
-      this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
-  }
 
-  toggleModalAviso = () => {
-      this.setState({isOpenModalAviso: !this.state.isOpenModalAviso});
-  }
+//Toggle modais necessários
+toggleModalCadastroCartao = () => {
+  this.setState({isOpenModalCadastroCartao: !this.state.isOpenModalCadastroCartao});
+}
+
+toggleModalAviso = () => {
+  this.setState({isOpenModalAviso: !this.state.isOpenModalAviso});
+}
 
 
 

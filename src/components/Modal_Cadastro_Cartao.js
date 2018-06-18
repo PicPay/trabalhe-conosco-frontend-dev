@@ -21,7 +21,9 @@ class ModalCadastroCartao extends Component {
       };
   }
 
-//Função para lidar com o clique no botão "Cadastrar"
+/*Função para lidar com o clique no botão "Cadastrar"
+Analisa se o modal foi aberto por escolha cartão ou nenhum cartão e faz as devidas ações*/
+
   handleClick = () => {
       if (this.props.pai==="escolha"){
         this.armazenaCartao();
@@ -40,7 +42,6 @@ class ModalCadastroCartao extends Component {
     if (localStorage.getItem(this.props.nome) === null) {
         localStorage.setItem(this.props.nome, this.state.bandeira+','+this.state.nomeC+','+this.state.validade+','+
         this.state.codigo+','+this.state.CEP+','+this.state.numero+',');
-        //console.log(localStorage.getItem(this.props.nome));
     } else {
       var teste = localStorage.getItem(this.props.nome);
       var array = teste.split(',');
@@ -50,19 +51,17 @@ class ModalCadastroCartao extends Component {
           this.state.codigo+','+this.state.CEP+','+this.state.numero+',';
           array.push(aux);
           localStorage.setItem(this.props.nome, array);
-          //console.log(localStorage.getItem(this.props.nome));
       } else if(array.length > 11 && array.length < 17){
           array.splice(12,1);
           aux = this.state.bandeira+','+this.state.nomeC+','+this.state.validade+','+
           this.state.codigo+','+this.state.CEP+','+this.state.numero;
           array.push(aux);
           localStorage.setItem(this.props.nome, array);
-          //console.log(localStorage.getItem(this.props.nome));
       }
     }
   }
 
-
+//Ao fechar o modal, esconde novamente as legendas no cadastro 
 handleFechar = () => {
   this.setState({isHiddenCodigo: true});
   this.setState({isHiddenNumero: true});

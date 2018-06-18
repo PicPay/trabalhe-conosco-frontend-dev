@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 
 class UsuListaItem extends Component{
 
-//Função para lidar com o clique
-
+//Função para lidar com o clique, abre o devido modal de acordo com o localStorage do navegador
   handleClick = () => {
     this.props.onUserSelect(this.props);
     if (localStorage.getItem(this.props.nome) === null) {
