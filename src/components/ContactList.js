@@ -8,7 +8,7 @@ class ContactList extends Component{
   }
 
   render(){
-    const { contacts } = this.props
+    const { contacts, onPaymentContact } = this.props
 
     return(
       <div>
@@ -37,7 +37,7 @@ class ContactList extends Component{
               <div className="user-pay">
                 <span className="add-payment"></span>
 
-                <button >Pagar</button>
+                <button onClick={() => onPaymentContact(contact) }>Pagar</button>
 
               </div>
 
