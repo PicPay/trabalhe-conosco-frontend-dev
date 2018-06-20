@@ -37,7 +37,7 @@ class ContactList extends Component{
               <div className="user-pay">
                 <span className="add-payment"></span>
 
-                <button onClick={() => onPaymentContact(contact) }>Pagar</button>
+                <button className="btn-select-contact" onClick={() => onPaymentContact(contact) }>Pagar<div className="icon-arrow"></div></button>
 
               </div>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as ContactsAPI from './utils/ContactsAPI'
 import ContactList from'./components/ContactList';
+import Payment from'./components/Payment';
 import Modal from 'react-modal';
 
 class App extends Component {
@@ -44,13 +45,16 @@ class App extends Component {
         />
 
         <Modal
-          className='modal'
+          className='modal-box'
           overlayClassName='overlay'
           isOpen={paymentModalOpen}
           onRequestClose={this.closePaymentModal}
           contentLabel='Modal'
         >
-          Modal
+          <Payment
+            contact={this.state.contact}
+            onCloseModal={this.closePaymentModal}
+          />
         </Modal>
       </div>
     );
