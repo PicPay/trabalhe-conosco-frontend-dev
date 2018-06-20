@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import TopBar from'./TopBar';
+import TopBar from './TopBar';
+import ContainerUser from './ContainerUser'
 
 class Payment extends Component{
 
@@ -13,7 +14,12 @@ class Payment extends Component{
 
           <TopBar name={contact.name} CloseModal={this.props.onCloseModal}/>
 
+          <div className="container-user">
+            <ContainerUser contact={contact} />
+          </div>
 
+          <div className="input-money">
+          </div>
 
         </div>
       </div>

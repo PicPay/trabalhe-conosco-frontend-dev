@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import ContainerUser from './ContainerUser'
+
 
 class ContactList extends Component{
 
@@ -22,23 +24,12 @@ class ContactList extends Component{
         <div className="wrap">
           {contacts.map(contact =>
             <div className="user-box" key={contact.id}>
-              <div>
-                <div className="user-avatar" style={{
-                  backgroundImage: `url(${contact.img})`}}></div>
-                <div className="user-info">
-                  <p className="user-title">{contact.name}</p>
-                  <div className="user-id">
-                    <p>id: {contact.id}</p>
-                    <p>{contact.username}</p>
-                  </div>
-                </div>
-              </div>
+
+              <ContainerUser contact={contact} />
 
               <div className="user-pay">
                 <span className="add-payment"></span>
-
                 <button className="btn-select-contact" onClick={() => onPaymentContact(contact) }>Pagar<div className="icon-arrow"></div></button>
-
               </div>
 
             </div>
