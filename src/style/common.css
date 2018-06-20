@@ -12,6 +12,10 @@
   display: flex;
 }
 
+body{
+  font-size: 62.5%;
+}
+
 p{
   font-family: Montserrat;
   font-size: 20px;
@@ -29,9 +33,18 @@ p{
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1054px){
+@media screen and (max-width: 1070px){
   .wrap{
     width: 100%;
+  }
+  .top-header{
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 800px){
+  body{
+    font-size: 50%;
   }
 }
 

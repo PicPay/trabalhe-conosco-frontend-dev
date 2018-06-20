@@ -27,8 +27,12 @@ class ContactList extends Component{
               <ContainerUser contact={contact} />
 
               <div className="user-pay">
-                <span className="add-payment"></span>
-                <button className="btn-select-contact" onClick={() => onPaymentContact(contact) }>Pagar<div className="icon-arrow"></div></button>
+
+                <button className="btn-select-contact" onClick={() => onPaymentContact(contact) }>
+                  <img className="icon-dollar" src={require('../images/pagar.svg')} alt="Ícone Cifrão" />
+                  <span>Pagar</span>
+                  <img className="icon-arrow" src={require('../images/down.svg')} alt="Ícone Seta" />
+                </button>
               </div>
 
             </div>
