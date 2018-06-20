@@ -45,7 +45,7 @@ class App extends Component {
         />
 
         <Modal
-          className='modal-box'
+          className='modal'
           overlayClassName='overlay'
           isOpen={paymentModalOpen}
           onRequestClose={this.closePaymentModal}

@@ -42,6 +42,10 @@ class Payment extends Component{
             </div>
           </div>
 
+          <button className="btn-payment-user">
+            Pagar
+          </button>
+
 
         </div>
       </div>

@@ -1,19 +1,17 @@
 .modal{
 	position: absolute;
-	background-color: #fff;
-  top: 0;
+  width: 640px;
+	height: 472px;
 	left: 50%;
 	top: 50%;
 	margin-left: -320px;
 	margin-top: -237px;
-	border-radius: 6px;
 	outline: none;
 }
 
 .modal-box{
 	position: absolute;
 	z-index: 9999;
-	top: 0;
 	background-color: #fff;
 	width: 640px;
 	height: 472px;
@@ -23,6 +21,9 @@
 	margin-top: -237px;
 	border-radius: 6px;
 	outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .backdrop {
