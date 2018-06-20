@@ -1,0 +1,38 @@
+.modal{
+	position: absolute;
+	background-color: #fff;
+  top: 0;
+	left: 50%;
+	top: 50%;
+	margin-left: -320px;
+	margin-top: -237px;
+	border-radius: 6px;
+	outline: none;
+}
+
+.modal-box{
+	position: absolute;
+	z-index: 9999;
+	top: 0;
+	background-color: #fff;
+	width: 640px;
+	height: 472px;
+	left: 50%;
+	top: 50%;
+	margin-left: -320px;
+	margin-top: -237px;
+	border-radius: 6px;
+	outline: none;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

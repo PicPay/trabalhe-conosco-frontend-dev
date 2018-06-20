@@ -53,3 +53,52 @@
 .container-user  .user-title, .container-user .user-id p{
   color: #474971;
 }
+
+.input-money{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.input-money input{
+  width: 256px;
+  height: 60px;
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #7de6c6;
+}
+
+.input-money input::-webkit-input-placeholder {
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #d8d8d8;
+}
+.input-money input::-moz-placeholder {
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #d8d8d8;
+}
+.input-money input:-ms-input-placeholder {
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #d8d8d8;
+}
+.input-money input:-moz-placeholder {
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #d8d8d8;
+}
+
+.line-divider{
+  width: 560px;
+  height: 1px;
+  background-color: #d8d8d8;
+  margin: 0 auto;
+  margin-top: 56px;
+}

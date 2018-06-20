@@ -16,8 +16,7 @@ class ContactList extends Component{
       <div>
         <div className="top-header">
           <div className="wrap">
-            <div className="line-divider"></div>
-            <p className="title-text">Front-End Test</p>
+            <img src={require('../images/logo-picpay.svg')} alt="logo Picpay" />
           </div>
         </div>
 
