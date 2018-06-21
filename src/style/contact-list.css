@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.user-avatar{
+.user-box .user-avatar{
   width: 80px;
   height: 80px;
   border-radius: 40px;
@@ -92,7 +92,7 @@
   .btn-select-contact span{
     display: none;
   }
-  .user-avatar{
+  .user-box .user-avatar{
     width: 52px;
     height: 52px;
   }
