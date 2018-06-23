@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import TopBar from './TopBar'
 
 
-class CardRegistration extends Component{
+class CardSelect extends Component{
 
   render(){
-    const { onCardModal, onSelectCardModal } = this.props
+    const { contact, onCardModal, onSelectCardModal } = this.props
     return(
       <div className="backdrop">
         <div className="modal-box modal-card">
@@ -13,6 +13,7 @@ class CardRegistration extends Component{
 
           <div>
             <p>Cartões Cadastrados</p>
+            <p onClick={() => onCardModal(contact)}>Cadastrar novo cartão</p>
           </div>
 
           <div>
@@ -25,4 +26,4 @@ class CardRegistration extends Component{
   }
 }
 
-export default CardRegistration;
+export default CardSelect;

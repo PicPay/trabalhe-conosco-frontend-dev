@@ -39,7 +39,7 @@ class App extends Component {
     this.setState(() => ({
       paymentModalOpen: false,
       cardModalOpen: true,
-      selectCardModal: false,
+      selectCardModalOpen: false,
       contact: contact
     }))
   }
@@ -83,13 +83,20 @@ class App extends Component {
             <CardRegistration
               contact={this.state.contact}
               onCloseModal={this.closeModal}
+              onCardModal={this.openCardModal}
               onSelectCardModal={this.openSelectCardModal}
               onPaymentContact={this.openPaymentModal}
             />
         </Modal>
 
         <Modal className='modal' overlayClassName='overlay' isOpen={selectCardModalOpen}>
-            <CardSelect contact={this.state.contact} onCloseModal={this.closeModal} />
+            <CardSelect
+              contact={this.state.contact}
+              onCloseModal={this.closeModal}
+              onCardModal={this.openCardModal}
+              onSelectCardModal={this.openSelectCardModal}
+              onPaymentContact={this.openPaymentModal}
+            />
         </Modal>
 
 
