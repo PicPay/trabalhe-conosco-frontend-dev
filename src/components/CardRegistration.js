@@ -10,10 +10,10 @@ import Input from '@material-ui/core/Input';
 class CardRegistration extends Component{
 
   state = {
-    flagcard: '',
-    nmbCard: '',
+    cardFlag: '',
+    cardNumber: '',
     name: '',
-    validate: '',
+    expirationDate: '',
     ccv: '',
     cep: '',
     open: false,
@@ -22,7 +22,6 @@ class CardRegistration extends Component{
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
 
   handleClose = () => {
     this.setState({ open: false });
@@ -34,24 +33,33 @@ class CardRegistration extends Component{
 
   handleRegistration = (e) => {
     e.preventDefault();
-    let flagcard = document.getElementById("flagcard").value;
-    let nmbCard = document.getElementById("nmbCard").value;
+    let cardFlag = document.getElementById("cardFlag").value;
+    let cardNumber = document.getElementById("cardNumber").value;
     let name = document.getElementById("name").value;
-    let validate = document.getElementById("validate").value;
+    let expirationDate = document.getElementById("expirationDate").value;
     let ccv = document.getElementById("ccv").value;
     let cep = document.getElementById("cep").value;
     let obj = {
-      flagcard,
-      nmbCard,
+      cardFlag,
+      cardNumber,
       name,
-      validate,
+      expirationDate,
       ccv,
       cep,
     };
 
-    localStorage.setItem('obj', obj);
+    let userCard = JSON.stringify(obj)
 
-    console.log(localStorage.obj);
+    localStorage.setItem('userCard', userCard);
+
+    console.log(localStorage.getItem("userCard"));
+
+    if (localStorage.getItem("userCard") !== null) {
+      console.log('com');
+    } else{
+      console.log('sem');
+    }
+
 
   };
 
@@ -66,12 +74,12 @@ class CardRegistration extends Component{
               <FormControl className="container-input">
                 <InputLabel>Selecione a bandeira</InputLabel>
                 <Select
-                  id="flagcard"
-                  name="flagcard"
+                  id="cardFlag"
+                  name="cardFlag"
                   open={this.state.open}
                   onClose={this.handleClose}
                   onOpen={this.handleOpen}
-                  value={this.state.flagcard}
+                  value={this.state.cardFlag}
                   onChange={this.handleChange}
                 >
                   <MenuItem value={'Visa'}>Visa</MenuItem>
@@ -85,33 +93,33 @@ class CardRegistration extends Component{
               </FormControl>
 
               <FormControl className="container-input">
-                <InputLabel htmlFor="nmb-card">Número do cartão</InputLabel>
+                <InputLabel htmlFor="cardNumber">Número do cartão</InputLabel>
                 <NumberFormat
-                  id="nmbCard"
-                  name="nmbCard"
+                  id="cardNumber"
+                  name="cardNumber"
                   customInput={Input}
                   format="#### #### #### ####"
                   mask="_"
-                  value={this.state.nmbCard}
+                  value={this.state.cardNumber}
                   onChange={this.handleChange}
                 />
               </FormControl>
 
               <FormControl className="container-input">
-                <InputLabel htmlFor="nmb-card">Validade (mm/aaaa)</InputLabel>
+                <InputLabel htmlFor="expirationDate">Validade (mm/aaaa)</InputLabel>
                 <NumberFormat
-                  id="validate"
-                  name="validate"
+                  id="expirationDate"
+                  name="expirationDate"
                   customInput={Input}
                   format="##/####"
                   mask="_"
-                  value={this.state.vld}
+                  value={this.state.expirationDate}
                   onChange={this.handleChange}
                 />
               </FormControl>
 
               <FormControl className="container-input">
-                <InputLabel htmlFor="ccv-card">Código de segurança</InputLabel>
+                <InputLabel htmlFor="ccv">Código de segurança</InputLabel>
                 <NumberFormat
                   id="ccv"
                   name="ccv"

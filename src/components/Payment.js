@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 class Payment extends Component{
 
   render(){
-    const { contact, onCardModal } = this.props
+    const { contact, onCardModal, onSelectCardModal } = this.props
 
     return(
 
@@ -34,13 +34,29 @@ class Payment extends Component{
 
           <div className="line-divider"></div>
 
-          <div className="box-credit-card" onClick={() => onCardModal()}>
-            <img src={require('../images/card-blue.svg')} alt="logo Picpay" />
-            <div>
-              <p>Forma de pagamento</p>
-              <p>Cartão de crédito com final xxxx</p>
+          { localStorage.getItem("userCard") !== null &&
+            <div className="box-credit-card" onClick={() => onSelectCardModal()}>
+              <img src={require('../images/card-blue.svg')} alt="logo Picpay" />
+              <div>
+                <p>Forma de pagamento</p>
+                <p>Cartão de crédito com final xxxx</p>
+              </div>
             </div>
-          </div>
+          }
+
+          { localStorage.getItem("userCard") === null &&
+            <div className="box-credit-card" onClick={() => onCardModal()}>
+              <img src={require('../images/card-blue.svg')} alt="logo Picpay" />
+              <div>
+                <p>Nenhum cartão de crédito cadastrado</p>
+                <p>Cadastrar agora</p>
+              </div>
+            </div>
+          }
+
+
+
+
 
           <button className="btn-action-user">
             Pagar
