@@ -34,8 +34,8 @@ class Payment extends Component{
 
           <div className="line-divider"></div>
 
-          { localStorage.getItem("userCard") !== null &&
-            <div className="box-credit-card" onClick={() => onSelectCardModal()}>
+          { localStorage.cardCount !== undefined &&
+            <div className="box-credit-card" onClick={() => onSelectCardModal(contact)}>
               <img src={require('../images/card-blue.svg')} alt="logo Picpay" />
               <div>
                 <p>Forma de pagamento</p>
@@ -44,8 +44,8 @@ class Payment extends Component{
             </div>
           }
 
-          { localStorage.getItem("userCard") === null &&
-            <div className="box-credit-card" onClick={() => onCardModal()}>
+          { localStorage.cardCount == undefined &&
+            <div className="box-credit-card" onClick={() => onCardModal(contact)}>
               <img src={require('../images/card-blue.svg')} alt="logo Picpay" />
               <div>
                 <p>Nenhum cartão de crédito cadastrado</p>
@@ -53,10 +53,6 @@ class Payment extends Component{
               </div>
             </div>
           }
-
-
-
-
 
           <button className="btn-action-user">
             Pagar

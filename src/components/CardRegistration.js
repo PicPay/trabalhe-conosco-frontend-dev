@@ -39,27 +39,34 @@ class CardRegistration extends Component{
     let expirationDate = document.getElementById("expirationDate").value;
     let ccv = document.getElementById("ccv").value;
     let cep = document.getElementById("cep").value;
-    let obj = {
-      cardFlag,
-      cardNumber,
-      name,
-      expirationDate,
-      ccv,
-      cep,
+    let cardRegister = {
+      cardFlag: cardFlag,
+      cardNumber: cardNumber,
+      name: name,
+      expirationDate: expirationDate,
+      ccv: ccv,
+      cep: cep,
     };
 
-    let userCard = JSON.stringify(obj)
-
-    localStorage.setItem('userCard', userCard);
-
-    console.log(localStorage.getItem("userCard"));
-
-    if (localStorage.getItem("userCard") !== null) {
-      console.log('com');
-    } else{
-      console.log('sem');
+    if ( localStorage.cardCount == undefined ) {
+      localStorage.setItem('cardCount', 0)
     }
 
+    let cardSize = parseInt(localStorage.cardCount) + 1;
+    commitToStorage(cardSize,cardRegister);
+
+    function commitToStorage(objectCount,newObject) {
+      let item = 'card' + objectCount;
+      localStorage.setItem('cardCount', objectCount);
+
+      localStorage.setItem(item, JSON.stringify(newObject));
+    }
+
+    if ( localStorage.cardCount == 1 ){
+      this.props.onPaymentContact(this.props.contact)
+    } else {
+      this.props.onSelectCardModal(this.props.contact)
+    }
 
   };
 
@@ -144,7 +151,7 @@ class CardRegistration extends Component{
                 />
               </FormControl>
 
-              <button className="btn-action-user" onClick={this.handleRegistration}>
+              <button className="btn-action-user" onClick={this.handleRegistration} >
                 Cadastrar
               </button>
 

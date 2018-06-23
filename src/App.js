@@ -29,22 +29,27 @@ class App extends Component {
     Modal.setAppElement('div')
     this.setState(() => ({
       paymentModalOpen: true,
+      cardModalOpen: false,
+      selectCardModal: false,
       contact: contact
     }))
   }
 
-  openCardModal = () => {
+  openCardModal = (contact) => {
     this.setState(() => ({
       paymentModalOpen: false,
       cardModalOpen: true,
+      selectCardModal: false,
+      contact: contact
     }))
   }
 
-  openSelectCardModal = () => {
+  openSelectCardModal = (contact) => {
     this.setState(() => ({
       paymentModalOpen: false,
       cardModalOpen: false,
-      selectCardModal: true,
+      selectCardModalOpen: true,
+      contact: contact
     }))
   }
 
@@ -52,12 +57,12 @@ class App extends Component {
     this.setState(() => ({
       paymentModalOpen: false,
       cardModalOpen: false,
-      selectCardModal: false,
+      selectCardModalOpen: false,
     }))
   }
 
   render() {
-    const { paymentModalOpen, cardModalOpen, selectCardModal } = this.state
+    const { paymentModalOpen, cardModalOpen, selectCardModalOpen } = this.state
     return (
       <div>
         <ContactList
@@ -75,11 +80,16 @@ class App extends Component {
         </Modal>
 
         <Modal className='modal' overlayClassName='overlay' isOpen={cardModalOpen}>
-            <CardRegistration onCloseModal={this.closeModal}/>
+            <CardRegistration
+              contact={this.state.contact}
+              onCloseModal={this.closeModal}
+              onSelectCardModal={this.openSelectCardModal}
+              onPaymentContact={this.openPaymentModal}
+            />
         </Modal>
 
-        <Modal className='modal' overlayClassName='overlay' isOpen={selectCardModal}>
-            <CardSelect onCloseModal={this.closeModal}/>
+        <Modal className='modal' overlayClassName='overlay' isOpen={selectCardModalOpen}>
+            <CardSelect contact={this.state.contact} onCloseModal={this.closeModal} />
         </Modal>
 
 
