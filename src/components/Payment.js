@@ -7,14 +7,14 @@ import TextField from '@material-ui/core/TextField';
 class Payment extends Component{
 
   render(){
-    const { contact } = this.props
+    const { contact, onCardModal } = this.props
 
     return(
 
       <div className="backdrop">
-        <div className="modal-box">
+        <div className="modal-box modal-payment">
 
-          <TopBar name={contact.name} CloseModal={this.props.onCloseModal}/>
+          <TopBar text={"Pagamento para "} name={contact.name} CloseModal={this.props.onCloseModal}/>
 
           <div className="container-user">
             <ContainerUser contact={contact} />
@@ -27,14 +27,14 @@ class Payment extends Component{
               thousandSeparator={'.'}
               decimalSeparator={','}
               prefix={'R$ '}
-              decimalScale={'2'}
+              decimalScale={2}
               fixedDecimalScale={true}
             />
           </div>
 
           <div className="line-divider"></div>
 
-          <div className="box-credit-card">
+          <div className="box-credit-card" onClick={() => onCardModal()}>
             <img src={require('../images/card-blue.svg')} alt="logo Picpay" />
             <div>
               <p>Forma de pagamento</p>
@@ -42,7 +42,7 @@ class Payment extends Component{
             </div>
           </div>
 
-          <button className="btn-payment-user">
+          <button className="btn-action-user">
             Pagar
           </button>
 

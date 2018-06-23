@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import * as ContactsAPI from './utils/ContactsAPI'
-import ContactList from'./components/ContactList';
-import Payment from'./components/Payment';
+import ContactList from './components/ContactList';
+import Payment from './components/Payment';
+import CardRegistration from './components/CardRegistration';
 import Modal from 'react-modal';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
 
   state = {
     paymentModalOpen: false,
+    cardModalOpen: false,
   }
 
   openPaymentModal = (contact) => {
@@ -29,14 +31,22 @@ class App extends Component {
     }))
   }
 
-  closePaymentModal = () => {
+  openCardModal = () => {
     this.setState(() => ({
       paymentModalOpen: false,
+      cardModalOpen: true,
+    }))
+  }
+
+  closeModal = () => {
+    this.setState(() => ({
+      paymentModalOpen: false,
+      cardModalOpen: false,
     }))
   }
 
   render() {
-    const { paymentModalOpen } = this.state
+    const { paymentModalOpen, cardModalOpen } = this.state
     return (
       <div>
         <ContactList
@@ -44,18 +54,20 @@ class App extends Component {
           onPaymentContact={this.openPaymentModal}
         />
 
-        <Modal
-          className='modal'
-          overlayClassName='overlay'
-          isOpen={paymentModalOpen}
-          onRequestClose={this.closePaymentModal}
-          contentLabel='Modal'
-        >
+        <Modal className='modal' overlayClassName='overlay' isOpen={paymentModalOpen}>
           <Payment
             contact={this.state.contact}
-            onCloseModal={this.closePaymentModal}
+            onCloseModal={this.closeModal}
+            onCardModal={this.openCardModal}
           />
         </Modal>
+
+
+        <Modal className='modal' overlayClassName='overlay' isOpen={cardModalOpen}>
+            <CardRegistration onCloseModal={this.closeModal}/>
+        </Modal>
+
+
       </div>
     );
   }
