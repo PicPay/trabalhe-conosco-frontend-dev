@@ -44,7 +44,7 @@ class Payment extends Component{
             </div>
           }
 
-          { localStorage.cardCount == undefined &&
+          { localStorage.cardCount === undefined &&
             <div className="box-credit-card" onClick={() => onCardModal(contact)}>
               <img src={require('../images/card-blue.svg')} alt="logo Picpay" />
               <div>

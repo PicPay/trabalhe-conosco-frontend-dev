@@ -48,7 +48,7 @@ class CardRegistration extends Component{
       cep: cep,
     };
 
-    if ( localStorage.cardCount == undefined ) {
+    if ( localStorage.cardCount === undefined ) {
       localStorage.setItem('cardCount', 0)
     }
 
@@ -62,7 +62,7 @@ class CardRegistration extends Component{
       localStorage.setItem(item, JSON.stringify(newObject));
     }
 
-    if ( localStorage.cardCount == 1 ){
+    if ( localStorage.cardCount === 1 ){
       this.props.onPaymentContact(this.props.contact)
     } else {
       this.props.onSelectCardModal(this.props.contact)
