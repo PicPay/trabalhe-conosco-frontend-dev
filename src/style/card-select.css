@@ -1,0 +1,64 @@
+.container-cards{
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container-cards p{
+  font-size: 2em;
+  text-align: center;
+}
+
+.box-cards{
+  width: 100%;
+  margin-top: 48px;
+  border-bottom: 1px solid rgba(71, 73, 113, 0.24);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-height: 230px;
+  height: 230px;
+  backface-visibility: hidden;
+  overflow-y: auto;
+}
+
+.item-card{
+  width: 100%;
+  text-align: center;
+  padding: 24px 0;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease all 300ms;
+}
+
+.item-card:hover{
+  background-color: rgba(125, 230, 198, 0.24);
+  cursor: pointer;
+}
+
+.active-card{
+  background-color: rgba(125, 230, 198, 0.24);
+}
+
+.item-card img{
+  margin-right: 16px;
+}
+
+.btn-add-card{
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-add-card:hover{
+  cursor: pointer;
+}
+
+.btn-add-card img{
+  margin-right: 16px;
+}

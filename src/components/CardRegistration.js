@@ -17,20 +17,21 @@ class CardRegistration extends Component{
     ccv: '',
     cep: '',
     open: false,
-  };
+  }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  };
+  }
 
   handleClose = () => {
     this.setState({ open: false });
-  };
+  }
 
   handleOpen = () => {
     this.setState({ open: true });
-  };
+  }
 
+  /* Recupera os dados do cartão cadastrado */
   handleRegistration = (e) => {
     e.preventDefault();
     let cardFlag = document.getElementById("cardFlag").value;
@@ -46,27 +47,26 @@ class CardRegistration extends Component{
       expirationDate: expirationDate,
       ccv: ccv,
       cep: cep,
-    };
+    }
 
+    /* Inicia o contador de cartão */
     if ( localStorage.cardCount === undefined ) {
       localStorage.setItem('cardCount', 0)
     }
 
+    /* Adiciona +1 para o contador */
     let cardSize = parseInt(localStorage.cardCount) + 1;
     commitToStorage(cardSize,cardRegister);
 
+    /* Adiciona o cartão no storage, com o valor do contador sendo key */
     function commitToStorage(objectCount,newObject) {
       let item = 'card' + objectCount;
       localStorage.setItem('cardCount', objectCount);
-
       localStorage.setItem(item, JSON.stringify(newObject));
+      localStorage.setItem('selectedCard', JSON.stringify(newObject));
     }
 
-    if ( localStorage.cardCount === 1 ){
-      this.props.onPaymentContact(this.props.contact)
-    } else {
-      this.props.onSelectCardModal(this.props.contact)
-    }
+    this.props.onPaymentContact(this.props.contact)
 
   };
 

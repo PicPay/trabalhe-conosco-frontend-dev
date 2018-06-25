@@ -22,7 +22,7 @@ class App extends Component {
   state = {
     paymentModalOpen: false,
     cardModalOpen: false,
-    selectCardModal: false,
+    selectCardModalOpen: false,
   }
 
   openPaymentModal = (contact) => {
@@ -30,7 +30,7 @@ class App extends Component {
     this.setState(() => ({
       paymentModalOpen: true,
       cardModalOpen: false,
-      selectCardModal: false,
+      selectCardModalOpen: false,
       contact: contact
     }))
   }

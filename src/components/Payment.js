@@ -8,6 +8,7 @@ class Payment extends Component{
 
   render(){
     const { contact, onCardModal, onSelectCardModal } = this.props
+    const selectedCard = JSON.parse(localStorage.getItem('selectedCard'))
 
     return(
 
@@ -32,21 +33,25 @@ class Payment extends Component{
             />
           </div>
 
-          <div className="line-divider"></div>
 
+
+          <div className="line-divider"></div>
+          {/* se houver, exibe o final do cartão cadastrado */}
           { localStorage.cardCount !== undefined &&
             <div className="box-credit-card" onClick={() => onSelectCardModal(contact)}>
-              <img src={require('../images/card-blue.svg')} alt="logo Picpay" />
+              <img src={require('../images/card-blue.svg')} alt="ícone cartão de crédito" />
               <div>
                 <p>Forma de pagamento</p>
-                <p>Cartão de crédito com final xxxx</p>
+                <p>Cartão de crédito com final {selectedCard.cardNumber.slice(-4)}</p>
+                {console.log(selectedCard)}
               </div>
             </div>
           }
 
+          {/* se não houver cartão cadastrado, exibe o link para cadastrar */}
           { localStorage.cardCount === undefined &&
             <div className="box-credit-card" onClick={() => onCardModal(contact)}>
-              <img src={require('../images/card-blue.svg')} alt="logo Picpay" />
+              <img src={require('../images/card-blue.svg')} alt="ícone cartão de crédito" />
               <div>
                 <p>Nenhum cartão de crédito cadastrado</p>
                 <p>Cadastrar agora</p>
