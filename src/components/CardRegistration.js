@@ -14,7 +14,7 @@ class CardRegistration extends Component{
     cardNumber: '',
     name: '',
     expirationDate: '',
-    ccv: '',
+    cvv: '',
     cep: '',
     open: false,
   }
@@ -38,14 +38,14 @@ class CardRegistration extends Component{
     let cardNumber = document.getElementById("cardNumber").value;
     let name = document.getElementById("name").value;
     let expirationDate = document.getElementById("expirationDate").value;
-    let ccv = document.getElementById("ccv").value;
+    let cvv = document.getElementById("cvv").value;
     let cep = document.getElementById("cep").value;
     let cardRegister = {
       cardFlag: cardFlag,
       cardNumber: cardNumber,
       name: name,
       expirationDate: expirationDate,
-      ccv: ccv,
+      cvv: cvv,
       cep: cep,
     }
 
@@ -59,11 +59,11 @@ class CardRegistration extends Component{
     commitToStorage(cardSize,cardRegister);
 
     /* Adiciona o cartão no storage, com o valor do contador sendo key */
-    function commitToStorage(objectCount,newObject) {
+    function commitToStorage(objectCount,newCard) {
       let item = 'card' + objectCount;
       localStorage.setItem('cardCount', objectCount);
-      localStorage.setItem(item, JSON.stringify(newObject));
-      localStorage.setItem('selectedCard', JSON.stringify(newObject));
+      localStorage.setItem(item, JSON.stringify(newCard));
+      localStorage.setItem('selectedCard', JSON.stringify(newCard));
     }
 
     this.props.onPaymentContact(this.props.contact)
@@ -105,8 +105,7 @@ class CardRegistration extends Component{
                   id="cardNumber"
                   name="cardNumber"
                   customInput={Input}
-                  format="#### #### #### ####"
-                  mask="_"
+                  format="################"
                   value={this.state.cardNumber}
                   onChange={this.handleChange}
                 />
@@ -119,21 +118,19 @@ class CardRegistration extends Component{
                   name="expirationDate"
                   customInput={Input}
                   format="##/####"
-                  mask="_"
                   value={this.state.expirationDate}
                   onChange={this.handleChange}
                 />
               </FormControl>
 
               <FormControl className="container-input">
-                <InputLabel htmlFor="ccv">Código de segurança</InputLabel>
+                <InputLabel htmlFor="cvv">Código de segurança</InputLabel>
                 <NumberFormat
-                  id="ccv"
-                  name="ccv"
+                  id="cvv"
+                  name="cvv"
                   customInput={Input}
                   format="###"
-                  mask="_"
-                  value={this.state.ccv}
+                  value={this.state.cvv}
                   onChange={this.handleChange}
                 />
               </FormControl>
@@ -145,7 +142,6 @@ class CardRegistration extends Component{
                   name="cep"
                   customInput={Input}
                   format="#####-###"
-                  mask="_"
                   value={this.state.cep}
                   onChange={this.handleChange}
                 />

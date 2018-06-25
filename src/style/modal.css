@@ -34,6 +34,13 @@
 	margin-top: -275px;
 }
 
+.modal-confirm{
+	width: 640px;
+	height: 590px;
+	margin-left: -320px;
+	margin-top: -295px;
+}
+
 .backdrop {
   position: fixed;
   top: 0;

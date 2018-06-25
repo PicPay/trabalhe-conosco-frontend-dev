@@ -126,6 +126,10 @@
   font-weight: bold;
 }
 
+.alert-card p{
+	color: #ef5778;
+}
+
 @media screen and (max-width: 800px){
 	.container-user  .user-title, .container-user .user-id p{
 	  color: #fff;

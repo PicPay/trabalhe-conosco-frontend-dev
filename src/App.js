@@ -4,6 +4,7 @@ import ContactList from './components/ContactList';
 import Payment from './components/Payment';
 import CardRegistration from './components/CardRegistration';
 import CardSelect from './components/CardSelect';
+import ConfirmPayment from './components/ConfirmPayment';
 import Modal from 'react-modal';
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
     paymentModalOpen: false,
     cardModalOpen: false,
     selectCardModalOpen: false,
+    confirmPaymentModalOpen: false
   }
 
   openPaymentModal = (contact) => {
@@ -53,16 +55,28 @@ class App extends Component {
     }))
   }
 
+  openConfirmPaymentModal = (contact, valuePayment) => {
+    this.setState(() => ({
+      paymentModalOpen: false,
+      cardModalOpen: false,
+      selectCardModalOpen: false,
+      confirmPaymentModalOpen: true,
+      contact: contact,
+      valuePayment: valuePayment,
+    }))
+  }
+
   closeModal = () => {
     this.setState(() => ({
       paymentModalOpen: false,
       cardModalOpen: false,
       selectCardModalOpen: false,
+      confirmPaymentModalOpen: false,
     }))
   }
 
   render() {
-    const { paymentModalOpen, cardModalOpen, selectCardModalOpen } = this.state
+    const { paymentModalOpen, cardModalOpen, selectCardModalOpen, confirmPaymentModalOpen, valuePayment } = this.state
     return (
       <div>
         <ContactList
@@ -76,6 +90,7 @@ class App extends Component {
             onCloseModal={this.closeModal}
             onCardModal={this.openCardModal}
             onSelectCardModal={this.openSelectCardModal}
+            onConfirmPaymentModal={this.openConfirmPaymentModal}
           />
         </Modal>
 
@@ -96,6 +111,18 @@ class App extends Component {
               onCardModal={this.openCardModal}
               onSelectCardModal={this.openSelectCardModal}
               onPaymentContact={this.openPaymentModal}
+            />
+        </Modal>
+
+        <Modal className='modal' overlayClassName='overlay' isOpen={confirmPaymentModalOpen}>
+            <ConfirmPayment
+              contact={this.state.contact}
+              onCloseModal={this.closeModal}
+              onCardModal={this.openCardModal}
+              onSelectCardModal={this.openSelectCardModal}
+              onPaymentContact={this.openPaymentModal}
+              onConfirmPaymentModal={this.openConfirmPaymentModal}
+              valuePayment={valuePayment}
             />
         </Modal>
 

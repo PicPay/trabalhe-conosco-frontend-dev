@@ -6,6 +6,11 @@ import TextField from '@material-ui/core/TextField';
 
 class Payment extends Component{
 
+  submitPayment = () => {
+    let valuePayment = document.getElementById("valuePayment").value;
+    this.props.onConfirmPaymentModal(this.props.contact, valuePayment)
+  }
+
   render(){
     const { contact, onCardModal, onSelectCardModal } = this.props
     const selectedCard = JSON.parse(localStorage.getItem('selectedCard'))
@@ -23,6 +28,7 @@ class Payment extends Component{
 
           <div className="input-money">
             <NumberFormat
+              id="valuePayment"
               customInput={TextField}
               placeholder="R$ 0,00"
               thousandSeparator={'.'}
@@ -41,25 +47,24 @@ class Payment extends Component{
             <div className="box-credit-card" onClick={() => onSelectCardModal(contact)}>
               <img src={require('../images/card-blue.svg')} alt="ícone cartão de crédito" />
               <div>
-                <p>Forma de pagamento</p>
+                <p>Forma de pagamento:</p>
                 <p>Cartão de crédito com final {selectedCard.cardNumber.slice(-4)}</p>
-                {console.log(selectedCard)}
               </div>
             </div>
           }
 
           {/* se não houver cartão cadastrado, exibe o link para cadastrar */}
           { localStorage.cardCount === undefined &&
-            <div className="box-credit-card" onClick={() => onCardModal(contact)}>
-              <img src={require('../images/card-blue.svg')} alt="ícone cartão de crédito" />
+            <div className="box-credit-card alert-card" onClick={() => onCardModal(contact)}>
+              <img src={require('../images/alert.svg')} alt="ícone cartão de crédito" />
               <div>
-                <p>Nenhum cartão de crédito cadastrado</p>
+                <p>Nenhum cartão de crédito cadastrado.</p>
                 <p>Cadastrar agora</p>
               </div>
             </div>
           }
 
-          <button className="btn-action-user">
+          <button className="btn-action-user" onClick={this.submitPayment}>
             Pagar
           </button>
 
