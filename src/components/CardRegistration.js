@@ -55,7 +55,7 @@ class CardRegistration extends Component{
     }
 
     /* Adiciona +1 para o contador */
-    let cardSize = parseInt(localStorage.cardCount) + 1;
+    let cardSize = parseInt(localStorage.cardCount, 16) + 1;
     commitToStorage(cardSize,cardRegister);
 
     /* Adiciona o cartão no storage, com o valor do contador sendo key */

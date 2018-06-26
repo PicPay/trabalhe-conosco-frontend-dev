@@ -33,24 +33,27 @@ class App extends Component {
       paymentModalOpen: true,
       cardModalOpen: false,
       selectCardModalOpen: false,
+      confirmPaymentModalOpen: false,
       contact: contact
     }))
   }
 
   openCardModal = (contact) => {
     this.setState(() => ({
-      paymentModalOpen: false,
       cardModalOpen: true,
+      paymentModalOpen: false,
       selectCardModalOpen: false,
+      confirmPaymentModalOpen: false,
       contact: contact
     }))
   }
 
   openSelectCardModal = (contact) => {
     this.setState(() => ({
+      selectCardModalOpen: true,
       paymentModalOpen: false,
       cardModalOpen: false,
-      selectCardModalOpen: true,
+      confirmPaymentModalOpen: false,
       contact: contact
     }))
   }

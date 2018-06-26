@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import * as TransactionAPI from '../utils/TransactionAPI'
 import TopBar from './TopBar';
 import ContainerUser from './ContainerUser';
 
 class ConfirmPayment extends Component{
 
-  componentDidMount(){
+  constructor(props){
+    super(props);
+    this.state = {res:[]};
+  }
+
+
+
+  componentWillMount(){
     const selectedCard = JSON.parse(localStorage.getItem('selectedCard'))
 
     const data = {
@@ -15,26 +23,12 @@ class ConfirmPayment extends Component{
       destination_user_id: this.props.contact.id,
     }
 
-    console.log(data)
+    TransactionAPI.sendTransaction(data).then((res) =>{
+      this.setState(() => ({
+        res: res.transaction
+      }))
+    })
 
-    function enviar(data){
-      (async () => {
-        const rawResponse = await fetch('http://careers.picpay.com/tests/mobdev/transaction', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
-        const content = await rawResponse.json();
-
-        console.log(content);
-      })();
-
-    }
-
-    enviar(data);
   }
 
   render(){
@@ -50,11 +44,19 @@ class ConfirmPayment extends Component{
             <ContainerUser contact={contact} />
           </div>
 
-          <div className="container-transaction">
-            <p className="confirm-transaction">Pagamento Confirmado!</p>
+          <div id="spinner" className="spinner">
+            <div></div>
+          </div>
+          <div className="container-transaction" id="container-transaction">
+            {this.state.res.success &&
+              <p className="confirm-transaction">Pagamento Confirmado!</p>
+            }
+            {!this.state.res.success &&
+              <p className="denied-transaction">Pagamento Negado!</p>
+            }
             <div className="item-transaction">
               <p>Transação</p>
-              <p>8888888</p>
+              <p>{this.state.res.id}</p>
             </div>
             <div className="item-transaction">
               <p>Data</p>
@@ -68,6 +70,11 @@ class ConfirmPayment extends Component{
               <p>Valor</p>
               <p>{this.props.valuePayment}</p>
             </div>
+          </div>
+
+          <div className="container-btn">
+            <button className="btn-back" onClick={() => this.props.onPaymentContact(contact)}>Voltar</button>
+            <button className="btn-action-user" onClick={() => this.props.onPaymentContact(contact)} >Pagar novamente</button>
           </div>
         </div>
       </div>
