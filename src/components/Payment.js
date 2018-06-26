@@ -6,9 +6,26 @@ import TextField from '@material-ui/core/TextField';
 
 class Payment extends Component{
 
+  state = {
+    money: '',
+    errorMoney: '',
+    errorCard: '',
+  }
+
+  handleMoney = (event) => {
+    this.setState({money: event.target.value});
+    this.setState({errorMoney: ''});
+  }
+
   submitPayment = () => {
-    let valuePayment = document.getElementById("valuePayment").value;
-    this.props.onConfirmPaymentModal(this.props.contact, valuePayment)
+    if (this.state.money == ''){
+      this.setState({errorMoney: 'Digite o valor que deseja pagar.'});
+    } else if (localStorage.cardCount === undefined){
+      this.setState({errorCard: 'Cadastre um cartão de crédito'});
+    }
+    else {
+      this.props.onConfirmPaymentModal(this.props.contact, this.state.money)
+    }
   }
 
   render(){
@@ -36,10 +53,12 @@ class Payment extends Component{
               prefix={'R$ '}
               decimalScale={2}
               fixedDecimalScale={true}
+              value={this.state.money}
+              onChange={this.handleMoney}
             />
           </div>
-
-
+          <p className="erro-msg">{this.state.errorMoney}</p>
+          <p className="erro-msg">{this.state.errorCard}</p>
 
           <div className="line-divider"></div>
           {/* se houver, exibe o final do cartão cadastrado */}

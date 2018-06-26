@@ -1,11 +1,8 @@
 .container-form{
   width: 90%;
+  margin-top: 23px;
 }
 
 form, form .container-input{
   width: 100%;
-}
-
-.container-input{
-  margin-top: 15px !important;
 }

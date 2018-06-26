@@ -11,16 +11,23 @@ class CardRegistration extends Component{
 
   state = {
     cardFlag: '',
-    cardNumber: '',
     name: '',
+    cardNumber: '',
     expirationDate: '',
     cvv: '',
     cep: '',
+    errorCardFlag:'',
+    errorName: '',
+    errorCardNumber: '',
+    errorExpirationDate: '',
+    errorCvv: '',
+    errorCep: '',
     open: false,
   }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    this.setState({ errorCardFlag:'',errorName: '',errorCardNumber: '',errorExpirationDate: '',errorCvv: '',errorCep: '',});
   }
 
   handleClose = () => {
@@ -34,39 +41,49 @@ class CardRegistration extends Component{
   /* Recupera os dados do cartão cadastrado */
   handleRegistration = (e) => {
     e.preventDefault();
-    let cardFlag = document.getElementById("cardFlag").value;
-    let cardNumber = document.getElementById("cardNumber").value;
-    let name = document.getElementById("name").value;
-    let expirationDate = document.getElementById("expirationDate").value;
-    let cvv = document.getElementById("cvv").value;
-    let cep = document.getElementById("cep").value;
     let cardRegister = {
-      cardFlag: cardFlag,
-      cardNumber: cardNumber,
-      name: name,
-      expirationDate: expirationDate,
-      cvv: cvv,
-      cep: cep,
+      cardFlag: this.state.cardFlag,
+      name: this.state.name,
+      cardNumber: this.state.cardNumber,
+      expirationDate: this.state.expirationDate,
+      cvv: this.state.cvv,
+      cep: this.state.cep,
     }
 
-    /* Inicia o contador de cartão */
-    if ( localStorage.cardCount === undefined ) {
-      localStorage.setItem('cardCount', 0)
+    if (this.state.cardFlag == ''){
+      this.setState({errorCardFlag: 'Selecione a bandeira do cartão.'});
+    } if (this.state.name == ''){
+      this.setState({errorName: 'Digite o nome escrito no cartão'});
+    } if (this.state.cardNumber == ''){
+      this.setState({errorCardNumber: 'Digite o número do cartão'});
+    } if (this.state.expirationDate == ''){
+      this.setState({errorExpirationDate: 'Digite a validade do cartão'});
+    } if (this.state.cvv == ''){
+      this.setState({errorCvv: 'Digite o código de segurança'});
+    } if (this.state.cep == ''){
+      this.setState({errorCep: 'Digite o CEP do endereço da fatura'});
+    } else {
+      /* Inicia o contador de cartão */
+      if ( localStorage.cardCount === undefined ) {
+        localStorage.setItem('cardCount', 0)
+      }
+
+      /* Adiciona +1 para o contador */
+      let cardSize = parseInt(localStorage.cardCount, 16) + 1;
+      commitToStorage(cardSize,cardRegister);
+
+      /* Adiciona o cartão no storage, com o valor do contador sendo key */
+      function commitToStorage(objectCount,newCard) {
+        let item = 'card' + objectCount;
+        localStorage.setItem('cardCount', objectCount);
+        localStorage.setItem(item, JSON.stringify(newCard));
+        localStorage.setItem('selectedCard', JSON.stringify(newCard));
+      }
+
+      this.props.onPaymentContact(this.props.contact)
     }
 
-    /* Adiciona +1 para o contador */
-    let cardSize = parseInt(localStorage.cardCount, 16) + 1;
-    commitToStorage(cardSize,cardRegister);
 
-    /* Adiciona o cartão no storage, com o valor do contador sendo key */
-    function commitToStorage(objectCount,newCard) {
-      let item = 'card' + objectCount;
-      localStorage.setItem('cardCount', objectCount);
-      localStorage.setItem(item, JSON.stringify(newCard));
-      localStorage.setItem('selectedCard', JSON.stringify(newCard));
-    }
-
-    this.props.onPaymentContact(this.props.contact)
 
   };
 
@@ -92,11 +109,13 @@ class CardRegistration extends Component{
                   <MenuItem value={'Visa'}>Visa</MenuItem>
                   <MenuItem value={'Mastercard'}>Mastercard</MenuItem>
                 </Select>
+                <p className="erro-msg">{this.state.errorCardFlag}</p>
               </FormControl>
 
               <FormControl className="container-input">
                 <InputLabel htmlFor="name">Nome escrito no cartão</InputLabel>
                 <Input id="name" name="name" value={this.state.name} onChange={this.handleChange} />
+                <p className="erro-msg">{this.state.errorName}</p>
               </FormControl>
 
               <FormControl className="container-input">
@@ -109,6 +128,7 @@ class CardRegistration extends Component{
                   value={this.state.cardNumber}
                   onChange={this.handleChange}
                 />
+                <p className="erro-msg">{this.state.errorCardNumber}</p>
               </FormControl>
 
               <FormControl className="container-input">
@@ -121,6 +141,7 @@ class CardRegistration extends Component{
                   value={this.state.expirationDate}
                   onChange={this.handleChange}
                 />
+                <p className="erro-msg">{this.state.errorExpirationDate}</p>
               </FormControl>
 
               <FormControl className="container-input">
@@ -133,6 +154,7 @@ class CardRegistration extends Component{
                   value={this.state.cvv}
                   onChange={this.handleChange}
                 />
+                <p className="erro-msg">{this.state.errorCvv}</p>
               </FormControl>
 
               <FormControl className="container-input">
@@ -145,6 +167,7 @@ class CardRegistration extends Component{
                   value={this.state.cep}
                   onChange={this.handleChange}
                 />
+                <p className="erro-msg">{this.state.errorCep}</p>
               </FormControl>
 
               <button className="btn-action-user" onClick={this.handleRegistration} >

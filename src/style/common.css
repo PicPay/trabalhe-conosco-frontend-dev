@@ -50,6 +50,17 @@ p{
   cursor: pointer;
 }
 
+.title-text{
+  margin-top:5px;
+}
+
+.erro-msg{
+	font-size: 1.4em;
+	color: #ef5778;
+	height: 12px;
+	margin-top:3px;
+}
+
 @media screen and (max-width: 1070px){
   .wrap{
     width: 100%;
@@ -63,8 +74,4 @@ p{
   body{
     font-size: 50%;
   }
-}
-
-.title-text{
-  margin-top:5px;
 }

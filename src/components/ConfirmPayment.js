@@ -10,8 +10,6 @@ class ConfirmPayment extends Component{
     this.state = {res:[]};
   }
 
-
-
   componentWillMount(){
     const selectedCard = JSON.parse(localStorage.getItem('selectedCard'))
 
@@ -23,6 +21,7 @@ class ConfirmPayment extends Component{
       destination_user_id: this.props.contact.id,
     }
 
+    {/* enviando a requisição do pagamento para fetchAPI */}
     TransactionAPI.sendTransaction(data).then((res) =>{
       this.setState(() => ({
         res: res.transaction
