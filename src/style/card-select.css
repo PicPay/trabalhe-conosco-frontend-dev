@@ -33,6 +33,7 @@
   align-items: center;
   justify-content: center;
   transition: ease all 300ms;
+  z-index: 9999;
 }
 
 .item-card:hover{
@@ -42,6 +43,16 @@
 
 .active-card{
   background-color: rgba(125, 230, 198, 0.24);
+}
+
+.active-card::after{
+  width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
+  content: ' ';
+  background-image: url('../images/check-mark.svg');
+  position: absolute;
+  right: 90px;
 }
 
 .item-card img{

@@ -18,7 +18,7 @@ class Payment extends Component{
   }
 
   submitPayment = () => {
-    if (this.state.money == ''){
+    if (this.state.money === ''){
       this.setState({errorMoney: 'Digite o valor que deseja pagar.'});
     } else if (localStorage.cardCount === undefined){
       this.setState({errorCard: 'Cadastre um cartão de crédito'});

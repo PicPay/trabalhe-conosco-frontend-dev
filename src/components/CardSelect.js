@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import TopBar from './TopBar'
 
-
 class CardSelect extends Component{
 
-  onCardSelect = (card, e) => {
+  state = {
+    active: 'false',
+  }
+
+  onCardSelect = (card) => {
+    /*recupera o cartão clicado e atualiza o localStorage*/
     localStorage.setItem('selectedCard', JSON.stringify(card));
+    /*altera o state do active para renderizar a pagina e alterar o cartão selecionado*/
+    this.setState({ active: 'true' });
   }
 
   selectClick = () => {
@@ -14,6 +20,7 @@ class CardSelect extends Component{
 
   render(){
     const { contact, onCardModal } = this.props
+    const selectedCard = JSON.parse(localStorage.getItem('selectedCard'))
 
     /* Recupera os cartões cadastrados do localStorage */
     function getCards(){
@@ -37,12 +44,23 @@ class CardSelect extends Component{
           <div className="container-cards">
             <p>Cartões Cadastrados</p>
             <ul className="box-cards">
-              {cards.map(card =>
-                <li className="item-card" key={card.cardNumber} onClick={(e) => this.onCardSelect(card, e)}>
-                  <img src={require('../images/card-blue.svg')} alt="ícone cartão de crédito" />
-                  <p>{card.cardNumber}</p>
-                </li>
+              {/*mapeia os cartões cadastrados comparando o cartão selecionado no localStorage com o cartão atual do map*/}
+              {cards.map(card => {
+                {/*se o cartão selecionado for o mesmo do map, renderiza com a className active-card*/}
+                return selectedCard.cardNumber === card.cardNumber ?
+                  <li className='item-card active-card' key={card.cardNumber} onClick={() => this.onCardSelect(card)}>
+                    <img src={require('../images/card-blue.svg')} alt="ícone cartão de crédito" />
+                    <p>{card.cardNumber}</p>
+                  </li>
+                :
+                  <li className='item-card' key={card.cardNumber} onClick={() => this.onCardSelect(card)}>
+                    <img src={require('../images/card-blue.svg')} alt="ícone cartão de crédito" />
+                    <p>{card.cardNumber}</p>
+                  </li>
+                }
               )}
+
+
             </ul>
             <p className="btn-add-card" onClick={() => onCardModal(contact)}>
               <img src={require('../images/icon-add.svg')} alt="ícone cartão de crédito" />

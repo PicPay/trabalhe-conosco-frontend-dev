@@ -1,4 +1,4 @@
-{/* cria variável gatilho para fechar spinner e exibir o recibo da transação */}
+/* cria variável gatilho para fechar spinner e exibir o recibo da transação */
 var fetchEnd = new Event( 'fetchEnd', { 'view': document, 'bubbles': true, 'cancelable': false } );
 
 export const sendTransaction = (data) =>
@@ -11,14 +11,17 @@ export const sendTransaction = (data) =>
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
+    }).catch(error => {
+        console.log(error);
+        throw new Error('Algo deu errado, desculpe :(');
     })
-    {/* dispara o evento do spinner após finalizar a requisição */}
+    /* dispara o evento do spinner após finalizar a requisição */
     document.dispatchEvent(fetchEnd);
     return await rawResponse.json()
   })();
 
 
-{/* fecha o spinner e exibe o recibo */}
+  /* fecha o spinner e exibe o recibo */
   document.addEventListener('fetchEnd', function() {
     let spinner = document.getElementById('spinner');
     let containerTransaction = document.getElementById('container-transaction');

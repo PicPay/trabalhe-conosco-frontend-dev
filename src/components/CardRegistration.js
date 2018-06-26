@@ -50,17 +50,17 @@ class CardRegistration extends Component{
       cep: this.state.cep,
     }
 
-    if (this.state.cardFlag == ''){
+    if (this.state.cardFlag === ''){
       this.setState({errorCardFlag: 'Selecione a bandeira do cartão.'});
-    } if (this.state.name == ''){
+    } if (this.state.name === ''){
       this.setState({errorName: 'Digite o nome escrito no cartão'});
-    } if (this.state.cardNumber == ''){
+    } if (this.state.cardNumber === ''){
       this.setState({errorCardNumber: 'Digite o número do cartão'});
-    } if (this.state.expirationDate == ''){
+    } if (this.state.expirationDate === ''){
       this.setState({errorExpirationDate: 'Digite a validade do cartão'});
-    } if (this.state.cvv == ''){
+    } if (this.state.cvv === ''){
       this.setState({errorCvv: 'Digite o código de segurança'});
-    } if (this.state.cep == ''){
+    } if (this.state.cep === ''){
       this.setState({errorCep: 'Digite o CEP do endereço da fatura'});
     } else {
       /* Inicia o contador de cartão */

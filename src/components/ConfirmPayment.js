@@ -5,13 +5,15 @@ import ContainerUser from './ContainerUser';
 
 class ConfirmPayment extends Component{
 
-  constructor(props){
-    super(props);
-    this.state = {res:[]};
+  state = {
+    dateTransaction: '',
+    selectedCard: [],
+    res:[],
   }
 
   componentWillMount(){
     const selectedCard = JSON.parse(localStorage.getItem('selectedCard'))
+    this.setState({selectedCard: selectedCard})
 
     const data = {
       card_number: selectedCard.cardNumber,
@@ -21,19 +23,20 @@ class ConfirmPayment extends Component{
       destination_user_id: this.props.contact.id,
     }
 
-    {/* enviando a requisição do pagamento para fetchAPI */}
+    /* enviando a requisição do pagamento para fetchAPI */
     TransactionAPI.sendTransaction(data).then((res) =>{
       this.setState(() => ({
         res: res.transaction
       }))
     })
 
+    /* Formatando a data atual */
+    const now = new Date();
+    this.setState({dateTransaction: now.getDate() +'/'+ (now.getMonth() + 1) +'/'+ now.getFullYear().toString().substr(-2) +' - '+ now.getHours() +':'+ now.getMinutes() +':'+ now.getSeconds()})
   }
 
   render(){
     const { contact } = this.props
-    const selectedCard = JSON.parse(localStorage.getItem('selectedCard'))
-
     return(
       <div className="backdrop">
         <div className="modal-box modal-confirm">
@@ -51,7 +54,7 @@ class ConfirmPayment extends Component{
               <p className="confirm-transaction">Pagamento Confirmado!</p>
             }
             {!this.state.res.success &&
-              <p className="denied-transaction">Pagamento Negado!</p>
+              <p className="denied-transaction">Pagamento não autorizado.</p>
             }
             <div className="item-transaction">
               <p>Transação</p>
@@ -59,11 +62,11 @@ class ConfirmPayment extends Component{
             </div>
             <div className="item-transaction">
               <p>Data</p>
-              <p>8888888</p>
+              <p>{this.state.dateTransaction}</p>
             </div>
             <div className="item-transaction">
               <p>Cartão</p>
-              <p>**** **** **** {selectedCard.cardNumber.slice(-4)}</p>
+              <p>**** **** **** {this.state.selectedCard.cardNumber.slice(-4)}</p>
             </div>
             <div className="item-transaction">
               <p>Valor</p>

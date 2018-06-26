@@ -70,7 +70,9 @@
 }
 
 .spinner > div{
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 64px;
   height: 64px;
 }

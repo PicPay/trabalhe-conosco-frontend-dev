@@ -1,6 +1,10 @@
 .container-form{
   width: 90%;
   margin-top: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 form, form .container-input{
