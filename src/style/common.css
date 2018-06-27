@@ -74,4 +74,13 @@ p{
   body{
     font-size: 50%;
   }
+  p{
+    color: #fff;
+  }
+  .btn-action-user{
+    width: 90%;
+  }
+  svg.card-icon path{
+		fill: #7de6c6;
+	}
 }

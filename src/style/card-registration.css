@@ -10,3 +10,21 @@
 form, form .container-input{
   width: 100%;
 }
+
+@media screen and (max-width: 800px){
+  .container-input label {
+	  color: #fff;
+	}
+  .MuiInput-underline-9::before{
+    border-bottom: 1px solid #fff !important;
+  }
+  .MuiInput-underline-9::after{
+    border-bottom: 2px solid #fff !important;
+  }
+  .MuiFormLabel-focused-24{
+    color: #fff !important;
+  }
+  .MuiFormLabel-root-23 {
+	  color: #fff !important;
+	}
+}

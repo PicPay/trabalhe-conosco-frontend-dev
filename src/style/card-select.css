@@ -46,16 +46,16 @@
 }
 
 .active-card::after{
-  width: 40px;
-  height: 40px;
-  background-size: 40px 40px;
+  width: 25px;
+  height: 25px;
+  background-size: 25px 25px;
   content: ' ';
   background-image: url('../images/check-mark.svg');
   position: absolute;
   right: 90px;
 }
 
-.item-card img{
+.item-card svg{
   margin-right: 16px;
 }
 
@@ -70,6 +70,18 @@
   cursor: pointer;
 }
 
-.btn-add-card img{
+.btn-add-card svg{
   margin-right: 16px;
+}
+
+@media screen and (max-width: 800px){
+  .item-card:hover, .active-card{
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .active-card::after{
+    right: 20px;
+  }
+  .icon-add path{
+    fill: #7de6c6;
+  }
 }

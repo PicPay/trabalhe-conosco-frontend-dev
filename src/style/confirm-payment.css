@@ -47,7 +47,8 @@
 
 .btn-back{
   height: 48px;
-  background-color: #fff;
+  background-color: transparent;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   border-radius: 24px;
   border: solid 1px #474971;
   font-family: Roboto;
@@ -83,8 +84,8 @@
   height: 46px;
   margin: 1px;
   border-radius: 50%;
-  border: 5px solid #454545;
-  border-color: #454545 transparent #454545 transparent;
+  border: 5px solid #7de6c6;
+  border-color: #7de6c6 transparent #7de6c6 transparent;
   animation: spinner 1.2s linear infinite;
 }
 @keyframes spinner {
@@ -93,5 +94,18 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 800px){
+  .item-transaction p:nth-child(2){
+    color: #7de6c6;
+  }
+  .container-btn{
+    justify-content: space-around;
+  }
+  .btn-back{
+    border: 1px solid #fff;
+    color: #fff;
   }
 }

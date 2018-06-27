@@ -112,6 +112,7 @@
 
 .box-credit-card{
   display: flex;
+	align-items: center;
   margin-top: 20px;
 	cursor: pointer;
 }
@@ -159,7 +160,8 @@
 	}
 	.line-divider{
 		color: #474971;
-		width: 327px;
+		width: 90%;
+		margin-top: 10px;
 	}
 	.container-user{
 	  box-shadow: none;
