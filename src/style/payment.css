@@ -1,0 +1,172 @@
+.top-bar-payment{
+	width: 100%;
+	height: 51px;
+	margin-top: -2px;
+  border-radius: 6px 6px 0 0;
+  background-color: #474971;
+	padding: 16px 24px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.text-top-bar{
+	font-family: Roboto;
+  font-size: 16px;
+	color: #fff;
+}
+
+.text-top-bar span{
+	color: #7de6c6;
+}
+
+.btn-close-modal{
+	color: #fff;
+	background-color: transparent;
+	border: none;
+	display: flex;
+	align-items: center;
+}
+
+.btn-x{
+	background: url(../images/shape-copy.svg);
+	width: 14px;
+  height: 14px;
+}
+
+.container-user{
+  width: 100%;
+  height: 120px;
+  padding: 20px 40px;
+  box-shadow: 0 1px 0 0 #ffffff, 0 -1px 0 0 #ffffff;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-user > div{
+  display: flex;
+  align-items: center;
+}
+
+.container-user  .user-title, .container-user .user-id p{
+  color: #474971;
+}
+
+.container-user .user-avatar{
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  border: solid 2px #ffffff;
+  background-size: contain;
+}
+
+.input-money{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.input-money input{
+  width: 256px;
+  height: 60px;
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #7de6c6;
+}
+
+.input-money input::-webkit-input-placeholder {
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #d8d8d8;
+}
+.input-money input::-moz-placeholder {
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #d8d8d8;
+}
+.input-money input:-ms-input-placeholder {
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #d8d8d8;
+}
+.input-money input:-moz-placeholder {
+  text-align: center;
+  font-size: 48px;
+  font-family: Roboto;
+  color: #d8d8d8;
+}
+
+.line-divider{
+  width: 560px;
+  height: 1px;
+  background-color: #d8d8d8;
+  margin-top: 40px;
+}
+
+.box-credit-card{
+  display: flex;
+	align-items: center;
+  margin-top: 20px;
+	cursor: pointer;
+}
+
+.box-credit-card p{
+  font-family: Roboto;
+  font-size: 14px;
+  margin-left: 12px;
+}
+
+.box-credit-card p:nth-child(2){
+  font-weight: bold;
+}
+
+.alert-card p{
+	color: #ef5778;
+}
+
+@media screen and (max-width: 800px){
+	.container-user  .user-title, .container-user .user-id p{
+	  color: #fff;
+	}
+	.container-user .user-avatar{
+		width: 80px;
+	  height: 80px;
+		border-radius: 40px;
+	  border: solid 2px #ffffff;
+	  background-size: contain;
+	}
+
+	.input-money input::-webkit-input-placeholder {
+	  color: #fff;
+	}
+	.input-money input::-moz-placeholder {
+	  color: #fff;
+	}
+	.input-money input:-ms-input-placeholder {
+	  color: #fff;
+	}
+	.input-money input:-moz-placeholder {
+	  text-align: center;
+	  font-size: 48px;
+	  font-family: Roboto;
+	  color: #d8d8d8;
+	}
+	.line-divider{
+		color: #474971;
+		width: 90%;
+		margin-top: 10px;
+	}
+	.container-user{
+	  box-shadow: none;
+	}
+	.btn-payment-user{
+		width: 80%;
+	}
+}

@@ -1,0 +1,36 @@
+.container-form{
+  width: 90%;
+  margin-top: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form, form .container-input{
+  width: 100%;
+}
+
+@media screen and (max-width: 800px){
+  .container-input label {
+	  color: #fff;
+	}
+  .MuiInput-underline-9::before{
+    border-bottom: 1px solid #fff !important;
+  }
+  .MuiInput-underline-9::after{
+    border-bottom: 2px solid #7de6c6 !important;
+  }
+  .MuiFormLabel-focused-24{
+    color: #7de6c6 !important;
+  }
+  .MuiFormLabel-root-23 {
+	  color: #fff !important;
+	}
+  .MuiFormLabel-focused-28 {
+	  color: #7de6c6 !important;
+	}
+  .container-form input{
+    color: #fff !important;
+  }
+}
