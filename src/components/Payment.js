@@ -53,6 +53,7 @@ class Payment extends Component{
               prefix={'R$ '}
               decimalScale={2}
               fixedDecimalScale={true}
+              type='tel'
               value={this.state.money}
               onChange={this.handleMoney}
             />

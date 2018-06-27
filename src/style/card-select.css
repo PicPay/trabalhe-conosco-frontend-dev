@@ -75,6 +75,12 @@
 }
 
 @media screen and (max-width: 800px){
+  .container-cards{
+    margin-top: 30px;
+  }
+  .box-cards{
+    margin-top: 20px;
+  }
   .item-card:hover, .active-card{
     background-color: rgba(255, 255, 255, 0.1);
   }

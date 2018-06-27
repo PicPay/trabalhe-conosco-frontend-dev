@@ -2,8 +2,6 @@
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	margin-left: -320px;
-	margin-top: -237px;
 	outline: none;
 }
 
@@ -57,8 +55,9 @@
 	.modal-box{
 		background-image: linear-gradient(211deg, #3c3e64, #1d1e2a);
 		width: 100vw;
+		height: auto;
 		overflow-y: auto;
-		position: fixed;
+		position:static;
 		left: 0;
 		top: 0;
 		margin-left: 0;
@@ -67,6 +66,7 @@
 	}
 	.backdrop {
 		background-image: linear-gradient(211deg, #3c3e64, #1d1e2a);
-		background-color: rgba(0,0,0,1);
+		background-color: rgba(255,255,255,1);
+		align-items: flex-start;
 	}
 }

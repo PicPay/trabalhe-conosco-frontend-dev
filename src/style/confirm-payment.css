@@ -98,11 +98,15 @@
 }
 
 @media screen and (max-width: 800px){
-  .item-transaction p:nth-child(2){
-    color: #7de6c6;
+  .container-transaction, .spinner{
+    margin-top: 20px;
   }
   .container-btn{
+    margin-top: 20px;
     justify-content: space-around;
+  }
+  .item-transaction p:nth-child(2){
+    color: #7de6c6;
   }
   .btn-back{
     border: 1px solid #fff;

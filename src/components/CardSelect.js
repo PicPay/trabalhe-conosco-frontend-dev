@@ -35,7 +35,6 @@ class CardSelect extends Component{
 
     const cards = getCards();
 
-
     return(
       <div className="backdrop">
         <div className="modal-box modal-card">
@@ -63,7 +62,6 @@ class CardSelect extends Component{
                   </li>
                 }
               )}
-
 
             </ul>
             <p className="btn-add-card" onClick={() => onCardModal(contact)}>

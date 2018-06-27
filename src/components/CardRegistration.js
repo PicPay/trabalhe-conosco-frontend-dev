@@ -50,6 +50,7 @@ class CardRegistration extends Component{
       cep: this.state.cep,
     }
 
+    /* Verifica se o input está em branco */
     if (this.state.cardFlag === ''){
       this.setState({errorCardFlag: 'Selecione a bandeira do cartão.'});
     } if (this.state.name === ''){
@@ -82,9 +83,6 @@ class CardRegistration extends Component{
 
       this.props.onPaymentContact(this.props.contact)
     }
-
-
-
   };
 
   render(){
@@ -92,7 +90,6 @@ class CardRegistration extends Component{
       <div className="backdrop">
         <div className="modal-box modal-card">
           <TopBar text={"Cadastro Cartão de Crédito"} CloseModal={this.props.onCloseModal}/>
-
 
             <form autoComplete="off" className="container-form">
               <FormControl className="container-input">
@@ -125,6 +122,7 @@ class CardRegistration extends Component{
                   name="cardNumber"
                   customInput={Input}
                   format="################"
+                  type='tel'
                   value={this.state.cardNumber}
                   onChange={this.handleChange}
                 />
@@ -138,6 +136,7 @@ class CardRegistration extends Component{
                   name="expirationDate"
                   customInput={Input}
                   format="##/####"
+                  type='tel'
                   value={this.state.expirationDate}
                   onChange={this.handleChange}
                 />
@@ -151,6 +150,7 @@ class CardRegistration extends Component{
                   name="cvv"
                   customInput={Input}
                   format="###"
+                  type='tel'
                   value={this.state.cvv}
                   onChange={this.handleChange}
                 />
@@ -164,6 +164,7 @@ class CardRegistration extends Component{
                   name="cep"
                   customInput={Input}
                   format="#####-###"
+                  type='tel'
                   value={this.state.cep}
                   onChange={this.handleChange}
                 />
@@ -174,10 +175,7 @@ class CardRegistration extends Component{
                 Cadastrar
               </button>
 
-
             </form>
-
-
 
         </div>
       </div>

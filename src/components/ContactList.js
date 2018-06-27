@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ContainerUser from './ContainerUser'
 
-
 class ContactList extends Component{
 
   static propTypes = {
