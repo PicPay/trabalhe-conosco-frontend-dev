@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row py-2 header-dialog align-items-center">
+    <div class="col">
+      <h3 class="mat-h3 m-0">Cadastro Cartão de Crédito</h3>
+    </div>
+    <div class="col">
+      <button mat-icon-button class="float-right" (click)="closeDialog()">
+          <mat-icon>close</mat-icon>
+        </button>
+    </div>
+  </div>
+</div>
+
+<div class="container register-credit-card">
+
+  <perfect-scrollbar>
+    <form [formGroup]="formGroup" class="form-register">
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-select placeholder="Selecione a bandeira" formControlName="brand">
+              <mat-option *ngFor="let card of creditCard" [value]="card.brand">
+                {{ card?.brand }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <input matInput placeholder="Nome escrito no cartão" formControlName="owner">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <input matInput mask-number [mask]="'9999 9999 9999 9999'" placeholder="Número do cartão" formControlName="number">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <input matInput mask-number [mask]="'99/9999'" [maskkOutput]="true" placeholder="Validade (mm/aaaa)" formControlName="validateCard">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <input matInput mask-number [mask]="'999'" placeholder="Código de segurança" formControlName="securityCode">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <input matInput mask-number [mask]="'99.999-999'" placeholder="CEP do endereço da fatura" formControlName="cep">
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </perfect-scrollbar>
+
+  <br/>
+
+  <div class="row text-center">
+    <div class="col">
+      <button (click)="registerCard()" type="submit" class="btn-register">CADASTRAR</button>
+    </div>
+  </div>
+
+</div>

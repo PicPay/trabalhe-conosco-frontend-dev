@@ -1,0 +1,22 @@
+<div class="container" [style.height.px]="heightPage" (window:resize)="onResize($event)">
+  <perfect-scrollbar>
+    <mat-list class="p-0">
+      <div *ngFor="let user of users">
+        <mat-list-item (click)="payToUser(user)">
+          <img matListAvatar class="avatar" [src]="user.img">
+          <h3 matLine> {{user.name}} </h3>
+          <p matLine>
+            <span class="demo-2"> id: {{ user.id }} {{ user.username }} </span>
+          </p>
+          <div>
+            <img src="assets/img/pagar/pagar.png">
+          </div>
+          <button mat-button [disabled]="true" class="btn-teste">
+                PAGAR <mat-icon>keyboard_arrow_right</mat-icon>
+              </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+  </perfect-scrollbar>
+</div>

@@ -1,0 +1,139 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+
+//
+// Color system
+//
+
+$fonte-color:    #58595b  !default;
+
+// stylelint-disable
+$black:          #000000 !default;
+$cool-grey:      #ACB1BD !default;
+$dark:           #1D1E2A !default;
+$duck-egg-blue:  #B4F4E5 !default;
+$dusk:           #3C3e64 !default;
+$dusk-two:       #3C3e64 !default;
+$light-green:    #7de6c6 !default;
+$light-teal-two: #A1F0DA !default;
+$medium-pink:    #EF5778 !default;
+$pine-green:     #05181C !default;
+$white:          #FFFFFF !default;
+$white-two:      #D8D8D8 !default;
+
+$dusk-two-24:   rgba(71, 73, 113, 0.24) !default;
+$light-teal-24: rgba(125, 230, 198, 0.24) !default;
+$white-10:      rgba(255, 255, 255, 0.10) !default;
+$white-24:      rgba(255, 255, 255, 0.24) !default;
+
+$colors: () !default;
+$colors: map-merge((
+
+  "black": $black,
+  "cool-grey": $cool-grey,
+  "dark": $dark,
+  "duck-egg-blue": $duck-egg-blue,
+  "dusk": $dusk,
+  "dusk-two": $dusk-two,
+  "light-green": $light-green,
+  "light-teal-two": $light-teal-two,
+  "medium-pink": $medium-pink,
+  "pine-green": $pine-green,
+  "white": $white,
+  "white-two": $white-two,
+  "dusk-two-24": $dusk-two-24,
+  "light-teal-24": $light-teal-24,
+  "white-10": $white-10,
+  "white-24": $white-24,
+
+), $colors);
+
+$primary:       $dusk !default;
+$secondary:     $duck-egg-blue !default;
+$danger:        $medium-pink !default;
+$light:         $white-two !default;
+$dark:          $dark !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+), $theme-colors);
+// stylelint-enable
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval:      8% !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 150 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: $dark !default;
+$yiq-text-light: $white !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret:              true !default;
+$enable-rounded:            true !default;
+$enable-shadows:            false !default;
+$enable-gradients:          false !default;
+$enable-transitions:        true !default;
+$enable-hover-media-query:  false !default; // Deprecated, no longer affects any compiled CSS
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+// stylelint-disable
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge((
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3)
+), $spacers);
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default;
+$sizes: map-merge((
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+), $sizes);
+// stylelint-enable
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg:                   $white !default;
+$body-bg2:                   #ecf0f5 !default;
+$body-color:                $fonte-color !default;
+
+
+$font-family-sans-serif:      'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !default;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:            $font-family-sans-serif !default;
+
+$font-family:                 $font-family-sans-serif !default;
+
+$headings-font-family: -apple-system, Caecilia, BlinkMacSystemFont, "Arial", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+$font-size-base:              0.8rem !default; 

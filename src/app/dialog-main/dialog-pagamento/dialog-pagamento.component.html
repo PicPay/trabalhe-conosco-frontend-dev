@@ -1,0 +1,103 @@
+<div class="container-fluid">
+  <div class="row py-2 header-dialog align-items-center">
+    <div class="col">
+      <h3 class="mat-h3 m-0">Pagamento para <span class="username">{{ user.name }}</span></h3>
+    </div>
+    <div class="col">
+      <button mat-icon-button class="float-right" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
+
+<div class="container text-center">
+
+
+  <br/>
+
+  <div class="row align-items-center">
+    <div class="col-9 offset-3 text-left">
+
+      <mat-list>
+        <mat-list-item class="user-info">
+          <img matListAvatar class="user-pic" [src]="user.img" alt="FOTO">
+          <h3 matLine class="username"> {{user.name}} </h3>
+          <p matLine>
+            <span class="demo-2"> id: {{ user.id }} &nbsp; {{ user.username }} </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+
+    </div>
+  </div>
+
+  <br/>
+
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div class="form-input-money">
+        <mat-form-field [floatLabel]="'never'" class="form-input-money">
+          <input matInput mask-money [prefix]="'R$'" name="value" class="input-money" [(ngModel)]="value" />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+
+  <div class="row">
+    <div class="col">
+      <mat-divider class="mx-3"></mat-divider>
+    </div>
+  </div>
+
+  <br/>
+
+  <div *ngIf="!existCard()" class="row no-credit-card">
+    <div class="col-4 pr-0 align-self-center">
+      <mat-icon class="float-right">error</mat-icon>
+    </div>
+    <div class="col-8 text-left">
+      <p matline class="m-0 float-left">
+        Nenhum cartão de crédito cadastrado<br/>
+        <a (click)="registerCard()">Cadastrar agora</a>
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="existCard()" class="row has-credit-card">
+    <div class="col-4 pr-0 align-self-center">
+      <img class="float-right" src="assets/img/pagar/blue.png" />
+    </div>
+    <div class="col-8 text-left">
+      <p matline class="m-0 float-left">
+        Forma de pagamento<br/>
+        <a (click)="changeCard()">Cartão de crédito com final {{ getLastNumbers() }}</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="noAuth">
+    <div class="col-8 offset-4">
+      <p class="m-0 no-auth float-left">Compra não autorizada</p>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="valueNoAuth">
+    <div class="col-8 offset-4">
+      <p class="m-0 no-auth float-left">Insira um valor maior que zero</p>
+    </div>
+  </div>
+
+  <br/>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <button class="btn-pay" [disabled]="!existCard()" (click)="pay()">PAGAR</button>
+    </div>
+  </div>
+
+</div>

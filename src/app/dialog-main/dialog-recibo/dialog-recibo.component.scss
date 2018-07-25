@@ -1,0 +1,57 @@
+@import '~sass/variables';
+
+perfect-scrollbar{ height: 10rem; }
+
+.header-dialog{
+
+    background-color: $dusk-two;
+    color: white;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+
+}
+
+.user-info{
+    
+    color: $dusk-two;
+    font-family: Roboto;
+
+    .user-pic{
+        width: 5rem !important;
+        height: 5rem !important;
+    }
+
+    .username{
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+}
+
+mat-form-field{ width: 100%; }
+
+.btn-receipt{
+    cursor: pointer;
+    background: none;
+    width: 181px;
+    height: 48px;
+    border-radius: 24px;
+    border: solid 1px $dusk-two;
+
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: $dusk-two;
+
+}
+
+.btn-fill{
+    background-image: linear-gradient(to bottom, $duck-egg-blue, $light-green);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}

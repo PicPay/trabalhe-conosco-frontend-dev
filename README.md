@@ -1,43 +1,27 @@
-![PicPay](https://user-images.githubusercontent.com/1765696/26998603-711fcf30-4d5c-11e7-9281-0d9eb20337ad.png)
+# PicpayFrontend
 
-# Teste Frontend
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
-O teste deve ser feito para Web com layout responsivo e é uma simulação de envio de dinheiro para uma outra pessoa via cartão de crédito. 
+## Development server
 
-O layout está disponível em https://zpl.io/VOBNjrQ. Para acessar, use o login *picpay* e senha *picpayfte*.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Você deve fazer um ***Fork*** deste repositório e soliciar um ***Pull Request***, **com seu nome na descrição**, para nossa avaliação.
+## Code scaffolding
 
-O seu usuário deverá escolher uma pessoa em uma lista, informar o valor a ser enviado e finalizar o pagamento com o cartão de crédito cadastrado. Se ele não possuir cartão de crédito cadastrado, deverá informar o dados do cartão (número do cartão, data de validade e CVV, além do id do usuário de destino) antes de finalizar o pagamento.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-Os cartões devem ser persistidos no armazenamento do navegador para serem usados em pagamentos futuros.
+## Build
 
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+## Running unit tests
 
------
-###### Lista de usuários
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Para listar as pessoas que podem receber pagamentos, faça uma requisição para o json nessa url: http://careers.picpay.com/tests/mobdev/users
+## Running end-to-end tests
 
------
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-###### Pagamento
+## Further help
 
-Realizar um `POST` para http://careers.picpay.com/tests/mobdev/transaction com os seguintes atributos:
-+ ID do usuário que irá receber o pagamento
-+ Número do cartão
-+ Vencimento do cartão
-+ CVV
-+ Valor total
-
-``` json
-{  
-   "card_number":"1111111111111111",
-   "cvv":789,
-   "value":79.9,
-   "expiry_date":"01/18",
-   "destination_user_id":1002
-}
-```
-
-## Para fins de teste, o número de cartão 1111111111111111 aprova a transação, qualquer outro recusa. 
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

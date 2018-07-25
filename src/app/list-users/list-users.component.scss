@@ -1,0 +1,14 @@
+@import "~sass/variables";
+
+.avatar{ border: 2px solid white; }
+
+.mat-list-item{
+    background: linear-gradient(to right, $dark -63%, $dusk);
+    color: white;
+    cursor: pointer;
+}
+
+.mat-button[disabled][disabled] {
+    color: white;
+    cursor: pointer;
+}

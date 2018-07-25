@@ -1,0 +1,20 @@
+<app-dialog-pagamento 
+  *ngIf="allowPayDialog()" 
+  (changePage)="changeToRegister($event)">
+</app-dialog-pagamento>
+
+<app-dialog-register-card 
+  *ngIf="allowRegisterCreditCardDialog()"
+  (newCard)="cardRegistered($event)">
+</app-dialog-register-card>
+
+<app-dialog-select-card
+  *ngIf="allowSelectCardDialog()"
+  (changePage)="changeToRegister($event)">
+</app-dialog-select-card>
+
+<app-dialog-recibo
+  *ngIf="allowReceiptDialog()"
+  (changePage)="changeToPayDialog($event)"
+  [value]="value">
+</app-dialog-recibo>

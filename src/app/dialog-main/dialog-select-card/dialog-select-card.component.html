@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <div class="row py-2 header-dialog align-items-center">
+    <div class="col">
+      <h3 class="mat-h3 m-0">Selecionar cartão de crédito</h3>
+    </div>
+    <div class="col">
+      <button mat-icon-button class="float-right" (click)="closeDialog()">
+          <mat-icon>close</mat-icon>
+        </button>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center">
+
+  <perfect-scrollbar class="list-number-cards">
+    <div *ngFor="let card of cards; let i = index">
+
+      <div class="row">
+        <div class="col-6 offset-3">
+          <mat-nav-list>
+            <mat-list-item class="pl-4" (click)="changeFavoriteCard(i)">
+
+              <img src="assets/img/pagar/blue.png" />
+              <span class="mx-3">{{ card.number }}</span>
+              <mat-icon class="pl-2" *ngIf="isFavorite(i)">done</mat-icon>
+
+            </mat-list-item>
+          </mat-nav-list>
+        </div>
+      </div>
+
+    </div>
+  </perfect-scrollbar>
+
+  <br/>
+
+  <div class="row">
+    <div class="col">
+      <mat-divider class="mx-3"></mat-divider>
+    </div>
+  </div>
+
+  <br/>
+
+  <div class="row justify-content-center">
+
+    <div class="col-6 offset-1">
+      <div class="row">
+        <div class="col-2 pr-0 align-self-center">
+          <mat-icon (click)="clickRegisterCard()">add</mat-icon>
+        </div>
+        <div class="col-10 pl-0 text-left">
+          <span (click)="clickRegisterCard()">CADASTRAR NOVO CARTÃO</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mb-5"></div>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <button class="btn-pay" (click)="selectFavoriteCard()">SELECIONAR</button>
+    </div>
+  </div>
+
+</div>

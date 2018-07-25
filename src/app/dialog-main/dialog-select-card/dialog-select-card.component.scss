@@ -1,0 +1,32 @@
+@import '~sass/variables';
+
+.header-dialog{
+    
+    background-color: $dusk-two;
+    color: white;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+
+}
+
+.list-number-cards{ height: 12.5rem; }
+
+.btn-pay{
+    width: 532px;
+    height: 48px;
+    border: none;
+    border-radius: 24px;
+    background-image: linear-gradient(to bottom, $duck-egg-blue, $light-green);
+    background-image: linear-gradient(to bottom, $duck-egg-blue, $light-green);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    color: $dusk-two;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+}

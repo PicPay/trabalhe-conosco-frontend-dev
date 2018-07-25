@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row py-2 header-dialog align-items-center">
+    <div class="col">
+      <h3 class="mat-h3 m-0">Recibo de pagamento</h3>
+    </div>
+    <div class="col">
+      <button mat-icon-button class="float-right" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center">
+
+  <br/>
+
+  <div class="row align-items-center">
+    <div class="col-9 offset-3 text-left">
+
+      <mat-list>
+        <mat-list-item class="user-info">
+          <img matListAvatar class="user-pic" [src]="user.img" alt="FOTO">
+          <h3 matLine class="username"> {{user.name}} </h3>
+          <p matLine>
+            <span class="demo-2"> id: {{ user.id }} &nbsp; {{ user.username }} </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+
+    </div>
+  </div>
+
+  <br/>
+
+  <perfect-scrollbar>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <mat-form-field>
+          <input matInput readonly="true">
+          <span matPrefix>Transação</span>
+          <span matSuffix>888888</span>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 offset-3">
+        <mat-form-field>
+          <input matInput readonly="true">
+          <span matPrefix>Data</span>
+          <span matSuffix>{{ getCurrencyDate() }} - {{ getTime() }}</span>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 offset-3">
+        <mat-form-field>
+          <input matInput readonly="true">
+          <span matPrefix>Cartão</span>
+          <span matSuffix>**** **** **** 1111</span>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 offset-3">
+        <mat-form-field>
+          <input matInput readonly="true">
+          <span matPrefix>Valor</span>
+          <span matSuffix>R$ {{ value }}</span>
+        </mat-form-field>
+      </div>
+    </div>
+  </perfect-scrollbar>
+
+  <br/>
+
+  <div class="row justify-content-center">
+    
+    <div class="col">
+      <button (click)="closeDialog()" class="btn-receipt float-right">VOLTAR</button>
+    </div>
+
+    <div class="col">
+      <button (click)="payAgain()" class="btn-receipt btn-fill float-left">PAGAR NOVAMENTE</button>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,111 @@
+@import '~sass/variables';
+
+.header-dialog{
+
+    background-color: $dusk-two;
+    color: white;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+
+    .username{
+        color: $light-green;
+        font-weight: bold;
+    }
+
+}
+
+.user-info{
+    
+    color: $dusk-two;
+    font-family: Roboto;
+
+    .user-pic{
+        width: 5rem !important;
+        height: 5rem !important;
+    }
+
+    .username{
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+}
+
+.form-input-money > *{
+    width: 100%;
+    text-align: center;
+
+    .input-money{
+        font-size: 48px;
+        text-align: center;
+    }
+
+}
+
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.mat-form-field-empty.mat-form-field-label{
+    font-size: 48px !important;
+    padding-top: 1em !important;
+    top: -1.2em !important;
+}
+
+.btn-pay{
+    cursor: pointer;
+
+    width: 532px;
+    height: 48px;
+
+    border: none;
+    border-radius: 24px;
+    
+    background-image: linear-gradient(to bottom, $duck-egg-blue, $light-green);
+    background-image: linear-gradient(to bottom, $duck-egg-blue, $light-green);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    
+    color: $dusk-two;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+}
+
+.has-credit-card{
+    color: $dusk-two;
+    font-size: 14px;
+
+    a{
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+}
+
+.no-credit-card{
+    color: $danger;
+    font-size: 14px;
+
+    a{
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: $light-teal-two;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: $dusk-two;
+}
+
+.no-auth{
+    color: $danger;
+    font-size: 12px;
+    font-weight: bold;
+}
