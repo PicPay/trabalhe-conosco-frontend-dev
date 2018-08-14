@@ -1,0 +1,16 @@
+
+<app-dialog [visible]="showDialog"></app-dialog>
+<app-new-card [visible]="showNewCard"></app-new-card>
+<app-cards-list [visible]="showCardsList"></app-cards-list>
+<app-finish-payment [visible]="showFinishPayment"></app-finish-payment>
+
+<app-people-item class=""
+  *ngFor="let person of people;let i = index"
+  [person]="person"
+  [index]="i">
+</app-people-item>
+
+
+
+
+

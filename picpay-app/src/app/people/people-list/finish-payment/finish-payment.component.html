@@ -1,0 +1,86 @@
+<div *ngIf="visible" class="dialog">
+
+	<ng-content></ng-content>
+
+  <div class="rectangle-top-desktop">
+    <div class="info-top">
+      <div class="info-top-description">Recibo do pagamento</div>
+    </div>
+    <div class="x-button">
+      <img class="x-img" *ngIf="closable" (click)="close()" src="../../../../assets/shape-copy.svg" >
+    </div>
+  </div>
+
+  <div class="rectangle-top-mobile">
+    <div class="info-top">
+      <div class="arrow-comeback"><</div>
+      <div  (click)="close()" class="comeback">Voltar</div>
+    </div>
+  </div>
+
+  <div class="rectangle-container">
+    <div class="info-container">
+      <div class="info-container-center">
+
+        <div class="profile-img">
+         <img [src]="person.img" class="img-user">
+        </div>
+
+        <div class="info">
+          <div class="user-name"> {{person.name}}</div>
+          <div class="info-id-username">
+            <div class="user-id">id:{{person.id}}</div>
+            <div class="user-username">{{person.username}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="confirm">
+      <div class="confirm-center">
+        Pagamento confirmado!
+      </div>
+    </div>
+
+    <div class="data-container">
+      <div class="data-container-center">
+        <div class="row">
+          <div class="item">Transação</div>
+          <div *ngIf="this.dataPayment !== null" class="value">{{this.dataPayment.transaction}}</div>
+        </div>
+        <div class="line-data"></div>
+
+        <div class="row">
+          <div class="item">Data</div>
+          <div *ngIf="this.dataPayment !== null" class="value">{{this.dataPayment.date | date:'dd/MM/yyyy - HH:mm'}}</div>
+        </div>
+        <div class="line-data"></div>
+
+        <div class="row">
+          <div class="item">Cartão</div>
+          <div  *ngIf="this.dataPayment !== null" class="value">**** **** **** {{this.dataPayment.cardEndNumber }}</div>
+        </div>
+        <div class="line-data"></div>
+
+        <div class="row">
+          <div class="item">Valor</div>
+          <div *ngIf="this.dataPayment !== null" class="value">R$ {{this.dataPayment.value}}</div>
+        </div>
+        <div class="line-data"></div>
+      </div>
+    </div>
+
+      <div class="button">
+        <button class="button-left" (click) ="onComeBack()">
+          <span class="button-text-left">VOLTAR</span>
+        </button>
+        <button class="button-right" (click)="onPayAgain()">
+          <span class="button-text-right">PAGAR NOVAMENTE</span>
+        </button>
+      </div>
+
+
+  </div>
+
+</div>
+<div *ngIf="visible" class="overlay" (click)="close()"></div>

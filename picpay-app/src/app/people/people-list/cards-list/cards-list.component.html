@@ -1,0 +1,64 @@
+<div *ngIf="visible" class="dialog">
+
+	<ng-content></ng-content>
+
+  <div class="rectangle-top-desktop">
+    <div class="info-top">
+      <div class="info-top-description">Cadastro de Cartão de Crédito</div>
+    </div>
+    <div class="x-button">
+      <img class="x-img" *ngIf="closable" (click)="close()" src="../../../../assets/shape-copy.svg" >
+    </div>
+  </div>
+
+  <div class="rectangle-top-mobile">
+    <div class="info-top">
+      <div class="arrow-comeback"><</div>
+      <div  (click)="close()" class="comeback">Voltar</div>
+    </div>
+  </div>
+
+  <div class="rectangle-container">
+    <div class="basic-div">
+      <div class="info-cointainer">Cartões Cadastrados</div>
+    </div>
+
+    <div class="card-div"
+         *ngFor=" let card of creditCards; let i=index">
+      <div (click)="onClickCard(i)" class="cards-div-center">
+        <div class="cards-info">
+          <div class="card-img-div">
+            <img class="card-img-blue" src="../../../../assets/blue.svg">
+            <img class="card-img-white" src="../../../../assets/green.svg">
+          </div>
+          <div class="card-number">{{card.number}}</div>
+          <div *ngIf="i===selectedCardIndex" class="card-selected">
+            <img class="selected-img" src="../../../../assets/check-mark.svg">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="line">
+      <div class="line-center"></div>
+    </div>
+
+    <div  class="new-card">
+      <div class="new-card-center" (click)="onAddNewCard()">
+        <div class="plus">
+          <img class="plus-img-blue" src="../../../../assets/plus.svg">
+          <img class="plus-img-green" src="../../../../assets/plus-green.svg">
+        </div>
+        <div class="new-card-msg">Cadastrar novo cartão</div>
+      </div>
+    </div>
+
+    <div class="button">
+        <button class="button-center" (click)="onSelecCard()">
+          <span class="payment-text" >SELECIONAR CARTÃO</span>
+        </button>
+      </div>
+  </div>
+
+</div>
+<div *ngIf="visible" class="overlay" (click)="close()"></div>

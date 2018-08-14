@@ -1,0 +1,86 @@
+<div *ngIf="visible" class="dialog">
+	<ng-content></ng-content>
+
+    <div class="rectangle-top-desktop">
+      <div class="info-top">
+        <div class="info-top-description">Cadastro Cartão de Crédito</div>
+      </div>
+      <div class="x-button">
+        <img class="x-img" *ngIf="closable" (click)="close()" src="../../../../assets/shape-copy.svg" >
+      </div>
+    </div>
+
+    <div class="rectangle-top-mobile">
+    <div class="info-top">
+      <div class="arrow-comeback"><</div>
+      <div  (click)="close()" class="comeback">Voltar</div>
+    </div>
+  </div>
+
+ <div class="rectangle-container">
+    <form [formGroup]="newCardForm" (ngSubmit)="onSubmit()" autocomplete="off" >
+
+      <div class="input-div">
+        <div class="input-div-center">
+          <label *ngIf="newCardForm.get('bandeira').value !== ''" class="description"  for="bandeira">Selecione a bandeira</label>
+          <input  formControlName="bandeira" id="bandeira" placeholder="Selecione a bandeira" >
+          <div [ngStyle]="{'border-color': newCardForm.get('bandeira').value !== '' ? '#474971': '#dae1f0'}" class="line-desktop"></div>
+          <div [ngStyle]="{'border-color': newCardForm.get('bandeira').value !== '' ? '#7de6c6': '#dae1f0'}" class="line-mobile"></div>
+        </div>
+      </div>
+
+      <div class="input-div">
+        <div class="input-div-center">
+          <label *ngIf="newCardForm.get('nomeEscritoCartao').value !== ''" class="description"  for="nomeEscritoCartao">Nome Escrito no Cartão</label>
+          <input formControlName="nomeEscritoCartao" id="nomeEscritoCartao" placeholder="Nome Escrito no Cartão" >
+          <div [ngStyle]="{'border-color': newCardForm.get('nomeEscritoCartao').value !== '' ? '#474971': '#dae1f0'}" class="line-desktop"></div>
+          <div [ngStyle]="{'border-color': newCardForm.get('nomeEscritoCartao').value !== '' ? '#7de6c6': '#dae1f0'}" class="line-mobile"></div>
+        </div>
+      </div>
+
+
+
+      <div class="input-div"> <div class="input-div">
+        <div class="input-div-center">
+          <label *ngIf="newCardForm.get('numeroCartao').value !== ''" class="description"  for="numeroCartao">Número do Cartão</label>
+          <input formControlName="numeroCartao" id="numeroCartao" placeholder="Número do Cartão" >
+          <div [ngStyle]="{'border-color': newCardForm.get('numeroCartao').value !== '' ? '#7de6c6': '#dae1f0'}" class="line-mobile"></div>
+          <div [ngStyle]="{'border-color': newCardForm.get('numeroCartao').value !== '' ? '#474971': '#dae1f0'}" class="line-desktop"></div>
+        </div>
+      </div>
+        <div class="input-div-center">
+          <label *ngIf="newCardForm.get('validade').value !== ''" class="description"  for="validade">Validade (mm/aaaa)</label>
+          <input formControlName="validade" id="validade" placeholder="Validade (mm/aaaa)" >
+          <div [ngStyle]="{'border-color': newCardForm.get('validade').value !== '' ? '#474971': '#dae1f0'}" class="line-desktop"></div>
+          <div [ngStyle]="{'border-color': newCardForm.get('validade').value !== '' ? '#7de6c6': '#dae1f0'}" class="line-mobile"></div>
+        </div>
+      </div>
+
+      <div class="input-div">
+        <div class="input-div-center">
+          <label *ngIf="newCardForm.get('codigoSeguranca').value !== ''" class="description"  for="codigoSeguranca">Código de Seguranca</label>
+          <input formControlName="codigoSeguranca" id="codigoSeguranca" placeholder="Código de Seguranca" >
+          <div [ngStyle]="{'border-color': newCardForm.get('codigoSeguranca').value !== '' ? '#7de6c6': '#dae1f0'}" class="line-mobile"></div>
+          <div [ngStyle]="{'border-color': newCardForm.get('codigoSeguranca').value !== '' ? '#474971': '#dae1f0'}" class="line-desktop"></div>
+        </div>
+      </div>
+
+      <div class="input-div">
+        <div class="input-div-center">
+          <label *ngIf="newCardForm.get('CEP').value !== ''" class="description" for="CEP">CEP do endereço de fatura</label>
+          <input formControlName="CEP" id="CEP" placeholder="CEP do endereço de fatura" >
+          <div [ngStyle]="{'border-color': newCardForm.get('CEP').value !== '' ? '#7de6c6': '#dae1f0'}" class="line-mobile"></div>
+          <div [ngStyle]="{'border-color': newCardForm.get('CEP').value !== '' ? '#474971': '#dae1f0'}" class="line-desktop"></div>
+        </div>
+      </div>
+
+      <div class="button">
+        <button class="button-center" [disabled]="!newCardForm.valid">
+          <span class="text">CADASTRAR</span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+<div *ngIf="visible" class="overlay" (click)="close()"></div>

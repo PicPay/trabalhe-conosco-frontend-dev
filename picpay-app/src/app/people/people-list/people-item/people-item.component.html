@@ -1,0 +1,19 @@
+ <div (click)="onClick()" class = "people-item" >
+
+   <div class="profile-img">
+     <img [src]="person.img" class="img-user">
+   </div>
+   <div class="info">
+    <div class="user-name"> {{person.name}}</div>
+     <div class="info-id-username">
+       <div class="user-id">id:{{person.id}}</div>
+       <div class="user-username">{{person.username}}</div>
+     </div>
+   </div>
+   <div class="payment">
+     <img class="img-payment" src="../../../../assets/pagar.svg" >
+     <div class="payment-item">PAGAR</div>
+     <img class="img-arrow" src="../../../../assets/down.svg" >
+
+   </div>
+</div>
