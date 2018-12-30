@@ -1,0 +1,40 @@
+<nav class="teal accent-3">
+  <div class="row">
+    <div class="container">
+      <img align="middle" src="assets/group-4.svg">
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <mz-collection class="container">
+    <ng-container *ngFor="let pessoa of pessoas">
+      <mz-collection-item class="grad" [avatar]="true">
+        <div class="row fix">
+          <div class="col s7">
+            <img mz-avatar src={{pessoa.img}}>
+            <div class="title white-text text-darken-2 truncate">{{pessoa.name}}</div>
+            <div class="white-text text-darken-2">{{pessoa.id}}</div>
+            <div class="white-text text-darken-2"> {{pessoa.username}}</div>
+          </div>
+          <div class="col s5 right-align">
+            <a href="#">
+              <div class="col s9 right-align fixx ">
+                <i class="waves-effect waves-circle waves-light btn-floating" mz-icon-mdi [icon]="'currency-usd'"></i>
+                <span class="hide-on-small-only pagar">PAGAR</span>
+              </div>
+              <div class="col s3 left-align fix">
+                <i class="medium material-icons" mz-icon-mdi [icon]="'chevron-right'" [size]="'large'"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </mz-collection-item>
+    </ng-container>
+  </mz-collection>
+
+</div>
+
+
+
+
+
