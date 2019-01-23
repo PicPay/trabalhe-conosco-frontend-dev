@@ -1,0 +1,65 @@
+  <mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions" >
+      <mz-modal-header *ngIf="selecionado">
+        <nav class="Rectangle-5-Copy">
+          <div class="row">
+            <div class="col s6 topModal">
+              <span>Pagamento para </span><span class="nomeModal">{{selecionado.name}}</span>
+            </div>
+            <div class="col s6 right-align fix iconx">
+              <button class="iconx" mz-button mz-modal-close [flat]="true"><i mz-icon [icon]="'close'" [size]="'large'"></i></button>
+            </div>
+          </div>
+        </nav>
+      </mz-modal-header>
+      <mz-modal-content>
+        <div class="row">
+                <div class="row espacoTop">
+                  <div class="col s6 right-align">
+                    <img src={{selecionado?.img}} alt="" class="circle responsive-img">
+                  </div>
+                  <div class="col s6 textModal">
+                    <div class="name">{{selecionado?.name}}</div>
+                    <div>id: {{selecionado?.id}}</div>
+                    <div> {{selecionado?.username}}</div>
+                  </div>
+                </div>
+          <div class="col s4 offset-s4 left-align input espacoTop">
+            <input placeholder="R$ 0,00" type="number">
+          </div>
+
+        </div>
+      </mz-modal-content>
+      <mz-modal-footer>
+        <div class="container">
+          <div *ngIf="cartoes.length==0" class="row alert">
+            <div class="col s4 right-align">
+              <i mz-icon [align]="'center'" [icon]="'error'" [size]="'small'"></i>
+            </div>
+            <div class="col s7 left-align">
+              <span>
+                Nenhum cartão de credito cadastrado.<br />
+                <a mz-modal-close href="#" (click)="openServiceModal('cartao')" class="alert" style=" font-weight: bold;"><u>Cadastrar agora</u></a>
+              </span>
+            </div>
+          </div>
+          <div *ngIf="cartoes.length>0" class="row name-copy-4 ">
+            <div class="col s4 right-align">
+              <i mz-icon [align]="'center'" [icon]="'credit_card'" [size]="'small'"></i>
+            </div>
+            <div class="col s7 left-align">
+              <span>
+                Forma de Pagamento:<br />
+                <a href="#" mz-modal-close (click)="openServiceModal('cartao')" class="name-copy-4 " style=" font-weight: bold;">Cartão de Crédito com final {{cartoes[0].numero.substring(12)}}</a>
+              </span>
+            </div>
+          </div>
+          <div class="col s12 center-align">
+            <button mz-button mz-modal-close class="center-align" style="width: 376px;">Pagar</button>
+          </div>
+        </div>
+      </mz-modal-footer>
+  </mz-modal>
+
+
+
+

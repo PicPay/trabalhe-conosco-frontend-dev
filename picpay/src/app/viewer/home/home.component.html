@@ -5,7 +5,7 @@
     </div>
   </div>
 </nav>
-<div class="container">
+<div [class.container]="!(smallResolution | async)">
   <mz-collection class="container">
     <ng-container *ngFor="let pessoa of pessoas">
       <mz-collection-item class="grad" [avatar]="true">
@@ -13,11 +13,11 @@
           <div class="col s7">
             <img mz-avatar src={{pessoa.img}}>
             <div class="title white-text text-darken-2 truncate">{{pessoa.name}}</div>
-            <div class="white-text text-darken-2">{{pessoa.id}}</div>
+            <div class="white-text text-darken-2">id: {{pessoa.id}}</div>
             <div class="white-text text-darken-2"> {{pessoa.username}}</div>
           </div>
           <div class="col s5 right-align">
-            <a href="#">
+            <a href="#" (click)="openServiceModal('pagamento', pessoa)">
               <div class="col s9 right-align fixx ">
                 <i class="waves-effect waves-circle waves-light btn-floating" mz-icon-mdi [icon]="'currency-usd'"></i>
                 <span class="hide-on-small-only pagar">PAGAR</span>
@@ -31,7 +31,6 @@
       </mz-collection-item>
     </ng-container>
   </mz-collection>
-
 </div>
 
 

@@ -5,16 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MzButtonModule, MzInputModule, MzCollectionModule, MzIconModule, MzIconMdiModule, MzNavbarModule } from 'ngx-materialize';
+import { MzButtonModule, MzInputModule, MzCollectionModule, MzIconModule, MzIconMdiModule, MzNavbarModule, MzModalModule, MzMediaModule, MzSelectModule  } from 'ngx-materialize';
 import { HomeComponent } from './viewer/home/home.component';
 import { PessoaService } from './services/pessoaService';
+import { ModalPagamentoComponent } from './viewer/modalPagamento/modalPagamento.component';
+import { ModalCartaoComponent } from './viewer/modalCartao/modalCartao.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ModalPagamentoComponent,
+    ModalCartaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,8 +32,14 @@ import { PessoaService } from './services/pessoaService';
     MzIconMdiModule,
     MzNavbarModule,
     HttpClientModule,
+    MzModalModule,
+    MzMediaModule,
+    MzSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [PessoaService],
-  bootstrap: [AppComponent]
+  entryComponents: [ModalPagamentoComponent, ModalCartaoComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+
+.modal .modal-footer {
+  height: 20%;
+}
+
+.modal .modal-content {
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 2.5rem;
+}

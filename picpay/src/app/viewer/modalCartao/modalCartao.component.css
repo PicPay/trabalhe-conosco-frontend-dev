@@ -1,0 +1,63 @@
+.nomeModal {
+  color: #7de6c6;
+}
+
+.fix {
+  padding-left: 0px;
+  padding-right: 0px;
+  color: #d8d8d8;
+  margin-bottom: 0px;
+}
+
+
+.espacoTop {
+  padding-top: 10px;
+}
+
+
+
+.Rectangle-5-Copy {
+  border-radius: 3px;
+  background: #474971;
+}
+
+.topModal {
+  padding-left: 25px;
+}
+
+.name {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.textModal {
+  padding-top: 30px;
+}
+
+.alert {
+  font-family: Roboto;
+
+  text-align: left;
+  color: #ef5778;
+  margin-bottom: 0px;
+}
+
+.iconx {
+  padding-top: -90px;
+  color: white;
+  line-height: 36px;
+}
+
+.cadastrar {
+  background: linear-gradient(to right, #b4f4e5, #7de6c6);
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}

@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\picpayfront",
-    "\\picpayfront\\src",
-    "\\picpayfront\\src\\app"
+    "\\picpay",
+    "\\picpay\\src",
+    "\\picpay\\src\\app",
+    "\\picpay\\src\\app\\viewer"
   ],
-  "SelectedNode": "\\picpayfront\\src\\app",
+  "SelectedNode": "\\picpay\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }
