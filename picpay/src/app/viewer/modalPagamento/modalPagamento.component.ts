@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Pessoa } from 'src/app/model/pessoa.model';
 import { MzBaseModal, MzModalService } from 'ngx-materialize';
-import { ModalCartaoComponent } from 'src/app/viewer/modalCartao/modalCartao.component';
+import { ModalCadastroCartaoComponent } from 'src/app/viewer/modalCadastroCartao/modalCadastroCartao.component';
 import { Cartao } from 'src/app/model/cartao.model';
+import { ModalListaCartaoComponent } from '../modalListaCartao/modalListaCartao.component';
 
 
 
@@ -27,12 +28,13 @@ export class ModalPagamentoComponent extends MzBaseModal {
   }
 
 
+
   public openServiceModal(modal: string, pessoa?: Pessoa) {
-    if (modal == 'pagamento') {
-      this.modalService.open(ModalPagamentoComponent, { selecionado: pessoa });
-    }
     if (modal == 'cartao') {
-      this.modalService.open(ModalCartaoComponent);
+      this.modalService.open(ModalCadastroCartaoComponent, { selecionado: this.selecionado} );
+    }
+    if (modal == 'lista') {
+      this.modalService.open(ModalListaCartaoComponent, { selecionado: this.selecionado});
     }
   }
 

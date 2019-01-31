@@ -15,7 +15,7 @@
       <form [formGroup]="cartaoForm">
         <div class="container">
           <mz-select-container>
-            <select mz-select
+            <select mz-select mz-validation required
                     id="options-select"
                     [placeholder]="'Selecione a bandeira'"
                     formControlName="bandeira">
@@ -26,23 +26,23 @@
 
 
           <mz-input-container>
-            <input mz-input type="text" [label]="'Nome escrito no cartão'" length="150" formControlName="nome">
+            <input mz-input mz-validation  type="text" [label]="'Nome escrito no cartão'" length="150" formControlName="nome" >
           </mz-input-container>
 
           <mz-input-container>
-            <input maxlength="16" mz-input type="text" [label]="'Número do Cartão'" length="16" formControlName="numero">
+            <input mz-input mz-validation  minlength="19" maxlength="19" type="text" [label]="'Número do Cartão'" formControlName="card_number" [brmasker]="{form: cartaoForm.get('card_number'), mask:'0000 0000 0000 00000', len:19, type:'num'}">
           </mz-input-container>
 
           <mz-input-container>
-            <input mz-input type="text" [label]="'Validade (mm/aaaa)'" length="7" formControlName="validade">
+            <input  mz-input mz-validation minlength="7" maxlength="7" type="text" [label]="'Validade (mm/aaaa)'"  length="7" formControlName="expiry_date"  [brmasker]="{form: cartaoForm.get('expiry_date'), mask:'00/0000', len:7, type:'num'}">
           </mz-input-container>
 
           <mz-input-container>
-            <input maxlength="3" mz-input type="text" [label]="'Código de segurança'" length="3" formControlName="codigo">
+            <input  mz-input mz-validation minlength="3" maxlength="3" type="text" [label]="'Código de segurança'" length="3" formControlName="cvv"  [brmasker]="{form: cartaoForm.get('cvv'), mask:'000', len:3, type:'num'}">
           </mz-input-container>
 
           <mz-input-container>
-            <input mz-input type="text" [label]="'CEP do endereço da fatura'" length="7" formControlName="cep">
+            <input mz-input mz-validation minlength="10" maxlength="10" type="text" [label]="'CEP do endereço da fatura'" length="10" formControlName="cep" [brmasker]="{form: cartaoForm.get('cep'), mask:'00.000-000', len:10}">
           </mz-input-container>
 
         </div>
@@ -54,8 +54,7 @@
         </div>
         <div class="row">
           <div class="col s12 center-align">
-            <button  (click)="save()" mz-button mz-modal-close class="center-align cadastrar" style="width: 376px;">Cadastrar</button>
-            {{cartaoForm.value | json}}
+            <button  (click)="save(bottomSheetModal)" mz-button class="center-align cadastrar" style="width: 376px;" [disabled]="!cartaoForm.valid">Cadastrar</button>
           </div>
         </div>
 

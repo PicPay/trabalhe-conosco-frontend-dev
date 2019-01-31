@@ -23,6 +23,7 @@
     "@mdi/font": "^3.2.89",
     "@ng-bootstrap/ng-bootstrap": "^4.0.1",
     "bootstrap": "^4.2.1",
+    "br-mask": "0.0.4",
     "core-js": "^2.5.4",
     "ngx-materialize": "^6.1.3",
     "rxjs": "~6.3.3",

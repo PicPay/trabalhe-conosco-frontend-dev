@@ -9,9 +9,11 @@ import { MzButtonModule, MzInputModule, MzCollectionModule, MzIconModule, MzIcon
 import { HomeComponent } from './viewer/home/home.component';
 import { PessoaService } from './services/pessoaService';
 import { ModalPagamentoComponent } from './viewer/modalPagamento/modalPagamento.component';
-import { ModalCartaoComponent } from './viewer/modalCartao/modalCartao.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MzValidationModule } from 'ngx-materialize'
+import { BrMaskerModule } from 'br-mask';
+import { ModalCadastroCartaoComponent } from './viewer/modalCadastroCartao/modalCadastroCartao.component';
+import { ModalListaCartaoComponent } from './viewer/modalListaCartao/modalListaCartao.component';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HomeComponent,
     ModalPagamentoComponent,
-    ModalCartaoComponent,
+    ModalCadastroCartaoComponent,
+    ModalListaCartaoComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +40,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MzSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    MzValidationModule,
+    BrMaskerModule,
+
   ],
   providers: [PessoaService],
-  entryComponents: [ModalPagamentoComponent, ModalCartaoComponent],
+  entryComponents: [ModalPagamentoComponent, ModalCadastroCartaoComponent, ModalListaCartaoComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

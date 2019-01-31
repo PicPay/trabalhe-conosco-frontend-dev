@@ -4,7 +4,7 @@ import { Pessoa } from 'src/app/model/pessoa.model';
 import { MzMediaService, MzModalService } from 'ngx-materialize';
 import { Observable } from 'rxjs';
 import { ModalPagamentoComponent } from 'src/app/viewer/modalPagamento/modalPagamento.component'
-import { ModalCartaoComponent } from 'src/app/viewer/modalCartao/modalCartao.component'
+import { ModalCadastroCartaoComponent } from 'src/app/viewer/modalCadastroCartao/modalCadastroCartao.component'
 
 @Component({
   selector: 'app-home',
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       this.modalService.open(ModalPagamentoComponent, { selecionado: pessoa });
     }
     if (modal == 'cartao') {
-      this.modalService.open(ModalCartaoComponent);
+      this.modalService.open(ModalCadastroCartaoComponent);
     }
   }
 

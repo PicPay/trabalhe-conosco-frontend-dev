@@ -1,0 +1,58 @@
+<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions">
+    <mz-modal-header>
+      <nav class="Rectangle-5-Copy">
+        <div class="row">
+          <div class="col s6 topModal">
+            <span>Cadastro Cartão de Crédito</span>
+          </div>
+          <div class="col s6 right-align fix iconx">
+            <button class="iconx" mz-button mz-modal-close [flat]="true"><i mz-icon [icon]="'close'" [size]="'large'"></i></button>
+          </div>
+        </div>
+      </nav>
+    </mz-modal-header>
+    <mz-modal-content>
+        <div>
+          <div class="name-copy-7-top"><b> Cartões Cadastrados</b></div>
+          <ng-container *ngFor="let cartao of cartoes; let i = index" >
+            <a href="#" (click)="seleciona(i)">
+
+              <div class="row selected" [class.selected]="i==cartaoSelecionado">
+                <div class="col s5 right-align">
+                  <i mz-icon [align]="'right'" [icon]="'credit_card'" [size]="'small'" class="cor"></i>
+                </div>
+                <div class="col s3 listaCard" style="padding-right: 0px;">
+                  <b class="name-copy-7-bot">{{cartao.card_number}}</b>
+                </div>
+                <div *ngIf="i==cartaoSelecionado" class="col s4 left-align" style="padding-left: 0px;">
+                  <i class="material-icons">done</i>
+                </div>
+              </div>
+            </a>
+          </ng-container>
+        </div>
+    </mz-modal-content>
+    <mz-modal-footer>
+      <div class="container">
+        <a href="#" mz-modal-close (click)="openServiceModal('cartao')">
+          <div class="row"  style="margin-bottom: 10px;">
+            <div class="col s5 plus">
+              <i mz-icon [icon]="'add'"></i>
+            </div>
+            <div class="col s7 " style="padding-left: 0px;">
+              <div class="name-copy-7-bot"><b> Cadastrar novo Cartão</b></div>
+            </div>
+          </div>
+        </a>
+          <div class="row" style="margin-bottom: 0px;">
+            <div class="col s12 center-align" >
+              <button (click)="salvaSelecionado()" mz-modal-close mz-button class="center-align cadastrar" style="width: 376px;">Selecionar</button>
+            </div>
+          </div>
+
+        </div>
+    </mz-modal-footer>
+  </mz-modal>
+
+
+

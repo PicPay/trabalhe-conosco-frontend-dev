@@ -1,9 +1,9 @@
 export class Cartao {
-  numero: number;
+  card_number: number;
   bandeira: String;
   nome: String;
-  validade: String;
-  codigo: number;
+  expiry_date: String;
+  cvv: number;
   cep: String;
   constructor() { }
 }
