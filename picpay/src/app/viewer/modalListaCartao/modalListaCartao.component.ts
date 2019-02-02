@@ -1,10 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { MzBaseModal, MzModalService } from 'ngx-materialize';
 import { Cartao } from 'src/app/model/cartao.model';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ModalCadastroCartaoComponent } from '../modalCadastroCartao/modalCadastroCartao.component';
 import { Pessoa } from 'src/app/model/pessoa.model';
-import { ModalPagamentoComponent } from '../modalPagamento/modalPagamento.component';
+import { Modals } from 'src/app/model/modals.model';
 
 
 @Component({
@@ -14,32 +12,31 @@ import { ModalPagamentoComponent } from '../modalPagamento/modalPagamento.compon
 })
 export class ModalListaCartaoComponent extends MzBaseModal {
   cartoes: Cartao[] = [];
+  modals: Modals = new Modals
   @Input('options') selecionado: Pessoa
   cartaoSelecionado: number;
 
 
   constructor(
-    private formBuilder: FormBuilder,
+
     private modalService: MzModalService,
   ) {
     super();
     if (JSON.parse(localStorage.getItem('key'))) {
       this.cartoes = JSON.parse(localStorage.getItem('key'));
-      console.log(this.cartoes)
     }
   }
 
   ngOnInit() {
     this.cartaoSelecionado = 0;
-    console.log(this.selecionado)
   }
 
   public openServiceModal(modal: string, pessoa?: Pessoa) {
     if (modal == 'cartao') {
-      this.modalService.open(ModalCadastroCartaoComponent, { selecionado: this.selecionado});
+      this.modalService.open(this.modals.modalCadastroCartao, { selecionado: this.selecionado});
     }
     if (modal == 'pagamento') {
-      this.modalService.open(ModalPagamentoComponent, { selecionado: this.selecionado });
+      this.modalService.open(this.modals.modalPagamento, { selecionado: this.selecionado });
     }
   }
 

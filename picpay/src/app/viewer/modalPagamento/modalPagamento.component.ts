@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Pessoa } from 'src/app/model/pessoa.model';
-import { MzBaseModal, MzModalService } from 'ngx-materialize';
-import { ModalCadastroCartaoComponent } from 'src/app/viewer/modalCadastroCartao/modalCadastroCartao.component';
 import { Cartao } from 'src/app/model/cartao.model';
-import { ModalListaCartaoComponent } from '../modalListaCartao/modalListaCartao.component';
+import { MzBaseModal, MzModalService } from 'ngx-materialize';
+import { Modals } from 'src/app/model/modals.model';
+import { Pagamento } from 'src/app/model/pagamento.model';
+import { TransacoesService } from 'src/app/services/transacoesService';
+import { Recibo } from 'src/app/model/recibo.model';
 
 
 
@@ -14,13 +16,17 @@ import { ModalListaCartaoComponent } from '../modalListaCartao/modalListaCartao.
 })
 export class ModalPagamentoComponent extends MzBaseModal {
   @Input('options') selecionado: Pessoa
-  cartoes: Cartao[] = [] 
+  cartoes: Cartao[] = []
+  modals: Modals = new Modals()
+  valor: number = null
+  recibo: Recibo
+  pagamento: Pagamento = new Pagamento
 
   constructor(
     private modalService: MzModalService,
+    private transacoesService: TransacoesService,
   ) {
     super();
-
 
     if (JSON.parse(localStorage.getItem('key'))) {
       this.cartoes = JSON.parse(localStorage.getItem('key'));
@@ -31,11 +37,43 @@ export class ModalPagamentoComponent extends MzBaseModal {
 
   public openServiceModal(modal: string, pessoa?: Pessoa) {
     if (modal == 'cartao') {
-      this.modalService.open(ModalCadastroCartaoComponent, { selecionado: this.selecionado} );
+      this.modalService.open(this.modals.modalCadastroCartao, { selecionado: this.selecionado });
     }
     if (modal == 'lista') {
-      this.modalService.open(ModalListaCartaoComponent, { selecionado: this.selecionado});
+      this.modalService.open(this.modals.modalListaCartao, { selecionado: this.selecionado});
     }
+    if (modal == 'recibo') {
+      this.modalService.open(this.modals.modalRecibo, { recibo: this.recibo});
+    }
+  }
+
+  pagar() {
+    let request
+    if (this.cartoes.length > 0) {
+      this.pagamento.card_number = this.apenasNumeros(this.cartoes[0].card_number)
+      this.pagamento.cvv = this.cartoes[0].cvv
+      this.pagamento.destination_user_id = this.selecionado.id
+      this.pagamento.expiry_date = this.cartoes[0].expiry_date
+      this.pagamento.value = this.valor
+      request = this.transacoesService.postPagamento(this.pagamento)
+      request.subscribe(
+        suc => {
+          this.recibo = suc
+          this.openServiceModal('recibo')   
+        },
+        err => {
+          console.log(err);
+        });
+    }
+    else {
+      this.openServiceModal('cartao')
+    }
+  }
+
+
+  apenasNumeros(campo) {
+    campo = campo.replace(/[^0-9]/g, '');
+    return campo;
   }
 
 }

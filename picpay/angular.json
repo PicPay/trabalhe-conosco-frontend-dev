@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "showCircularDependencies": false,
             "outputPath": "dist/picpay",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -96,6 +97,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
+
             "tsConfig": [
               "src/tsconfig.app.json",
               "src/tsconfig.spec.json"

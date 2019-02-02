@@ -23,9 +23,9 @@
                     <div> {{selecionado?.username}}</div>
                   </div>
                 </div>
-          <div class="col s4 offset-s4 left-align input espacoTop">
-            <input placeholder="R$ 0,00" type="number">
-          </div>
+                <div class="col s4 offset-s4 left-align input espacoTop">
+                  <input placeholder="R$ 0,00" type="number" min="1" step="0.01" [(ngModel)]='valor' (focus)="valor=0">
+                </div>
 
         </div>
       </mz-modal-content>
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="col s12 center-align">
-            <button mz-button mz-modal-close class="center-align" style="width: 376px;">Pagar</button>
+            <button mz-button mz-modal-close class="center-align" style="width: 70%;"  [disabled]="valor<=0 && value==null" (click)="pagar()">Pagar</button>
           </div>
         </div>
       </mz-modal-footer>

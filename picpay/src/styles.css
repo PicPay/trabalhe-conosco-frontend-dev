@@ -14,3 +14,7 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
   margin-bottom: 0px;
   height: 2.5rem;
 }
+
+img.responsive-img, video.responsive-video {
+  max-width: 35%;
+}

@@ -1,7 +1,7 @@
 export class Pessoa {
   id: number;
-  name: String;
-  img: String;
-  username: String;
+  name: string;
+  img: string;
+  username: string;
   constructor() { }
 }

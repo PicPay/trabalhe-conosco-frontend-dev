@@ -1,0 +1,137 @@
+.nomeModal {
+  color: #7de6c6;
+}
+
+.fix {
+  padding-left: 0px;
+  padding-right: 0px;
+  color: #d8d8d8;
+  margin-bottom: 0px;
+}
+
+
+.espacoTop {
+  padding-top: 10px;
+}
+
+
+
+.Rectangle-5-Copy {
+  border-radius: 3px;
+  background: #474971;
+}
+
+.topModal {
+  padding-left: 25px;
+}
+
+.name {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.textModal {
+  padding-top: 30px;
+}
+
+.alert {
+  font-family: Roboto;
+
+  text-align: left;
+  color: #ef5778;
+  margin-bottom: 0px;
+}
+
+.iconx {
+  padding-top: -90px;
+  color: white;
+  line-height: 36px;
+}
+
+.botaov {
+  background: #ffffff;
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  border: 1px solid #474971;
+  margin-right: 2%;
+}
+
+.cadastrar {
+  background: linear-gradient(to right, #b4f4e5, #7de6c6);
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  margin-left: 2%;
+  padding-left: 10px;
+  border-left-width: 10px;
+  padding-right: 10px;
+}
+
+
+.name-copy-7-top {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-family: Roboto;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #474971;
+
+}
+
+
+.name-copy-7-bot {
+  padding-left: 0px;
+  padding-top: 2%;
+  font-family: Roboto;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.listaCard {
+  padding-left: 0px;
+  padding-top: 1%;
+  font-family: Roboto;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.plus {
+  padding-left: 0px;
+  padding-top: 1px;
+  font-family: Roboto;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #474971;
+}
+
+
+.cor {
+  color: #474971;
+  margin-bottom: 10px;
+}
+
+.borda {
+  border-bottom: 1px solid #474971;
+}

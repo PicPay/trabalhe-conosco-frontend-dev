@@ -4,8 +4,8 @@
     "\\picpay",
     "\\picpay\\src",
     "\\picpay\\src\\app",
-    "\\picpay\\src\\app\\viewer"
+    "\\picpay\\src\\app\\services"
   ],
-  "SelectedNode": "\\picpay\\src\\app\\app.component.html",
+  "SelectedNode": "\\picpay\\src\\app\\services\\pessoaService.ts",
   "PreviewInSolutionExplorer": false
 }

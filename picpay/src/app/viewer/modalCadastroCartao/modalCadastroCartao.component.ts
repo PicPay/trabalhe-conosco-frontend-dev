@@ -3,8 +3,7 @@ import { MzBaseModal, MzModalService } from 'ngx-materialize';
 import { Cartao } from 'src/app/model/cartao.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Pessoa } from 'src/app/model/pessoa.model';
-import { ModalPagamentoComponent } from '../modalPagamento/modalPagamento.component';
-import { ModalListaCartaoComponent } from '../modalListaCartao/modalListaCartao.component';
+import { Modals } from 'src/app/model/modals.model';
 
 
 @Component({
@@ -13,6 +12,7 @@ import { ModalListaCartaoComponent } from '../modalListaCartao/modalListaCartao.
   styleUrls: ['./modalCadastroCartao.component.css']
 })
 export class ModalCadastroCartaoComponent extends MzBaseModal {
+  modals: Modals = new Modals
   cartoes: Cartao[] = [] 
   cartaoForm: any
   @Input('options') selecionado: Pessoa
@@ -27,7 +27,6 @@ export class ModalCadastroCartaoComponent extends MzBaseModal {
 
     if (JSON.parse(localStorage.getItem('key'))) {
       this.cartoes = JSON.parse(localStorage.getItem('key'));
-      console.log(this.cartoes)
     }
 
     this.cartaoForm = this.formBuilder.group({
@@ -43,7 +42,6 @@ export class ModalCadastroCartaoComponent extends MzBaseModal {
   save(modal) {
     if (this.cartaoForm.valid) {
       let temp = this.cartaoForm.value
-      //temp.card_number = this.apenasNumeros(temp.card_number)
 
       this.cartoes.push(temp)
       localStorage.setItem('key', JSON.stringify(this.cartoes));
@@ -58,17 +56,14 @@ export class ModalCadastroCartaoComponent extends MzBaseModal {
     }
   }
 
-  apenasNumeros(campo) {
-    campo = campo.replace(/[^0-9]/g, '');
-    return campo;
-  }
+
 
   public openServiceModal(modal: string, pessoa?: Pessoa) {
     if (modal == 'pagamento') {
-      this.modalService.open(ModalPagamentoComponent, { selecionado: this.selecionado });
+      this.modalService.open(this.modals.modalPagamento, { selecionado: this.selecionado });
     }
     if (modal == 'lista') {
-      this.modalService.open(ModalListaCartaoComponent, { selecionado: this.selecionado });
+      this.modalService.open(this.modals.modalListaCartao, { selecionado: this.selecionado });
     }
   }
 

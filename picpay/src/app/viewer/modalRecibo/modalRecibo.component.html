@@ -1,0 +1,78 @@
+<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions">
+    <mz-modal-header>
+      <nav class="Rectangle-5-Copy">
+        <div class="row">
+          <div class="col s6 topModal">
+            <span>Recibo</span>
+          </div>
+          <div class="col s6 right-align fix iconx">
+            <button class="iconx" mz-button mz-modal-close [flat]="true"><i mz-icon [icon]="'close'" [size]="'large'"></i></button>
+          </div>
+        </div>
+      </nav>
+    </mz-modal-header>
+    <mz-modal-content>
+        <div class="row espacoTop" style="margin-bottom: 0px;">
+          <div class="col s6 right-align">
+            <img src={{recibo.transaction.destination_user?.img}} alt="" class="circle responsive-img">
+          </div>
+          <div class="col s6 textModal">
+            <div class="name">{{recibo.transaction.destination_user?.name}}</div>
+            <div>id: {{recibo.transaction.destination_user?.id}}</div>
+            <div> {{recibo.transaction.destination_user?.username}}</div>
+          </div>
+        </div>
+        <div>
+          <div class="name-copy-7-top"><b> Pagamento confirmado!</b></div>
+          <div class="row cor" >
+            <div class="col s1 offset-s4 left-align borda" >
+              Transação
+            </div>
+            <div class="col s3 right-align borda" style="padding-right: 0px;">
+              <b class="name-copy-7-bot">{{recibo.transaction.id}}</b>
+            </div>
+          </div>
+          <div class="row cor">
+            <div class="col s1 offset-s4 left-align borda">
+              Data
+            </div>
+            <div class="col s3 right-align borda" style="padding-right: 0px;">
+              <b class="name-copy-7-bot">{{data | date: 'dd/MM/yy HH:mm'}}</b>
+            </div>
+          </div>
+          <div class="row cor">
+            <div class="col s1 offset-s4 left-align borda">
+              Cartão
+            </div>
+            <div class="col s3 right-align borda" style="padding-right: 0px;">
+              <b class="name-copy-7-bot"> {{cartoes[0].card_number}}</b>
+            </div>
+          </div>
+          <div class="row cor">
+            <div class="col s1 offset-s4 left-align borda">
+              Valor
+            </div>
+            <div class="col s3 right-align borda" style="padding-right: 0px;">
+              <b class="name-copy-7-bot">R${{recibo.transaction.value | number: '1.2-2' }}</b>
+            </div>
+          </div>
+        </div>
+    </mz-modal-content>
+    <mz-modal-footer>
+      <div class="container">
+        <div class="row">
+        </div>
+        <div class="row">
+          <div class="col s6 right-align">
+            <button mz-button mz-modal-close class="center-align botaov">Voltar</button>
+          </div>
+          <div class="col s6 left-align">
+            <button (click)="openServiceModal('pagamento')" mz-button mz-modal-close class="center-align cadastrar">Pagar Novamente</button>
+          </div>
+        </div>
+        </div>
+    </mz-modal-footer>
+  </mz-modal>
+
+
+

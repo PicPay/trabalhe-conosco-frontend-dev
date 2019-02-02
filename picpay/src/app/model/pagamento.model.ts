@@ -1,9 +1,8 @@
-export class Cartao {
+export class Pagamento {
   card_number: number;
-  bandeira: string;
-  nome: string;
+  value: number;
   expiry_date: string;
   cvv: number;
-  cep: string;
+  destination_user_id: number;
   constructor() { }
 }

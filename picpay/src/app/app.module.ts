@@ -14,6 +14,8 @@ import { MzValidationModule } from 'ngx-materialize'
 import { BrMaskerModule } from 'br-mask';
 import { ModalCadastroCartaoComponent } from './viewer/modalCadastroCartao/modalCadastroCartao.component';
 import { ModalListaCartaoComponent } from './viewer/modalListaCartao/modalListaCartao.component';
+import { ModalReciboComponent } from './viewer/modalRecibo/modalRecibo.component';
+import { TransacoesService } from './services/transacoesService';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { ModalListaCartaoComponent } from './viewer/modalListaCartao/modalListaC
     HomeComponent,
     ModalPagamentoComponent,
     ModalCadastroCartaoComponent,
-    ModalListaCartaoComponent
+    ModalListaCartaoComponent,
+    ModalReciboComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +47,8 @@ import { ModalListaCartaoComponent } from './viewer/modalListaCartao/modalListaC
     BrMaskerModule,
 
   ],
-  providers: [PessoaService],
-  entryComponents: [ModalPagamentoComponent, ModalCadastroCartaoComponent, ModalListaCartaoComponent],
+  providers: [PessoaService, TransacoesService],
+  entryComponents: [ModalPagamentoComponent, ModalCadastroCartaoComponent, ModalListaCartaoComponent, ModalReciboComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
