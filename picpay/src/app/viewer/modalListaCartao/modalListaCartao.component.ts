@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { MzBaseModal, MzModalService } from 'ngx-materialize';
+import { MzBaseModal, MzModalService, MzMediaService } from 'ngx-materialize';
 import { Cartao } from 'src/app/model/cartao.model';
 import { Pessoa } from 'src/app/model/pessoa.model';
 import { Modals } from 'src/app/model/modals.model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,13 +16,15 @@ export class ModalListaCartaoComponent extends MzBaseModal {
   modals: Modals = new Modals
   @Input('options') selecionado: Pessoa
   cartaoSelecionado: number;
+  public smallResolution: Observable<boolean>
 
 
   constructor(
-
     private modalService: MzModalService,
+    private mediaService: MzMediaService,
   ) {
     super();
+    this.smallResolution = this.mediaService.isActive('s'); // small screen resolution
     if (JSON.parse(localStorage.getItem('key'))) {
       this.cartoes = JSON.parse(localStorage.getItem('key'));
     }

@@ -1,4 +1,4 @@
-<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions">
+<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions"  [bottomSheet]="!(smallResolution | async) ? '' : true" [fullscreen]="!(smallResolution | async) ? '' : true">
     <mz-modal-header>
       <nav class="Rectangle-5-Copy">
         <div class="row">

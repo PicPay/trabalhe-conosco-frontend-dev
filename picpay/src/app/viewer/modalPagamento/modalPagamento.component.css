@@ -2,20 +2,13 @@
   color: #7de6c6;
 }
 
-.fix {
-  padding-left: 0px;
-  padding-right: 0px;
-  color: #d8d8d8;
-  margin-bottom: 0px;
-}
-
   
 .espacoTop {
   padding-top: 10px;
 }
 
 .input {
-  font-size: 30px;
+  font-size: 200%;
 }
 
 input,
@@ -63,11 +56,6 @@ input::-webkit-input-placeholder {
   font-size: 12px;
 }
 
-.iconx {
-  padding-top: -90px;
-  color: white;
-  line-height: 36px;
-}
 
 .name-copy-4 {
   font-family: Roboto;
@@ -77,4 +65,8 @@ input::-webkit-input-placeholder {
   font-stretch: normal;
   color: #474971;
   text-align: left;
+}
+
+.grad {
+  background: linear-gradient(to right, #1d1e2a, #3c3e64);
 }

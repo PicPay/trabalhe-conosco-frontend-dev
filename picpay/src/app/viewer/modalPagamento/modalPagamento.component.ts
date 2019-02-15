@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Pessoa } from 'src/app/model/pessoa.model';
 import { Cartao } from 'src/app/model/cartao.model';
-import { MzBaseModal, MzModalService } from 'ngx-materialize';
+import { MzBaseModal, MzModalService, MzMediaService } from 'ngx-materialize';
 import { Modals } from 'src/app/model/modals.model';
 import { Pagamento } from 'src/app/model/pagamento.model';
 import { TransacoesService } from 'src/app/services/transacoesService';
 import { Recibo } from 'src/app/model/recibo.model';
+import { Observable } from 'rxjs';
 
 
 
@@ -21,13 +22,16 @@ export class ModalPagamentoComponent extends MzBaseModal {
   valor: number = null
   recibo: Recibo
   pagamento: Pagamento = new Pagamento
+  public smallResolution: Observable<boolean>
 
   constructor(
     private modalService: MzModalService,
     private transacoesService: TransacoesService,
+    private mediaService: MzMediaService,
+
   ) {
     super();
-
+    this.smallResolution = this.mediaService.isActive('s'); // small screen resolution
     if (JSON.parse(localStorage.getItem('key'))) {
       this.cartoes = JSON.parse(localStorage.getItem('key'));
     }

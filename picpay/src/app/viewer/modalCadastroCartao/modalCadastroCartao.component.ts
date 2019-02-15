@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { MzBaseModal, MzModalService } from 'ngx-materialize';
+import { MzBaseModal, MzModalService, MzMediaService } from 'ngx-materialize';
 import { Cartao } from 'src/app/model/cartao.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Pessoa } from 'src/app/model/pessoa.model';
 import { Modals } from 'src/app/model/modals.model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -16,15 +17,17 @@ export class ModalCadastroCartaoComponent extends MzBaseModal {
   cartoes: Cartao[] = [] 
   cartaoForm: any
   @Input('options') selecionado: Pessoa
+  public smallResolution: Observable<boolean>
 
 
 
   constructor(
     private formBuilder: FormBuilder,
     private modalService: MzModalService,
+    private mediaService: MzMediaService,
   ) {
     super();
-
+    this.smallResolution = this.mediaService.isActive('s'); // small screen resolution
     if (JSON.parse(localStorage.getItem('key'))) {
       this.cartoes = JSON.parse(localStorage.getItem('key'));
     }

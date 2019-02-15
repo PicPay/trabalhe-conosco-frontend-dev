@@ -1,12 +1,12 @@
-<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions">
+<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions"  [bottomSheet]="!(smallResolution | async) ? '' : true" [fullscreen]="!(smallResolution | async) ? '' : true">
     <mz-modal-header>
       <nav class="Rectangle-5-Copy">
         <div class="row">
-          <div class="col s6 topModal">
+          <div class="col s10 topModal">
             <span>Cadastro Cartão de Crédito</span>
           </div>
-          <div class="col s6 right-align fix iconx">
-            <button class="iconx" mz-button mz-modal-close [flat]="true"><i mz-icon [icon]="'close'" [size]="'large'"></i></button>
+          <div class="col s2 right-align">
+            <a href="#" mz-modal-close> <i mz-icon [icon]="'close'" [size]="'large'"></i></a>
           </div>
         </div>
       </nav>
@@ -15,7 +15,7 @@
       <form [formGroup]="cartaoForm">
         <div class="container">
           <mz-select-container>
-            <select mz-select mz-validation required
+            <select mz-select mz-validation
                     id="options-select"
                     [placeholder]="'Selecione a bandeira'"
                     formControlName="bandeira">
@@ -54,7 +54,7 @@
         </div>
         <div class="row">
           <div class="col s12 center-align">
-            <button  (click)="save(bottomSheetModal)" mz-button class="center-align cadastrar" style="width: 376px;" [disabled]="!cartaoForm.valid">Cadastrar</button>
+            <button  (click)="save(bottomSheetModal)" mz-button class="center-align cadastrar" style="width: 100%;" [disabled]="!cartaoForm.valid">Cadastrar</button>
           </div>
         </div>
 

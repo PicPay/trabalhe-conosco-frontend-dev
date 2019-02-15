@@ -1,12 +1,12 @@
-<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions">
+<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions"  [bottomSheet]="!(smallResolution | async) ? '' : true" [fullscreen]="!(smallResolution | async) ? '' : true">
     <mz-modal-header>
       <nav class="Rectangle-5-Copy">
         <div class="row">
-          <div class="col s6 topModal">
-            <span>Cadastro Cartão de Crédito</span>
+          <div class="col s10 topModal">
+            <span>Lista Cartão de Crédito</span>
           </div>
-          <div class="col s6 right-align fix iconx">
-            <button class="iconx" mz-button mz-modal-close [flat]="true"><i mz-icon [icon]="'close'" [size]="'large'"></i></button>
+          <div class="col s2 right-align">
+            <a href="#" mz-modal-close> <i mz-icon [icon]="'close'" [size]="'large'"></i></a>
           </div>
         </div>
       </nav>
@@ -18,13 +18,13 @@
             <a href="#" (click)="seleciona(i)">
 
               <div class="row selected" [class.selected]="i==cartaoSelecionado">
-                <div class="col s5 right-align">
+                <div [className]="!(smallResolution | async) ? 'col s5 right-align' : 'col s4 right-align'" >
                   <i mz-icon [align]="'right'" [icon]="'credit_card'" [size]="'small'" class="cor"></i>
                 </div>
-                <div class="col s3 listaCard" style="padding-right: 0px;">
+                <div style="padding-right: 0px;"  [className]="!(smallResolution | async) ? 'col s3 listaCard' : 'col s5 listaCard'">
                   <b class="name-copy-7-bot">{{cartao.card_number}}</b>
                 </div>
-                <div *ngIf="i==cartaoSelecionado" class="col s4 left-align" style="padding-left: 0px;">
+                <div *ngIf="i==cartaoSelecionado" class="col s1 left-align" style="padding-left: 0px;">
                   <i class="material-icons">done</i>
                 </div>
               </div>
@@ -36,7 +36,7 @@
       <div class="container">
         <a href="#" mz-modal-close (click)="openServiceModal('cartao')">
           <div class="row"  style="margin-bottom: 10px;">
-            <div class="col s5 plus">
+            <div [className]="!(smallResolution | async) ? 'col s5 plus' : 'col s4 plus'">
               <i mz-icon [icon]="'add'"></i>
             </div>
             <div class="col s7 " style="padding-left: 0px;">
@@ -46,7 +46,7 @@
         </a>
           <div class="row" style="margin-bottom: 0px;">
             <div class="col s12 center-align" >
-              <button (click)="salvaSelecionado()" mz-modal-close mz-button class="center-align cadastrar" style="width: 376px;">Selecionar</button>
+              <button (click)="salvaSelecionado()" mz-modal-close mz-button class="center-align cadastrar" style="width: 100%;">Selecionar</button>
             </div>
           </div>
 
