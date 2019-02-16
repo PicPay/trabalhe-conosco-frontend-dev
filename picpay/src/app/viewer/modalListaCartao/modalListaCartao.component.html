@@ -1,43 +1,60 @@
 <mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions"  [bottomSheet]="!(smallResolution | async) ? '' : true" [fullscreen]="!(smallResolution | async) ? '' : true">
-    <mz-modal-header>
-      <nav class="Rectangle-5-Copy">
-        <div class="row">
-          <div class="col s10 topModal">
-            <span>Lista Cartão de Crédito</span>
-          </div>
-          <div class="col s2 right-align">
-            <a href="#" mz-modal-close> <i mz-icon [icon]="'close'" [size]="'large'"></i></a>
-          </div>
+  <mz-modal-header>
+    <div *ngIf="(smallResolution | async)" class="row" style="background-color:#7de6c6;height: 35px;margin-bottom: 5px;">
+      <div class="container">
+        <img align="left" src="assets/group-4.svg" class="Group-Copy">
+      </div>
+    </div>
+    <nav *ngIf="!(smallResolution | async)" class="Rectangle-5-Copy">
+      <div class="row">
+        <div class="col s10 topModal">
+          <span>Lista Cartão de Crédito</span>
         </div>
-      </nav>
-    </mz-modal-header>
-    <mz-modal-content>
-        <div>
-          <div class="name-copy-7-top"><b> Cartões Cadastrados</b></div>
-          <ng-container *ngFor="let cartao of cartoes; let i = index" >
-            <a href="#" (click)="seleciona(i)">
+        <div class="col s2 right-align">
+          <a href="#" mz-modal-close> <i mz-icon [icon]="'close'" [size]="'large'"></i></a>
+        </div>
+      </div>
+    </nav>
+  </mz-modal-header>
+  <mz-modal-content>
+    <div *ngIf="(smallResolution | async)" class="row">
+      <a (click)="salvaSelecionado()"  mz-modal-close>
+        <div class="col 1 right-align" style="padding-right: 0px;">
+          <i class="material-icons" mz-icon-mdi [icon]="'chevron-left'"></i>
+        </div>
+        <div class="col 1 left-align" style="padding-top:6px; padding-left: 0px;">
+          <span>Voltar</span>
+        </div>
+      </a>
+    </div>
+    <div>
 
-              <div class="row selected" [class.selected]="i==cartaoSelecionado">
-                <div [className]="!(smallResolution | async) ? 'col s5 right-align' : 'col s4 right-align'" >
-                  <i mz-icon [align]="'right'" [icon]="'credit_card'" [size]="'small'" class="cor"></i>
-                </div>
-                <div style="padding-right: 0px;"  [className]="!(smallResolution | async) ? 'col s3 listaCard' : 'col s5 listaCard'">
-                  <b class="name-copy-7-bot">{{cartao.card_number}}</b>
-                </div>
-                <div *ngIf="i==cartaoSelecionado" class="col s1 left-align" style="padding-left: 0px;">
-                  <i class="material-icons">done</i>
-                </div>
-              </div>
-            </a>
-          </ng-container>
-        </div>
-    </mz-modal-content>
+      <div class="name-copy-7-top"><h5 style="font-size:18px" class="branco"><b> Cartões Cadastrados</b></h5>
+      </div>
+      <ng-container *ngFor="let cartao of cartoes; let i = index">
+        <a href="#" (click)="seleciona(i)">
+
+          <div class="row selected" [class.selected]="i==cartaoSelecionado">
+            <div [className]="!(smallResolution | async) ? 'col s5 right-align' : 'col s4 right-align'">
+              <i mz-icon [align]="'right'" [icon]="'credit_card'" [size]="'small'" class="cor verde"></i>
+            </div>
+            <div style="padding-right: 0px;" [className]="!(smallResolution | async) ? 'col s3 listaCard' : 'col s5 listaCard'">
+              <b class="name-copy-7-bot">{{cartao.card_number}}</b>
+            </div>
+            <div *ngIf="i==cartaoSelecionado" class="col s1 left-align" style="padding-left: 0px;">
+              <i class="material-icons verde">done</i>
+            </div>
+          </div>
+        </a>
+      </ng-container>
+    </div>
+  </mz-modal-content>
     <mz-modal-footer>
       <div class="container">
         <a href="#" mz-modal-close (click)="openServiceModal('cartao')">
           <div class="row"  style="margin-bottom: 10px;">
             <div [className]="!(smallResolution | async) ? 'col s5 plus' : 'col s4 plus'">
-              <i mz-icon [icon]="'add'"></i>
+              <i class="verde" mz-icon [icon]="'add'"></i>
             </div>
             <div class="col s7 " style="padding-left: 0px;">
               <div class="name-copy-7-bot"><b> Cadastrar novo Cartão</b></div>

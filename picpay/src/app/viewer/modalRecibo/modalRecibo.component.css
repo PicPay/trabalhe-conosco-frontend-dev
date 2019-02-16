@@ -135,3 +135,45 @@
 .borda {
   border-bottom: 1px solid #474971;
 }
+
+@media only screen and (max-width: 600px) {
+  .name {
+    font-family: Roboto;
+    font-size: 120%;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: white;
+  }
+
+
+  .name-copy-4 {
+    font-family: Roboto;
+    margin-bottom: 0px;
+    font-size: 12px;
+    font-style: normal;
+    font-stretch: normal;
+    color: white;
+    text-align: left;
+  }
+
+
+  .name-copy-7-bot {
+    padding-left: 0px;
+    padding-top: 2%;
+    font-family: Roboto;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #7de6c6;
+  }
+
+  .branco {
+    color: white;
+  }
+}

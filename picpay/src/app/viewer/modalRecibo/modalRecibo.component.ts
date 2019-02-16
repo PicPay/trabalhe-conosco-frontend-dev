@@ -27,7 +27,7 @@ export class ModalReciboComponent extends MzBaseModal {
     private mediaService: MzMediaService,
   ) {
     super();
-
+    
     this.smallResolution = this.mediaService.isActive('s'); // small screen resolution
     if (JSON.parse(localStorage.getItem('key'))) {
       this.cartoes = JSON.parse(localStorage.getItem('key'));
@@ -36,7 +36,7 @@ export class ModalReciboComponent extends MzBaseModal {
 
   ngOnInit() {
     this.data = new Date(this.recibo.transaction.timestamp*1000)
-
+    console.log(this.recibo)
   }
 
   public openServiceModal(modal: string, pessoa?: Pessoa) {

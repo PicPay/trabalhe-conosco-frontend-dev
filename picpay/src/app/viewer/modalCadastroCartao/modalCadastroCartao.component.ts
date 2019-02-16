@@ -48,15 +48,18 @@ export class ModalCadastroCartaoComponent extends MzBaseModal {
 
       this.cartoes.push(temp)
       localStorage.setItem('key', JSON.stringify(this.cartoes));
-      if (this.cartoes.length > 1) {
-        this.openServiceModal('lista')
-      }
-      else {
-        this.openServiceModal('pagamento')
-      }
-     
-      modal.closeModal()
+      this.navegate(modal)
     }
+  }
+
+  navegate(modal) {
+    if (this.cartoes.length > 0) {
+      this.openServiceModal('lista')
+    }
+    else {
+      this.openServiceModal('pagamento')
+    }
+    modal.closeModal()
   }
 
 

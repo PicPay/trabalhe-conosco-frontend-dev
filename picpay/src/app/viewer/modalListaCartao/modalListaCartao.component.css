@@ -117,3 +117,30 @@
 .selected {
   background-color: #e0fff7
 }
+
+@media only screen and (max-width: 600px) {
+  .name-copy-7-bot {
+    padding-left: 0px;
+    padding-top: 2%;
+    font-family: Roboto;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: white;
+  }
+
+  .selected {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .branco {
+    color: white;
+  }
+
+  .verde {
+    color: #b4f4e5;
+  }
+
+}

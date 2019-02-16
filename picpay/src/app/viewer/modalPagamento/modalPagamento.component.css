@@ -67,6 +67,34 @@ input::-webkit-input-placeholder {
   text-align: left;
 }
 
-.grad {
-  background: linear-gradient(to right, #1d1e2a, #3c3e64);
+.botao {
+  background: linear-gradient(to right, #b4f4e5, #7de6c6);
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 600px) {
+  .name {
+    font-family: Roboto;
+    font-size: 120%;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: white;
+  }
+
+
+  .name-copy-4 {
+    font-family: Roboto;
+    margin-bottom: 0px;
+    font-size: 12px;
+    font-style: normal;
+    font-stretch: normal;
+    color: white;
+    text-align: left;
+  }
 }

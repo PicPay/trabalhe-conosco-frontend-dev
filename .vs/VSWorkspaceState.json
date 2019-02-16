@@ -4,8 +4,9 @@
     "\\picpay",
     "\\picpay\\src",
     "\\picpay\\src\\app",
-    "\\picpay\\src\\app\\services"
+    "\\picpay\\src\\app\\viewer",
+    "\\picpay\\src\\app\\viewer\\home"
   ],
-  "SelectedNode": "\\picpay\\src\\app\\services\\pessoaService.ts",
+  "SelectedNode": "\\picpay\\src\\app\\viewer\\modalPagamento",
   "PreviewInSolutionExplorer": false
 }

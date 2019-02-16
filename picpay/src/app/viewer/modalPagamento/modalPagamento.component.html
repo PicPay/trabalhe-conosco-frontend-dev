@@ -1,6 +1,11 @@
   <mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions" [bottomSheet]="!(smallResolution | async) ? '' : true" [fullscreen]="!(smallResolution | async) ? '' : true" class="grad">
     <mz-modal-header *ngIf="selecionado">
-      <nav class="Rectangle-5-Copy">
+      <div *ngIf="(smallResolution | async)" class="row" style="background-color:#7de6c6;height: 35px;margin-bottom: 5px;"> 
+        <div class="container">
+          <img align="left" src="assets/group-4.svg" class="Group-Copy">
+        </div>
+      </div>
+      <nav *ngIf="!(smallResolution | async)" class="Rectangle-5-Copy">
         <div class="row">
           <div class="col s10 topModal">
             <span>Pagamento para </span><span class="nomeModal">{{selecionado.name}}</span>
@@ -12,7 +17,18 @@
       </nav>
     </mz-modal-header>
     <mz-modal-content>
-      <div class="row">
+      <div  class="row">
+        <div *ngIf="(smallResolution | async)" class="row" >
+          <a mz-modal-close>
+            <div class="col 1 right-align" style="padding-right: 0px;">
+              <i class="material-icons" mz-icon-mdi [icon]="'chevron-left'"></i>
+            </div>
+            <div class="col 1 left-align" style="padding-top:6px; padding-left: 0px;">
+              <span>Voltar</span>
+            </div>
+          </a>
+        </div>
+
         <div class="row espacoTop">
           <div class="col s6 right-align">
             <img src={{selecionado?.img}} alt="" class="circle">
@@ -32,13 +48,13 @@
     <mz-modal-footer>
       <div class="container">
         <div *ngIf="cartoes.length==0" class="row alert">
-          <div class="col s4 right-align">
+          <div class="col s4 right-align" style="  color: #ef5778;">
             <i mz-icon [align]="'center'" [icon]="'error'" [size]="'small'"></i>
           </div>
-          <div class="col s7 left-align">
+          <div  style="padding-left: 0px;" [className]="!(smallResolution | async) ? 'col s5 left-align alert' : 'col s7 left-align alert'">
             <span>
-              Nenhum cartão de credito cadastrado.<br />
-              <a mz-modal-close href="#" (click)="openServiceModal('cartao')" class="alert" style=" font-weight: bold;"><u>Cadastrar agora</u></a>
+              Nenhum cartão de credito cadastrado.
+              <a mz-modal-close href="#" (click)="openServiceModal('cartao')" class="alert" style="font-weight: bold;"><u>Cadastrar agora</u></a>
             </span>
           </div>
         </div>
@@ -49,12 +65,12 @@
           <div class="col s7 left-align" [style.padding-left]="!(smallResolution | async) ? '' : '0'">
             <span>
               Forma de Pagamento:<br />
-              <a href="#" mz-modal-close (click)="openServiceModal('lista')" class="name-copy-4 " style=" font-weight: bold;"   >Cartão de Crédito com final {{cartoes[0].card_number.substring(15)}}</a>
+              <a href="#" mz-modal-close (click)="openServiceModal('lista')" class="name-copy-4 " style=" font-weight: bold;">Cartão de Crédito com final {{cartoes[0].card_number.substring(15)}}</a>
             </span>
           </div>
         </div>
         <div class="col s12 center-align">
-          <button mz-button mz-modal-close class="center-align" style="width: 70%;" [disabled]="valor<=0 && value==null" (click)="pagar()">Pagar</button>
+          <button mz-button mz-modal-close class="center-align botao" style="width: 70%;" [disabled]="valor<=0 && value==null" (click)="pagar()">Pagar</button>
         </div>
       </div>
     </mz-modal-footer>
