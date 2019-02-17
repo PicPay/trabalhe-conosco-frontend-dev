@@ -1,0 +1,34 @@
+.grad {
+  background: linear-gradient(to right, #1d1e2a, #3c3e64);
+}
+
+.menu {
+  background: #7de6c6;
+}
+
+
+.fix {
+  padding-left: 0px;
+  padding-right: 0px;
+  color: #d8d8d8;
+  margin-bottom: 0px;
+}
+
+.fixx {
+  margin-top: 18px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.pagar {
+  padding-left: 10px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}

@@ -1,0 +1,119 @@
+<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions"  [bottomSheet]="!(smallResolution | async) ? '' : true" [fullscreen]="!(smallResolution | async) ? '' : true">
+  <mz-modal-header>
+    <!--HEADER MOBILE-->
+    <div *ngIf="(smallResolution | async)" class="row" style="background-color:#7de6c6;height: 35px;margin-bottom: 5px;">
+      <div class="container">
+        <img align="left" src="assets/group-4.svg" class="Group-Copy">
+      </div>
+    </div>
+    <!--HEADER MOBILE-->
+    <!--HEADER DESKTOP-->
+    <nav *ngIf="!(smallResolution | async)" class="Rectangle-5-Copy">
+      <div class="row">
+        <div class="col s6 topModal">
+          <span>Recibo</span>
+        </div>
+        <div class="col s6 right-align fix iconx">
+          <button class="iconx" mz-button mz-modal-close [flat]="true"><i mz-icon [icon]="'close'" [size]="'large'"></i></button>
+        </div>
+      </div>
+    </nav>
+    <!--HEADER DESKTOP-->
+  </mz-modal-header>
+  <mz-modal-content>
+    <!--VOLTAR MOBILE-->
+    <div *ngIf="(smallResolution | async)" class="row">
+      <a mz-modal-close>
+        <div class="col 1 right-align" style="padding-right: 0px;">
+          <i class="material-icons" mz-icon-mdi [icon]="'chevron-left'"></i>
+        </div>
+        <div class="col 1 left-align" style="padding-top:6px; padding-left: 0px;">
+          <span>Voltar</span>
+        </div>
+      </a>
+    </div>
+    <!--VOLTAR MOBILE-->
+    <!--INFORMACOES USUARIO-->
+    <div class="row espacoTop" style="margin-bottom: 0px;">
+      <div class="col s6 right-align">
+        <img src={{recibo.transaction.destination_user?.img}} alt="" class="circle">
+      </div>
+      <div class="col s6 textModal">
+        <div class="name">{{recibo.transaction.destination_user?.name}}</div>
+        <div>id: {{recibo.transaction.destination_user?.id}}</div>
+        <div> {{recibo.transaction.destination_user?.username}}</div>
+      </div>
+    </div>
+    <!--INFORMACOES USUARIO-->
+    <!--RECIBO DE TRANSACAO EFETUADA COM SUCESSO-->
+    <div *ngIf="recibo.transaction.success">
+      <div class="name-copy-7-top"><h5 style="font-size:18px" class="branco"><b> Pagamento confirmado!</b></h5></div>
+      <div class="row cor">
+        <div [className]="!(smallResolution | async) ? 'col s1 offset-s4 left-align borda' : 'col s1 offset-s3 left-align borda'">
+          Transação
+        </div>
+        <div style="padding-right: 0px;" [className]="!(smallResolution | async) ? 'col s3 right-align borda' : 'col s5 right-align borda'">
+          <b class="name-copy-7-bot">{{recibo.transaction.id}}</b>
+        </div>
+      </div>
+      <div class="row cor">
+        <div [className]="!(smallResolution | async) ? 'col s1 offset-s4 left-align borda' : 'col s1 offset-s3 left-align borda'">
+          Data
+        </div>
+        <div [className]="!(smallResolution | async) ? 'col s3 right-align borda' : 'col s5 right-align borda'" style="padding-right: 0px;">
+          <b class="name-copy-7-bot">{{data | date: 'dd/MM/yy HH:mm'}}</b>
+        </div>
+      </div>
+      <div class="row cor">
+        <div [className]="!(smallResolution | async) ? 'col s1 offset-s4 left-align borda' : 'col s1 offset-s3 left-align borda'">
+          Cartão
+        </div>
+        <div [className]="!(smallResolution | async) ? 'col s3 right-align borda' : 'col s5 right-align borda'" style="padding-right: 0px;">
+          <b class="name-copy-7-bot">**** **** **** {{cartoes[0].card_number.substring(15)}}</b>
+        </div>
+      </div>
+      <div class="row cor">
+        <div [className]="!(smallResolution | async) ? 'col s1 offset-s4 left-align borda' : 'col s1 offset-s3 left-align borda'">
+          Valor
+        </div>
+        <div [className]="!(smallResolution | async) ? 'col s3 right-align borda' : 'col s5 right-align borda'" style="padding-right: 0px;">
+          <b class="name-copy-7-bot">R${{recibo.transaction.value | number: '1.2-2' }}</b>
+        </div>
+      </div>
+    </div>
+    <!--RECIBO DE TRANSACAO EFETUADA COM SUCESSO-->
+    <!--MENSAGEM DE TRANSACAO RECUSADA - CARTAO INVALIDO-->
+    <div *ngIf="!recibo.transaction.success">
+      <br />
+      <div>
+        <h4 class="center-align" style="color:red"><b> Transação Recusada!</b></h4>
+      </div>
+      <div class="row cor">
+        <h5 class="center-align" style="color:red">
+          <b>Cartão Invalido</b>
+        </h5>
+      </div>
+    </div>
+    <!--MENSAGEM DE TRANSACAO RECUSADA - CARTAO INVALIDO-->
+
+  </mz-modal-content>
+  <mz-modal-footer>
+    <!--BOTOES FOOTER-->
+    <div class="container">
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="col s6 right-align">
+          <button mz-button mz-modal-close class="center-align botaov">Voltar</button>
+        </div>
+        <div class="col s6 left-align">
+          <button (click)="openServiceModal('pagamento')" mz-button mz-modal-close class="center-align cadastrar">Pagar Novamente</button>
+        </div>
+      </div>
+    </div>
+    <!--BOTOES FOOTER-->
+  </mz-modal-footer>
+  </mz-modal>
+
+
+

@@ -1,0 +1,93 @@
+  <mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions" [bottomSheet]="!(smallResolution | async) ? '' : true" [fullscreen]="!(smallResolution | async) ? '' : true" class="grad">
+    <mz-modal-header *ngIf="selecionado">
+      <!--HEADER MOBILE-->
+      <div *ngIf="(smallResolution | async)" class="row" style="background-color:#7de6c6;height: 35px;margin-bottom: 5px;">
+        <div class="container">
+          <img align="left" src="assets/group-4.svg" class="Group-Copy">
+        </div>
+      </div>
+      <!--HEADER MOBILE-->
+      <!--HEADER DESKTOP-->
+      <nav *ngIf="!(smallResolution | async)" class="Rectangle-5-Copy">
+        <div class="row">
+          <div class="col s10 topModal">
+            <span>Pagamento para </span><span class="nomeModal">{{selecionado.name}}</span>
+          </div>
+          <div class="col s2 right-align">
+            <a href="#" mz-modal-close> <i mz-icon [icon]="'close'" [size]="'large'"></i></a>
+          </div>
+        </div>
+      </nav>
+      <!--HEADER DESKTOP-->
+    </mz-modal-header>
+    <mz-modal-content>
+      <div class="row">
+        <!--VOLTAR MOBILE-->
+        <div *ngIf="(smallResolution | async)" class="row">
+          <a mz-modal-close>
+            <div class="col 1 right-align" style="padding-right: 0px;">
+              <i class="material-icons" mz-icon-mdi [icon]="'chevron-left'"></i>
+            </div>
+            <div class="col 1 left-align" style="padding-top:6px; padding-left: 0px;">
+              <span>Voltar</span>
+            </div>
+          </a>
+        </div>
+        <!--VOLTAR MOBILE-->
+        <!--INFORMACOES E CAMPO PARA PAGAMENTO-->
+        <div class="row espacoTop">
+          <div class="col s6 right-align">
+            <img src={{selecionado?.img}} alt="" class="circle">
+          </div>
+          <div class="col s6 textModal">
+            <div class="name">{{selecionado?.name}}</div>
+            <div>id: {{selecionado?.id}}</div>
+            <div> {{selecionado?.username}}</div>
+          </div>
+        </div>
+        <div class="col s6 offset-s3 left-align input espacoTop">
+          <input placeholder="R$ 0,00" type="number" min="1" step="0.01" [(ngModel)]='valor' (focus)="valor=0">
+        </div>
+        <!--INFORMACOES E CAMPO PARA PAGAMENTO-->
+      </div>
+    </mz-modal-content>
+    <mz-modal-footer>
+      <div class="container">
+        <!--CADASTRO DE CARTAO QUANDO NAO POSSUIR-->
+        <div *ngIf="cartoes.length==0" class="row alert">
+          <div class="col s4 right-align" style="  color: #ef5778;">
+            <i mz-icon [align]="'center'" [icon]="'error'" [size]="'small'"></i>
+          </div>
+          <div style="padding-left: 0px;" [className]="!(smallResolution | async) ? 'col s5 left-align alert' : 'col s7 left-align alert'">
+            <span>
+              Nenhum cartão de credito cadastrado.
+              <a mz-modal-close href="#" (click)="openServiceModal('cartao')" class="alert" style="font-weight: bold;"><u>Cadastrar agora</u></a>
+            </span>
+          </div>
+        </div>
+        <!--CADASTRO DE CARTAO QUANDO NAO POSSUIR-->
+        <!--INFORMACOES DE CARTAO ATIVADO-->
+        <div *ngIf="cartoes.length>0" class="row name-copy-4 ">
+          <div class="col s4 right-align">
+            <i mz-icon [align]="'center'" [icon]="'credit_card'" [size]="'small'"></i>
+          </div>
+          <div class="col s7 left-align" [style.padding-left]="!(smallResolution | async) ? '' : '0'">
+            <span>
+              Forma de Pagamento:<br />
+              <a href="#" mz-modal-close (click)="openServiceModal('lista')" class="name-copy-4 " style=" font-weight: bold;">Cartão de Crédito com final {{cartoes[0].card_number.substring(15)}}</a>
+            </span>
+          </div>
+        </div>
+        <!--INFORMACOES DE CARTAO ATIVADO-->
+        <!--BOTAO PAGAR-->
+        <div class="col s12 center-align">
+          <button mz-button mz-modal-close class="center-align botao" style="width: 70%;" [disabled]="valor<=0 && value==null" (click)="pagar()">Pagar</button>
+        </div>
+        <!--BOTAO PAGAR-->
+      </div>
+    </mz-modal-footer>
+  </mz-modal>
+
+
+
+
