@@ -32,13 +32,13 @@ export class ModalPagamentoComponent extends MzBaseModal {
   ) {
     super();
     this.smallResolution = this.mediaService.isActive('s'); // small screen resolution
-    if (JSON.parse(localStorage.getItem('key'))) {
+    if (JSON.parse(localStorage.getItem('key'))) {  //Se existir algum cartao recupera do localstorage o mesmo
       this.cartoes = JSON.parse(localStorage.getItem('key'));
     }
   }
 
 
-
+  //Navegacao pelos modals
   public openServiceModal(modal: string, pessoa?: Pessoa) {
     if (modal == 'cartao') {
       this.modalService.open(this.modals.modalCadastroCartao, { selecionado: this.selecionado });
@@ -51,6 +51,7 @@ export class ModalPagamentoComponent extends MzBaseModal {
     }
   }
 
+  //Adapta os dados para o formato do json e chama o service q envia a requisicao
   pagar() {
     let request
     if (this.cartoes.length > 0) {
@@ -74,7 +75,7 @@ export class ModalPagamentoComponent extends MzBaseModal {
     }
   }
 
-
+  //remove caracteres que nao sejam numeros de um determinado parametro
   apenasNumeros(campo) {
     campo = campo.replace(/[^0-9]/g, '');
     return campo;

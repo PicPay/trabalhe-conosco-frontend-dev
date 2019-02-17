@@ -29,16 +29,17 @@ export class ModalReciboComponent extends MzBaseModal {
     super();
     
     this.smallResolution = this.mediaService.isActive('s'); // small screen resolution
-    if (JSON.parse(localStorage.getItem('key'))) {
+    if (JSON.parse(localStorage.getItem('key'))) {  //Se existir algum cartao recupera do localstorage o mesmo
       this.cartoes = JSON.parse(localStorage.getItem('key'));
     }
   }
 
   ngOnInit() {
+    //conversao do timestamp para data
     this.data = new Date(this.recibo.transaction.timestamp*1000)
-    console.log(this.recibo)
   }
 
+  //Navegacao dos modals
   public openServiceModal(modal: string, pessoa?: Pessoa) {
     if (modal == 'pagamento') {
       this.modalService.open(this.modals.modalPagamento, { selecionado: this.recibo.transaction.destination_user });

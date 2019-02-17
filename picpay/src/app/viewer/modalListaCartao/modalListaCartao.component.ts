@@ -25,7 +25,7 @@ export class ModalListaCartaoComponent extends MzBaseModal {
   ) {
     super();
     this.smallResolution = this.mediaService.isActive('s'); // small screen resolution
-    if (JSON.parse(localStorage.getItem('key'))) {
+    if (JSON.parse(localStorage.getItem('key'))) { //Se existir algum cartao recupera do localstorage o mesmo
       this.cartoes = JSON.parse(localStorage.getItem('key'));
     }
   }
@@ -34,6 +34,7 @@ export class ModalListaCartaoComponent extends MzBaseModal {
     this.cartaoSelecionado = 0;
   }
 
+  //Navegacao pelos modals
   public openServiceModal(modal: string, pessoa?: Pessoa) {
     if (modal == 'cartao') {
       this.modalService.open(this.modals.modalCadastroCartao, { selecionado: this.selecionado});
@@ -43,10 +44,12 @@ export class ModalListaCartaoComponent extends MzBaseModal {
     }
   }
 
+  //salva a posicao do cartao selecionada
   seleciona(i: number) {
     this.cartaoSelecionado = i
   }
 
+  // salva o cartao selecionado no localstorage
   salvaSelecionado() {
     let aux1, aux2
     aux1 = this.cartoes[0]

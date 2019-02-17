@@ -5,8 +5,8 @@
     "\\picpay\\src",
     "\\picpay\\src\\app",
     "\\picpay\\src\\app\\viewer",
-    "\\picpay\\src\\app\\viewer\\home"
+    "\\picpay\\src\\app\\viewer\\modalRecibo"
   ],
-  "SelectedNode": "\\picpay\\src\\app\\viewer\\modalPagamento",
+  "SelectedNode": "\\picpay\\src\\app\\viewer\\modalRecibo\\modalRecibo.component.html",
   "PreviewInSolutionExplorer": false
 }

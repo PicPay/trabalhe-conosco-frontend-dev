@@ -28,10 +28,11 @@ export class ModalCadastroCartaoComponent extends MzBaseModal {
   ) {
     super();
     this.smallResolution = this.mediaService.isActive('s'); // small screen resolution
-    if (JSON.parse(localStorage.getItem('key'))) {
+    if (JSON.parse(localStorage.getItem('key'))) { //Se existir algum cartao recupera do localstorage o mesmo
       this.cartoes = JSON.parse(localStorage.getItem('key'));
     }
 
+    //formulario do cartao
     this.cartaoForm = this.formBuilder.group({
       'card_number': ['', Validators.required],
       'bandeira': ['', Validators.required],
@@ -42,16 +43,18 @@ export class ModalCadastroCartaoComponent extends MzBaseModal {
     });
   }
 
+
+  //Salva os cartoes no localstorage
   save(modal) {
     if (this.cartaoForm.valid) {
       let temp = this.cartaoForm.value
-
       this.cartoes.push(temp)
       localStorage.setItem('key', JSON.stringify(this.cartoes));
       this.navegate(modal)
     }
   }
 
+  //funcao usada para fechar um modal apos a navegacao e direcionar para o modal correto de navegacao pelo html
   navegate(modal) {
     if (this.cartoes.length > 0) {
       this.openServiceModal('lista')
@@ -63,7 +66,7 @@ export class ModalCadastroCartaoComponent extends MzBaseModal {
   }
 
 
-
+  //navegacao pelos modals
   public openServiceModal(modal: string, pessoa?: Pessoa) {
     if (modal == 'pagamento') {
       this.modalService.open(this.modals.modalPagamento, { selecionado: this.selecionado });

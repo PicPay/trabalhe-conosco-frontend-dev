@@ -10,12 +10,14 @@
     <ng-container *ngFor="let pessoa of pessoas">
       <mz-collection-item class="grad" [avatar]="true">
         <div class="row fix">
+          <!--Informacoes do usuario-->
           <div class="col s7">
             <img mz-avatar src={{pessoa.img}}>
             <div class="title white-text text-darken-2 truncate">{{pessoa.name}}</div>
             <div class="white-text text-darken-2">id: {{pessoa.id}}</div>
             <div class="white-text text-darken-2"> {{pessoa.username}}</div>
           </div>
+          <!--BOTOES-->
           <div class="col s5 right-align">
             <a href="#" (click)="openServiceModal('pagamento', pessoa)">
               <div class="col s9 right-align fixx ">

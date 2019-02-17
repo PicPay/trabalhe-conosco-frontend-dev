@@ -26,9 +26,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.smallResolution = this.mediaService.isActive('s'); // small screen resolution
     this.pessoaService.getAllPessoa().subscribe(
-      pessoas => (this.pessoas = pessoas))
+      pessoas => (this.pessoas = pessoas)) //requisição da API
   }
 
+
+   //Navegação entes os modais
   public openServiceModal(modal: string, pessoa?: Pessoa) {
     if (modal == 'pagamento') {
       this.modalService.open(ModalPagamentoComponent, { selecionado: pessoa });

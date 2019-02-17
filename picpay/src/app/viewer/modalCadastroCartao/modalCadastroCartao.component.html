@@ -1,11 +1,14 @@
 <mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions"  [bottomSheet]="!(smallResolution | async) ? '' : true" [fullscreen]="!(smallResolution | async) ? '' : true">
   <mz-modal-header>
+    <!--HEADER MOBILE-->
     <div *ngIf="(smallResolution | async)" class="row" style="background-color:#7de6c6;height: 35px;margin-bottom: 5px;">
       <div class="container">
         <img align="left" src="assets/group-4.svg" class="Group-Copy">
       </div>
     </div>
-    <nav  *ngIf="!(smallResolution | async)"  class="Rectangle-5-Copy">
+    <!--HEADER MOBILE-->
+    <!--HEADER DESKTOP-->
+    <nav *ngIf="!(smallResolution | async)" class="Rectangle-5-Copy">
       <div class="row">
         <div class="col s10 topModal">
           <span>Cadastro Cartão de Crédito</span>
@@ -15,8 +18,10 @@
         </div>
       </div>
     </nav>
+    <!--HEADER DESKTOP-->
   </mz-modal-header>
   <mz-modal-content>
+    <!--BOTAO VOLTAR MOBILE-->
     <div *ngIf="(smallResolution | async)" class="row">
       <a (click)="navegate(bottomSheetModal)">
         <div class="col 1 right-align" style="padding-right: 0px;">
@@ -27,7 +32,9 @@
         </div>
       </a>
     </div>
+    <!--BOTAO VOLTAR MOBILE-->
     <form [formGroup]="cartaoForm">
+      <!--FORMULARIO-->
       <div class="container">
         <mz-select-container>
           <select mz-select mz-validation
@@ -38,8 +45,6 @@
             <option data-icon="https://image.flaticon.com/icons/svg/196/196578.svg" class="left" value="visa">Visa</option>
           </select>
         </mz-select-container>
-
-
         <mz-input-container>
           <input mz-input mz-validation type="text" [label]="'Nome escrito no cartão'" length="150" formControlName="nome">
         </mz-input-container>
@@ -61,20 +66,22 @@
         </mz-input-container>
 
       </div>
+      <!--FORMULARIO-->
     </form>
   </mz-modal-content>
-    <mz-modal-footer>
-      <div class="container">
-        <div class="row">
-        </div>
-        <div class="row">
-          <div class="col s12 center-align">
-            <button  (click)="save(bottomSheetModal)" mz-button class="center-align cadastrar" style="width: 100%;" [disabled]="!cartaoForm.valid">Cadastrar</button>
-          </div>
-        </div>
-
+  <mz-modal-footer>
+    <!--BOTAO INFERIOR-->
+    <div class="container">
+      <div class="row">
       </div>
-    </mz-modal-footer>
+      <div class="row">
+        <div class="col s12 center-align">
+          <button (click)="save(bottomSheetModal)" mz-button class="center-align cadastrar" style="width: 100%;" [disabled]="!cartaoForm.valid">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+    <!--BOTAO INFERIOR-->
+  </mz-modal-footer>
   </mz-modal>
 
 

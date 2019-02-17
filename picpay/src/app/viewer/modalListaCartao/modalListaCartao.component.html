@@ -1,10 +1,14 @@
 <mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions"  [bottomSheet]="!(smallResolution | async) ? '' : true" [fullscreen]="!(smallResolution | async) ? '' : true">
   <mz-modal-header>
+    <!--HEADER MOBILE-->
     <div *ngIf="(smallResolution | async)" class="row" style="background-color:#7de6c6;height: 35px;margin-bottom: 5px;">
       <div class="container">
         <img align="left" src="assets/group-4.svg" class="Group-Copy">
       </div>
     </div>
+    <!--HEADER MOBILE-->
+
+    <!--HEADER DESKTOP-->
     <nav *ngIf="!(smallResolution | async)" class="Rectangle-5-Copy">
       <div class="row">
         <div class="col s10 topModal">
@@ -15,10 +19,12 @@
         </div>
       </div>
     </nav>
+    <!--HEADER DESKTOP-->
   </mz-modal-header>
   <mz-modal-content>
+    <!--VOLTAR MOBILE-->
     <div *ngIf="(smallResolution | async)" class="row">
-      <a (click)="salvaSelecionado()"  mz-modal-close>
+      <a (click)="salvaSelecionado()" mz-modal-close>
         <div class="col 1 right-align" style="padding-right: 0px;">
           <i class="material-icons" mz-icon-mdi [icon]="'chevron-left'"></i>
         </div>
@@ -27,9 +33,11 @@
         </div>
       </a>
     </div>
+    <!--VOLTAR MOBILE-->
+    <!--LISTA DE CARTOES-->
     <div>
-
-      <div class="name-copy-7-top"><h5 style="font-size:18px" class="branco"><b> Cartões Cadastrados</b></h5>
+      <div class="name-copy-7-top">
+        <h5 style="font-size:18px" class="branco"><b> Cartões Cadastrados</b></h5>
       </div>
       <ng-container *ngFor="let cartao of cartoes; let i = index">
         <a href="#" (click)="seleciona(i)">
@@ -48,27 +56,30 @@
         </a>
       </ng-container>
     </div>
-  </mz-modal-content>
-    <mz-modal-footer>
-      <div class="container">
-        <a href="#" mz-modal-close (click)="openServiceModal('cartao')">
-          <div class="row"  style="margin-bottom: 10px;">
-            <div [className]="!(smallResolution | async) ? 'col s5 plus' : 'col s4 plus'">
-              <i class="verde" mz-icon [icon]="'add'"></i>
-            </div>
-            <div class="col s7 " style="padding-left: 0px;">
-              <div class="name-copy-7-bot"><b> Cadastrar novo Cartão</b></div>
-            </div>
-          </div>
-        </a>
-          <div class="row" style="margin-bottom: 0px;">
-            <div class="col s12 center-align" >
-              <button (click)="salvaSelecionado()" mz-modal-close mz-button class="center-align cadastrar" style="width: 100%;">Selecionar</button>
-            </div>
-          </div>
+    <!--LISTA DE CARTOES-->
 
+  </mz-modal-content>
+  <mz-modal-footer>
+    <!--BOTOES FOOTER-->
+    <div class="container">
+      <a href="#" mz-modal-close (click)="openServiceModal('cartao')">
+        <div class="row" style="margin-bottom: 10px;">
+          <div [className]="!(smallResolution | async) ? 'col s5 plus' : 'col s4 plus'">
+            <i class="verde" mz-icon [icon]="'add'"></i>
+          </div>
+          <div class="col s7 " style="padding-left: 0px;">
+            <div class="name-copy-7-bot"><b> Cadastrar novo Cartão</b></div>
+          </div>
         </div>
-    </mz-modal-footer>
+      </a>
+      <div class="row" style="margin-bottom: 0px;">
+        <div class="col s12 center-align">
+          <button (click)="salvaSelecionado()" mz-modal-close mz-button class="center-align cadastrar" style="width: 100%;">Selecionar</button>
+        </div>
+      </div>
+    </div>
+    <!--BOTOES FOOTER-->
+  </mz-modal-footer>
   </mz-modal>
 
 
