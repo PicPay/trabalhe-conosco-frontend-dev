@@ -1,0 +1,220 @@
+.people-item{
+  width: 100%;
+  height: 60px;
+  background-image: linear-gradient(264deg, #3c3e64, #1d1e2a);
+  box-shadow: 0 0.5px 0 0 #ffffff, 0 -0.5px 0 0 #ffffff;
+  cursor: pointer;
+  padding: 10px 20px;
+  display: flex;
+  border-bottom: 1px solid #ffffff ;
+  position: relative;
+
+
+}
+
+.user-name {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.info {
+  width: 300px;
+  padding: 7px 0 7px 8px;
+}
+.info-id-username {
+  display: flex;
+  padding-top: 4px;
+}
+.user-id {
+  width: 25px;
+  height: 8px;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.user-username{
+  width: 37.5px;
+  height: 8px;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  padding-left: 6px;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: normal;
+}
+
+.img-user {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 1px #ffffff;
+}
+
+.img-payment {
+  width: 16px;
+  height: 16px;
+}
+
+.img-arrow {
+  width: 16px;
+  height: 16px;
+
+}
+
+.payment{
+  position: absolute;
+  right: 20px;
+  top: 24px;
+  display: flex;
+}
+
+.payment-item{
+  height: 12px;
+  font-family: Roboto;
+  font-size: 10px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  padding: 2px 12px 2px 8px;
+}
+
+
+@media (max-width: 768px) {
+  .people-item {
+    width: 100%;
+    height: 36px;
+    background-image: linear-gradient(264deg, #3c3e64, #1d1e2a);
+    box-shadow: 0 0.5px 0 0 #ffffff, 0 -0.5px 0 0 #ffffff;
+    cursor: pointer;
+    padding: 5px 8px;
+    display: flex;
+    border-bottom: 1px solid #ffffff;
+    position: relative;
+  }
+  .info {
+  width: 100px;
+  padding: 3.5px 0 4px 4px;
+
+  }
+  .user-name {
+  font-family: Roboto;
+  font-size: 8px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.info-id-username {
+  display: flex;
+  padding-top: 2px;
+}
+.user-id {
+  width: 21.5px;
+  height: 7px;
+  font-family: Roboto;
+  font-size: 6px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.user-username{
+  width: 72.5px;
+  height: 7px;
+  font-family: Roboto;
+  font-size: 6px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  padding-left: 6px;
+}
+
+.profile-img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  line-height: normal;
+}
+
+.img-user {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: solid 1px #ffffff;
+}
+
+.img-payment {
+  width: 14px;
+  height: 14px;
+}
+
+.img-arrow {
+  width: 12px;
+  height: 12px;
+  margin: auto 0px auto 8px;
+}
+
+.payment{
+  position: absolute;
+  right: 8px;
+  top: 11px;
+  display: flex;
+}
+.payment-item{
+  display: none;
+  height: 9px;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  margin: auto 0px;
+  padding: 0 8px;
+
+}
+
+}
+

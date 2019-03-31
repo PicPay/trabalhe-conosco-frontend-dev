@@ -1,0 +1,613 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.dialog {
+  z-index: 1000;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 40%;
+  min-width: 320px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
+}
+
+.rectangle-top-desktop {
+  width: 100%;
+  height: 25.5px ;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #474971;
+  display: flex;
+  padding: 7px 12px;
+  position: relative;
+  }
+
+.rectangle-top-mobile {
+  display: none;
+  }
+
+.info-top{
+  display: flex;
+  font-family: Roboto;
+  font-size: 8px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  padding: 1px 0px;
+
+}
+
+.info-top-description{
+  min-width: 59px;
+}
+
+.info-top-name{
+  width: 250px;
+  color: #7de6c6;
+  padding-left: 3px;
+}
+.Pagamento-para-Nome .text-style-1 {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.rectangle-container{
+}
+
+.x-button {
+  display: flex;
+  height: 7px;
+  padding: 2px 0px;
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+
+}
+.x-img {
+   width: 7px;
+  height: 7px;
+}
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.info-container{
+  display: flex;
+  justify-content: center;
+}
+
+.info-container-center{
+  display: flex;
+  padding-top: 12px;
+}
+
+.info {
+
+  padding: 7px 0 7px 8px;
+}
+
+.info-id-username {
+  display: flex;
+  padding-top: 4px;
+}
+.user-id {
+  width: 25px;
+
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.user-name {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.user-username{
+  width: 37.5px;
+  height: 8px;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+  padding-left: 6px;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: normal;
+}
+
+.img-user {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 1px #ffffff;
+}
+.confirm {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.data-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+.data-container-center{
+  min-width: 140px;
+  width: 43.75%;
+}
+
+.row{
+  position: relative;
+  width: 100%;
+  height: 9px;
+  display: flex;
+}
+
+.item{
+  position: absolute;
+  left: 0;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+
+.value{
+  position: absolute;
+  right: 0;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #474971;
+}
+
+.line-data{
+  margin-top: 2px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 0.5px;
+  background-color: #d8d8d8;
+}
+.confirm-center{
+  font-family: Roboto;
+  font-size: 10px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #474971;
+}
+.button{
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 12px;
+}
+
+.button-right{
+  min-width: 90.5px;
+  width: 28.28%;
+  height: 24px;
+  border-radius: 12px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  cursor: pointer;
+  margin-left: 12px;
+  border: none;
+  padding: 0;
+}
+
+.button-left{
+  cursor: pointer;
+  background-color: #ffffff;
+  min-width: 90.5px;
+  width: 28.28%;
+  height: 24px;
+  border-radius: 12px;
+  border: solid 0.5px #474971;
+  padding: 0;
+}
+
+.button-text-left{
+  font-family: Roboto;
+  height: 9px;
+  font-size: 7px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #474971;
+  margin: auto 0;
+}
+
+.button-text-right{
+  font-family: Roboto;
+  height: 9px;
+  font-size: 7px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  margin: auto 0;
+  color: #474971;
+}
+
+@media (max-width: 768px) {
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .dialog {
+    z-index: 1000;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 16px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    background-image: linear-gradient(211deg, #3c3e64, #1d1e2a);
+
+    border-radius: 0px;
+    box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  }
+
+ .rectangle-top-desktop {
+  display: none;
+  }
+
+.rectangle-top-mobile {
+  width: 100%;
+  height: 25.5px ;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: transparent;
+  display: flex;
+  padding: 7px 12px;
+  position: relative;
+}
+
+  .info-top {
+    display: flex;
+    font-family: Roboto;
+    font-size: 8px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    padding: 1px 0px;
+
+  }
+
+  .info-top-description {
+    min-width: 59px;
+  }
+
+  .info-top-name {
+    width: 250px;
+    color: #7de6c6;
+    padding-left: 3px;
+  }
+
+  .Pagamento-para-Nome .text-style-1 {
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+
+  .x-button {
+    display: flex;
+    height: 7px;
+    padding: 2px 0px;
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+
+  }
+
+  .x-img {
+    width: 7px;
+    height: 7px;
+  }
+
+  .rectangle-container {
+    position: relative;
+    height: calc(100% - 41.5px);
+  }
+
+  input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.info-container{
+  display: flex;
+  justify-content: center;
+}
+
+.info-container-center{
+  display: flex;
+  padding-top: 12px;
+}
+
+.info {
+
+  padding: 7px 0 7px 8px;
+}
+
+.info-id-username {
+  display: flex;
+  padding-top: 4px;
+}
+.user-id {
+  width: 25px;
+
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.user-name {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.user-username{
+  width: 37.5px;
+  height: 8px;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  padding-left: 6px;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: normal;
+}
+
+.img-user {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 1px #ffffff;
+}
+.confirm {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.data-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+.data-container-center{
+  min-width: 140px;
+  width: 43.75%;
+}
+
+.row{
+  position: relative;
+  width: 100%;
+  height: 9px;
+  display: flex;
+}
+
+.item{
+  position: absolute;
+  left: 0;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.value{
+  position: absolute;
+  right: 0;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #7de6c6;
+}
+
+.line-data{
+  margin-top: 2px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 0.5px;
+  background-color: #d8d8d8;
+}
+.confirm-center{
+  font-family: Roboto;
+  font-size: 10px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+.button{
+  display: flex;
+  justify-content: center;
+  bottom: 12px;
+  padding: 0 17.5px;
+  position: absolute;
+  width: 100%;
+}
+
+.button-right{
+  min-width: 0;
+  width: 64.7%;
+  height: 24px;
+  border-radius: 12px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  margin-left: 12px;
+
+}
+
+.button-left{
+  cursor: pointer;
+  width: 26.7%;
+  background: transparent;
+  min-width: 0;
+  height: 24px;
+  border-radius: 12px;
+  border: solid 0.5px #ffffff;
+  padding: 0;
+}
+
+.button-text-left{
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  margin: auto 0;
+}
+
+.button-text-right{
+   font-family: Roboto;
+  font-size: 7px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #474971;
+  margin: auto 0;
+}
+
+.arrow-comeback{
+
+  color: #7de6c6;
+  margin: auto 0;
+}
+
+.comeback{
+
+  height: 8px;
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  margin: auto 0 auto 2.5px;
+  cursor: pointer;
+}
+
+}

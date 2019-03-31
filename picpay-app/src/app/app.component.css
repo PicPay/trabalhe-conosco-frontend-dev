@@ -1,0 +1,83 @@
+.desktop-user-list {
+
+}
+.navbar {
+  height: 40px;
+  background-color: #7de6c6;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+
+}
+
+.img-picpay {
+  min-width: 527px;
+  width: 70%;
+  height: 16px;
+  margin: auto 0;
+  padding-left: 8px;
+}
+
+img {
+  height: 16px;
+}
+
+.people-list-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px ;
+}
+
+.people-list{
+  min-width: 527px;
+  width: 70%;
+  margin: auto 0;
+}
+
+@media (max-width: 768px) {
+  .desktop-user-list {
+  }
+
+  .navbar {
+  height: 16px;
+}
+  .img-picpay {
+    height: 8px;
+    width: 100% ;
+    min-width: 100% ;
+    padding-left: 8px;
+}
+
+img {
+  height: 8px;
+  margin-bottom: 7px;
+}
+
+.people-list-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px ;
+}
+
+.people-list{
+  width: 100%;
+  margin: auto 0;
+}
+
+.people-list-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 16px ;
+}
+
+.people-list{
+  min-width: 0;
+  width: 100%;
+  margin: auto 0;
+}
+
+}
