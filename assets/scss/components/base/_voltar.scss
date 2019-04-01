@@ -1,0 +1,21 @@
+.voltar {
+	margin: 8px 12px;
+
+	a {
+		font-family: roboto-regular;
+		font-size: 7px;
+		color: $white;
+		text-decoration: none;
+
+		&:before {
+			content: ' ';
+			background-image: url('/images/angle-left-solid.svg');
+			background-size: 4px 4px;
+			height: 4px;
+			width: 4px;
+			background-repeat: no-repeat;
+			color: $riptide;
+			display: inline-block;
+		}
+	}
+}

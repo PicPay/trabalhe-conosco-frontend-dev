@@ -1,0 +1,38 @@
+.transaction {
+	text-align: center;
+	h5 {
+		color: $white;
+		font-family: roboto-bold;
+		font-size: 10px;
+	}
+
+	ul {
+		display: block;
+		padding: inherit;
+		margin: auto;
+		max-width: 148px;
+
+		li {
+			display: flex;
+			border-bottom: solid 1px $white24;
+			padding-bottom: 4px;
+			margin-bottom: 8px;
+
+			.title {
+				flex: 1;
+				font-family: roboto-regular;
+				font-size: 7px;
+				color: $white;
+				text-align: left;
+			}
+
+			.value {
+				flex: 1;
+				font-family: roboto-regular;
+				font-size: 7px;
+				color: $riptide;
+				text-align: right;
+			}
+		}
+	}
+}

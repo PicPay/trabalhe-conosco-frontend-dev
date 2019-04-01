@@ -1,0 +1,25 @@
+.cartao-novo {
+	//padding: 10px 22px;
+	position: relative;
+    margin: auto;
+    display: table;
+}
+
+.botton {
+	position: fixed;
+	bottom: 10px;
+	width: 100%;
+	text-align: center;
+
+	.btn {
+		width: 182px;
+    	background-image: linear-gradient(to bottom, $duckEggBlue, #7de6c6);
+		border: inherit;
+		border-radius: 12px;
+		font-family: roboto-bold;
+		font-size: 7px;
+		color: $duskTwo;
+		text-align: center;
+		padding: 8px 0;
+    }
+}

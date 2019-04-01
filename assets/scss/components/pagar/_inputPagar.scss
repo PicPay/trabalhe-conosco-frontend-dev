@@ -1,0 +1,17 @@
+.input-pagar {
+	padding: 8px 22px;
+	margin: auto;
+	text-align: center;
+
+	input {
+		width: 70%;
+		max-width: 130px;
+		background-color: inherit;
+		border: inherit;
+		border-bottom: solid 1px $white24;
+		font-family: roboto-regular;
+		font-size: 24px;
+		text-align: center;
+		color: $whiteTwo;
+	} 
+}

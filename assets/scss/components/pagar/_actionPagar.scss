@@ -1,0 +1,91 @@
+.action-pagar {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+
+	.container {
+		border-top: solid 1px $white24;
+		margin: 10px 22px;
+		padding-top: 10px;
+	}
+
+	button {
+		background-image: linear-gradient(to bottom, $duckEggBlue, #7de6c6);
+		border: inherit;
+		width: 100%;
+		border-radius: 12px;
+		font-family: roboto-bold;
+		font-size: 7px;
+		color: $duskTwo;
+		text-align: center;
+		padding: 8px 0;
+	}
+
+	.alert-pagar {
+		display: flex;
+		margin: 0 10px 10px 10px;
+
+		.img {
+			flex: 1;
+			max-width: 10px;
+
+			img {
+				width: 10px;
+				height: 10px;
+			}
+		}
+
+		.data {
+			flex: 1;
+			margin-left: 10px;
+
+			span {
+				width: 100%;
+				display: block;
+				font-family: roboto-regular;
+				font-size: 7px;
+				color: $mediumPink;
+			}
+
+			a {
+				width: 100%;
+				display: block;
+				font-family: roboto-bold;
+				font-size: 7px;
+				color: $mediumPink;
+			}
+		}
+	}
+
+	.card-check {
+		display: flex;
+		margin: 0 10px 10px 10px;
+
+		.img {
+			flex: 1;
+			max-width: 14px;
+
+			img {
+				width: 14px;
+				height: 14px;
+			}
+		}
+
+		.data {
+			flex: 1;
+			margin-left: 10px;
+
+			span {
+				width: 100%;
+				display: block;
+				font-family: roboto-regular;
+				font-size: 7px;
+				color: $white;
+			}
+
+			.bold {
+				font-family: roboto-bold;
+			}
+		}
+	}
+}

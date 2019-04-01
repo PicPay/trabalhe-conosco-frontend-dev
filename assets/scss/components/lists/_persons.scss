@@ -1,0 +1,69 @@
+.list-persons {
+	display: block;
+	padding: inherit;
+	margin-top: 0;
+	margin-bottom: 0;
+
+	li {
+		display: flex;
+		border-bottom: solid 1px $white;
+		padding: 5px 8px;
+		background-image: linear-gradient(259deg, $dusk, $das);
+
+		.img {
+			flex: 1;
+			max-width: 30px;
+			display: flex;
+			img {
+				margin: auto;
+				width: 26px;
+				height: 26px;
+				border-radius: 50%;			
+				border: solid 1px $white;
+			}
+		}
+
+		.data {
+			flex: 1;
+			padding: 0px 8px;
+
+			.title {
+				color: $white;
+				font-family: roboto-bold;
+				font-size: 8px;
+				display: block;
+				line-height: 2px;
+				margin-top: 8px;
+			}
+
+			.subtitle {
+				color: $white;
+				font-family: roboto-regular;
+				font-size: 6px;
+
+				.nick {
+					margin-left: 4px;
+				}
+			}
+		}
+
+		.actions {
+			max-width: 60px;
+			padding: 4px 0;
+
+			.pagar {
+				display: inline-block;
+				width: 14px;
+				vertical-align: -webkit-baseline-middle;
+				cursor: pointer;
+			}
+
+			.next {
+				display: inline-block;
+				width: 12px;
+				vertical-align: -webkit-baseline-middle;
+				cursor: pointer;
+			}
+		}
+	}
+}
