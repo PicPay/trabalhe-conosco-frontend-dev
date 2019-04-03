@@ -1,0 +1,27 @@
+/// GLOBAL
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500|Nunito+Sans');
+
+//FONT
+$fontMont: 'Montserrat', sans-serif;
+$fontNunito: 'Nunito Sans', sans-serif;
+
+// COR
+$dusk-one: #3c3e64;
+$dusk-two: #474971;
+$quase-preto: #1d1e2a;
+$duck-egg-blue: #b4f4e5;
+$light-teal: #7de6c6;
+$light-teal-24: rgba(125, 230, 198, 0.24);
+$white-one: #ffffff;
+$white-two: #d8d8d8;
+$black-40: rgba(0, 0, 0, 0.4);
+$medium-pink: #ef5778;
+
+//BREAKPOINTS
+$min-height-xs: 320px;
+$break-xs: 500px;
+$break-sm: 768px;
+$break-md: 992px;
+$break-lg: 1200px;
+$max-lg: 1920px;

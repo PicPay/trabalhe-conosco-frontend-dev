@@ -1,0 +1,13 @@
+.payment {
+
+	input.paymentValue {
+		font-size: 48px;
+		text-align: center;
+		margin-top: 40px;
+		padding-bottom: 10px;
+
+		@media screen and (min-width: $break-sm) {
+			margin-bottom: 52px;
+		}
+	}
+}

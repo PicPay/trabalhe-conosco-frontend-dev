@@ -1,0 +1,334 @@
+aside.navbarPicpay {
+	background: $light-teal;
+	padding: 10px .75rem;
+
+	.container {
+		margin: 0 auto 0 0;
+
+		@media screen and (min-width: $break-sm) {
+			margin: 0 auto;
+		}
+	}
+
+	@media screen and (min-width: $break-sm) {
+		padding: 28px .75rem;
+	}
+	
+	.logo, .subtext {
+		font-size: 13px;
+
+		@media screen and (min-width: $break-sm) {
+			font-size: 20px;
+		}
+	}
+	.logo {
+		color: $white-one;
+		font-weight: bold;
+	}
+
+	.subtext {
+		color: $dusk-two;
+		font-family: $fontMont;
+		font-weight: 500;
+	}
+}
+
+html {
+	height: 100%;
+
+	* {
+		letter-spacing: 0.7px;
+	}
+}
+
+input[type='text'], input[type='number'] {
+	font-family: $fontNunito;
+	color: $white-one;
+	padding-bottom: 10px;
+	border-color: $dusk-two;
+	display: block;
+	-moz-appearance: textfield;
+
+	@media screen and (min-width: $break-sm) {
+		color: $dusk-two;
+	}
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid $light-teal;
+	box-shadow: 0 1px 0 0 $light-teal;
+
+	@media screen and (min-width: $break-sm) {
+		border-bottom: 1px solid $dusk-two;
+		box-shadow: 0 1px 0 0 $dusk-two;
+	}
+}
+
+input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
+
+	color: $light-teal;
+
+	@media screen and (min-width: $break-sm) {
+		color: $dusk-two;
+	}
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+	color: $dusk-two;
+}
+
+.select-wrapper .caret {
+	fill: $white-one;
+
+	@media screen and (min-width: $break-sm) {
+		fill: $dusk-two;
+	}
+}
+
+.goBack {
+	color: $white-one;
+	font-weight: 400;
+
+	i {
+		color: $light-teal;
+		vertical-align: middle;
+		margin: 0 0 4px 0;
+	}
+}
+
+.noMargin {
+	margin-bottom: 0;
+}
+
+.pos-relative {
+	position: relative;
+}
+
+.defaultHeight {
+	min-height: calc(100vh - 40.8px);
+	height: 100%;
+
+	@media screen and (min-width: $break-sm) {
+		min-height: unset;
+	}
+}
+
+.defaultGradientBg {
+	background: $quase-preto; /* browsers antigos */
+	background: -moz-linear-gradient(top, $quase-preto 0%, $dusk-one 100%);
+	background: -webkit-linear-gradient(top, $quase-preto 0%,$dusk-one 100%);
+	background: linear-gradient(to bottom, $quase-preto 0%,$dusk-one 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$quase-preto, endColorstr=$dusk-one,GradientType=1 );
+
+	@media screen and (min-width: $break-sm) {
+		background: $white-one;
+		border-radius: 8px;
+	}
+}
+
+.callToAction {
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 8px 24px;
+	height: auto;
+	border-radius: 50px;
+	background: transparent;
+	border: 1px solid $white-one;
+	color: $white-one;
+
+	@media screen and (min-width: $break-sm) {
+		border: 1px solid $dusk-two;
+		color: $dusk-two;
+	}
+
+	@media screen and (max-height: 480px) {
+		padding: 3px 12px;
+
+		&.btn {
+			font-size: 9px;
+		}
+	}
+
+	&:hover {
+		background: transparent;
+	}
+
+	&.teal {
+		border-color: transparent;
+		background: $duck-egg-blue; /* browsers antigos */
+		background: -moz-linear-gradient(top, $duck-egg-blue 0%, $light-teal 100%);
+		background: -webkit-linear-gradient(top, $duck-egg-blue 0%,$light-teal 100%);
+		background: linear-gradient(to bottom, $duck-egg-blue 0%,$light-teal 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$duck-egg-blue, endColorstr=$light-teal,GradientType=1 );
+
+		color: $dusk-two;
+	}
+	&.giant {
+		width: 100%;
+	}
+}
+
+.actions {
+	width: 100%;
+	padding: 0 20px 4px;
+	position: absolute;
+	bottom: 20px;
+
+	@media screen and (min-width: $break-sm) {
+		position: relative;
+		bottom: unset;
+		margin: 20px auto;
+
+		@-moz-document url-prefix() {
+			padding-bottom: 20px;
+		}
+	}
+}
+
+.messages {
+	border-top: 1px solid $white-one;
+
+	@media screen and (min-height: $min-height-xs) {
+		border-color: transparent;	
+	}
+
+	p {
+		font-weight: 500;
+		-webkit-margin-before: 0px;
+		-webkit-margin-after: 0px;
+
+		b {
+			font-weight: 600;
+		}
+	}
+
+	a {
+		text-decoration: underline;
+	}
+
+	img {
+		border: none;
+		display: table;
+		margin: 0 0 0 auto;
+	}
+
+	&.danger {
+		p, a, h2, h3 {
+			color: $medium-pink;	
+		}
+	}
+
+	&.info {
+		p, a, h2, h3 {
+			color: $white-one;
+
+			@media screen and (min-width: $break-sm) {
+				color: $dusk-two;
+			}
+		}
+
+		a {
+			text-decoration: none;
+		}
+	}
+}
+
+.app-icon {
+	display: block;
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	mask-position: center top;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	-webkit-mask-position: center top;
+	content: "";
+	margin: 0 0 5px auto;
+
+	&.greenCard {
+		width: 28px;
+		height: 28px;
+		background-color: $light-teal;
+		mask-image: url(../img/green.svg);
+		-webkit-mask-image: url(../img/green.svg);
+
+		@media screen and (min-width: $break-sm) {
+			background-color: $dusk-two;
+		}
+	}
+
+	&.plus {
+		width: 28px;
+		height: 28px;
+		background-color: $light-teal;
+		mask-image: url(../img/plus.svg);
+		-webkit-mask-image: url(../img/plus.svg);
+
+		@media screen and (min-width: $break-sm) {
+			background-color: $dusk-two;
+		}
+	}
+
+	&.alert {
+		width: 20px;
+		height: 20px;
+		background-color: $medium-pink;
+		mask-image: url(../img/alert.svg);
+		-webkit-mask-image: url(../img/alert.svg);
+	}
+}
+
+.personNameId {
+	@media screen and (min-width: $break-sm) {
+		margin-top: 24px;
+	}
+
+	.circle {
+		border: 2px solid $white-one;
+
+		@media screen and (min-width: $break-sm) {
+			height: 80px;
+			width: 80px;
+			margin: 0 0 0 auto;
+			display: table;
+		}
+
+		@media screen and (max-height: 480px) {
+			height: 50px;
+			margin: 0 0 0 auto;
+			display: table;
+		}
+	}
+
+	.subText, span.title {
+		color: $white-one;
+
+		@media screen and (min-width: $break-sm) {
+			color: $dusk-two;
+		}
+	}
+
+	.subText {
+		-webkit-margin-before: 5px;
+		-webkit-margin-after: 1em;
+		margin: 0;
+	}
+
+	span.title {
+		font-weight: bold;
+		font-size: 24px;
+
+		@media screen and (max-height: 480px) {
+			font-size: 20px;
+		}
+
+		@media screen and (max-height: 480px) {
+			font-size: 16px;
+		}
+	}
+}
+
+.homeWrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}

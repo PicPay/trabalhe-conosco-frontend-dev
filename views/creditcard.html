@@ -1,0 +1,54 @@
+<section class="creditCard pos-relative defaultGradientBg defaultHeight" ng-controller="creditCardCtrl">
+	<aside class="modalToShowViewsHeader hide-on-small-only" ng-click="setModalView('')">
+		<p>Cadastro de cartão <i class="small material-icons right">close</i></p>
+	</aside>
+
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<p class="hide-on-med-and-up"><a href="javascript:void(0)" ng-click="setModalView('mycards')" class="goBack"><i class="small material-icons">chevron_left</i> Voltar</a></p>
+				<form>
+					<div class="input-field">
+						<select>
+							<option value="" disabled selected>Selecione a bandeira</option>
+							<option value="1">Visa</option>
+							<option value="2">Master</option>
+						</select>
+					</div>
+					<div class="input-field">
+						<input id="cardName" type="text" ng-model="creditCard.card_name" mask-validate='true' required />
+						<label for="cardName">Nome escrito no cartão</label>
+					</div>
+					<div class="input-field">
+						<input id="cardNumber" type="text" mask="9999 9999 9999 9999" ng-minlength="1" ng-model="creditCard.card_number" required />
+						<label for="cardNumber">Número do cartão</label>
+					</div>
+					<div class="input-field">
+						<input id="validThru" type="text" mask="99/9999" ng-model="creditCard.expiry_date" mask-validate='true' required />
+						<label for="validThru">Validade (mm/aaaa)</label>
+					</div>
+					<div class="input-field">
+						<input id="code" type="text" mask="999" ng-model="creditCard.cvv" mask-validate='true' required />
+						<label for="code">Código de segurança</label>
+					</div>
+					<div class="input-field">
+						<input id="zip" type="text" mask="99999-999" ng-model="creditCard.zip" mask-validate='true' required />
+						<label for="zip">CEP do endereço da fatura</label>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<aside class="actions">
+		<button class="btn callToAction teal giant hide-on-med-and-up" ng-click="saveCard()" ng-disabled="creditCard.card_number.length < 19">Cadastrar</button>
+		<div class="container hide-on-small-only">
+			<div class="row">
+				<div class="col s12">
+					<a class="btn callToAction left" href="javascript:void(0)" ng-click="setModalView('mycards')">Voltar</a>
+					<button class="btn callToAction teal right" ng-click="saveCard()" ng-disabled="creditCard.card_number.length < 19">Cadastrar</button>
+				</div>
+			</div>
+		</div>
+	</aside>
+</section>

@@ -1,0 +1,46 @@
+<section class="homeWrapper">
+  <section class="mainList" ng-class="{modalIsActive: modalView.path != ''}">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <div class="wrapper">
+            <ul class="collection" id="listOfPeople">
+              <li ng-repeat="person in people" class="collection-item avatar">
+                <img ng-src="{{person.img}}" alt="" class="circle">
+                <div class="personTxtWrapper">
+                  <span class="title">{{person.name}}</span>
+                  <p>id: {{person.id}} {{person.username}}</p>
+                </div>
+                <button class="secondary-content" ng-click="payThisPerson(person)">
+                  <img class="" src="./build/img/pagar.svg" alt="" height="28" /> <span class="hide-on-small-only pay-text">pagar</span>
+                  <img class="" src="./build/img/down.svg" alt="" height="28" />
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal onde serão mostrados os passos do pagamento -->
+  <section class="modalToShowViews-Wrapper" ng-show="modalView.path != ''">
+    <section class="modalToShowViews">
+      <div class="animate-switch-container" ng-switch on="modalView.path">
+        <div class="animate-switch" ng-switch-when="payment" >
+          <div class="switch-show-hide" ng-include="'views/payment.html'"></div>
+        </div>
+        <div class="animate-switch" ng-switch-when="mycards" >
+          <div class="switch-show-hide" ng-include="'views/mycards.html'"></div>
+        </div>
+        <div class="animate-switch" ng-switch-when="creditcard" >
+          <div class="switch-show-hide" ng-include="'views/creditcard.html'"></div>
+        </div>
+        <div class="animate-switch" ng-switch-when="receipt" >
+          <div class="switch-show-hide" ng-include="'views/receipt.html'"></div>
+        </div>
+        <div class="animate-switch" ng-switch-default></div>
+      </div>
+    </section>
+  </section>
+</section>
