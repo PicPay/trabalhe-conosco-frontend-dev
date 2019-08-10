@@ -1,0 +1,15 @@
+.master-header {
+  width: 100%;
+  padding: 15px 0 20px;
+  background-color: #7de6c6;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+  h1 {
+    margin: 0;
+    font-size: 1.1rem;
+
+    > .picpay {
+      color: #ffffff;
+    }
+  }
+}
