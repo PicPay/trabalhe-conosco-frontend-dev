@@ -4,7 +4,7 @@
 
 O teste deve ser feito para Web com layout responsivo e é uma simulação de envio de dinheiro para uma outra pessoa via cartão de crédito. 
 
-O layout está disponível em https://zpl.io/VOBNjrQ. Para acessar, use o login *picpay* e senha *picpayfte*.
+O layout está disponível em https://zpl.io/VOBNjrQ (Não existe mais) Para acessar, use o login *picpay* e senha *picpayfte*.
 
 Você deve fazer um ***Fork*** deste repositório e soliciar um ***Pull Request***, **com seu nome na descrição**, para nossa avaliação.
 
