@@ -1,4 +1,4 @@
-![PicPay](https://user-images.githubusercontent.com/1765696/26998603-711fcf30-4d5c-11e7-9281-0d9eb20337ad.png)
+Instruções em:
 
 # Teste Frontend
 
@@ -41,3 +41,6 @@ Realizar um `POST` para http://careers.picpay.com/tests/mobdev/transaction com o
 ```
 
 ## Para fins de teste, o número de cartão 1111111111111111 aprova a transação, qualquer outro recusa. 
+=======
+https://picpay.com/jobs/desafio-frontend
+
